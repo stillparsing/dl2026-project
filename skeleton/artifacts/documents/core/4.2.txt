@@ -1,0 +1,22 @@
+4.2 Life Cycle States
+Figure 10  Life Cycle State Transitions
+
+
+The following list details the states depicted in Figure 10 .
+a. Nonexistent: The Nonexistent state is a theoretical state that describes the condition of an SP
+before it has been instantiated, or after it has been deleted.
+b. Issued: The Issued state is the standard operational state of an SP, and defines the initial
+required access control settings of an SP based on the templates incorporated into the SP and
+as defined by this specification and/or a supported SSC, prior to personalization.  .
+c. Issued-Disabled: This state occurs after an SP has been issued, when the value of the
+Enabled column of the SP’s SPInfo table is False.
+d. Issued-Frozen: This state occurs after an SP has been issued, when the value of the Frozen
+column of the Admin SP’s SP table is True.
+e. Issued-Disabled-Frozen: This state occurs after an SP has been issued, when both the value
+of the Frozen column of the Admin SP’s SP table is True and the value of the Enabled column
+of the SP’s SPInfo table is False.
+f.
+Failed: The Failed state describes the condition where the SP has experienced an
+unrecoverable write failure; physical read error for the hidden (SP) space; or other
+unrecoverable failure that prevents access to TCG related functionality and data structures (i.e.
+the SP is unable to accept method invocations).

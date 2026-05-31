@@ -1,0 +1,5 @@
+2.2.2.1 Host Applications
+Begin Informative Content
+Host applications initiate sessions to communicate with a TPer in order to create, query or change the
+persistent state of the TPer data structures.
+End Informative Content

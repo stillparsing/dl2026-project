@@ -1,0 +1,7 @@
+5.3.2.9.5 Columns
+This column value dentifies the columns to which this ACE applies.  An empty set indicates that this
+ACE applies to all columns in the table (when referenced in the ACL of a method that supports column
+restrictions).
+The value for the Columns column SHALL be applicable to the table upon which a method requiring
+authentication of this ACE is being invoked.    If the method is not column-dependant (e.g. the Next
+method), this column is ignored.

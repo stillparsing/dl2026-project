@@ -1,0 +1,3 @@
+3.2.2.3.3.3 End of Session (EOS)
+The host application utilizes this token to signal to the SP that it is ending the session.  The SP
+responds to this token with an End of Session token of its own in its response stream.

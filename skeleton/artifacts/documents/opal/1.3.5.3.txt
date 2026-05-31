@@ -1,0 +1,17 @@
+1.3.5.3 Ordered Lists
+An ordered list is one in which the order of the listed items is important (i.e., item n is required before item n+1). Each
+listed item starts with a Western-Arabic numeral followed by a close parenthesis. If it is necessary to subdivide a list
+item further with an additional unordered list (i.e., have a nested unordered list), then the nested unordered list shall
+be indented and each item in the nested unordered list shall start with an uppercase letter followed by a close
+parenthesis.
+
+The following is an example of an ordered list with a nested unordered list:
+
+EXAMPLE - The following are the instructions for the assembly:
+1) remove the contents from the box;
+2) assemble the item;
+A) use a screwdriver to tighten the screws; and
+B) use a wrench to tighten the bolts;
+and
+3) take a break.
+

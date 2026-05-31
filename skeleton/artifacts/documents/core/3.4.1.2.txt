@@ -1,0 +1,23 @@
+3.4.1.2 SPs
+SPs are created by integrating portions of one or more of the templates supported by a TPer (as
+identified in the Admin SP).
+A template includes the following:
+a. Each template SHALL have a different name.
+b. Templates define a set of table and method definitions.  These definitions are used to
+define the initial tables and methods that MAY be included in an instance of that template.
+c. A maximum instance count.  A maximum instance count of zero means no limit.  At any
+time there SHALL be no more than this number of SPs based on this template instantiated
+within the TPer.
+An SP includes the following:
+a. A name – Each SP SHALL have a different name.
+b. A set of tables – Tables SHOULD be stored in a non-user addressable storage area on the
+TPer.
+c. A set of methods – The supported methods define the operations that MAY be performed
+on the SP and the SP's tables.
+All SPs SHALL be created from at least the Base Template. The Base Template is combined with zero
+or more other template(s) to create an SP, though the number of SPs that instantiate a particular
+template MAY be limited by the template's maximum instance count.  The number of Base Template
+instantiations permitted in a particular TPer by definition limits the number of SPs that MAY be issued
+for that TPer.
+An SP MAY incorporate only a subset of the entire set of tables and methods provided by each
+template that makes up the SP.

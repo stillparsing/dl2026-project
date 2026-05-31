@@ -1,0 +1,10 @@
+5.1.3.50 max_bytes
+This is the base type that is used to represent a bytes value that is equal to or less than the size
+specified for the type instance.
+Table 108 max_bytes
+```markdown
+| UID                         | Name      | Format    |
+|-----------------------------|-----------|-----------|
+| 00 00 00 05 00 00 00 03     | max_bytes | Base_Type |
+```  
+ 

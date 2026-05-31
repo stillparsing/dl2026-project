@@ -1,0 +1,9 @@
+3.3.4.1.3 Payload Error Response
+The TPer SHALL respond according to the following rules if it encounters a streaming protocol violation:
+•
+If the error is on Session Manager or is such that the TPer cannot resolve a valid session ID from the payload
+(i.e. errors in the ComPacket header or Packet header), then the TPer SHALL discard the payload and
+immediately transition to the “Awaiting IF-SEND” state.
+•
+If the error occurs after the TPer has resolved the session ID, then the TPer SHALL abort the session and MAY
+prepare a CloseSession method for retrieval by the host.

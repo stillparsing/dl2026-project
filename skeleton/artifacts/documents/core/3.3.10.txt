@@ -1,0 +1,205 @@
+3.3.10 Synchronous Interface Communications
+3.3.10.1 Introduction
+Begin Informative Text
+The communications protocol stack as described in this specification enables a fully asynchronous
+exchange of data between host and TPer.  Using the communications stack in this manner is a matter
+of arbitrarily interleaving IF-SEND commands with IF-RECV commands.
+Asynchronous communications allows the host to transmit methods and data to the TPer without having
+to retrieve the results of those methods before sending additional methods, and enables the TPer to
+return method results upon request at arbitrary boundaries.  Flow control provides a mechanism for
+buffer management to occur as data is successfully transmitted and received.
+However, for some hosts and devices, these mechanisms are too complex and require more
+processing capability and code space than is available.  For these situations, the synchronous
+communications protocol stack is tailored to better meet the capabilities of host and TPer.
+For instance, fixed buffer sizes coupled with restrictions on the relationship between the exchange of
+IF-SEND and IF-RECV commands negates the need for flow control for buffer management.
+End Informative Text
+3.3.10.2 Interface Commands
+This section defines the requirements imposed on the exchange of IF-SEND and IF-RECV commands.
+3.3.10.2.1
+Restrictions
+The restrictions imposed on the exchange of IF-SEND and IF-RECV commands are as follows:
+1. Any number of non IF-SEND/IF-RECV commands MAY be interleaved with IF-SEND/IF-RECV
+commands.
+2. The normal communications state of an Associated ComID SHALL be to await receipt of an IF-
+SEND command for that ComID.
+a. While awaiting receipt of an IF-SEND interface command, any received IF-SEND
+command for that ComID SHALL be accepted (provided it meets the other
+requirements such as not exceeding the maximum supported length).
+b. Once the entire command payload has been received, the TPer SHALL return an
+interface status to the host.
+c. Any IF-RECV command received for the Associated ComID awaiting receipt of an IF-
+SEND command SHALL return to the host a ComPacket with a Length field value of
+zero, an OutstandingData field value of zero, and a MinTransfer field value of zero.
+This signals to the host that there is no pending response data to retrieve.
+3. After an IF-SEND command has been received, a command completion without error has been
+returned, and the payload has been decoded without an error, the TPer SHALL NOT accept
+another IF-SEND command for that ComID until the host has retrieved the entire response via
+IF-RECV(s).
+a. Any subsequently received IF-SEND commands for the specified ComID SHALL be
+aborted at the interface level.  The interface status for this action SHALL be
+"Synchronous Protocol Violation" (see [2]).
+b. If the TPer has not sufficiently processed the command payload and prepared a
+response, any IF-RECV command for that ComID SHALL receive a ComPacket with a
+Length field value of zero (no payload), an OutstandingData field value of 0x01, and a
+MinTransfer field value of zero.
+c. If the TPer has sufficiently processed the command payload and prepared a response,
+an IF-RECV command that requests a transfer length less than the amount of response
+data the TPer has prepared SHALL reply with a ComPacket with a Length field value of
+zero (no payload) and OutstandingData value of total bytes currently available, and
+MinTransfer field value of the minimum request required to transfer a packet.
+d. The SSC MAY additionally require that each method response be retrieved separately
+(along with Control Tokens as determined by the TPer), via multiple IF-RECV
+commands.  For these SSCs, if all responses have not been retrieved:
+i. If additional responses are available, and the host has requested a transfer
+length less than the minimum transfer required, the TPer SHALL respond to an
+IF-RECV command with OutstandingData value of total bytes currently
+available; and MinTransfer field value of the minimum request required to
+transfer a packet.
+ii. If additional responses are available and the host has requested a sufficient
+transfer length, the TPer SHALL respond to an IF-RECV with OutstandingData
+= 0x00, 0x01, or the amount of total bytes currently available; and MinTransfer
+field value of zero or the minimum request required to transfer a packet.
+iii. If no additional responses are prepared but more are to come, the TPer SHALL
+respond to an IF-RECV command with OutstandingData field value of 0x01
+and MinTransfer field value of Zero.  Table 45 summarizes the values of the
+Length, OutstandingData, and MinTransfer fields of the packets returned to the
+host by the TPer in response to an IF-RECV command.
+A summary of the values for ComPacket fields is displayed in Table 45.
+Table 45 IF-RECV ComPacket Field Values Summary
+```markdown
+| IF-RECV Length Field Value            | OutstandingData Field Value                                        | MinTransfer Field Value                         | Response(s) to come, no Response(s) available          |
+|-------------------------------------|------------------------------------------------------------------|------------------------------------------------|-------------------------------------------------------|
+| 0x00                                | 0x01                                                             | 0x00                                           |                                                       |
+| Response ready, insufficient transfer length request    | 0x00                             | Total bytes currently available                  | The minimum request required to transfer a packet      |
+| Response, additional Response(s) available              | Data Length                     | Additional bytes available, not including the data transferred in the current ComPacket. | The minimum request required to transfer the next packet |
+| Response, additional Response(s) to come, no Response(s) available | Data Length                     | 0x01                                           | 0x00                                                  |
+| Response, all Response(s) returned – no further data    | Data Length                     | 0x00                                           | 0x00                                                  |
+| All Response(s) returned – no further data              | 0x00                           | 0x00                                           |                                                       |
+``` 
+
+3.3.10.3 Synchronous Communications Restrictions
+This section defines additional restrictions specific to the Synchronous Communications protocol.
+a. Methods SHALL NOT span ComPackets.  In the case where an incomplete method is
+submitted, if the TPer is able to identify the associated session, then that session SHALL
+be aborted and a CloseSession MAY be prepared for delivery on that ComID's control
+session.
+b. The synchronous exchange of interface commands SHALL only apply to IF-SEND/IF-
+RECV commands exchanged on Protocol ID 0x01, but SHALL NOT apply to Level 0
+Discovery.
+3.3.10.4 State Transition Diagram
+The state transitions for the exchange of IF-SEND and IF-RECV commands are delineated in Figure
+Figure 7 The states used are defined in 3.3.10.5, and the state transitions are defined in 3.3.10.6.
+Figure 7  Synchronous Communications State Transition Diagram
+
+
+3.3.10.5 State Descriptions
+This section defines the states used in Figure 7
+State “Power-Off (S0)” – In this state, power is removed from the TPer and it is completely
+unresponsive.
+State “Awaiting IF-SEND (S1)” – In this state, the TPer command interface is ready and there are no
+outstanding IF-SEND/IF-RECV commands for the specified ComID. A command is “outstanding” if it
+has entered the “Processing” or “Awaiting IF-RECV” state. A command is not considered “outstanding”
+if it is in the TPer command queue awaiting initial processing by the device.
+a. While in this state, if IF-SEND is received or dequeued with the ComID for this state
+machine, the TPer MAY request command payload transfer and SHALL return interface
+status to the host.
+b. While in this state, if IF-RECV is received or dequeued with the ComID for this state
+machine, the TPer SHALL return a response ComPacket the specified ExtendedComID
+with the Length, OutstandingData, and MinTransfer fields set per “All Response(s) returned
+– no further data” defined in Table 45.
+State “Processing (S2)” – In this state, the TPer has begun processing the payload of an IF-SEND
+command.
+a. While in this state, the TPer SHALL terminate any received or dequeued IF-SEND
+commands.  The interface status for this action SHALL be "Synchronous Protocol Violation"
+(see [2]).
+b. While in this state, the TPer SHALL return a response ComPacket for any received or
+dequeued IF-RECV commands for the specified ExtendedComID with the Length,
+OutstandingData, and MinTransfer fields set per “Response(s) to come, no Response(s)
+available” defined in Table 45.
+State “Awaiting IF-RECV (S3)” – The TPer has completely processed the TCG data payload and has
+the associated TCG response ready for retrieval by the host.
+a. While in this state, if IF-RECV is received or dequeued with the ComID for this state
+machine and a transfer length less than the amount of response data staged for the
+ComID, the TPer SHALL return a response ComPacket for the specified ExtendedComID
+with the Length, OutstandingData, and MinTransfer fields set per “Response ready,
+insufficient transfer length request” defined in Table 45.
+b. While in this state, the TPer SHALL terminate any received or dequeued IF-SEND
+command.  The interface status for this action SHALL be "Synchronous Protocol Violation"
+(see [2]).
+3.3.10.6 State Transitions
+This section defines the state transitions for each valid ComID as presented in Figure 7
+S0:S1 – This transition occurs automatically when the TPer is powered on.
+S1:S0 – This transition occurs when the TPer is powered off.
+S1:S1 – This transition occurs when:
+a. The TPer receives an interface initiated TCG reset (see [2]), or
+b. The TPer receives a Protocol Stack Reset Command for the ComID of this state machine
+(see 3.3.4.7.5), or
+c. The TPer detects an error in a received IF-SEND payload that prevents the TPer from
+resolving an intended session for the IF-SEND command payload, or other error that
+prevents the TPer from processing the command (see 3.3.10.7), or
+d. The TPer receives an IF-RECV command for this ComID (see the "Awaiting IF-SEND"
+state description in 3.3.10.5).
+S1:S2 – This transition occurs when an IF-SEND command with the ComID associated with this state
+machine is received or dequeued and successfully completes data transfer of the command payload.
+S2:S0 – This transition occurs when the TPer is powered off.
+S2:S1 – This transition occurs when:
+a. The TPer receives an interface initiated TCG reset (see [2]), or
+b. The TPer receives a Protocol Stack Reset Command for the ComID of this state machine
+(see 3.3.4.7.5), or
+c. The TPer detects an error in the IF-SEND payload that prevents the TPer from resolving an
+intended session for the IF-SEND command payload (see 3.3.10.7), or
+d. If there is no action to be taken as a result of the received command, such as when the IF-
+SEND command payload is a ComPacket with
+a. no payload, or
+b. one or more Packets all of which have no payload, or
+c. The IF-SEND command payload is a ComPacket with one or more Packets all of which
+have SubPackets that either have no payload or have a payload that consists entirely
+of Empty Atoms.
+S2:S2 – This transition occurs when:
+a. The TPer receives an IF-SEND for this ComID (see the "Processing" state description in
+3.3.10.5), or
+b. The TPer receives an IF-RECV for this ComID and processing has not completed to the
+point where data is available for retrieval by the host (see the "Processing" state description
+in 3.3.10.5).
+S2:S3 – This transition occurs when the TPer has completely processed the contents of the IF-SEND
+command and has a complete response available for retrieval by the host. A separate response MAY
+be generated for each method in the IF-SEND.
+S3:S0 – This transition occurs when the TPer is powered off.
+S3:S1 – This transition occurs when the TPer receives:
+a. An interface initiated TCG reset (see [2]), or
+b. A Protocol Stack Reset Command for the ComID of this state machine (see 3.3.4.7.5),  or
+c. An IF-RECV able to retrieve the entire response resulting from the IF-SEND, or
+d. An IF-RECV for the last of multiple responses resulting from the IF-SEND.
+S3:S2 – This transition occurs when the TPer receives an IF-RECV able to retrieve a response
+resulting from an IF-SEND but still has additional responses to process from that IF-SEND.
+S3:S3 – This transition occurs when:
+a. The TPer receives an IF-SEND for this ComID (see the "Awaiting IF-RECV" state
+description in 3.3.10.5), or
+b. An IF-RECV is received or dequeued with the ComID for this state machine and a transfer
+length less than the amount of response data staged for the ComID (see the "Awaiting IF-
+RECV" state description in 3.3.10.5), or
+c. The TPer receives an IF-RECV able to retrieve a response resulting from an IF-SEND, and
+additional responses are still available.  The TPer SHALL a response ComPacket for the
+specified ExtendedComID with the Length, OutstandingData, and MinTransfer fields set per
+“Response, additional Response(s) available” defined in Table 45.
+3.3.10.7 Error Handling
+This section defines the manner in which violations of the restrictions on Interface Command payloads
+SHALL be handled by the TPer.
+a. If a violation of packet structure occurs such that the TPer is unable to resolve a valid Session
+ID in an IF-SEND command, or if the restriction violation occurs due to violations of packet
+requirements, the TPer SHALL ignore the entire packet and SHALL immediately transition to
+the state of awaiting an IF-SEND command.
+b. If a violation of packet structure occurs such that the TPer is able to resolve the Session ID, the
+TPer SHALL close that session and MAY prepare for transmission the CloseSession method
+for retrieval by the host.
+c. The device SHALL abort at the interface level any IF-SEND command whose transfer length (in
+bytes) is greater than the reported MaxComPacketSize for the corresponding ComID.  The
+interface status for this action SHALL be "Invalid Transfer Length parameter on IF-SEND" (see
+[2]).
+d. For SSCs that require that entire method responses be retrieved, if data generated in response
+to any single method in an IF-SEND command (together with required communications
+overhead) does not fit entirely within the TPer's response buffer, the device SHALL NOT return
+any part of that method response and SHALL instead return an empty results list with a status
+code of RESPONSE_OVERFLOW in the status list.  Additionally, the TPer SHALL continue
+processing methods and control tokens that had been sent in that command payload (if any).

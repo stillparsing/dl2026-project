@@ -1,0 +1,4 @@
+5.8.2.1.10 ExactTime
+This is the time value (if any) when this log entry was added, as defined in section 5.5.  Note that if the
+Clock Template was not issued into this SP then this value SHALL be zeroes.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,3 @@
+5.1.5.14 RESPONSE_OVERFLOW
+This status is returned when a method fails if the method response and associated protocol overhead
+do not fit entirely within the response buffer.

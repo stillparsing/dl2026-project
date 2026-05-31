@@ -1,0 +1,27 @@
+5.3.1.1.2 Byte Tables
+For rows in the Table table that pertain to byte tables, the MandatoryWriteGranularity column indicates the mandatory
+access granularity (in bytes) for the Set method for the table described in these rows of the Table table. The
+MandatoryWriteGranularity column indicates the alignment requirement for both the access start offset (the Where
+parameter) and length (number of bytes in the Values parameter).
+The value of the MandatoryWriteGranularity column SHALL be less than or equal to the value in the
+RecommendedAccessGranularity column in the same row of the Table table.
+The value of MandatoryWriteGranularity SHALL be less than or equal to 8192.
+When the host invokes the Set method on a byte table, if ValidMandatoryGranularity (see Figure 4) is False, then the
+method SHALL fail with status INVALID_PARAMETER.
+
+If the TPer does not have a requirement on mandatory alignment for the byte table described in a row of the Table
+table, then its MandatoryWriteGranularity column SHALL be set to one.
+Figure 4 - ValidMandatoryGranularity definition
+For the Set method:
+ValidMandatoryGranularity is True if
+a) (x modulo MandatoryWriteGranularity) = 0
+
+and
+
+b) (y modulo MandatoryWriteGranularity) = 0
+
+where:
+x =  the start offset of the Set method
+(i.e., the value of the Where parameter)
+y = the number of data bytes being set
+(i.e., the length of the Values parameter)

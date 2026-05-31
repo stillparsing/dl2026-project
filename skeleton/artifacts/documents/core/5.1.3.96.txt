@@ -1,0 +1,8 @@
+5.1.3.96 uinteger_66
+This is a uinteger type with a size restriction of 66 bytes.
+Table 160 uinteger_66
+```markdown
+| UID                            | Name         | Format                           |
+|-------------------------------|--------------|---------------------------------|
+| 00 00 00 05 00 00 02 27       | uinteger_66  | Simple_Type, uinteger, 66       |
+```

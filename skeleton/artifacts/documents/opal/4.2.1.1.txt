@@ -1,0 +1,21 @@
+4.2.1.1 SPInfo (M)
+The SPInfo table is defined in [2], and Table 18 defines the Preconfiguration Data for the SPInfo table.
+Table 18 - Admin SP - SPInfo Table Preconfiguration
+```json
+[
+    {
+        "UID": "00 00 00 02 00 00 00 01",
+        "SPID": "00 00 02 05 00 00 00 01",
+        "Name": "Admin",
+        "Size": "",
+        "SizeInUse": "",
+        "SPSessionTimeout": "",
+        "Enabled": "T"
+    }
+]
+```
+
+As specified in [2], a TPer SHALL ignore the value of SPSessionTimeout column if:
+a) no value exists in SPSessionTimeout column; or
+b) SPSessionTimeout column is zero.
+

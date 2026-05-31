@@ -1,0 +1,17 @@
+2.3.3 Security Subsystem Classes Overview
+Begin Informative Content
+The Core Specification defines the set of TCG-related functions supportable by a TPer. However, every
+TPer is not required to support all functionality defined in this specification. There are multiple “classes”
+of Core Specification compliance, called Security Subsystem Classes (SSCs). Each Security
+Subsystem Class specification is a companion document to the Core Specification.
+Security Subsystem Classes explicitly define the minimum acceptable Core Specification capabilities of
+a TPer in a specific “class”.
+Security Subsystem Classes define only TCG-related functionality. TPer attributes such as host
+interface type, storage capacity, data rates, and seek times are not key Security Subsystem Class
+attributes, though TPer resources such as available memory, storage capacity, and processing power
+influence which Security Subsystem Class(es) a TPer supports.
+End Informative Content
+A TPer MAY have only some of the capabilities (tables, methods, access controls, etc.) defined in this
+Core Specification and MAY include additional capabilities through table definitions and/or methods.  A
+Security Subsystem Class SHALL NOT replace a capability called out in the Core Specification with the
+same capability implemented in different tables, methods, and access controls.

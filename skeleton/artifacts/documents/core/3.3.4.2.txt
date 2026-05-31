@@ -1,0 +1,5 @@
+3.3.4.2 Interface Layer
+The commands at this layer are the IF-SEND and the IF-RECV commands.  The interface controller on
+the Storage Device SHALL identify these commands and send them to the TPer level.
+All commands that map to IF-SEND and all the commands that map to IF-RECV that have the protocol
+ID field in the set {0x01, 0x02, 0x03, 0x04, 0x05, 0x06} SHALL be sent to the TPer.

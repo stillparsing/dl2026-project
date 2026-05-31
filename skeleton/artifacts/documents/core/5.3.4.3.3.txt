@@ -1,0 +1,6 @@
+5.3.4.3.3 Modifying the BooleanExpr Column
+The BooleanExpr column of the ACE table is modifiable using the Set method.  Some implementations
+MAY allow the BooleanExpr column to be set to an empty list.  If the BooleanExpr column value is an
+empty list, that ACE cannot be satisfied and as such always resolves to False.
+If an implementation does not permit the BooleanExpr column to be set to an empty list, attempts to do
+so SHALL result in the Set method failing with a status of INVALID_PARAMETER.

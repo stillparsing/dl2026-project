@@ -1,0 +1,35 @@
+3.3.2 The ComID
+Begin Informative Content
+The ComID is used to select the correct response data for the host.  The ComID allows the TPer to
+identify the caller of the IF-RECV command and appropriately populate the payload for the command.
+For dynamic assignment of ComIDs, in order to open a session with a particular SP on a TPer, the host
+application starts by requesting a ComID from the TPer if it doesn't already have one that's active.
+The TPer then issues a ComID to the host application.  Once the host application has a unique ComID,
+the host is able to initiate the process of starting a session.
+Once the session is started, the TPer associates the session number with the ComID.  In this way,
+when an IF-RECV is sent to the TPer using Protocol ID of 0x01, the TPer is able to respond with a
+payload containing only the packets for the session numbers associated with the ComID.  This allows
+for multiple applications to be simultaneously communicating with the TPer without interfering with one
+another.
+In some situations it is useful to allow for a single entity, called the Host Session Manager, to manage
+the TPer communications for a set of different applications running on the host.
+To the TPer, communication with a single host application is no different than communication with a
+Session Manager that acts as an intermediary for multiple host applications with which the TPer is
+communicating.
+End Informative Content
+To enable a single host application to manage communications for multiple other applications, multiple
+sessions MAY be opened with a single ComID.   All the sessions opened with a given ComID SHALL
+be associated with it.
+An application MAY open a single session to the TPer for itself, multiple sessions for itself, multiple
+sessions for one or more other applications, multiple sessions for itself and one or more other
+applications, or any other combination.
+When an IF-RECV is sent to the TPer using a particular ComID, the TPer SHALL respond by putting
+packets from the sessions associated with the ComID into the response.  If there are more pending
+responses from the various sessions associated with the ComID than fits the IF-RECV, it is up to the
+TPer to determine which packets to include.
+Begin Informative Content
+The number of packets/subpackets that are included in the response is a function of the amount of
+available responses, the transfer length of the command, and the flow control mechanism.  The amount
+of data still remaining to be retrieved and the minimum transfer length required to retrieve at least one
+packet, at the time the ComPacket was generated, is reported in the ComPacket header.
+End Informative Content

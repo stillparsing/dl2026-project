@@ -1,0 +1,3 @@
+5.2.3.3.2 SPSessionID
+The SPSessionID parameter in the StartTrustedSession invocation is the TPer side session number,
+which was assigned by the TPer and delivered to the host in the SyncSession method.

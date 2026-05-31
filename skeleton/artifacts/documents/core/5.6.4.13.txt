@@ -1,0 +1,10 @@
+5.6.4.13 Hash Method Group – HashFinalize (Object Method)
+Invocation of the HashFinalize method causes the TPer to flush the remaining, non-blocked data
+through the hash and sets the BufferOut cellblock specified in the HashInit method.  If the BufferOut
+cellblock was not supplied to the HashInit method, the hash result is set to the Accumulator column of
+the invoking hash object.
+If there is no open hash “stream” for the invoking hash object, the method invocation SHALL fail.
+HashObjectUID.HashFinalize [ ]
+=>
+[ Result : bytes ]
+

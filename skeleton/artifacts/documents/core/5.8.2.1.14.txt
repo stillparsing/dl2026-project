@@ -1,0 +1,3 @@
+5.8.2.1.14 Data
+This is the actual log information associated with this log entry.
+This column SHALL NOT be modifiable by the host.

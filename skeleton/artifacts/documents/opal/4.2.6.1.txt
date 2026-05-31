@@ -1,0 +1,19 @@
+4.2.6.1 DataRemovalMechanism (ObjectTable)
+The DataRemovalMchanism table is defined in Table 32
+Table 32 - DataRemovalMechansim Table Description
+```json
+[
+    {
+        "Column Number": "0x00",
+        "Column Name": "UID",
+        "IsUnique": "",
+        "Column Type": "uid"
+    },
+    {
+        "Column Number": "0x01",
+        "Column Name": "ActiveDataRemovalMechanism",
+        "IsUnique": "",
+        "Column Type": "data_removal_mechanism"
+    }
+]
+```

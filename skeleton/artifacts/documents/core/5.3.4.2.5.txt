@@ -1,0 +1,13 @@
+5.3.4.2.5 Deleting Tables
+As indicated in Section 5.3.4.2.4, a table SHALL be deleted by successful invocation of the Delete
+method or the DeleteRow method on the table descriptor object (Table table row) associated with the
+table to be deleted.
+When the method resolves, the following occurs:
+a. The table descriptor object associated with the table is deleted.
+b. The table itself is deleted.
+c. All associated AccessControl table rows are deleted.  This includes methods associated
+with both the table itself as well as the table descriptor object.
+d. All associated Column table rows SHALL be deleted.
+Due to their reusability, ACEs that were created when a table was created SHALL NOT be deleted
+when that table is deleted, as the ACE MAY still be in use by another table.  ACEs created as a side
+effect of creating a table or object SHALL be deleted only by direct host action.

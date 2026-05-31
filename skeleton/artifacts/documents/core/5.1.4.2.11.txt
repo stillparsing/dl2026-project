@@ -1,0 +1,7 @@
+5.1.4.2.11 name
+This type is a representation of the max bytes type, and in most methods in which it is used it is
+assigned to parameters that are associated with a table's Name column or CommonName column.  As
+such, it has an implicit size restriction of 32 bytes.
+Format:
+
+bytes

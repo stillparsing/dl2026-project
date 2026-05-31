@@ -1,0 +1,5 @@
+3.2.2.3.2.2 List
+Lists are ordered sequences of elements of the form [e1,e2,...,ei]. List elements MAY be tokens,
+lists, or Named values. A list is encoded as a Start List token (SL) followed by a sequence of zero or
+more elements followed by an End List token (EL).
+

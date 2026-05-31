@@ -1,0 +1,22 @@
+5.3.3.2 Basic Table Method Group - CreateTable (SP Method)
+This method is used to create a new table in an SP (see 5.3.4.2.1).
+ThisSP.CreateTable [
+
+NewTableName : name,
+
+Kind : table_kind,
+
+GetSetACL : access_control_list,
+
+Columns : columns,
+
+MinSize : uinteger,
+
+MaxSize = uinteger,
+
+HintSize = uinteger,
+
+CommonName = name]
+=>
+[ UID : uid, Rows : uinteger ]
+

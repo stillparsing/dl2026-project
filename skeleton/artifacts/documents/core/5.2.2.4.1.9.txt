@@ -1,0 +1,15 @@
+5.2.2.4.1.9 SequenceNumbers
+If both the host’s SequenceNumbers property and the TPer’s SequenceNumbers property are TRUE:
+a. The TPer SHALL generate sequence numbers for Packets sent to the host.
+b. The TPer SHALL check the sequence numbers of Packets received from the host.
+c. The host SHOULD generate sequence numbers for Packets sent to the TPer.
+d. The host SHOULD check the sequence numbers of Packets received from the TPer.
+If either the host’s SequenceNumbers property or the TPer’s SequenceNumbers property are FALSE:
+a. The TPer SHALL put a value of 0x00000000 in the SeqNumber field for Packets sent to the
+host.
+b. The TPer SHALL ignore the sequence numbers of Packets received from the host.
+c. The host SHOULD put a value of 0x00000000 in the SeqNumber field for Packets sent to
+the TPer.
+d. The host SHOULD ignore the sequence numbers of Packets received from the TPer.
+Sequence Numbers SHALL be supported for transmission acknowledgement, MAY be supported for
+secure messaging, and MAY be supported otherwise

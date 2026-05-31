@@ -1,0 +1,3 @@
+5.4.2.1.6 ProtocolVersion
+This is the revision number of the interface messaging protocol, defined by this specification or an SSC.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,3 @@
+5.4.2.4.4 EffectiveAuth
+This is the OID of the chained-down certificate that actually authorized issuance of this SP.
+This column SHALL NOT be modifiable by the host.

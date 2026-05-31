@@ -1,0 +1,6 @@
+5.6.4.9.2 BufferOut
+This parameter identifies the cells to which the signed data should be set.  If the this value is specified,
+the Input byte length SHALL be equal in size to or smaller than the cellblock specified for the Result.
+If this parameter is specified as the target of the method result, in addition to fulfilling the access control
+requirements to invoke the Sign method, the host SHALL also fulfill the access control requirements
+necessary to invoke the Set method on the entirety of the specified cellblock.

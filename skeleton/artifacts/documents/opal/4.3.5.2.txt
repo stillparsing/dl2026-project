@@ -1,0 +1,148 @@
+4.3.5.2 Locking (M)
+Table 45 contains Optional rows designated with (O).
+*LT1 means that the ActiveKey can be a K_AES_128 object reference (UID) or a K_AES_256 object reference (UID)
+*LT2 means that only a limited set of LockOnReset values is required to be supported by Opal SSC compliant Storage
+Devices. Refer to section 4.3.5.2.2 for details.
+
+Table 45 - Locking SP - Locking Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 08 02 00 00 00 01",
+        "Name": "Locking_GlobalRange",
+        "CommonName": "",
+        "RangeStart": 0,
+        "RangeLength": 0,
+        "ReadLockEnabled": "F",
+        "WriteLockEnabled": "F",
+        "ReadLocked": "F",
+        "WriteLocked": "F",
+        "LockOnReset": "Power Cycle *LT2",
+        "ActiveKey": "K_AES_128[256]_GlobalRange_Key *LT1",
+        "NextKey": "",
+        "ReEncryptState": "",
+        "ReEncyptRequest": "",
+        "AdvKeyMode": "",
+        "VerifyMode": "",
+        "ContOnReset": "",
+        "LastReEncryptLBA": "",
+        "LastReEncState": "",
+        "GeneralStatus": ""
+    },
+    {
+        "UID": "00 00 08 02 00 03 00 01",
+        "Name": "Locking_Range1",
+        "CommonName": "",
+        "RangeStart": 0,
+        "RangeLength": 0,
+        "ReadLockEnabled": "F",
+        "WriteLockEnabled": "F",
+        "ReadLocked": "F",
+        "WriteLocked": "F",
+        "LockOnReset": "Power Cycle *LT2",
+        "ActiveKey": "K_AES_128[256]_Range1_Key *LT1",
+        "NextKey": "",
+        "ReEncryptState": "",
+        "ReEncyptRequest": "",
+        "AdvKeyMode": "",
+        "VerifyMode": "",
+        "ContOnReset": "",
+        "LastReEncryptLBA": "",
+        "LastReEncState": "",
+        "GeneralStatus": ""
+    },
+    {
+        "UID": "00 00 08 02 00 03 NN NN",
+        "Name": "Locking_RangeNNNN",
+        "CommonName": "",
+        "RangeStart": 0,
+        "RangeLength": 0,
+        "ReadLockEnabled": "F",
+        "WriteLockEnabled": "F",
+        "ReadLocked": "F",
+        "WriteLocked": "F",
+        "LockOnReset": "Power Cycle *LT2",
+        "ActiveKey": "K_AES_128[256]_RangeNNNN_Key *LT1",
+        "NextKey": "",
+        "ReEncryptState": "",
+        "ReEncyptRequest": "",
+        "AdvKeyMode": "",
+        "VerifyMode": "",
+        "ContOnReset": "",
+        "LastReEncryptLBA": "",
+        "LastReEncState": "",
+        "GeneralStatus": ""
+    }
+]
+```
+Table 45 - Locking SP - Locking Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 08 02 00 00 00 01",
+        "Name": "Locking_GlobalRange",
+        "CommonName": "",
+        "RangeStart": 0,
+        "RangeLength": 0,
+        "ReadLockEnabled": "F",
+        "WriteLockEnabled": "F",
+        "ReadLocked": "F",
+        "WriteLocked": "F",
+        "LockOnReset": "Power Cycle *LT2",
+        "ActiveKey": "K_AES_128[256]_GlobalRange_Key *LT1",
+        "NextKey": "",
+        "ReEncryptState": "",
+        "ReEncyptRequest": "",
+        "AdvKeyMode": "",
+        "VerifyMode": "",
+        "ContOnReset": "",
+        "LastReEncryptLBA": "",
+        "LastReEncState": "",
+        "GeneralStatus": ""
+    },
+    {
+        "UID": "00 00 08 02 00 03 00 01",
+        "Name": "Locking_Range1",
+        "CommonName": "",
+        "RangeStart": 0,
+        "RangeLength": 0,
+        "ReadLockEnabled": "F",
+        "WriteLockEnabled": "F",
+        "ReadLocked": "F",
+        "WriteLocked": "F",
+        "LockOnReset": "Power Cycle *LT2",
+        "ActiveKey": "K_AES_128[256]_Range1_Key *LT1",
+        "NextKey": "",
+        "ReEncryptState": "",
+        "ReEncyptRequest": "",
+        "AdvKeyMode": "",
+        "VerifyMode": "",
+        "ContOnReset": "",
+        "LastReEncryptLBA": "",
+        "LastReEncState": "",
+        "GeneralStatus": ""
+    },
+    {
+        "UID": "00 00 08 02 00 03 NN NN",
+        "Name": "Locking_RangeNNNN",
+        "CommonName": "",
+        "RangeStart": 0,
+        "RangeLength": 0,
+        "ReadLockEnabled": "F",
+        "WriteLockEnabled": "F",
+        "ReadLocked": "F",
+        "WriteLocked": "F",
+        "LockOnReset": "Power Cycle *LT2",
+        "ActiveKey": "K_AES_128[256]_RangeNNNN_Key *LT1",
+        "NextKey": "",
+        "ReEncryptState": "",
+        "ReEncyptRequest": "",
+        "AdvKeyMode": "",
+        "VerifyMode": "",
+        "ContOnReset": "",
+        "LastReEncryptLBA": "",
+        "LastReEncState": "",
+        "GeneralStatus": ""
+    }
+]
+```

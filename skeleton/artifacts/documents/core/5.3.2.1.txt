@@ -1,0 +1,15 @@
+5.3.2.1 General Metadata Group - SPInfo (Object Table)
+The SPInfo table of each SP contains information about the SP, and a copy of some relevant
+information from the Admin SP. This table SHALL have exactly one row.
+The SPID of the SPInfo table and the GUDID of the TPerInfo table in the Admin SP form an
+sp_guid that uniquely identifies the SP.
+Table 169 SPInfo Table Description
+| Column Number | Column Name       | IsUnique | Column Type   |
+|---------------|-------------------|----------|---------------|
+| 0x00          | UID               |          | uid           |
+| 0x01          | SPID              |          | uid           |
+| 0x02          | Name              |          | name          |
+| 0x03          | Size              |          | uinteger_8    |
+| 0x04          | SizeInUse         |          | uinteger_8    |
+| 0x05          | SPSessionTimeout  |          | uinteger_4    |
+| 0x06          | Enabled           |          | boolean       |

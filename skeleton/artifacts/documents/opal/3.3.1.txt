@@ -1,0 +1,13 @@
+3.3.1 Communication Properties
+The TPer SHALL support the minimum communication buffer size as defined in section 4.1.1.1. For each ComID, the
+physical buffer size SHALL be reported to the host via the Properties method.
+The TPer SHALL terminate any IF-SEND command whose transfer length is greater than the reported
+MaxComPacketSize size for the corresponding ComID. For details, refer to “Invalid Transfer Length parameter on IF-
+SEND” in [4].
+Data generated in response to methods contained within an IF-SEND command payload subpacket (including the
+required ComPacket / Packet / Subpacket overhead data) SHALL fit entirely within the response buffer. If the
+method response and its associated protocol overhead do not fit completely within the response buffer, the TPer
+1) SHALL terminate processing of the IF-SEND command payload,
+2) SHALL NOT return any part of the method response if the Sync Protocol is being used, and
+3) SHALL return an empty response list with a TCG status code of RESPONSE_OVERFLOW in that method’s
+response status list.

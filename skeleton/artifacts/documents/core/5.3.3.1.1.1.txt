@@ -1,0 +1,5 @@
+5.3.3.1.1.1 Result
+•
+The DeleteSP method returns an empty list.  Success or failure of the method invocation is
+determinable based on the status code returned in response to the method invocation.
+

@@ -1,0 +1,13 @@
+3.2.2.1 Data Types
+As introduced in 3.2.1.3, messaging data is encoded using two basic types of values combined with two
+grouping mechanisms that are applied to those two basic types.  Combined, these four types are able
+to represent all of the basic and derived data types.
+a. Integers: Integer values are used to represent numbers, Booleans, and enumerations. The
+implementation is free to use other representations in other circumstances, converting as
+necessary.  Sign representation for signed integers is two's complement.
+b. Bytes: These are sequences of bytes and are used to represent strings, cryptographic keys,
+bit-vector encoded sets, blobs, etc.
+c. List: Zero or more values of any type, grouped into an ordered list.  All items in the list must be
+of the same type.
+d. Named: The name (a byte-string/integer/uinteger value) followed by its value (any messaging
+type).  A Named value attaches an identifier to some other value (ex. size=32).

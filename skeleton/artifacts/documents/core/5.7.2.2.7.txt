@@ -1,0 +1,7 @@
+5.7.2.2.7 WriteLockEnabled
+The value of this column determines whether or not the write-locking feature is enabled for this LBA
+range and indicates whether or not the WriteLocked column value is meaningful for this range.  If the
+value of the WriteLockEnabled column is False, the write-locking feature is disabled, and the value of
+the WriteLocked column is ignored.  If the value of the WriteLockEnabled column is True, the write-
+locking feature is enabled, and the value of the WriteLocked column identifies the current write locking
+state.

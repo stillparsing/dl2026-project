@@ -1,0 +1,4 @@
+5.3.3.2.8 CommonName
+The CommonName parameter is the CommonName column value for this table's object in the Table table,
+as well as for all associated objects that get created in the Column table..  The NewTableName-
+CommonName parameter value combination SHALL be unique within the Table table.

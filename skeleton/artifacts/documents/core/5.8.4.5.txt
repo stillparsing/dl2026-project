@@ -1,0 +1,9 @@
+5.8.4.5 Specifying a Log Table
+If supported, a host MAY define zero or more Log tables additional to that supplied by the Log Template
+by default.  If this capability is supported, the host MAY specify that specific actions be logged in the
+host-designated Log tables.
+The LogTo column of the AccessControl table allows the host to associate an access control
+association to a particular Log table.  All access control associations enumerated in the AccessControl
+table at issuance SHALL be logged to the default log.
+The LogTo column of the Authority table allows the host to associate an authority’s operations to a
+particular Log table.  All authorities at issuance SHALL be logged to the default log.

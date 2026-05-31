@@ -1,0 +1,11 @@
+5.6.4.15 HMAC Method Group – HMAC (Object Method)
+Invocation of the HMAC method causes the data input to be hashed using the HMAC algorithm with the
+symmetric key credential referenced from the invoking hash object.
+This method SHALL require that the HMACInit method has been invoked previously during the session
+to start an HMAC “stream” for the invoking hash object, and that the HMACFinalize method has not yet
+been invoked to close that “stream”.  Invoking the HMAC method when there is not an open HMAC
+“stream” (i.e. before HMACInit or after HMACFinalize) SHALL result in an error.
+HashObjectUID.HMAC [
+Input : typeOr { Data : bytes, Buffer : cell_block } ]
+=>
+[ Result : bytes ]

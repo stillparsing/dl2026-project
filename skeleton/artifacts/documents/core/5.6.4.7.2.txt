@@ -1,0 +1,6 @@
+5.6.4.7.2 BufferOut
+This parameter identifies the cells to which the encrypted data is to be set.  If this value is specified, the
+Input byte length SHALL be equal in size to or smaller than the cellblock specified for the Result.
+If the host invokes the Encrypt method using the BufferOut cellblock as the target for the result bytes,
+then in addition to fulfilling the access control on the Encrypt method, the host SHALL also fulfill the
+access control required to invoke the Set method on the entirety of that cellblock.

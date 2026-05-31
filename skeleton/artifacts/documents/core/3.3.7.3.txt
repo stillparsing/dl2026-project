@@ -1,0 +1,51 @@
+3.3.7.3 Transactions
+Begin Informative Content
+Transactions are used to provide a clean model for how changes to an SP are to take effect. They also
+provide an easy way for host applications to handle error recovery.
+End Informative Content
+If a session is aborted, any open transactions SHALL be aborted.
+Changes are successfully committed and made persistent (to the media, made visible to subsequent
+sessions on the same SP, etc.) in 2 ways:
+a. When a method is invoked outside of a transaction, and resolves successfully, changes
+made by that method SHALL be committed and made persistent immediately.
+b. When a method is invoked inside of a transaction or set of nested transactions, changes
+made by that method SHALL be committed and made persistent when the top-level
+transaction is committed.
+Changes made within a transaction SHALL be visible within that transaction.  For instance, modification
+of a table value within a transaction would result in the new value being returned by a Get method
+invoked within that transaction. Those changes SHALL be made persistent when the top-level
+transaction is committed.  If the transaction is aborted, those changes SHALL be rolled back.
+Changes that affect other aspects of the TPer (i.e. hardware settings) SHALL occur when associated
+changes are successfully committed.  This means that changes made during transactions that affect
+the state of the device, such as changing media encryption keys or read/write lock state, SHALL NOT
+occur until the changes are successfully committed.
+Some changes MAY occur as exceptions to transactional rollback (i.e. logging), and SHALL commit
+immediately even if they occur inside of a transaction or as a side effect of a method invocation that has
+failed.
+An aborted transaction SHALL only occur for one of two reasons:
+a. At the request of the host, by host-transmission of the End Transaction token with a status
+other than 0x00.
+b. If an error occurs while committing the transaction (i.e. the host sends End Transaction with
+a status of 0x00, but the TPer encounters some kind of error while committing the
+transaction to media).
+Specific transaction-related control tokens in the session stream, defined in the 3.2.2, serve to indicate
+transaction start and end points.  If a transaction control token is received at a point in the session
+stream that occurs within a method invocation, the TPer SHALL abort the session.
+All transactions consist of the following steps:
+1. The transaction is opened.
+2. Zero or more method calls are made.
+3. The transaction is either aborted or committed.
+If a transaction is aborted all SP state SHALL be reset ("rolled-back") to its value at the time the
+transaction was opened (e.g., authentication state), unless otherwise noted in this specification (e.g.,
+logging). A transaction SHALL only be committed at the request of the host application.  The TPer
+SHALL only commit or abort a transaction upon receipt of an End Transaction token from the host
+except in the case when a session is aborted.
+The failure or success of the methods encapsulated in the transaction SHALL NOT directly affect
+whether or not the host is able to commit the transaction, but committing a transaction in which method
+invocations have not succeeded MAY leave the SP in an intermediate (and potentially unrecoverable)
+state. A failed method within a transaction SHALL NOT affect the state of the transaction or the state of
+the SP within the transaction, unless otherwise noted (e.g., logging, PIN tries count, etc.).
+The TPer SHALL guarantee that a transaction completely commits to media (persists) or completely
+aborts. This means that the TPer SHALL arrange that if a power cycle, reset, or other event occurs in
+the middle of a commit, when the TPer recovers the commit is either finished or all the changes are
+aborted. This guarantees SP consistency and prevents power-off or reset attacks.

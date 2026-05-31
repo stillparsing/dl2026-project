@@ -1,0 +1,13 @@
+5.5.6.1 Clock Template-Specific Life Cycle State Descriptions/Exceptions
+An SP issued with the Clock Template has the following characteristics based on the current life cycle
+state of that SP:
+a. Disabled – If the Clock Template-enabled SP has entered the Disabled state, the SP
+SHALL log authentication, session startup, and method invocation attempts, if the Log
+Template has been issued into the SP.  These log entries SHALL have timestamps of the
+kind appropriate to that log entry.  TPer resets SHALL cause the SP’s ClockTime table to
+revert to Timer mode.  Log entries added while the SP is in the Disabled state SHALL NOT
+be retrievable – see other behaviors of SPs in the Disabled state, as described in section
+4.5.2.
+b. Frozen – Attempts to open sessions to an SP in the Issued-Frozen state SHALL fail.
+c. Issued-Disabled-Frozen – Attempts to open sessions to an SP in the Issued-Disabled-
+Frozen state SHALL fail.

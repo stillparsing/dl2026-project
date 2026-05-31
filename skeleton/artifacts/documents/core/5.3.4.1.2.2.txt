@@ -1,0 +1,5 @@
+5.3.4.1.2.2 Makers
+The members of the Makers authority class permit the manufacturer of the TPer to open an
+authenticated session to the TPer.  The MakerPuK (i.e., Manufacturer) authority only has the
+Manufacturer Public Key (not the private) and a Certificate attesting to this, which is signed by the
+Manufacturer.

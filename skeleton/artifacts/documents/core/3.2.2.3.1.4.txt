@@ -1,0 +1,20 @@
+3.2.2.3.1.4 Long atoms
+Long atoms consist of a four-byte header, and between 1 and 16M-1 bytes of data.
+Table 12 Long Atom Description
+| Header (4 bytes)     | Data                  |
+|---------------------|-----------------------|
+| 0 1 2 3 ...         |                       |
+| Long Atom           | reserved byte/integer |
+|                     | sign/continued Length  |
+| (1..16,777,215 bytes)|                       |
+| 1 1 1 0 0 0 B S     | n n n n n n n n n n n n n n n n n n n n n n n n n n n n d ... d |
+
+The encoding is as follows:
+Table 13 Long Atom Encoding
+| Field                | Description                                                        |
+|----------------------|------------------------------------------------------------------|
+| Long Atom indicator  | These four bits are set to 1110b to indicate the atom is a long atom.  |
+| reserved             | These bits are reserved and SHALL be set to 0b.                    |
+| Byte/integer indicator| 0b The data bytes represent an integer value and the S bit indicates if that value is signed.<br>1b The data bytes represent a byte sequence and the S bit indicates whether or not this value is continued into another atom. |
+| Sign/continued indicator | 0b The interpretation of the data depends on the byte/integer indicator bit.<br>B==0b The data is treated as unsigned integer data.<br>B==1b The data is either the complete byte sequence, or the final segment of a continued byte sequence.<br>1b The interpretation of the data depends on the byte/integer indicator bit.<br>B==0b The data is treated as signed integer data.<br>B==1b The data is a non-final segment of a multi-byte continued value. |
+| Length               | These bits specify the length of the following data byte sequence. The value 0 is not a legal value. The permitted range is up to 16,777,215. |

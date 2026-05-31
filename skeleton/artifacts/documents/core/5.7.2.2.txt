@@ -1,0 +1,36 @@
+5.7.2.2 Locking (Object Table)
+Locking table rows define encryption, re-encryption, read locking, and write locking configuratoin for
+the Storage Device’s LBA ranges. An LBA range is defined as an ordered sequence of RangeLength
+logical blocks (as appropriate to the device, typically LBAs), numbered consecutively starting at LBA
+RangeStart.
+The Locking table SHALL always have at least one row.  This required row of the Locking table
+SHALL represent the entire User-Addressable LBA Range, called the Global Range.  This row SHALL
+have a UID column value of 0x00 0x00 0x08 0x02 0x00 0x00 0x00 0x01 and a Name column value
+of "Global Range".  This row SHALL NOT be deletable.
+Table 226 Locking Table Description
+```markdown
+| Column Number | Column Name       | IsUnique | Column Type             |
+|---------------|-------------------|----------|-------------------------|
+| 0x00          | UID               | uid      |                         |
+| 0x01          | Name              | name     |                         |
+| 0x02          | CommonName        | name     |                         |
+| 0x03          | RangeStart        | uinteger_8|                         |
+| 0x04          | RangeLength       | uinteger_8|                         |
+| 0x05          | ReadLockEnabled   | boolean  |                         |
+| 0x06          | WriteLockEnabled  | boolean  |                         |
+| 0x07          | ReadLocked        | boolean  |                         |
+| 0x08          | WriteLocked       | boolean  |                         |
+| 0x09          | LockOnReset       | reset_types|                        |
+| 0x0A          | ActiveKey         | mediakey_object_uidref |           |
+| 0x0B          | NextKey           | mediakey_object_uidref |           |
+| 0x0C          | ReEncryptState    | reencrypt_state |                 |
+| 0x0D          | ReEncryptRequest  | reencrypt_request |               |
+| 0x0E          | AdvKeyMode        | adv_key_mode |                       |
+| 0x0F          | VerifyMode        | verify_mode |                       |
+| 0x10          | ContOnReset       | reset_types |                       |
+| 0x11          | LastReEncryptLBA  | uinteger_8 |                       |
+| 0x12          | LastReEncStat     | last_reenc_stat |                  |
+| 0x13          | GeneralStatus     | gen_status |                       |
+```
+  
+ 

@@ -1,0 +1,29 @@
+3.3.6.3 Features - Overview
+A feature is a set of capabilities that MAY be implemented in a TPer. A Host MAY discover the
+capabilities and properties of a TPer by examining its feature descriptors. Features that are
+implemented by a TPer SHALL be indicated by the presence of a feature descriptor.
+The feature descriptors SHALL be returned in the Level 0 Discovery response data in order of
+increasing feature code values. Features that are not implemented SHALL NOT be returned.
+Table 40 contains the list of defined feature codes.
+Table 40 Feature Codes
+| Feature Code | Feature Name      | Description                        |
+|--------------|-------------------|----------------------------------|
+| 0000h        | Reserved          |                                  |
+| 0001h        | TPer feature      | See 3.3.6.4                      |
+| 0002h        | Locking feature   | See 3.3.6.5                      |
+| 0003h–00FFh  | Reserved          |                                  |
+| 0100h–03FFh  | SSCs              |                                  |
+| 0400h–BFFFh  | Reserved          |                                  |
+| C000h–FFFFh  | Vendor Unique     | Vendor specific features         |
+
+All feature descriptors SHALL conform to the general format defined in Table 41.
+Table 41 Feature Descriptor Template Format
+```markdown
+| Bit       | Byte | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |             |
+|-----------|------|---|---|---|---|---|---|---|---|-------------|
+| 0 (MSB)   |      | Feature Code                         |
+| 1 (LSB)   |      |                                     |
+| 2         |      | Version     | Reserved                |
+| 3         |      | Length                              |
+| 4 – n     |      | Feature Dependent Data              |
+```

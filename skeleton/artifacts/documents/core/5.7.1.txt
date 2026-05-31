@@ -1,0 +1,18 @@
+5.7.1 Overview
+Begin Informative Content
+The Locking Template defines mechanisms for access control to user data, including controlling media
+encryption, user data encryption key management, and Read/Write lock state.
+Side effects occur when writing cells of the tables of the SP that incorporates the Locking Template.
+These side effects include enabling Read/Write locking, enabling encryption with a certain encryption
+key, and initiating the re-encryption process.
+End Informative Content
+The Locking Template also enables an SP to manage re-encryption of data.  For the purpose of this
+specification, re-encryption is defined as the process by which user data is transformed from 1)
+encrypted data using the active encryption key to encrypted data with a new encryption key (re-
+encryption), 2) clear text data to encrypted data with a new key (encryption), or 3) encrypted data to
+clear text data (decryption).
+Re-encryption has the following basic attributes:
+1. This process operates as a background TPer operation. Re-encryption MAY operate
+concurrently with normal User Data Interface Commands.
+2. Re-encryption processes are linked to a specific LBA range. Multiple concurrent re-encryption
+operations are permitted up to the available TPer re-encryption resources.

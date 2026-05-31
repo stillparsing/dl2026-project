@@ -1,0 +1,7 @@
+5.1.5.9 INSUFFICIENT_SPACE
+This status is returned if an attempt is made to:
+a. Create an SP and there is insufficient space on the TPer to create the new SP
+b. Create a table and there is insufficient space in the SP to create the new table
+c. Create more rows in a table than is permitted by the TPer or by the table’s size settings.
+Note that it is possible that re-invoking the method and requesting a smaller size for the SP or table
+MAY enable the method to then complete properly.

@@ -1,0 +1,3 @@
+5.3.3.16.3.1 Result
+The GenKey method returns an empty list.  Success or failure of the method invocation is determinable
+based on the status code returned in response to the method invocation.

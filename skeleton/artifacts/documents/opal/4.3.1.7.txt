@@ -1,0 +1,262 @@
+4.3.1.7 ACE (M)
+Table 39 contains Optional rows designated with (O).
+*ACE1 means that the TPer SHALL support the values of “Admins” and “Admins OR UserMMMM” in the BooleanExpr
+column of each ACE_C_PIN_UserMMMM_Set_PIN ACE. The TPer SHALL fail the Set method invocation with status
+INVALID_PARAMETER if the host attempts to set a value not supported by the TPer.
+Table 39 - Locking SP - ACE Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 08 00 00 00 01",
+        "Name": "ACE_Anybody",
+        "CommonName": "",
+        "BooleanExpr": "Anybody",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 00 00 02",
+        "Name": "ACE_Admin",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 00 00 03",
+        "Name": "ACE_Anybody_Get_CommonName",
+        "CommonName": "",
+        "BooleanExpr": "Anybody",
+        "Columns": "UID, CommonName"
+    },
+    {
+        "UID": "00 00 00 08 00 00 00 04",
+        "Name": "ACE_Admins_Set_CommonName",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "CommonName"
+    },
+    {
+        "UID": "00 00 00 08 00 03 80 00",
+        "Name": "ACE_ACE_Get_All",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 80 01",
+        "Name": "ACE_ACE_Set_BooleanExpression",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "BooleanExpr"
+    },
+    {
+        "UID": "00 00 00 08 00 03 90 00",
+        "Name": "ACE_Authority_Get_All",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 90 01",
+        "Name": "ACE_Authority_Set_Enabled",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "Enabled"
+    },
+    {
+        "UID": "00 00 00 08 00 04 40 01",
+        "Name": "ACE_User1_Set_CommonName",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "CommonName"
+    },
+    {
+        "UID": "00 00 00 08 00 04 40 00 (+NN NN)",
+        "Name": "ACE_UserMMMM_Set_CommonName",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "CommonName"
+    },
+    {
+        "UID": "00 00 00 08 00 03 A0 00",
+        "Name": "ACE_C_PIN_Admins_Get_All_NOPIN",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "UID, CharSet, TryLimit, Tries, Persistence"
+    },
+    {
+        "UID": "00 00 00 08 00 03 A0 01",
+        "Name": "ACE_C_PIN_Admins_Set_PIN",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "PIN"
+    },
+    {
+        "UID": "00 00 00 08 00 03 A8 01",
+        "Name": "ACE_C_PIN_User1_Set_PIN",
+        "CommonName": "",
+        "BooleanExpr": "Admins OR User1 *ACE1",
+        "Columns": "PIN"
+    },
+    {
+        "UID": "00 00 00 08 00 03 A8 00 (+MMMM)",
+        "Name": "ACE_C_PIN_UserMMMM_Set_PIN",
+        "CommonName": "",
+        "BooleanExpr": "Admins OR UserMMMM *ACE1",
+        "Columns": "PIN"
+    },
+    {
+        "UID": "00 00 00 08 00 03 BF FF",
+        "Name": "ACE_K_AES_Mode",
+        "CommonName": "",
+        "BooleanExpr": "Anybody",
+        "Columns": "Mode"
+    },
+    {
+        "UID": "00 00 00 08 00 03 B0 00",
+        "Name": "ACE_K_AES_128_GlobalRange_GenKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 B0 01",
+        "Name": "ACE_K_AES_128_Range1_GenKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 B0 00 (+NNNN)",
+        "Name": "ACE_K_AES_128_RangeNNNN_GenKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 B8 00",
+        "Name": "ACE_K_AES_256_GlobalRange_GenKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 B8 01",
+        "Name": "ACE_K_AES_256_Range1_GenKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 B8 00 (+NNNN)",
+        "Name": "ACE_K_AES_256_RangeNNNN_GenKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 D0 00",
+        "Name": "ACE_Locking_GlobalRange_Get_RangeStartToActiveKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "RangeStart, RangeLength, ReadLockEnabled, WriteLockEnabled, ReadLocked, WriteLocked, LockOnReset, ActiveKey"
+    },
+    {
+        "UID": "00 00 00 08 00 03 D0 01",
+        "Name": "ACE_Locking_Range1_Get_RangeStartToActiveKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "RangeStart, RangeLength, ReadLockEnabled, WriteLockEnabled, ReadLocked, WriteLocked, LockOnReset, ActiveKey"
+    },
+    {
+        "UID": "00 00 00 08 00 03 D0 00 (+NNNN)",
+        "Name": "ACE_Locking_RangeNNNN_Get_RangeStartToActiveKey",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "RangeStart, RangeLength, ReadLockEnabled, WriteLockEnabled, ReadLocked, WriteLocked, LockOnReset, ActiveKey"
+    },
+    {
+        "UID": "00 00 00 08 00 03 E0 00",
+        "Name": "ACE_Locking_GlobalRange_Set_RdLocked",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "ReadLocked"
+    },
+    {
+        "UID": "00 00 00 08 00 03 E0 01",
+        "Name": "ACE_Locking_Range1_Set_RdLocked",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "ReadLocked"
+    },
+    {
+        "UID": "00 00 00 08 00 03 E0 00 (+NNNN)",
+        "Name": "ACE_Locking_RangeNNNN_Set_RdLocked",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "ReadLocked"
+    },
+    {
+        "UID": "00 00 00 08 00 03 E8 00",
+        "Name": "ACE_Locking_GlobalRange_Set_WrLocked",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "WriteLocked"
+    },
+    {
+        "UID": "00 00 00 08 00 03 E8 01",
+        "Name": "ACE_Locking_Range1_Set_WrLocked",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "WriteLocked"
+    },
+    {
+        "UID": "00 00 00 08 00 03 E8 00 (+NNNN)",
+        "Name": "ACE_Locking_RangeNNNN_Set_WrLocked",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "WriteLocked"
+    },
+    {
+        "UID": "00 00 00 08 00 03 F0 00",
+        "Name": "ACE_Locking_GlblRng_Admins_Set",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "ReadLockEnabled, WriteLockEnabled, ReadLocked, WriteLocked, LockOnReset"
+    },
+    {
+        "UID": "00 00 00 08 00 03 F0 01",
+        "Name": "ACE_Locking_Admins_RangeStartToLOR",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "RangeStart, RangeLength, ReadLockEnabled, WriteLockEnabled, ReadLocked, WriteLocked, LockOnReset"
+    },
+    {
+        "UID": "00 00 00 08 00 03 F8 00",
+        "Name": "ACE_MBRControl_Admins_Set",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "Enable, Done, DoneOnReset"
+    },
+    {
+        "UID": "00 00 00 08 00 03 F8 01",
+        "Name": "ACE_MBRControl_Set_DoneToDOR",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "Done, DoneOnReset"
+    },
+    {
+        "UID": "00 00 00 08 00 03 FC 00",
+        "Name": "ACE_DataStore_Get_All",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 FC 01",
+        "Name": "ACE_DataStore_Set_All",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    }
+]
+```

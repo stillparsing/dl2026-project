@@ -1,0 +1,17 @@
+3.2.1.3 Messaging Data Types
+For stream encoding, because of the manner in which data is encoded and transferred across the
+interface, the types used in method parameter and result values are described using two basic types:
+a. Byte-string values are a sequence of n bytes that are used to represent strings, blobs, bit
+vectors, etc.
+b. N length integer values are whole numbers that are either signed or unsigned.
+Due to the nature of method parameters and results, there are two additional constructs defined for
+messaging that serve as grouping mechanisms for the basic types:  Named values and List values.
+a. Named values. The name (a byte-string/integer/uinteger value) followed by its value (any
+messaging type, i.e. byte-string values, N length signed or unsigned integer values, list values,
+or Named values).
+b. List values. Zero or more values of some type, grouped into an ordered list.  List tokens are
+used to encapsulate method parameters and method results.
+Named values and List values serve multiple uses. One use of Named values is to identify optional
+method parameters in stream encoding.  List tokens are used to encapsulate method parameters or to
+separate the InvokingID/MethodID from the method parameters in the stream encoding.  For more
+information on stream encoding, see 3.2.2.

@@ -1,0 +1,8 @@
+5.7.3.4 Zero Length Locking Ranges
+Locking objects other than the Global Range that have a RangeLength column value of 0 do not have
+any LBAs under their control, and thus do not overlap any other row even if their RangeStart column
+values match.
+Any Set method invocation that results in a non-Global Range's Locking table row's RangeLength
+column value becoming non-0, or that does not change a non-0 column RangeLength column value but
+does change a RangeStart column value, is subject to restrictions defined for overlapping column
+ranges.

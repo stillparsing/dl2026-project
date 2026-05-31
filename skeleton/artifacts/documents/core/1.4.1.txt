@@ -1,0 +1,42 @@
+1.4.1 Global Terminology
+Table 01 Global Terminology
+| Term                    | Definition                                                                                                                             |
+|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Access Control Element (ACE) | A Boolean expression of authorities.                                                                                                    |
+| Access Control List (ACL)    | List of ACEs.                                                                                                                         |
+| Admin SP                 | The SP that is used in the issuance of other SPs, and provides information about the state of SPs on the TPer as well as the TPer itself. |
+| Authority                | An Authority associates a credential with an authentication operation.                                                                  |
+| Data Types               | Encoding format of data. Data is encoded in different ways depending on the context in which the data is being used (stream encoding, table encoding, etc.) |
+| Host                    | Application Software that communicates with the TPer.                                                                                   |
+| IF-SEND                 | An interface command, such as the ATA (T13) TRUSTED SEND or SCSI (T10) SECURITY PROTOCOL OUT command used to transmit data from the host to the TPer. |
+| IF-RECV                 | An interface command, such as the ATA (T13) TRUSTED RECEIVE or SCSI (T10) SECURITY PROTOCOL IN command used by the host to retrieve data from TPer. |
+| Issuance                | The act of creating an SP on a TPer from one or more templates.                                                                         |
+| MAC                     | Message Authentication Code                                                                                                            |
+| Messaging               | Session communications are by messages defined by a messaging protocol. Messages from a Host convey remote method calls on an SP and other messages return the results. |
+| Method                  | A Method is a remote procedure call to an SP that initiates an action on the SP.                                                        |
+| Object                  | Any row of an Object Table.                                                                                                            |
+| Persistent State        | This is the content of tables, and exists through power cycles, resets, and spin up/spin down cycles.                                   |
+| Personalization         | The act of configuring an issued SP.                                                                                                   |
+| Platform Host           | A collection of one or more Host Application resources that utilizes or provides a specific service or set of services.                 |
+| Read command            | See: Read user data                                                                                                                    |
+| Read user data          | An operation requested by the host to transfer user data to the host                                                                   |
+| Secure Messaging        | Session communications that support message confidentiality, message integrity/authenticity, or both.                                  |
+| Security Subsystem Class (SSC) | Identifies the components from the Core Specification that are Mandatory, Optional, Excluded, or Not Required for a particular class of security subsystem. |
+| Security Provider (SP)  | A collection of Tables and Methods with access control.                                                                                |
+| Security Identifier (SID) | The authority that represents the TPer owner.                                                                                          |
+| Session                 | A temporary information exchange that occurs between a host application and an SP, and that is established at a certain point in time and closed at a later point in time. All communications with SPs occur within sessions. |
+| Storage Device (SD)     | A Storage Device is any device that provides digital storage services.                                                                  |
+| Storage Media           | Storage Media refers to the non-volatile or persistent storage in a Storage Device.                                                     |
+| Storage Work Group (SWG) | One of the TCG working groups whose purpose is to define security building blocks for the Storage Device.                                |
+| Stream Encoding         | The encoding mechanism as defined in section 3.2.2.                                                                                    |
+| SymK                    | Convenient notation for symmetric key (shared secret) cryptography.                                                                     |
+| Table                   | The basic data structures within an SP. Tables store persistent SP state defined in this specification. |
+| Template                | Templates are sets of tables and methods, grouped by feature, from which SPs are created. |
+| TPer                    | A Trustued Peripheral. |
+| Transaction             | A series of one or more method invocations grouped to enable atomicity and state rollback by the host application to a pre-defined point. Methods are invoked either within or outside of transactions |
+| Transient State         | State of an SP that does not persist past the end of a session. This includes authentication state of authorities, changes made in a Read-Only session, or changes made within an uncommitted transaction. |
+| Trusted Commands        | Interface protocol commands (IF-SEND or IF-RECV ) used to communicate with an SP. |
+| Unique Identifier (UID) | Unique 8-byte identifier that identifies objects within tables, tables, methods, and the SP itself. UIDs are unique within an SP, but not across SPs |
+| User data               | Data that may be transferred between the host and the device using read commands and write commands
+| Write command           | See: Write user data                                                                                                                  |
+| Write user data         | An operation requested by the host to modify user data, which may include transferring data from the application client to the device |

@@ -1,0 +1,12 @@
+5.3.2.8 Table and Method Metadata Group - SecretProtect (Object Table)
+This table column is used by the host to identify the key protection mechanism(s), if any, in use by the
+storage device to "hide" the device's media encryption key material/secrets.
+Table 176 SecretProtect Table Description
+```markdown
+| Column Number | Column Name      | IsUnique | Column Type           |
+|---------------|------------------|----------|-----------------------|
+| 0x00          | UID              |          | uid                   |
+| 0x01          | Table            |          | Table_object_ref      |
+| 0x02          | ColumnNumber     |          | uinteger_4            |
+| 0x03          | ProtectMechanisms |          | protect_types         |
+```

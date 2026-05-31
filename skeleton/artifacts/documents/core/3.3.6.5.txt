@@ -1,0 +1,19 @@
+3.3.6.5 Locking Feature
+This information indicates support for an issued Locking template. This mandatory feature SHALL
+always be returned in the Level 0 Discovery response.
+The Feature Code value for the Locking feature is 0x0002.
+Table 43 Locking Feature Descriptor
+| Field               | Bit | Description                                                                                                   | Access      | Notes                                                                                                 |
+|---------------------|-----|---------------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------|
+| LockingSupported    | 0   | Indicates whether locking is supported by the device.                                                        | RO          |                                                                                                       |
+| LockingEnabled      | 1   | Indicates whether locking is enabled on the device.                                                          | RO          |                                                                                                       |
+| Locked              | 2   | Indicates whether the device is currently locked.                                                            | RO          |                                                                                                       |
+| MediaEncryption     | 3   | Indicates whether media encryption is supported by the device; if set, all writes are encrypted.             | RO          |                                                                                                       |
+| MBREnabled          | 4   | Indicates whether the media-based range (MBR) feature is enabled for this device.                              | RO          |                                                                                                       |
+| MBRDone             | 5   | Indicates whether the media-based range (MBR) operation is complete.                                          | RO          |                                                                                                       |
+| Reserved            | 6   | Reserved bits, must be set to zero.                                                                           | RO          |                                                                                                       |
+| Reserved            | 7   | Reserved bits, must be set to zero.                                                                           | RO          |                                                                                                       |
+
+The Feature Code field SHALL be set to 0x0002.
+The Version field SHALL be set to 0x01.
+The Length field SHALL be set to 0x0C.

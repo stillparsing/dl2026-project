@@ -1,0 +1,3 @@
+5.3.3.17.2 WrappingKey
+This is a uidref to the credential used to encrypt the key material in the invoking object.  If no wrapping
+key is supplied, the key material is included in the package in plaintext.

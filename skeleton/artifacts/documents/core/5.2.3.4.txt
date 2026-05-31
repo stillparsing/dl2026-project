@@ -1,0 +1,12 @@
+5.2.3.4 SyncTrustedSession Method
+The SyncTrustedSession method is returned by the TPer in response to invocation of the
+StartTrustedSession method by the host.
+SMUID.StartTrustedSession [ See StartTrustedSession definition in 5.2.3.3]
+=>
+SMUID.SyncTrustedSession [
+HostSessionID : uinteger,
+SPSessionID : uinteger,
+SPResponse = bytes,
+SPEncryptSessionKey = bytes,
+SPIntegritySessionKey = bytes,
+SignedHash = bytes ]

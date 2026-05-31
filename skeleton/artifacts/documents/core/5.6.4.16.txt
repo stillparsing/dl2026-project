@@ -1,0 +1,10 @@
+5.6.4.16 HMAC Method Group – HMACFinalize (Object Method)
+Invocation of the HMACFinalize method causes the TPer to flush the remaining, non-blocked data
+through the hash, computes the HMAC, and sets the result to the BufferOut cellblock.  If the BufferOut
+cellblock has not been supplied, the HMAC result is set to the Accumulator column of the invoking
+Hash object.
+If there is no open HMAC “stream” for the invoking Hash object, the method invocation SHALL fail.
+HashObjectUID.HMACFinalize [  ]
+=>
+[ Result : bytes ]
+

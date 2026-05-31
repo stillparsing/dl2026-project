@@ -1,0 +1,8 @@
+5.1.5.15 AUTHORITY_LOCKED_OUT
+This status MAY be returned as the status code of the SyncSession method or in response to the
+Authenticate method under one of the following conditions:
+1) If an authority with the Operation column value of Password is being authenticated and its
+associated C_PIN object has a Tries column value equal to its TryLimit column value, and
+the TryLimit column is not set to 0; or
+2) If the Uses column of the authority being authenticated has reached the value of its Limit
+column, and the Uses column is not set to 0.

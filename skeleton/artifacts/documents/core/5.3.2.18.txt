@@ -1,0 +1,21 @@
+5.3.2.18 Credential Table Group - C_EC_192 (Object Table)
+Table 189 C_EC_192 Table Description
+```markdown
+| Column Number | Column Name | IsUnique | Column Type            |
+|:-------------:|:-----------:|:--------:|:----------------------:|
+| 0x00          | UID         |          | uid                    |
+| 0x01          | Name        | Yes      | name                   |
+| 0x02          | CommonName  | Yes      | name                   |
+| 0x03          | p           |          | uinteger_24            |
+| 0x04          | r           |          | uinteger_24            |
+| 0x05          | b           |          | uinteger_24            |
+| 0x06          | x           |          | uinteger_24            |
+| 0x07          | y           |          | uinteger_24            |
+| 0x08          | alpha       |          | uinteger_24            |
+| 0x09          | u           |          | uinteger_24            |
+| 0x0A          | v           |          | uinteger_24            |
+| 0x0B          | Hash        |          | hash_protocol          |
+| 0x0C          | ChainLimit  |          | integer_1              |
+| 0x0D          | Certificate |          | Certificates_object_ref |
+```
+ 

@@ -1,0 +1,4 @@
+5.3.1.1 MandatoryWriteGranularity
+This column is used to report the granularity that the Storage Device enforces when the host invokes the Set method
+on byte tables.
+This column SHALL NOT be modifiable by the host.

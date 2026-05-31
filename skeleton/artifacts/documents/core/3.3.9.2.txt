@@ -1,0 +1,22 @@
+3.3.9.2 Transmission Acknowledgement
+If the TPer supports transmission acknowledgement and the host has informed the TPer (via invocation
+of the Properties method) that it also supports transmission acknowledgement, each packet sent from
+the TPer to the Host (or vice-versa) for a given session SHALL have a sequence number (SeqNumber)
+that corresponds to the number of packets that have been sent by that communicator since the start of
+the session.  The first packet in a session SHALL have a SeqNumber value of 1.
+If transmission acknowledgement is supported, each packet with SeqNumber N SHALL be
+acknowledged by the receiver.  Once the sender receives an acknowledgement for data contained in
+packets up to packet N, the sender is able to safely discard the data for packets with SeqNumber N and
+lower.
+Packets that contain only ACK or NAK information SHALL NOT require an ACK/NAK response from the
+receiver.  These packets SHALL still have an appropriate SeqNumber field value.  Packets for sessions
+that are not protected by secure messaging that do not require ACK/NAK SHALL be those packets with
+a Length field value of zero and a corresponding empty Data field value.  Packets that are protected by
+secure messaging that do not require ACK/NAK SHALL be those packets with a DataLength field value
+of zero and an empty Data field (The IV and MAC fields MAY still contain values).
+When a communicator sends a packet that contains only ACK/NAK information, it SHALL still keep that
+packet (for possible re-transmission) until either it or a later packet is ACKed.  This is because the
+receiver MAY NAK that packet in the case of loss/corruption, and in this case the packet SHALL be
+retransmitted.
+After receiving a packet, the receiver SHOULD send an ACK within the TransTimeout period so that the
+sender does not re-send un-ACK'ed packets.

@@ -1,0 +1,21 @@
+5.2.2 Manufactured SP Life Cycle States
+The state diagram for Manufactured SPs is shown in Figure 3.
+Figure 3 - Life Cycle State Diagram for Manufactured SPs
+
+Start of Informative Comment
+The LockingSP’s OFS could be either the Manufactured-Inactive or the Manufactured state. The Manufactured-to-
+Manufactured optional state transition may occur when the LockingSP’s OFS is the Manufactured state. In an
+implementation where the LockingSP’s OFS is the Manufactured state, then the Revert method would revert the
+LockingSP from Manufactured back to Manufactured while still reverting all LockingSP tables back to the OFS.
+End of Informative Comment
+
+Additional state transitions may exist depending on the states supported by the Storage Device and the SP’s Original
+Factory State.  Invoking Revert or RevertSP (see sections 5.1.2 and 5.1.2.3) on the SP will cause the SP to
+transition back to its Original Factory State.
+The Original Factory State of the Admin SP SHALL be Manufactured. The only state that is Mandatory for the Admin
+SP is Manufactured.
+If the Locking SP is a Manufactured SP, then its Original Factory State SHALL be Manufactured-Inactive.
+
+If the Locking SP is a Manufactured SP, then support for the states of Manufactured and Manufactured-Inactive are
+mandatory.
+The other states in the state diagram are beyond the scope of this document.

@@ -1,0 +1,2 @@
+5.3.3 Methods
+This section details the methods provided to an SP by the Base Template.

@@ -1,0 +1,7 @@
+5.4.5.1 Admin Template-Specific Life Cycle State Descriptions/Exceptions
+The Admin SP has the following characteristics based on the current life cycle state of that SP:
+a. Disabled – Access control SHALL prevent the Admin SP from entering the Disabled state.
+b. Frozen – Access control SHALL prevent the Admin SP from entering the Frozen state.
+c. Issued-Disabled-Frozen – Access control SHALL prevent the Admin SP from entering the
+Issued-Disabled-Frozen state.
+

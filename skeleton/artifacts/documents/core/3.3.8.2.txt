@@ -1,0 +1,38 @@
+3.3.8.2 Buffer Management
+Begin Informative Content
+Flow control is used to keep a Host or TPer from overwhelming the other party with data during a
+session. The exchange of credits permits data to be moved from one communicator to the other.
+Before session data is able to be sent, the receiver needs to notify the sender that it is ready to receive
+data and how much data it is able to receive. This is done by sending a Credit Control Subpacket in the
+direction opposite that of the data.
+End Informative Content
+As data in the receive buffers of the communicators is consumed and space released, additional Credit
+Control Subpackets MAY be sent.
+The InitialCredit parameters of the StartSession and SyncSession methods provide each
+communicator in a session the opportunity to provide an initial amount of credits for use when the
+session successfully starts.  If either of these values is omitted, then once a session has been
+successfully started, the communicator that omitted the value from the InitialCredit parameter of its
+session startup method SHALL send to the other communicator a credit subpacket announcing its
+available session buffer space.
+Credit values are byte counts for the payload of data subpackets and do not include packet or
+subpacket headers/overheads. Packets containing only ACK/NAK information, or only Credit Control
+Subpackets, MAY be sent at any time regardless of how much credit the sender has.
+The sender SHALL NOT send more data than it has credits from the receiver.  As the sender transmits
+data, the amount of transmitted data is subtracted from the total credits that had been provided to the
+sender.  This identifies the amount of data that MAY still be sent without receiving additional buffer
+credits.
+As the receiver consumes data, the receiver MAY notify the sender that it is able to receive additional
+data.  This is done by transmitting a Credit Control Subpacket identifying how much additional buffer
+space the sender is able to utilize. The number of bytes of data that are able to be sent to that session
+SHALL be increased by the value of each credit received.  When a communicator transmits data, the
+amount of data sent SHALL be subtracted from the credit total.
+If buffer management is supported, credit subpackets SHALL be exchanged after ComID acquisition, so
+that the host and TPer are able to exchange methods/responses on the control session.  This credit
+only applies to the control session for that ComID.  Credit subpackets SHALL also be exchanged
+immediately after session startup within the new session, unless values are posted in the InitialCredit
+parameters, in which case additional credit subpackets are optional at that time.
+Otherwise, Credit Control Subpackets SHOULD be sent infrequently and be bundled with other traffic,
+in order to minimize interface overhead. Either communicator in a session MAY send Credit Control
+Subpackets as frequently as in every packet, or when a threshold is reached (e.g. the unreported credit
+is more than some percentage of the buffer size).
+Violating flow control is one reason either side MAY abort a session.

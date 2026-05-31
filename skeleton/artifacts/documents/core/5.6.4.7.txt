@@ -1,0 +1,15 @@
+5.6.4.7 Encrytion Method Group - Encrypt (Object Method)
+The Encrypt method causes the TPer to perform encryption on the data supplied using the credential
+object that invoked the method.  The value passed upon invocation of the Encrypt method is encrypted
+using the key in the specified credential.
+This method SHALL require that the EncryptInit method has been invoked previously during the
+session to start an encryption “stream” for the invoking credential object, and that the EncryptFinalize
+method has not yet been invoked to close that “stream”.  Invoking the Encrypt method when there is
+no open encryption “stream” (i.e. before EncryptInit or after EncryptFinalize) SHALL result in an
+error.
+CredentialObjectUID.Encrypt [
+Input : typeOr { Data : bytes, Buffer : cell_block },
+BufferOut = cell_block ]
+=>
+[ Result : bytes ]
+

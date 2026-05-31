@@ -1,0 +1,6 @@
+5.5.4.5.3 Fails
+a. If ClockTimeTableUID is not the uid of the ClockTime table.
+b. If the SetLagLow method is not received immediately after the SetClockLow method.
+c. If the values of HighSetTime and HighLag do not bracket the SetClockLow method’s
+ExactTime combined with the SetLagLow method’s LagTime.
+d. If the value of the TrustMode column is not “High”.

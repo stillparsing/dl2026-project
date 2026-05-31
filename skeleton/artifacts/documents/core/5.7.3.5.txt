@@ -1,0 +1,13 @@
+5.7.3.5 Changing RangeStart and RangeLength Values
+Begin Informative Content
+Modifying an LBA range's RangeStart and/or RangeLength column values causes the locking and
+encryption control of a subset of the logical blocks on media to transition from one LBA range to
+another.  Since each LBA range is encrypted with a different media encryption key, the logical blocks
+whose control transitions from one LBA range to another, when read, will not return any meaningful
+data (i.e., the data on those logical blocks will be lost).
+End Informative Content
+Modifications to the RangeStart/RangeLength column values of a Locking object SHALL NOT cause
+loss of data for the logical blocks whose control does not transition from one LBA range to another.  If
+the RangeStart/RangeLength column values are returned to their previous values, it is not guaranteed
+that the original data is preserved on the logical blocks whose control transitioned from one LBA range
+to another.

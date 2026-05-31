@@ -1,0 +1,4 @@
+5.3.2.7.5 ACL
+This is the access control list for this SP/method, table/method, or object/method combination. This
+column is modified/accessed via the methods GetACL, RemoveACE, and AddACE.  This column SHALL
+NOT be modifiable directly via the Set method.

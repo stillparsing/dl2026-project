@@ -1,0 +1,22 @@
+5.5.3.1 ClockTime (Object Table)
+The ClockTime table SHALL contain exactly one row, with UID=0x00 0x00 0x04 0x01 0x00 0x00
+0x00 0x01.
+Table 218 ClockTime Table Description
+```markdown
+| Column Number | Column Name      | IsUnique | Column Type           |
+|---------------|------------------|----------|-----------------------|
+| 0x00          | UID              |          | uid                   |
+| 0x01          | HaveHigh         |          | boolean               |
+| 0x02          | HighByWhom       |          | Authority_object_ref  |
+| 0x03          | HighSetTime      |          | clock_time            |
+| 0x04          | HighInitialTimer |          | clock_time            |
+| 0x05          | HighLag          |          | lag                   |
+| 0x06          | HaveLow          |          | boolean               |
+| 0x07          | LowByWhom        |          | Authority_object_ref  |
+| 0x08          | LowSetTime       |          | clock_time            |
+| 0x09          | LowInitialTimer  |          | clock_time            |
+| 0x0A          | LowLag           |          | lag                   |
+| 0x0B          | MonotonicBase    |          | uinteger_8            |
+| 0x0C          | MonotonicReserve |          | uinteger_8            |
+| 0x0D          | TrustMode        |          | clock_kind            |
+```

@@ -1,0 +1,4 @@
+5.2.3.4.3 SPResponse
+A value is submitted in the SPResponse parameter if the StartSession method contained a
+HostChallenge parameter value.  The response is dictated by the Operation column value and
+credential of the SPSigningAuthority.

@@ -1,0 +1,31 @@
+5.5.5.2 Monotonic Counter
+An SP that incorporates the Clock Template also SHALL independently maintain a counter that
+increments every time a clock time is read – this is a 64-bit persistent counter called MonotonicTime.
+The counter is incremented independent of transactions and of the Read/Write state of the session.
+This counter is needed for clock requests that require a counter, since it is possible to have the SP time
+set back in time, and to enable differentiation between multiple requests received at the same clock
+time.
+For each SP that incorporates the Clock Template, there SHALL also be a counter kept in main
+memory called MonotonicIncrement. This counter is used to reduce the number of writes to media that
+are needed to support the MonotonicTime.
+The value of the virtual variable MonotonicTime that the user sees (via the IncrementCounter or
+GetClock methods) SHALL be:
+
+MonotonicTime = MonotonicBase + MonotonicIncrement
+The following is always true:
+
+0 < MonotonicIncrement < MonotonicReserve
+Note that in this case, MonotonicBase and MonotonicReserve are not necessarily the values stored in
+the ClockTime table.  Rather, these values of MonotonicBase and MonotonicReserve are written to
+media only as needed to guarantee that the IncrementCounter method always returns a unique value
+after a power cycle, etc.
+In order to reduce writes to media, the MonotonicBase value stored in the ClockTime table is only
+occasionally updated.  This is controlled by the value in the MonotonicReserve column of the
+ClockTime table.
+The host MAY increment the Monotonic Counter value directly via invocation of the IncrementCounter
+method.  This is done as follows:
+if ++MonotonicIncrement == MonotonicReserve
+MonotonicBase += MonotonicReserve
+MonotonicIncrement = 0
+ClockTime.MonotonicBase = MonotonicBase
+return MonotonicTime = MonotonicBase + MonotonicIncrement

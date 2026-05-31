@@ -1,0 +1,3 @@
+5.5.5.5 Storing Time
+The clock_time data type is used to represent time in the ClockTime and other tables.  This type MAY
+be used to represent either UTC or Generalized time.

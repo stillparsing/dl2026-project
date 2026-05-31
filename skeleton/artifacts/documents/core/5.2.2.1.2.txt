@@ -1,0 +1,5 @@
+5.2.2.1.2 Properties Response
+Because of the session-less nature of the Session Manager protocol layer, and the possible different
+ordering of responses to Session Manager layer methods, the response to a Properties method
+invocation is itself formatted as a Properties method invocation so as to be identifiable as the
+response to the Properties method.

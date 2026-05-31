@@ -1,0 +1,17 @@
+5.3.2.19.15 Values for C_EC_224
+Table 192 represents the set of elliptic curve domain parameters that is the fixed set known as P-224 in
+[11] and secp224r1 in [19].  The entries p, r, b, x and y represented in that table are example values for
+a curve that MAY be used with the C_EC_224 table.  These values are set as the default values for the
+associated columns when a new row is created in the C_EC_224 table and when values for those
+columns are not specified at table creation. These default values are not represented by a Type table
+entry – the TPer SHALL be required to keep track of these values and set them as defaults for new
+objects, as necessary.
+Table 192 FIPS P-224 Values for C_EC_224
+| Column | Value                                                                |
+|--------|----------------------------------------------------------------------|
+| p      | FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFF 00000000 00000000 00000001       |
+|        | = 2^224 – 2^96 + 1                                                   |
+| r      | FFFFFFFF FFFFFFFF FFFFFFFF FFFF16A2 E0B8F03E 13DD2945 5C5C2A3D       |
+| b      | B4050A85 0C04B3AB F5413256 5044B0B7 D7BFD8BA 270B3943 2355FFB4       |
+| x      | B70E0CBD 6BB4BF7F 321390B9 4A03C1D3 56C21122 343280D6 115C1D21       |
+| y      | BD376388 B5F723FB 4C22DFE6 CD4375A0 5A074764 44D58199 85007E34       |

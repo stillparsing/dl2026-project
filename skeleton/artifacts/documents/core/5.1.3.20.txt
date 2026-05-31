@@ -1,0 +1,10 @@
+5.1.3.20 bytes_48
+This is a bytes type with a size requirement of 48.
+Table 70 bytes_48
+```markdown
+| UID                      | Name       | Format          |
+|--------------------------|------------|-----------------|
+| 00 00 00 05 00 00 02 37  | bytes_48   | Simple_Type,    |
+|                          |            | bytes,          |
+|                          |            | 48              |
+```

@@ -1,0 +1,5 @@
+5.6.4.4.1.2 Buffer
+This input parameter is used to identify a block of table cells where the data to be decrypted is stored.
+If the host invokes the Decrypt method using the data addressed via the cellblock as data input, then in
+addition to fulfilling the access control on the Decrypt method, the host SHALL also fulfill the access
+control required to invoke the Get method on the entirety of that cellblock.

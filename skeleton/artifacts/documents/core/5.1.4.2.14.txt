@@ -1,0 +1,11 @@
+5.1.4.2.14 row_address
+This abstract type is used to describe a parameter that is either a uinteger that indicates the address
+within a bytes table, or a uidref of an object within an object table.
+Only one of these two values appears in the messaging stream.  The "typeOr" identifier and
+accompanying curly brackets ("{", "}") have no effect on the values as represented in the message.
+Format
+
+typeOr { RowAddress : uinteger, UIDAddress : uidref }
+In the message stream itself, the value is one of the following:
+a. uinteger
+b. uidref

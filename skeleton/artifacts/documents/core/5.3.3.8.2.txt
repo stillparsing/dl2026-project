@@ -1,0 +1,4 @@
+5.3.3.8.2 Count
+This parameter identifies the number of rows through which the method is to iterate, beginning at the
+row specified in the Where parameter or, if Where is omitted, beginning at the first row of the table.
+If the Count parameter is omitted, the method iterates through to the last row in the table's ordering.

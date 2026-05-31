@@ -1,0 +1,21 @@
+5.3.2.23.18 Values for C_EC_163
+Table 200 represents the set of elliptic curve domain parameters that is the fixed set known as K-163 in
+[11] and sect163k1 in [19].  The entries k1, k2, k3, r, a, b, x and y represented in that table are example
+values for a curve that MAY be used with the C_EC_163 table.  These values are set as the default
+values for the associated columns when a new row is created in the C_EC_163 table and when values
+for those columns are not specified at table creation. These default values are not represented by a
+Type table entry; the TPer SHALL be required to keep track of these values and set them as defaults
+for new objects, as necessary.
+Table 200 FIPS K-163 Values for C_EC_163
+```markdown
+| Column | Value                       |
+|--------|-----------------------------|
+| k1     | 07                          |
+| k2     | 06                          |
+| k3     | 03                          |
+| r      | 04 00000000 00000000 00020108 A2E0CC0D 99F8A5EF |
+| a      | 01                          |
+| b      | 00 00000000 00000000 00000000 00000000 00000001 |
+| x      | 02 FE13C053 7BBC11AC AA07D793 DE4E6D5E 5C94EEE8 |
+| y      | 02 89070FB0 5D38FF58 321F2E80 0536D538 CCDAA3D9 |
+```

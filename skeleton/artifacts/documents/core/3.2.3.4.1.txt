@@ -1,0 +1,150 @@
+3.2.3.4.1 Data Subpacket Format
+
+Table 20 Data SubPacket Format
+```json
+[
+  {
+    "Byte": "0 (MSB)",
+    "7": "Reserved",
+    "6": "Reserved",
+    "5": "Reserved",
+    "4": "Reserved",
+    "3": "Reserved",
+    "2": "Reserved",
+    "1": "Reserved",
+    "0": "Reserved"
+  },
+  {
+    "Byte": "1",
+    "7": "",
+    "6": "",
+    "5": "",
+    "4": "",
+    "3": "",
+    "2": "",
+    "1": "",
+    "0": ""
+  },
+  {
+    "Byte": "2",
+    "7": "",
+    "6": "",
+    "5": "",
+    "4": "",
+    "3": "",
+    "2": "",
+    "1": "",
+    "0": ""
+  },
+  {
+    "Byte": "3",
+    "7": "",
+    "6": "",
+    "5": "",
+    "4": "",
+    "3": "",
+    "2": "",
+    "1": "",
+    "0": ""
+  },
+  {
+    "Byte": "4",
+    "7": "",
+    "6": "",
+    "5": "",
+    "4": "",
+    "3": "",
+    "2": "",
+    "1": "",
+    "0": ""
+  },
+  {
+    "Byte": "5 (LSB)",
+    "7": "",
+    "6": "",
+    "5": "",
+    "4": "",
+    "3": "",
+    "2": "",
+    "1": "",
+    "0": ""
+  },
+  {
+    "Byte": "6 (MSB)",
+    "7": "Kind",
+    "6": "",
+    "5": "",
+    "4": "",
+    "3": "",
+    "2": "",
+    "1": "",
+    "0": ""
+  },
+  {
+    "Byte": "7 (LSB)",
+    "7": "",
+    "6": "",
+    "5": "",
+    "4": "",
+    "3": "",
+    "2": "",
+    "1": "",
+    "0": ""
+  },
+  {
+    "Byte": "8 (MSB)",
+    "7": "Length (n)",
+    "6": "Length (n)",
+    "5": "Length (n)",
+    "4": "Length (n)",
+    "3": "Length (n)",
+    "2": "Length (n)",
+    "1": "Length (n)",
+    "0": "Length (n)"
+  },
+  {
+    "Byte": "9",
+    "7": "Length (n)",
+    "6": "Length (n)",
+    "5": "Length (n)",
+    "4": "Length (n)",
+    "3": "Length (n)",
+    "2": "Length (n)",
+    "1": "Length (n)",
+    "0": "Length (n)"
+  },
+  {
+    "Byte": "10",
+    "7": "Length (n)",
+    "6": "Length (n)",
+    "5": "Length (n)",
+    "4": "Length (n)",
+    "3": "Length (n)",
+    "2": "Length (n)",
+    "1": "Length (n)",
+    "0": "Length (n)"
+  },
+  {
+    "Byte": "11 (LSB)",
+    "7": "Length (n)",
+    "6": "Length (n)",
+    "5": "Length (n)",
+    "4": "Length (n)",
+    "3": "Length (n)",
+    "2": "Length (n)",
+    "1": "Length (n)",
+    "0": "Length (n)"
+  },
+  {
+    "Byte": "If Length > 0, 12 to (n+(-n modulo 4)) + 11",
+    "7": "Payload",
+    "6": "Payload",
+    "5": "Payload",
+    "4": "Payload",
+    "3": "Payload",
+    "2": "Payload",
+    "1": "Payload",
+    "0": "Payload"
+  }
+]
+```

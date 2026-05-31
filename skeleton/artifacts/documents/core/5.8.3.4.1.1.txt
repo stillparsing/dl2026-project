@@ -1,0 +1,4 @@
+5.8.3.4.1.1 Result
+The FlushLog method returns an empty list.  Success or failure of the method invocation is
+determinable based on the status code returned in response to the method invocation.
+The result is not generated until the persistent storage commit is complete.

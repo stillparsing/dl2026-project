@@ -1,0 +1,48 @@
+5.2.2.4 Communications Minimums
+When a ComID is first allocated, the TPer assumes some minimum communications capabilities of the
+host until it receives a successful Properties method from the host.  Similarly, the host assumes some
+minimum communications capability of the TPer until the host successfully receives the results of the
+Properties method from the TPer.
+Invocation of the Properties method is optional.  Communications MAY occur using just the minimum
+communications capability.
+Table 168 shows all the properties that affect the behavior of hosts and TPers when sending
+ComPackets/Subpackets/Packets to the other. These are the properties that need to be considered for
+minimum communications capability between the two. The host’s initial assumption about the TPer and
+the TPer’s initial assumption about the host are listed for each of the properties.
+
+
+Table 168 Communications Initial Assumptions
+```markdown
+| Property Name    | Initial Host Assumption About TPer                                                          | Initial TPer Assumption About Host                                                          |
+|------------------|---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| MaxSubpackets    | 1                                                                                           | 1                                                                                           |
+| MaxPacketSize    | 1024 – (ComPacket Header size) = 1004                                                      | 1024 – (ComPacket Header size) = 1004                                                      |
+| MaxPackets       | 1                                                                                           | 1                                                                                           |
+| MaxComPacketSize | 1024                                                                                        | 1024                                                                                        |
+| MaxIndTokenSize  | 1024 - (ComPacket Header Size) - (Packet Header Size) - (Subpacket Header Size) = 1024 - 20 - 24 - 12 = 968 | 1024 - (ComPacket Header Size) - (Packet Header Size) - (Subpacket Header Size) = 1024 - 20 - 24 - 12 = 968 |
+| MaxAggTokenSize  | 1024 - (ComPacket Header Size) - (Packet Header Size) - (Subpacket Header Size) = 1024 - 20 - 24 - 12 = 968 | 1024 - (ComPacket Header Size) - (Packet Header Size) - (Subpacket Header Size) = 1024 - 20 - 24 - 12 = 968 |
+| MaxMethods       | 1                                                                                           | 1                                                                                           |
+| ContinuedTokens  | False                                                                                       | False                                                                                       |
+| SequenceNumbers  | False                                                                                       | False                                                                                       |
+| AckNAK           | False                                                                                       | False                                                                                       |
+| Asynchronous     | False                                                                                       | False                                                                                       |
+```
+
+The values listed in Table 168 are the minimum values that TPers and hosts SHALL support.  SSCs
+MAY impose minimums that are greater than the values listed above.
+SSCs MAY redefine the initial assumptions that the host and TPer make about each other.  In such
+cases, the initial assumptions the host makes about the TPer are based on the supported SSC the host
+discovers during Level 0 Discovery.
+The host invokes Properties with the optional HostProperties parameter to inform the TPer of its
+capabilities. The result from the TPer tells the host the TPer’s capabilities. All communication from that
+point can use the mutually discovered capabilities. However, the initial invocation of Properties
+SHALL be encoded using the minimum assumptions outlined above in Table 168, or the minimum
+assumptions defined by the TPer’s SSC. The TPer MAY format its response to the Properties
+invocation using the host’s capabilities it received in the HostProperties parameter.
+If the host attempts to set a property in the HostProperties parameter that is less than the initial
+assumed value, the TPer SHALL ignore the property value and the initial assumed value SHALL be
+used. In the Properties method response, the TPer SHALL report the initial assumed value.
+If a particular property is not returned by the TPer, then the host SHALL NOT change its assumption
+about the TPer’s capabilities related to that property. Likewise, if the host does not send a particular
+property in the HostProperties parameter, the TPer SHALL NOT change its assumption about the
+host’s capabilities related to that property.

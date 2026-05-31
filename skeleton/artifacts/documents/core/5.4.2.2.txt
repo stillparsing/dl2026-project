@@ -1,0 +1,53 @@
+5.4.2.2 TPer Metadata Group - Serial Number Contents
+Table 212 GUDID Column Contents Description
+```markdown
+| Byte\Bit | 7           | 6          | 5          | 4            | 3          | 2          | 1          | 0                       |
+|----------|-------------|------------|------------|--------------|------------|------------|------------|-------------------------|
+| 0        | 0x02        |            |            |              |            |            |            |                         |
+| 1        | 0x23        |            |            |              |            |            |            |                         |
+| 2        | 0x00        |            |            |              |            |            |            |                         |
+| 3        | 0x08        |            |            |              |            |            |            |                         |
+| 4        | NAA (0x05)  | (MSB) IEEE COMPANY ID           |            |            |            |            |                         |
+| 5        | IEEE COMPANY ID                                             |            |            |            |                         |
+| 6        |                                                                                              |            |                         |
+| 7        | IEEE COMPANY ID (LSB) | (MSB) VENDOR-SPECIFIC IDENTIFIER                          |                         |
+| 8        |                                                                                              |                         |
+| 9        | VENDOR-SPECIFIC IDENTIFIER                                                                                         |
+| 10       |                                                                                              |                         |
+| 11       | VENDOR-SPECIFIC IDENTIFIER (LSB)                                                                                  |
+```
+
+Byte\Bit
+7
+6
+5
+4
+3
+2
+1
+0
+0
+0x02
+1
+0x23
+2
+0x00
+3
+0x08
+4
+NAA (0x05)
+(MSB) IEEE COMPANY ID
+5
+IEEE COMPANY ID
+6
+7
+IEEE COMPANY ID (LSB)
+(MSB) VENDOR-SPECIFIC IDENTIFIER
+8
+VENDOR-SPECIFIC IDENTIFIER
+9
+10
+11
+VENDOR-SPECIFIC IDENTIFIER (LSB)
+This structure meets the requirements of an identification descriptor as in SPC-3, and specifically
+conforms to the NAA IEEE Registered format defined in that document.

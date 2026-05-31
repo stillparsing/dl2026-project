@@ -1,0 +1,2 @@
+5.4.3.1.6.1 UID
+This return value is the UID of the SP as assigned to the SP object in the Admin SP's SP table.

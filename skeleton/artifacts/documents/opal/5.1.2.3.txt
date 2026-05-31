@@ -1,0 +1,7 @@
+5.1.2.3 Interrupted Revert
+The Revert method and complete implementation of necessary background operations MAY be aborted due to any
+reset condition, including power loss.
+When interrupted, the Data Removal Operation Interrupted bit SHALL be set to one in the Level 0 Discovery –
+Supported Data Removal Mechanism feature descriptor appropriately as defined in section 3.1.1.6.2.
+Further, the return status value of the Revert method does not mean that all necessary operations, such as the
+background deallocate, or trim, or un-map are complete.

@@ -1,0 +1,6 @@
+5.2.3.1.7 HostSigningAuthority
+For challenge/response authentication, the HostSigningAuthority's credential is used to formulate the
+response to the SP's challenge.  The HostSigningAuthority parameter identifies the authority whose
+credential is used to sign the method hash (sent in the SignedHash parameter), and to sign the
+SPChallenge value sent in the SyncSession method invocation..  For password authentication, the
+HostSigningAuthority's credential is used to verify the password sent in the HostChallenge parameter.

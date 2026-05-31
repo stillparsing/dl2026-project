@@ -1,0 +1,53 @@
+5.6.4.10 Verify (Object Method)
+This method MAY be invoked on a hash object or a public key credential.  It is used to verify a signed
+hash against a proof.
+CredentialObjectUID.Verify [
+HashObjectUID.Verify [
+Input : typeOr { Data : bytes, Buffer : cell_block},
+Data : typeOr { Proof : bytes, ProofBuffer : cell_block } ]
+=>
+[ Result : boolean ]
+
+5.6.4.10.1
+Input
+The value of the Input parameter MAY be either a bytes value, wherein bytes to be verified are passed
+as a parameter of the method; or a cellblock that addresses a subset of a table on the SP that holds the
+data to be verified.
+5.6.4.10.1.1
+Data
+This input parameter is used to supply bytes directly from the host for verification.
+5.6.4.10.1.2
+Buffer
+This input parameter is used to identify a block of table cells where the data to be verified is stored.  If
+the host invokes the Verify method using the data addressed via the cellblock as data input, then in
+addition to fulfilling the access control on the Verify method, the host SHALL also fulfill the access
+control required to invoke the Get method on the entirety of that cellblock.
+5.6.4.10.2
+Data
+The value of the Data parameter identifies the data that the Input is to be compared against.  The value
+of this parameter MAY be either a bytes value, wherein the proof data bytes are passed as a parameter
+of the method; or a cellblock that addresses a subset of a table on the SP that holds the proof data.
+5.6.4.10.2.1
+Proof
+This input parameter is used to supply bytes directly from the host against which the data input is to be
+verified.
+5.6.4.10.2.2
+ProofBuffer
+This input parameter is used to identify a block of table cells where the data to be verified against
+stored.  If the host invokes the Verify method using the data addressed via the cellblock as data input,
+then in addition to fulfilling the access control on the Verify method, the host SHALL also fulfill the
+access control required to invoke the Get method on the entirety of that cellblock.
+5.6.4.10.3
+Verify Result
+5.6.4.10.3.1
+Result
+The result of this method invocation is a Boolean value that is True if the verification of the data against
+the proof is successful, and False otherwise.
+5.6.4.10.4
+Fails
+a. If the invoking object does not exist.
+b. If the invoking credential object is not a valid public key credential (RSA, EC).
+c. If the invoking hash object does not reference a public key credential.
+d. If the host application has not fulfilled the access control requirements necessary to invoke
+the Get method on the DataInput or Proof cellblock.
+e. If the DataInput or Proof are not valid cellblocks.

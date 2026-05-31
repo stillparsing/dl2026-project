@@ -1,0 +1,2 @@
+4.3.1 Base Template Tables
+All tables defined with (M) in section titles are Mandatory.

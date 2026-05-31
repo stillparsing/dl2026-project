@@ -1,0 +1,12 @@
+5.2.1 Overview
+Begin Informative Content
+Session Manager protocol layer methods permit a host to retrieve information about a TPer without
+having to start a session and provide the methods required to enable session startup.
+Due to the nature of the Session Manager protocol layer methods, the responses to methods at this
+protocol layer are formatted as methods from the TPer to the host.  In the case of multiple method
+invocations by a host to a TPer on the Session Manager layer, this mechanism allows the host to
+identify the method to which a response is directed.
+End Informative Content
+Session Manager methods SHALL be invoked using an InvokingID of SMUID, which is the reserved
+UID 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xFF.
+The UIDs used to invoke Session Manager Methods are defined in Table 241.

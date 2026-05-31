@@ -1,0 +1,8 @@
+3.2.5.2 Objects
+Begin Informative Content
+An object is any row of an object table.  The particular object type is defined by the object table in which
+the object occurs. The columns of the object table define the contents of each object in it.
+For a specific SP, there are methods on the SP itself, methods that act on the tables and have the
+whole table as their possible scope, and methods for each of the objects within the SP. Object-specific
+ACLs are applied to the methods capable of manipulating that object’s data (see 3.4.2).
+End Informative Content

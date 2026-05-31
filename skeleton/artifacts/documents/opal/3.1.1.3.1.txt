@@ -1,0 +1,4 @@
+3.1.1.3.1 LockingEnabled Definition
+The definition of the LockingEnabled bit is changed from [2] as follows:
+The LockingEnabled bit SHALL be set to one if an SP that incorporates the Locking template is in any state other
+than Nonexistent or Manufactured-Inactive; otherwise, the LockingEnabled bit SHALL be set to zero.

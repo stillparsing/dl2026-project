@@ -1,0 +1,7 @@
+5.2.3 Session Startup Methods
+Begin Informative Content
+This section describes the methods used to start a session.  For information on session startup, and
+how authorities interact during session startup, see section 5.3.4.1.4.
+For details on using the session startup methods with Elliptic Curve parameters and EC-MQV or EC-
+DH, see section 5.3.4.1.11 and 5.3.4.1.12 respectively.
+End Informative Content

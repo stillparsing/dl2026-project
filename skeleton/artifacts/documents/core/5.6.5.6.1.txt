@@ -1,0 +1,20 @@
+5.6.5.6.1 Invocation of Verify on a Public Key Credential
+Verification MAY be performed by invoking the Verify method on a public key credential.
+The Verify method is invoked on a public key credential.  The proof to be verified against MAY be
+supplied in one of two ways.
+a. The proof MAY be parameterized in bytes as the Proof parameter of the Verify method
+invocation.
+b. The proof MAY be stored in a cellblock, which is addressed by the Proof parameter of the
+Verify method.
+The value to be verified MAY be supplied by the DataInput parameter in one of two ways:
+a. The value for verification MAY be supplied in bytes as the DataInput parameter of the
+Verify method invocation.
+b. The value for verification MAY be stored in a cellblock, which is addressed by the DataInput
+parameter of the Verify method.
+If either the DataInput or Proof parameters are supplied and address a cellblock, the host SHALL be
+required to fulfill the access control requirements necessary to invoke the Get method on the entirety of
+that cellblock or the Verify method invocation SHALL fail.
+Verification of the input against the proof is performed using the public key of the invoking public key
+credential.
+Invocation of the Verify method SHALL return True if the verified value matches the proof.  Otherwise,
+the method invocation SHALL return False.

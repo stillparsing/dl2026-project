@@ -1,0 +1,41 @@
+5.4.2.3.7 Variance
+Nominal operation time or variance in milliseconds, as applicable.
+This column SHALL NOT be modifiable by the host.
+SPs on the TPer Group - Template (Object Table)
+The table in this section describes the data that the Admin SP keeps about all of its templates.  The
+Template table SHALL have one row for each template that MAY be issued by the TPer.
+Table 214 Template Table Description
+```markdown
+| Column Number | Column Name   | IsUnique | Column Type     |
+|--------------|---------------|----------|-----------------|
+| 0x00         | UID           |          | uid             |
+| 0x01         | Name          | Yes      | name            |
+| 0x02         | RevisionNumber|          | uinteger_4      |
+| 0x03         | Instances     |          | uinteger_2      |
+| 0x04         | MaxInstances  |          | uinteger_2      |
+```
+ 
+Column
+Number
+Column Name
+IsUnique Column
+Type
+0x00
+UID
+
+uid
+0x01
+Name
+Yes
+name
+0x02
+RevisionNumber
+uinteger_4
+0x03
+Instances
+
+uinteger_2
+0x04
+MaxInstances
+
+uinteger_2

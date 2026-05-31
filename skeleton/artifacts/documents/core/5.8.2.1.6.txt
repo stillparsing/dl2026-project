@@ -1,0 +1,3 @@
+5.8.2.1.6 SigningAuthName
+This is the Name column value of the Host Signing Authority, if any, that opened the session.
+This column SHALL NOT be modifiable by the host.

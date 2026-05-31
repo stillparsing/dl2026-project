@@ -1,0 +1,27 @@
+5.3.4.1.6 Secure Messaging Control
+As indicated in section 5.3.4.1.4, control of secure messaging for a session is determined
+independently for each communicator.  The authorities invoked in the StartSession method determine
+the secure messaging types and algorithms required, and, based on the authorities included in the
+session startup, the encrypting credential used to exchange session key(s) for secure messaging.
+If the Host Signing Authority is invoked in StartSession, this authority determines if secure messaging
+is required on messages from the Host to the TPer, and the type of secure messaging.  In this
+circumstance, the Host Signing Authority is the “Host Control Authority” for messaging from the Host to
+the TPer.
+If the Host Signing Authority is not present, and the Host Exchange Authority is present, the Host
+Exchange Authority determines if secure messaging is required on messages from the Host to the
+TPer, and the type of secure messaging.  In this circumstance, the Host Exchange Authority is the
+“Host Control Authority” for messaging from the Host to the TPer.
+If the Host Signing Authority is the “Host Control Authority”, its Response (SP) Signing and Response
+(SP) Exchange Authorities determine the authorities used to represent the SP.  If the Host Signing
+Authority is not invoked in StartSession, and the Host Exchange Authority is, it is the Host Exchange
+Authority that is the “Host Control Authority” whose Response Signing and Response Exchange
+Authorities determine the authorities used to represent the SP.
+If the Response (SP) Signing Authority is linked from the “Host Control Authority”, it is considered the
+“SP Control Authority”, and determines if secure messaging is required on messages from the TPer to
+the Host, and the type of secure messaging.  If the Response (SP) Signing Authority is not linked from
+the “SP Control Authority” and the Response (SP) Exchange Authority is, then it is the Response (SP)
+Exchange Authority that serves as the “SP Control Authority” and determines if secure messaging is
+required on messages from the TPer to the Host, and the type of secure messaging.
+If the value of a “Control Authority’s” Secure column is 0, then secure messaging SHALL NOT be
+permitted for messaging from that communicator for the session to start successfully – all messaging
+exchanges for sessions controlled by that authority SHALL be in plaintext.

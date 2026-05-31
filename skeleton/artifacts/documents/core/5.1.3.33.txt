@@ -1,0 +1,8 @@
+5.1.3.33 fraction_enum
+Used in association with the Fraction name-value pair.
+Table 85 fraction_enum
+```markdown
+| UID                       | Name          | Format                      |
+|---------------------------|---------------|-----------------------------|
+| 00 00 00 05 00 00 04 1C   | fraction_enum | Enumeration_Type, 0, 999    |
+```

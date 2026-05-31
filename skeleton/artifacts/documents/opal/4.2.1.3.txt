@@ -1,0 +1,222 @@
+4.2.1.3 Table (M)
+The Table table is defined in [2], and Table 20 defines the Preconfiguration Data for the Table table.
+Refer to section 5.3 for a description and requirements of the MandatoryWriteGranularity and
+RecommendedAccessGranularity columns.
+If the Data Removal Mechanism feature descriptor is not supported, then the DataRemovalMechanism row SHALL
+NOT exist
+
+Table 20 - Admin SP - Table Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 01 00 00 00 01",
+        "Name": "Table",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 00 02",
+        "Name": "SPInfo",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 00 03",
+        "Name": "SPTemplates",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 00 06",
+        "Name": "MethodID",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 00 07",
+        "Name": "AccessControl",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 00 08",
+        "Name": "ACE",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 00 09",
+        "Name": "Authority",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 00 0B",
+        "Name": "C_PIN",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 02 01",
+        "Name": "TPerInfo",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 02 04",
+        "Name": "Template",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 02 05",
+        "Name": "SP",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    },
+    {
+        "UID": "00 00 00 01 00 00 11 01",
+        "Name": "DataRemovalMechanism",
+        "CommonName": "",
+        "TemplateID": "",
+        "Kind": "Object",
+        "Column": "",
+        "NumColumns": "",
+        "Rows": "",
+        "RowsFree": "",
+        "RowBytes": "",
+        "LastID": "",
+        "MinSize": "",
+        "MaxSize": "",
+        "MandatoryWriteGranularity": "0",
+        "RecommendedAccessGranularity": "0"
+    }
+]
+```
+
+Start of Informative Comment
+[2] states, “The Table table in the Admin SP includes a row for each table that the TPer supports, in addition to a row
+for each table that exists in the Admin SP.”  However, the Opal SSC requires only the tables from the Admin SP to be
+included in the Admin SP’s Table table, as indicated in Table 20.
+End of Informative Comment

@@ -1,0 +1,17 @@
+5.3.3.10 Basic Table Method Group - GetFreeRows (Object Method)
+The GetFreeRows method is a table method that enables the host to retrieve the number of rows that
+MAY be additionally created in a table.
+TableObjectUID.GetFreeRows [ ]
+=>
+[ FreeRows : uinteger ]
+
+5.3.3.10.1
+GetFreeRows Result
+5.3.3.10.1.1
+FreeRows
+The result of this method is the number of rows that MAY be additionally created for that table.
+The number of rows returned for a table(s) is not directly related to the free space remaining on the SP.
+The number of rows is only indicative of how many rows the system is able to generate per table.
+5.3.3.10.2
+Fails
+a. When the table TableObjectUID does not exist in the SP.

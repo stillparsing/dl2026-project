@@ -1,0 +1,5 @@
+5.1 Globally Applicable SP Values
+Begin Informative Content
+The following sections define variables, functions, constants, or any system attribute that applies to any
+SP.
+End Informative Content

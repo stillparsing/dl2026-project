@@ -1,0 +1,4 @@
+5.3.2.1.4 Size
+This defines the total space allocated for the SP at creation, in bytes.  This value SHALL be the same
+as the value of the Bytes column in the SP's object in the Admin SP’s SP table.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,9 @@
+5.1.3.28 Day
+Name-value pair that has a Name of "2" and takes day_enum as the value.
+Table 79 Day
+```markdown
+| UID                           | Name | Format                  |
+|-------------------------------|------|-------------------------|
+| 00 00 00 05 00 00 14 03       | Day  | Name_Value_Uinteger_Type, |
+|                               | 2    | day_enum                |
+```

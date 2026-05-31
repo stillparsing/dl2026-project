@@ -1,0 +1,8 @@
+5.1.3.79 type_def
+The type_def type describes the format of the Type table's Format column.  The value in the Format
+column of this type SHALL be encoded and parseable based on the notation description of the type
+formats (see 5.1.1).
+Table 143 type_def
+| UID                          | Name     | Format                           |
+|------------------------------|----------|---------------------------------|
+| 00 00 00 05 00 00 02 03      | type_def | Simple_Type, max_bytes, *        |

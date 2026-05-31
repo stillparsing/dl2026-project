@@ -1,0 +1,3 @@
+3.3.6 Level 0 Discovery
+The Level 0 Discovery command provides a host with some basic information about TPer capabilities,
+both current and potential.  More detailed information is obtainable through SP operations (see 3.3.7).

@@ -1,0 +1,3 @@
+5.3.3.18.3 SigningKey
+This is a uidref to the credential to be used to verify the signed hash in the parameterized package.
+This parameter MAY be omitted, if the package contents have not been hashed and signed.

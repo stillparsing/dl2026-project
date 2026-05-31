@@ -1,0 +1,21 @@
+5.1.4.2.8 hash_protocol
+This abstract type is similar to an enumeration column type, and is used to identify a selected hash
+algorithm.  This type has valid values in the range of integers from 0-15.  These integers have the
+following values:
+a. 0 = none
+b. 1 = SHA 1
+c. 2 = SHA 256
+d. 3 = SHA 384
+e. 4 = SHA 512
+f.
+5-15 = reserved
+Format:
+uinteger
+In the messaging stream, these values SHALL be represented as follows:
+a. 0x00 represents none
+b. 0x01 represents SHA 1
+c. 0x02 represents SHA 256
+d. 0x03 represents SHA 384
+e. 0x04 represents SHA 512
+f.
+0x05 – 0x0F are reserved.

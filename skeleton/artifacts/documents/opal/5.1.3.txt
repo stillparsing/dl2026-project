@@ -1,0 +1,16 @@
+5.1.3 RevertSP – Base Template SP Method
+RevertSP is an Opal SSC-specific method for managing the life cycle of an SP, if it was created in manufacturing
+(Manufactured SP). The following pseudo-code is the signature of the RevertSP method (see [2] for more
+information).
+ThisSP.RevertSP[ KeepGlobalRangeKey = boolean ]
+=>
+[ ]
+
+RevertSP is an SP method in the Base Template.
+Invoking RevertSP method on an SP SHALL cause it to revert to its Original Factory State. This method allows the
+SP owner to relinquish control of the SP and revert the SP to its Original Factory State.
+This method operates within a Read-Write session to an SP.  The TPer SHALL revert the SP immediately after the
+method is successfully invoked outside of a transaction.  Upon completion of reverting the SP, the TPer SHALL report
+status of the method invocation if invoked outside of a transaction, and then immediately abort the session.  The TPer
+MAY prepare a CloseSession method for retrieval by the host to indicate that the session has been aborted.
+The MethodID for RevertSP SHALL be 0x00 00 00 06 00 00 00 11.

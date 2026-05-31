@@ -1,0 +1,10 @@
+5.7.2.5 MBRControl (Object Table)
+The MBRControl table contains information that controls the use of the MBR table.  This table SHALL
+have only one row, with UID=0x00 0x00 0x08 0x03 0x00 0x00 0x00 0x01.
+Table 229 MBRControl Table Description
+| Column Number | Column Name    | IsUnique | Column Type  |
+|---------------|----------------|----------|--------------|
+| 0x00          | UID            |          | uid          |
+| 0x01          | Enable         |          | boolean      |
+| 0x02          | Done           |          | boolean      |
+| 0x03          | MBRDoneOnReset |          | reset_types  |

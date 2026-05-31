@@ -1,0 +1,2 @@
+3.2.3.5.2 Secure Messaging Packet Payload Fields
+This section describes the fields presented in Table 22.

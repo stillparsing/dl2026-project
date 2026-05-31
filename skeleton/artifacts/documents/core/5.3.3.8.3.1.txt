@@ -1,0 +1,2 @@
+5.3.3.8.3.1 Result
+The result of this method is a list of UID column values.

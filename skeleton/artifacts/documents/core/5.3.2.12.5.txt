@@ -1,0 +1,6 @@
+5.3.2.12.5 CharSet
+This is a reference to the byte table that holds the character set used for TPer-generated PIN column
+values created using the GenKey method.
+If the value of this column is a NULL UID reference, then the default character set is used with the
+GenKey method.
+See 5.3.4.1.1.1 for a description of the use of this column.

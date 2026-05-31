@@ -1,0 +1,12 @@
+5.1.3.26 cred_object_uidref
+The cred_object_uidref type is a restricted reference type that SHALL be used specifically for uidrefs to
+credential objects.  When performing type checking, as part of that type checking the TPer SHALL
+validate that this uidref is to an object in a credential (C_*) table.
+In the Format column of Table 77, the * is used to indicate the entire range of that particular type of
+credential table.
+Table 77 cred_object_uidref
+```markdown
+| UID                      | Name               | Format                                                                                     |
+|--------------------------|--------------------|--------------------------------------------------------------------------------------------|
+| 00 00 00 05 00 00 0C 0B  | cred_object_uidref  | Restricted_Reference_Type{6}, uidref {C_PINTableUID}, uidref {C_AES_*TableUID}, uidref {C_RSA_*TableUID}, uidref{C_EC_*TableUID}, uidref{C_HMAC_*TableUID} |
+```

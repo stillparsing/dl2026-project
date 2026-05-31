@@ -1,0 +1,16 @@
+5.8.4.1 Types of Logging
+There are two types of logging:
+a. User – User logging is the result of invocation of the AddLog method on a Log table.
+b. System – System log entries SHALL be stored in the default Log table, or the log table
+designated by the LogTo column of the Authority or AccessControl table.  System
+logging occurs automatically as the result of four classes of events:
+a. Authentication attempts against an authority (success/failure).  This includes
+authentications made as a part of session startup, as well as due to invocations of the
+Authenticate method.  Logging for these events are controlled in the Authority
+table.
+b. Method invocations (success/failure).  Logging for these events are controlled in the
+AccessControl table.
+c. Transaction events (TransactionStart, TransactionEnd, TransactionAbort).  Logging for
+transaction events is always to the default log table.
+d. Each template reference section includes a description of the default logging values for
+methods and authorities provided to an SP by that template.

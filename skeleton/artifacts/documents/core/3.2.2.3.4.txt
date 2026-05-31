@@ -1,0 +1,7 @@
+3.2.2.3.4 Out of Order Control Tokens
+In cases where the host transmits out of order control tokens the TPer SHOULD abort the session.
+These cases include (but are not limited to):
+a. Multiple consecutive control tokens of the same type where this repetition is not permitted.  This
+includes the Call, End of Data, and End of Session tokens.
+b. Out of order control tokens
+Any tokens encoded after an End of Session token SHALL be ignored by the TPer.

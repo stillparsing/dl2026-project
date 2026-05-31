@@ -1,0 +1,23 @@
+4.3.1.10 SecretProtect (M)
+At least one of the objects shown in Table 42 SHALL be supported
+Table 42 - Locking SP - SecretProtect Table Preconfiguration
+```json
+[
+    {
+        "UID": "00 00 00 1D 00 00 00 1D",
+        "Table": "00 00 00 01 00 00 08 05 (K_AES_128)",
+        "ColumnNumber": "0x03",
+        "ProtectMechanisms": "VU"
+    },
+    {
+        "UID": "00 00 00 1D 00 00 00 1E",
+        "Table": "00 00 00 01 00 00 08 06 (K_AES_256)",
+        "ColumnNumber": "0x03",
+        "ProtectMechanisms": "VU"
+    }
+]
+```
+
+Note: The “VU” entries in Table 42 indicate that this specification does not require a specific value to be reported in
+the ProtectMechanisms cell.  It is NOT a requirement to report the “Vendor Unique” protect_types value (Refer to [2]
+for details).

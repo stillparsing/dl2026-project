@@ -1,0 +1,7 @@
+5.2.3.1.12 SignedHash
+The optional SignedHash parameter of each session startup method is present if hashing is required
+by the Control Authority for that communicator (see 5.3.4.1.4).  This is a signed hash of all the other
+parameters to the method, other than the SignedHash parameter.  The purpose of this is to provide
+integrity during session startup, prior to the point when secure messaging takes effect.
+The Host Control Authority identifies the hash type and signing type if hashing has been called out on
+messages from the host to the SP (see 5.3.4.1.7).

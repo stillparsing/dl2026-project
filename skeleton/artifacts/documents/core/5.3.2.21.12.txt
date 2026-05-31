@@ -1,0 +1,4 @@
+5.3.2.21.12 Hash
+The value of this column identifies the hash type used for ECDSA (message digesting), for ECDH and
+ECMQV (key derivation), and for creation of the MAC of session startup methods if a referencing
+authority has a HashAndSign column value of True.

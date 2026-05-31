@@ -1,0 +1,42 @@
+5.3.1.2.2 Byte Tables
+For rows in the Table table that pertain to byte tables, the RecommendedAccessGranularity column indicates the
+recommended access granularity (in bytes) for the Set and Get method for the table described in these rows of the
+Table table. The RecommendedAccessGranularity column indicates the alignment of data for the Set and Get
+method that allows for optimal Set/Get performance.
+If the TPer does not have a recommended alignment for the byte table described in a row of the Table table, then
+its RecommendedAccessGranularity column SHALL be set to one.
+When the host invokes the Set method on a byte table, if ValidRecommendedGranularity (see Figure 5) is False,
+then the performance of the TPer MAY be reduced when processing the method.
+Figure 5 - ValidRecommendedGranularity definition for Set
+For the Set method:
+ValidRecommendedGranularity is True if
+a) (x modulo RecommendedAccessGranularity) = 0
+
+and
+
+b) (y modulo RecommendedAccessGranularity) = 0
+
+where:
+x =  the start offset of the Set method
+(i.e., the value of the Where parameter)
+y = the number of data bytes being set
+(i.e., the length of the Values parameter)
+
+When the host invokes the Get method on a byte table, if ValidRecommendedGranularity (see Figure 6) is False,
+then the performance of the TPer MAY be reduced when processing the method.
+Figure 6 - ValidRecommendedGranularity definition for Get
+For the Get method:
+ValidRecommendedGranularity is True if
+a) (x modulo RecommendedAccessGranularity) = 0
+
+and
+
+b) (y modulo RecommendedAccessGranularity) = 0
+
+where:
+x =  the start offset of the Get method
+(i.e., the value of the startRow component of the Cellblock parameter)
+y = the number of data bytes being retrieved
+(i.e., the difference of the endRow and startRow components of the
+Cellblock parameter, plus one)
+

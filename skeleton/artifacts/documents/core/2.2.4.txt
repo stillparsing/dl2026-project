@@ -1,0 +1,23 @@
+2.2.4 Security Providers (SPs)
+The TPer MAY contain one or more Security Providers (SPs).  A Security Provider is a set of tables and
+methods that control the persistent trust state of the SP and MAY participate in control of the persistent
+trust state of the TPer.  Each SP SHALL have its own storage, functional scope, and security domain.
+Begin Informative Content
+A Security Provider supports specific TPer functionality. SPs support functions such as authentication,
+secured attribute-value storage, disk encryption/decryption, backup, time stamping, and event logging.
+SPs are created by the manufacturer during Storage Device creation, or through the Issuance process
+(see SP Issuance section 2.3.2).
+A Security Provider provides a way for the host and manufacturer to define which TCG functions are
+performed; who has access to these functions; how the TPer and SPs communicate with the Host;
+when these events are permitted; and when the events are logged.
+A Security Provider is made up of the following components:
+a. Tables. The two types of tables are described in Section 3.2.5. Tables consist of rows and
+columns.
+b. Table content is the persistent state information of the SP.
+c. Methods. Method operations include functions such as: table additions, table deletion, table
+read access, and table backup.
+d. Authorities specify passwords or cryptographic proofs required to become authenticated within
+a session to the SP.
+e. Access Control Lists (ACLs) and Access Control Elements (ACEs) bind methods to the
+authorities that are permitted to invoke them.
+End Informative Content

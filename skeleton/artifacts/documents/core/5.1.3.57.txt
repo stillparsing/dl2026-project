@@ -1,0 +1,6 @@
+5.1.3.57 minute_enum
+Used in association with the Minute name-value pair.
+Table 115 minute_enum
+| UID                         | Name       | Format                  |
+|-----------------------------|------------|-------------------------|
+| 00 00 00 05 00 00 04 1A     | minute_enum| Enumeration_Type, 0, 59 |

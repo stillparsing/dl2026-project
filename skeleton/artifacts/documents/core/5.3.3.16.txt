@@ -1,0 +1,13 @@
+5.3.3.16 Key Related Method Group - GenKey (Object Method)
+This section describes the method used for key creation.
+An existing object in any of the C_AES_*, K_AES_*, C_EC_*, C_PIN, C_RSA_* or C_HMAC_* tables is
+filled in with new key material This method fills in the new key as appropriate for the type of the
+credential on which the method was invoked.
+CredentialObjectUID.GenKey [
+
+PublicExponent = uinteger,
+
+PinLength = uinteger ]
+=>
+[   ]
+

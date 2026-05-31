@@ -1,0 +1,19 @@
+5.1.2 Revert – Admin Template SP Object Method
+Revert is an Opal SSC-specific method for managing the life cycle of SPs created in manufacturing (Manufactured
+SP). The following pseudo-code is the signature of the Revert method (see [2] for more information).
+SPObjectUID.Revert[ ]
+=>
+[ ]
+Revert is an object method that operates on objects in the Admin SP’s SP table.  The TPer SHALL NOT permit
+Revert to be invoked on the SP objects of issued SPs.
+Invoking Revert on an SP object causes the SP to revert to its Original Factory State. This method allows the TPer
+owner (or TPer manufacturer, if access control permits and the Maker authorities are enabled) to remove the SP
+owner’s ownership of the SP and revert the SP to its Original Factory State.
+Invocation of Revert is permitted on Manufactured SPs that are in any life cycle state.  Successful invocation of
+Revert on a Manufactured SP that is in the Manufactured-Inactive life cycle state SHALL have no effect on the SP.
+This method operates within a Read-Write session to the Admin SP.  The TPer SHALL revert the SP immediately
+after the method is successfully invoked outside of a transaction.  If Revert is invoked on the Admin SP’s object in
+the SP table, the TPer SHALL abort the session immediately after reporting status of the method invocation if invoked
+outside of a transaction.  The TPer MAY prepare a CloseSession method for retrieval by the host to indicate that
+the session has been aborted.
+The MethodID for Revert SHALL be 0x00 00 00 06 00 00 02 02.

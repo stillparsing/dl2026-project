@@ -1,0 +1,5 @@
+3.2.2.3.2.1 Named
+Named values have the expositional form name=value and are used to represent a name-value pair. A
+Named value is a sequence of tokens: a Start Name token (SN), followed by a non-continued byte-
+string/uinteger/integer value that specifies the name, followed by any value (including list or a Named
+value), followed by an End Name token (EN).

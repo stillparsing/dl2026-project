@@ -1,0 +1,16 @@
+5.3.4.3 Access Control
+Access control describes the system used to prevent modification of an SP’s contents by a host that
+does not have proper authorization to make those modifications.
+The AccessControl table stores access control associations between methods and the tables, objects,
+or SP upon which those methods MAY operate.  Each row is an access control association made up of
+a reference to the method and a reference to the object/table/SP; an Access Control List (ACL); meta-
+ACLs; and columns that store the logging settings for the access control association and its associated
+meta-ACL methods.
+Each InvokingID/MethodID combination in the AccessControl table SHALL be unique within the
+table.
+Each ACL column SHALL hold a limited number of ACEs.  The actual number that each ACL column
+MAY store is SSC-dependent.
+If the ACL column for an access control association is empty (ie contains no ACEs), then that
+InvokingID/MethodID combination SHALL NOT be invocable.  Attempts to invoke that
+InvokingID/MethodID combination SHALL fail and result in status code NOT_AUTHORIZED.
+

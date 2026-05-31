@@ -1,0 +1,6 @@
+4.5.5 Failed
+When an SP is in the Failed state, session startup methods to the SP SHALL respond with an error
+status SP_FAIL and session startup SHALL NOT be able to complete.
+The TPer owner or an authorized authority MAY invoke the Delete method within a session to the
+Admin SP in order to delete the failed SP.
+5 SP Reference

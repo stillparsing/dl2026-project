@@ -1,0 +1,2 @@
+5.3.2.12.4 PIN
+This is the bytes value to which authentication attempts on this C_PIN object are matched.

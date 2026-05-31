@@ -1,0 +1,4 @@
+5.3.2.2.2 TemplateID
+The value of the TemplateID column is the UID assigned to this template in the Admin SP’s
+Template table.
+This column SHALL NOT be modifiable by the host.

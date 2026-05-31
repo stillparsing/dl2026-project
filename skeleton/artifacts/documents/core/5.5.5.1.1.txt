@@ -1,0 +1,20 @@
+5.5.5.1.1 High Trust vs. Low Trust
+A distinction is made between time from a High Trust source and time from a Low Trust source. A High
+Trust source MAY be a remote but strongly protected source of time.  A Low Trust source MAY be an
+immediate but not strongly protected source of time, such as the local PC clock.
+The High Trust source is expected to be able to provide a more authoritative time, but with a larger lag,
+so the High Trust source is used to bracket the Low Trust source. In this way, a Low Trust but accurate
+time MAY also be detected and used.
+When the TrustMode is LowAndHigh and both High Trust and Low Trust values are present, then the
+Low Trust time is rejected if it isn’t confirmed by the High Trust time.  Specifically, the following should
+be true (See 5.5.5.3 for descriptions of LowTime and HighTime):
+a. LowTime > HighTime.
+b. LowTime + LowLag < HighTime + HighLag.
+
+If either of these conditions is not true, the Low Trust value is discarded because it is probably wrong.
+This means that if Low Trust values exist in the ClockTime table, a SetClockHigh method invocation is
+received, and either of the above conditions is false, then the Low Trust values are set to 0; or, if High
+Trust values exist in the ClockTime table and a SetClockLow method invocation is received, the
+method invocation fails if either of the above conditions is not true.
+The SP that incorporates the Clock Template MAY accept a Low Trust time with or without an existing
+High Trust bracket, or just a High Trust time.

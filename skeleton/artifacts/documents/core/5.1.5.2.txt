@@ -1,0 +1,26 @@
+5.1.5.2 NOT_AUTHORIZED
+This response is returned whenever an attempt is made to invoke a method for which the host does not
+have authorization.
+Unless otherwise noted in a method's description, this status code SHALL be returned whenever there
+is no row in the AccessControl table to represent the InvokingID/MethodID combination, or when there
+is a row but the ACL for the InvokingID/MethodID combination has not been satisfied.
+This status code SHALL be returned in response to the GetACL method if there is no AccessControl
+row that represents the InvokingID/MethodID combination as parameterized in the GetACL method, or
+when the combination is present in the AccessControl table but the GetACLACL has not been satisfied.
+This status code SHALL be returned if the GetACL method invocation is performed with an InvokingID
+other than that of the AccessControl table.
+This status code SHALL be returned in response to the AddACE method if there is no AccessControl
+row that represents the InvokingID/MethodID combination as parameterized in the AddACE method, or
+when the combination is present in the AccessControl table but the AccACEACL has not been satisfied.
+This status code SHALL be returned in response to the RemoveACE method if there is no
+AccessControl row that represents the InvokingID/MethodID combination as parameterized in the
+RemoveACE method, or when the combination is present in the AccessControl table but the
+RemoveACEACL has not been satisfied.
+This status code SHALL be returned in response to the DeleteMethod method if there is no
+AccessControl row that represents the InvokingID/MethodID combination as parameterized in the
+DeleteMethod method, or when the combination is present in the AccessControl table but the
+DeleteMethodACL has not been satisfied.
+This status code SHALL be returned as the status code of the SyncSession method if the authority
+referenced in the preceding StartSession method’s HostSigningAuthority parameter has an
+Operation column value of Password, and the StartSession method's HostChallenge parameter
+value does not match the value required by the HostSigningAuthority parameter.

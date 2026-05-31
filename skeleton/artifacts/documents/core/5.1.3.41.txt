@@ -1,0 +1,7 @@
+5.1.3.41 key_128
+This is an alternative type, with options for various key sizes.
+Table 95 key_128
+| UID                    | Name    | Format                                |
+|------------------------|---------|-------------------------------------|
+| 00 00 00 05 00 00 06 02 | key_128 | Alternative_Type, bytes_16, bytes_32 |
+ 

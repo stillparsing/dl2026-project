@@ -1,0 +1,4 @@
+5.3.3.16.1 PublicExponent
+This parameter identifies the public exponent to be used when the method is invoked on a C_RSA_1024
+or C_RSA_2048 object.  If a value is not specified for this parameter, then the keys SHALL be calculated
+using the public exponent 216+1 (65537).

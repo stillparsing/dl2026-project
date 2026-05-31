@@ -1,0 +1,33 @@
+3.2.2.3 Tokens
+Values of the four basic types are packaged into tokens, each of which is a TLV (tag, length, value)
+sequence of bits that specifies a single data value.
+Table 04 Token Types
+```json
+[
+    {"Byte": "0 S d<5..0>", "Hex": "00..7F", "Acronym": "", "Meaning": "Tiny atom"},
+    {"Byte": "1 0 B S n<3..0>", "Hex": "80..BF", "Acronym": "", "Meaning": "Short atom"},
+    {"Byte": "1 1 0 B S n<10..0>", "Hex": "C0..DF", "Acronym": "", "Meaning": "Medium atom"},
+    {"Byte": "1 1 1 0 0 0 B S n<23..16> n<15..8> n<7..0>", "Hex": "E0..E3", "Acronym": "", "Meaning": "Long atom"},
+    {"Byte": "", "Hex": "E4..EF", "Acronym": "", "Meaning": "TCG Reserved"},
+    {"Byte": "1 1 1 1 0 0 0 0", "Hex": "F0", "Acronym": "SL", "Meaning": "Start List"},
+    {"Byte": "1 1 1 1 0 0 0 1", "Hex": "F1", "Acronym": "EL", "Meaning": "End List"},
+    {"Byte": "1 1 1 1 0 0 1 0", "Hex": "F2", "Acronym": "SN", "Meaning": "Start Name"},
+    {"Byte": "1 1 1 1 0 0 1 1", "Hex": "F3", "Acronym": "EN", "Meaning": "End Name"},
+    {"Byte": "", "Hex": "F4..F7", "Acronym": "", "Meaning": "TCG Reserved"},
+    {"Byte": "1 1 1 1 1 0 0 0", "Hex": "F8", "Acronym": "CALL", "Meaning": "Call"},
+    {"Byte": "1 1 1 1 1 0 0 1", "Hex": "F9", "Acronym": "EOD", "Meaning": "End of Data"},
+    {"Byte": "1 1 1 1 1 0 1 0", "Hex": "FA", "Acronym": "EOS", "Meaning": "End of session"},
+    {"Byte": "1 1 1 1 1 0 1 1", "Hex": "FB", "Acronym": "ST", "Meaning": "Start transaction"},
+    {"Byte": "1 1 1 1 1 1 0 0", "Hex": "FC", "Acronym": "ET", "Meaning": "End transaction"},
+    {"Byte": "", "Hex": "FD..FE", "Acronym": "", "Meaning": "TCG Reserved"},
+    {"Byte": "1 1 1 1 1 1 1 1", "Hex": "FF", "Acronym": "MT", "Meaning": "Empty atom"}
+]
+```
+
+The Token Types identified in Table 04 are divided into 3 subgroups:
+a. Simple Tokens - Atoms: tiny, short, medium, long, and empty atoms
+b. Sequence Tokens: Start List, End List, Start Name, and End Name
+c. Control Tokens: Call, End of Data, End of Session, Start Transaction, End Transaction
+Tokens 0xE4-0xEF, 0xF4-0xF7 and 0xFD-0xFE are reserved for use by TCG.
+An SSC MAY define support for only a subset of the available tokens, as well as the behavior of the
+TPer when unsupported tokens are transmitted by the host.

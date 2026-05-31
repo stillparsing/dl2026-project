@@ -1,0 +1,18 @@
+5.1.3.45 last_reenc_stat
+This enumeration identifies the last attempted re-encryption step.
+Table 100 last_reenc_stat
+```markdown
+| UID                             | Name           | Format                  |
+|--------------------------------|----------------|-------------------------|
+| 00 00 00 05 00 00 04 11        | last_reenc_stat| Enumeration_Type, 0, 7  |
+```
+
+The enumeration values are associated as defined in Table 101.
+Table 101 last_reenc_stat Enumeration Values
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 0                 | Success          |
+| 1                 | Read Error       |
+| 2                 | Write Error      |
+| 3                 | Verify Error     |
+| 4-7               | Reserved         |

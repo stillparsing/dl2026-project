@@ -1,0 +1,5 @@
+5.3.2.2.4 Version
+The value of the Version column refers to TCG defined versions of templates.  For devices compliant
+with the template versions defined in this specification, the 4-byte value SHALL be 0x00 0x00 0x00
+0x02.
+This column SHALL NOT be modifiable by the host.

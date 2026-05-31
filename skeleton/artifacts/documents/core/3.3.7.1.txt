@@ -1,0 +1,25 @@
+3.3.7.1 Sessions
+Begin Informative Content
+There are two types of sessions:
+a. Regular Sessions (or just Sessions):  These are communication channels between a host
+application and an SP.
+b. Control Sessions: These are between the TPer Session Manager (TSM) and the Host
+Session Manager (HSM).
+The Host Session Manager is an abstract entity that represents the peer, on the host side, of the TPer
+Session Manager.  The HSM could be an application that is routing traffic to several applications on the
+host or it could simply be a module in a given application that deals with establishing sessions with the
+TPer.
+End Informative Content
+All communications with an SP occurs within sessions.  A session SHALL be started by a host and
+successfully ended by a host.
+Normally the host application ends a session when it has finished its communication, but either the
+TPer or the host MAY abort a session at any time for any reason (see 3.3.7.1.5).
+For a specific SP there MAY be any number of Read-Only sessions active simultaneously, but only one
+Read-Write session with a particular SP SHALL be open at a time. Read-Only and Read-Write sessions
+are mutually exclusive.
+The existence of Read-Only sessions, the maximum number of simultaneous Read-Only sessions that
+are able to be opened to any SP, and/or the total number of open sessions available to a TPer SHALL
+be defined by Security Subsystem Class.
+Except as noted, explicit changes to an SP made during a Read-Only session SHALL NOT be made
+permanent, even when the session closes successfully.  Indirect changes, such as PIN blocking, log
+updates, etc., are noted where appropriate, and SHALL remain persistent.

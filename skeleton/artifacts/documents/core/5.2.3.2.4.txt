@@ -1,0 +1,4 @@
+5.2.3.2.4 SPExchangeCert
+The SPExchangeCert is the certificate for the credential referenced by the SP exchange authority that
+MAY be referenced by the parameterized HostSigningAuthority specified in the StartSession
+invocation.

@@ -1,0 +1,12 @@
+5.3.3.14 Access Control Method Group - AddACE (Meta-Method)
+This method is used to add an ACE object uidref to the ACL column of an existing SP/method,
+table/method, or object/method access control association, which is a row in the AccessControl table.
+AccessControlTableUID.AddACE [
+
+InvokingID : uidref { SP/table/object },
+
+MethodID : uidref { MethodID },
+ACE : uidref { ACEObjectUID} ]
+=>
+[   ]
+

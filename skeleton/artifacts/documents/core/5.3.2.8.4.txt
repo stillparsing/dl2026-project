@@ -1,0 +1,5 @@
+5.3.2.8.4 ProtectMechanisms
+This column identifies the type of key protection used by the storage device to hide key
+material/secrets.  The protection mechanisms identified in this column SHALL all be applied to
+protection of the associated table column value.
+This column SHALL NOT be modifiable by the host.

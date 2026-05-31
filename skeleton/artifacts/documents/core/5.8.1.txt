@@ -1,0 +1,8 @@
+5.8.1 Overview
+Begin Informative Content
+The Log Template is designed to maintain a log of the activities on the SP into which it was issued.
+The purpose of providing this service is to aid in audits, forensic analysis, and general monitoring of the
+operation of the SP.
+End Informative Content
+An issued SP that incorporates the Log Template SHOULD incorporate the Clock Template to exploit
+the full capabilities of logging.  See Section 5.5 for details on the Clock Template.

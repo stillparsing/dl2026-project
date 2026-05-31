@@ -1,0 +1,3 @@
+6.1 Required UID Assignments Overview
+The tables in this section define the required UID assignments for objects, methods, and tables, and
+table rows as required by this specification.

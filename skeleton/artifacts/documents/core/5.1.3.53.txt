@@ -1,0 +1,10 @@
+5.1.3.53 mediakey_obj_uidref
+This is a restricted reference type that SHALL be used specifically for uidrefs to media encryption key
+objects (in the K_* tables). When performing type checking, as part of that type checking the TPer
+SHALL validate that this uidref is to an object in a media encryption key table.
+Table 111 mediakey_obj_uidref
+```markdown
+| UID                         | Name                 | Format                                                  |
+|-----------------------------|----------------------|---------------------------------------------------------|
+| 00 00 00 05 00 00 0C 0C     | mediakey_object_uidref| Restricted_Reference_Type{6}, uidref {K_AES_128TableUID}, uidref {K_AES_256TableUID} |
+```

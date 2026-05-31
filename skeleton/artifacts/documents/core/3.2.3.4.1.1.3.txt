@@ -1,0 +1,3 @@
+3.2.3.4.1.1.3 Length
+The field identifies the number of bytes in the Data portion of the subpacket Payload.    This value does
+not include the length of the Pad portion of the Payload.

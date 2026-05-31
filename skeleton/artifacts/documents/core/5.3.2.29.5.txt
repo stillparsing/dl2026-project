@@ -1,0 +1,5 @@
+5.3.2.29.5 Hash
+The value of the Hash column identifies the hash protocol to be used with this HMAC credential when
+this credential is referenced by an authority and used for authentication.  The value of this column is
+ignored for host-invoked HMAC operations.
+See [13] for details on matching key size to hash protocol selection.

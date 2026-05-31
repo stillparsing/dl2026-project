@@ -1,0 +1,2 @@
+5.3.3.12.1 Authority
+This parameter is the UID column value of the authority object the host is attempting to authenticate.

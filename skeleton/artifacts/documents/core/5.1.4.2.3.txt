@@ -1,0 +1,55 @@
+5.1.4.2.3 cell_block
+This type represents a grouping of Named values that are used to identify a portion of a table.  In
+messaging, this grouping is enclosed by List value delimiters, and each component is enclosed by
+Named value delimiters.
+The name of each component is a uinteger representing the positioning of that component within the
+grouping, as defined by this specification. The associated number also appears in the appropriate
+component description.
+Because this is a group of Named values, its separate components are optional.  However, there are
+default requirements if components are omitted, and certain requirements for the values assigned to
+these components depending on the context in which the method is invoked. These requirements are
+as follows:
+a. Table – this Named value has the Name "0x00" and a value that is a uid to a table.
+a. If the value with Name "0x00" is omitted, then the operation defaults to the table upon
+which the method was invoked.
+b. Table SHALL be omitted if the method was invoked on an object.  If the method is
+invoked on an object and the value with the name "0x00" is included in the method
+parameterization, then the method SHALL fail.
+c. Table SHALL be omitted for an invocation of the Get method on a table.  If the method
+is invoked on a byte or object table and the value with the name “0x00” is included in
+the method parameterization, then the method SHALL fail.
+b. startRow – this Named value has the Name "0x01".  This Named value type is assigned
+one of two values – either a uid of an object or a RowNumber that corresponds to the
+RowNumber value of a bytes table row.  Only one of these two values SHALL appear in the
+messaging stream.  The "typeOr" identifier and accompanying curly brackets ("{", "}") in the
+format description below have no effect on the values as represented in the message.
+a. If the value with Name "0x01" is omitted and the method is invoked on a byte table,
+then the operation defaults to the first row of that byte table.
+b. If the method is invoked on an object table, the value "0x01" SHALL be the uid of the
+object upon which the method is intended to operate. If the value with Name "0x01" is
+omitted in this case, then the method invocation SHALL fail.
+i. If the uid of the object does not belong to the table upon which the method was
+invoked, the method invocation SHALL fail.
+c. If the method is invoked on an object and the value with the name "0x01" is included in
+the method parameterization, then the method SHALL fail.
+c. endRow – this Named value has the Name "0x02". This Named value type is a uinteger
+that corresponds to the RowNumber value of a byte table row.
+a. If the value with Name "0x02" is omitted and the method is invoked on a byte table,
+then the operation defaults to the last row of the table.
+b. If the method is invoked on an object or object table and the value with the name
+"0x02" is included in the method parameterization, then the method SHALL fail.
+d. startColumn – this Named value has the Name "0x03".  This Named value type has a
+uinteger value that indicates the column number of the cellblock's start column.
+a. If the value with Name "0x03" is omitted, then the operation defaults to the first column
+of the table or object.
+b. If the value with Name "0x03" is included in the method parameterization, and the
+method is invoked on a byte table, then the method SHALL fail.
+e. endColumn – this Named value has the Name "0x04".  This Named value type has a
+uinteger value that indicates the column number of the cellblock's end column.
+a. if the value with Name "0x04" is omitted, then the operation defaults to the last column
+of the table or object.
+b. If the value with Name "0x04" is included in the method parameterization, and the
+method is invoked on a byte table, then the method SHALL fail.
+Format:
+[ Table = uidref, startRow = typeOr { UID : uidref, Row : uinteger }, endRow =
+uinteger, startColumn = uinteger, endColumn = uinteger ]

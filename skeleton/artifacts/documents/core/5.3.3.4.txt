@@ -1,0 +1,9 @@
+5.3.3.4 Basic Table Method Group - CreateRow (Table Method)
+This method inserts one or multiple rows into a table. This method is not available on byte tables. The
+list of uidrefs returned is the list of all UIDs of the rows created (see 5.3.4.2.3).
+TableUID.CreateRow [
+
+Row : row_data ]
+=>
+[ Result : list [ uidref ... ] ]
+

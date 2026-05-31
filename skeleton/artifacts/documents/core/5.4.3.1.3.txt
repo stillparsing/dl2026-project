@@ -1,0 +1,8 @@
+5.4.3.1.3 Templates
+This is the list of templates from which the SP is to be created. It is a list of UIDs of templates to be
+included in the issued SP.  The UIDs are those of the templates as recorded for each template in the
+Admin SP's Template table.
+Issuance always assumes the Base template, but it is not an error to list it.  The list of templates MAY
+include any template except the template named “Admin,” though the templates available for use are
+restricted by the MaxInstances allowed for each template.
+The methods and tables from the templates requested become part of the issued SP.

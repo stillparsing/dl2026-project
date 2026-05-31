@@ -1,0 +1,15 @@
+3.3.3.2 IF-SEND to Inactive or Unsupported Reserved ComID
+If the host sends an IF-SEND command to the TPer with a ComID value in the non-reserved range (see
+Table 26), and the ComID is in the Inactive state:
+a. If the TPer supports dynamic ComID allocation, the TPer SHALL:
+i. Accept all data in the payload of the IF-SEND command and complete the
+command normally with good status (provided there are no other errors which
+would cause the command to abort at the interface level)
+ii. Ignore and discard the entire payload of the IF-SEND command.
+b. If the TPer does not support dynamic ComID allocation, the TPer SHALL:
+i. Report “Other Invalid Command Parameter”[2] OR
+ii. Perform the action described above for TPers that support dynamic ComID
+allocation.
+If the host sends an IF-SEND command to the TPer with a ComID value in the reserved range(see
+Table 26), and the ComID is not supported by the TPer, the TPer SHALL:
+a. Report “Other Invalid Command Parameter” [2].

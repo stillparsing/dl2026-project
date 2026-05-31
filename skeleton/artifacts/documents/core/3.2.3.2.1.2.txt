@@ -1,0 +1,2 @@
+3.2.3.2.1.2 ComID
+The value in this field is the ComID of this ComPacket (see 3.3.2).

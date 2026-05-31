@@ -1,0 +1,6 @@
+5.3.3.6.3 Fails
+a. If table/object doesn’t exist.
+b. If the object method’s Cellblock parameter contains row values or a table value.
+c. If the method is invoked on a Byte table and has column values in the Cellblock parameter.
+d. If the any of the Cellblock parameter values are out of bounds for the table upon which it
+was invoked.

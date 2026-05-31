@@ -1,0 +1,4 @@
+5.6.4.17.1 PatternInput
+This parameter is a reference to the byte table that stores the pattern.  The host SHALL be required to
+fulfill access control requirements necessary to invoke the Get method on the PatternInput byte table,
+or the XOR method invocation SHALL fail.

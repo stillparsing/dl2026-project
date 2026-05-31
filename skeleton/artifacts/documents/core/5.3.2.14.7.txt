@@ -1,0 +1,11 @@
+5.3.2.14.7 Pr_Exp
+The value of this column is the RSA Private Exponent.
+A value of 0x0 in this column indicates that there is no value, or that the column has not been initialized.
+5.3.2.14.8
+P
+The value of this column is the p prime from the key generation.
+A value of 0x0 in this column indicates that there is no value, or that the column has not been initialized.
+5.3.2.14.9
+Q
+The value of this column is the q prime from the key generation.
+A value of 0x0 in this column indicates that there is no value, or that the column has not been initialized.

@@ -1,0 +1,10 @@
+5.1.3.93 uinteger_4
+This is a uinteger type with a size restriction of 4 bytes.
+Table 157 uinteger_4
+```markdown
+| UID                         | Name       | Format        |
+|-----------------------------|------------|---------------|
+| 00 00 00 05 00 00 02 20     | uinteger_4 | Simple_Type,  |
+|                             |            | uinteger,     |
+|                             |            | 4             |
+```

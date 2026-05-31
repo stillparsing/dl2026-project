@@ -1,0 +1,12 @@
+3.1.1.6.1 Data Removal Operation Processing Definition
+The Data Removal Operation Processing bit SHALL be set to one if the TPer is performing any supported data removal
+operation including:
+• Revert ,
+• RevertSP , or
+• GenKey.
+Otherwise, the Data Removal Operation Processing bit SHALL be set to zero. If the operation is in progress, the
+security transport commands such as the security send, and the security receive SHALL be processed by the Storage
+Device. The Data Removal Operation Processing bit SHALL be set to zero upon a successful completion of a data
+removal operation.
+The Data Removal Operation Processing bit SHALL be set to one if the data removal operation is restarted after a
+Power Cycle (see Table 16).

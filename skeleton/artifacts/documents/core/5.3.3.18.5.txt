@@ -1,0 +1,5 @@
+5.3.3.18.5 Fails
+a. If the object does not exist
+b. If the WrappingKey is not a valid credential.
+c. If the SigningKey is not a valid credential.
+d. If the signed hash is not verifiable

@@ -1,0 +1,37 @@
+3.2.3.4.2 Credit Control Subpacket Format
+For information on the use of Credit Control Subpackets, see Flow Control in Section 3.3.8.
+Table 21 Credit Control Subpacket
+| Bit      | Byte | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0    |
+|----------|-------|---|---|---|---|---|---|---|------|
+| 0 (MSB)  |       | Reserved |   |   |   |   |   |   |      |
+| 1        |       |   |   |   |   |   |   |   |      |
+| 2        |       |   |   |   |   |   |   |   |      |
+| 3        |       |   |   |   |   |   |   |   |      |
+| 4        |       |   |   |   |   |   |   |   |      |
+| 5 (LSB)  |       |   |   |   |   |   |   |   |      |
+| 6 (MSB)  |       | Kind (0x80 01)             |        |
+| 7 (LSB)  |       |                            |        |
+| 8 (MSB)  |       | Length                     |        |
+| 9        |       |                            |        |
+| 10       |       |                            |        |
+| 11 (LSB) |       |                            |        |
+| 12 (MSB) |       | Credit                     |        |
+| 13       |       |                            |        |
+| 14       |       |                            |        |
+| 15 (LSB) |       |                            |        |
+
+**Credit Control Subpacket Header Fields**
+
+| Field    | Description                                                                                      |
+|----------|------------------------------------------------------------------------------------------------|
+| Reserved | Values in this field are reserved. Should be set to zero and ignored by both host and TPer.     |
+| Kind     | Identifies the type of the subpacket. Set to 0x8001 for Credit Control Subpackets.              |
+| Length   | Number of bytes in the Credit Control Subpacket payload. Always 0x00000004 for this subpacket.  |
+
+**Credit Control Subpacket Payload Fields**
+
+| Field  | Description                                                                                         |
+|--------|---------------------------------------------------------------------------------------------------|
+| Credit | Number of bytes to credit. Additional bytes the receiver MAY send to the stream (see section 3.3.8.2). |
+
+This table shows the bit and byte layout for the Credit Control Subpacket, including reserved bits, kind, length, and credit fields, along with descriptions of the meanings of these fields. All bits and bytes are included, and empty fields are shown as blank to maintain alignment as in the original specification.

@@ -1,0 +1,10 @@
+3.3.5.1 Interface Resets
+Interface resets that generate TCG reset events are defined in [4].
+Interface initiated TCG reset events SHALL result in:
+1. All open sessions SHALL be aborted;
+2. All uncommitted transactions SHALL be aborted;
+3. All pending session startup activities SHALL be aborted;
+4. All TCG command and response buffers SHALL be invalidated;
+5. All related method processing SHALL be aborted;
+6. For each ComID, the state of the synchronous protocol stack SHALL transition to “Awaiting IF-SEND” state;
+7. No notification of these events SHALL be sent to the host.

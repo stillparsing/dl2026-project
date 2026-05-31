@@ -1,0 +1,22 @@
+5.3.2.5 Table and Method Metadata Group - Type (Object Table)
+Begin Informative Content
+The Type table stores the format and metadata for all of the column types used in the SP.  The host
+adds host-defined types by invoking the CreateRow method on the Type table.
+The Type table values that represent the built-in types, as well as all those types pre-defined in this
+specification, are found in 5.1.1.
+End Informative Content
+Any of the types predefined in the Core Specification MAY be included by default in the table for an SP.
+The default contents of the table are SSC-specific.
+No user-defined types SHALL be removed by the Delete or DeleteRow methods unless the TPer is
+able to verify that no column of that type is currently in use.
+Types are often constructed of other types.  The TPer SHALL prevent modification or removal of a type
+object upon which another type is dependent.
+The TPer SHALL prevent type recursion.
+Table 173 Type Table Description
+| Column Number | Column Name | IsUnique | Column Type  |
+|---------------|-------------|----------|--------------|
+| 0x00          | UID         |          | uid          |
+| 0x01          | Name        | Yes      | name         |
+| 0x02          | CommonName  | Yes      | name         |
+| 0x03          | Format      |          | type_def     |
+| 0x04          | Size        |          | uinteger_2   |

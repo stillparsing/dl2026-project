@@ -1,0 +1,4 @@
+5.2.3.1.11 InitialCredit
+The InitialCredit parameter enables the host to provide an amount of credits to the TPer for use in data
+exchange once the session has been successfully opened.  For more information on the buffer
+management/flow control mechanism, see 3.3.8.2.

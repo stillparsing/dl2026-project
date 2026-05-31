@@ -1,0 +1,9 @@
+3.2.5.4 Unique Column Value Combinations
+In addition to the UID column, an object table MAY also have one or more columns designated by the
+host (for host-created tables) or by the specification (for tables specified in this document) as required
+to be unique.
+If a table has a column or set of columns defined as unique, then each row of the table SHALL have a
+value or combination of values in the indicated column(s) that is unique within the table for those
+column values.  When more than one column is marked as participating in this uniqueness requirement,
+each of these columns participate in the unique value ("multi-column unique value").
+The TPer is not required to keep rows of the table sorted by these unique values.

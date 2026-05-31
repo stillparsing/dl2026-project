@@ -1,0 +1,4 @@
+5.5.4.4.1 LagTime
+This value is the differential, in seconds and fractions of a second, recorded by the host application
+between the time when it read the time source and the time it received confirmation from the TPer that
+the time it sent was received.

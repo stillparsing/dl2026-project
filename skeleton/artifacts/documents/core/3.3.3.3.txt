@@ -1,0 +1,24 @@
+3.3.3.3 IF-RECV to Inactive or Unsupported Reserved ComID
+If the host sends an IF-RECV command to the TPer with a ComID value in the non-reserved range (see
+Table 26), and the ComID is in the Inactive state:
+a. If the TPer supports dynamic ComID allocation, the TPer SHALL:
+i. Respond to the IF-RECV with a zero-length ComPacket (a ComPacket header
+only) in the IF-RECV payload. The fields in the ComPacket header SHALL contain:
+1. ExtendedComID = {<ComID from SP_Specific field of CDB>, 0xFFFF}
+a. Note: The value of 0xFFFF in bits 15 through 0 of the
+ExtendedComID field is an indication to the host that the
+ComID it is attempting to use is inactive, and that it should not
+expect to receive any data on that ComID.
+2. OutstandingData = 0x00000000
+3. MinTransfer = 0x00000000
+4. Length = 0x00000000
+ii. Complete the command normally with good status (provided there are no other
+errors which would cause the command to abort at the interface level)
+b. If the TPer does not support dynamic ComID allocation, the TPer SHALL:
+i. Report “Other Invalid Command Parameter”[2] OR
+ii. Perform the action described above for TPers that support dynamic ComID
+allocation.
+If the host sends an IF-RECV command to the TPer with a ComID value in the reserved range (see
+Table 26), and the ComID is not supported by the TPer, the TPer SHALL:
+a. Report “Other Invalid Command Parameter”[2].
+

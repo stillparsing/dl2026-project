@@ -1,0 +1,3 @@
+5.8.3.2.4 MaxSize
+The optional MaxSize parameter defines the host-requested maximum number of rows that MAY be
+created for the table.

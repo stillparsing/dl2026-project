@@ -1,0 +1,21 @@
+3.2.2.3.3.4 Start Transaction (ST)
+The host application utilizes this token to open a transaction.
+When the host begins a transaction, the Start Transaction token is sent by the host to the SP along with
+the status, a uinteger, required for that transaction control token.  The status supplied by the host with
+the Start Transaction token SHOULD be a 0x00, and SHALL be ignored by the TPer.
+When the SP delivers its response to the host application's message, the SP's message SHALL mirror
+that of the host by including Start Transaction tokens in the corresponding places in the message
+stream.  The TPer SHALL supply the status of the Start Transaction request.  If the host sends a non-
+zero status code with the Start Transaction token, the device SHALL respond with a status code of
+0x00, unless the transaction was unable to start.
+If the host transmits a Start Transaction token that causes the transaction nesting limit to be exceeded,
+the TPer SHALL abort the session (see Properties Section for details on the transaction nesting limit).
+If for any reason the TPer is unable to start a transaction as requested by the host, the TPer SHALL
+abort the session.
+Table 15 Start Transaction Status Codes
+```markdown
+| Start Transaction Status Code (uinteger) | Meaning   |
+|-----------------------------------------|-----------|
+| 0x00                                    | Success   |
+| >0x00                                   | Reserved  |
+```

@@ -1,0 +1,54 @@
+1.7 Definition of Terms
+
+Term
+Definition
+data removal operation
+User Data Removal Method (see [4])
+Eradicate
+irrevocably erase (e.g., cryptographically erase)
+IF-RECV
+An interface command used to retrieve security protocol data
+from the TPer (see [4])
+IF-SEND
+An interface command used to transmit security protocol data to
+the TPer (see [4])
+Manufactured SP
+A Manufactured SP is an SP that was created and preconfigured
+during the Storage Device manufacturing process
+MM MM
+The LSBs of a User Authority object’s UID (hexadecimal) as well
+as the corresponding C_PIN credential object’s UID
+(hexadecimal)
+NN NN
+The LSBs of a Locking object’s UID (hexadecimal) as well as the
+corresponding K_AES_128/K_AES_256 object’s UID
+(hexadecimal)
+Term
+Definition
+XX XX
+The LSBs of an Admin Authority object’s UID (hexadecimal) as
+well as the corresponding C_PIN credential object’s UID
+(hexadecimal)
+N/A
+Not Applicable
+Original Factory State
+(OFS)
+The original state of an SP when it was created in manufacturing,
+including its table data, access control settings, and life cycle
+state.  Each Manufactured SP has its own Original Factory State.
+Original Factory State applies to Manufactured SPs only.
+Preconfiguration Data
+The default data in the OFS.
+SD
+Storage Device
+SP
+Security Provider
+SSC
+Security Subsystem Class. SSC specifications describe profiled
+sets of TCG functionality
+TPer
+Trusted Peripheral
+Vendor Unique (VU)
+These values are unique to each SD manufacturer. Typically VU
+is used in table cells.
+2 Opal SSC Overview

@@ -1,0 +1,9 @@
+5.1.3.48 log_row_ref
+This type SHALL be used specifically for rows in Log tables.  When performing type checking, as part of
+that type checking the TPer SHALL validate that this is the uid of a row in a Log table.
+The * in the Format column of Table 105 indicates that other Log tables besides the default log MAY
+exist in a particular SP, and that the Format column value for this type also includes those.
+Table 105 log_row_ref
+| UID                             | Name        | Format                                                                                               |
+|---------------------------------|-------------|----------------------------------------------------------------------------------------------------|
+| 00 00 00 05 00 00 0C 0A         | log_row_ref | Restricted_Reference_Type {6}, uidref{LogTableUID}, *                                             |

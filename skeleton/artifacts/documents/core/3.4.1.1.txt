@@ -1,0 +1,8 @@
+3.4.1.1 Admin SP
+Begin Informative Content
+The Admin SP maintains information about other SPs and the TPer as a whole and enables creation of
+other SPs under issuance control.
+End Informative Content
+There SHALL be exactly one Admin SP on every TPer that has SPs or that is able to have SPs issued.
+If present, the Admin SP SHALL NOT be able to be deleted, disabled, or frozen.  The Admin SP SHALL
+have the name "Admin."

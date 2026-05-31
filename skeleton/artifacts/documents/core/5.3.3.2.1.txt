@@ -1,0 +1,3 @@
+5.3.3.2.1 NewTableName
+The NewTableName parameter is the name for this table.  The NewTableName-CommonName
+combination SHALL be unique within the Table table.

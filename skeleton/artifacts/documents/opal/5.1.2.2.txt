@@ -1,0 +1,41 @@
+5.1.2.2 Effects of Revert
+Upon successful invocation of the Revert method, the following changes SHALL be made:
+• If the Locking SP is not in the “Manufactured-Inactive” life cycle state, then successful invocation of the
+Revert method on the Locking SP or Admin SP SHALL cause user data removal as defined by the
+ActiveDataRemovalMechanism (see Table 33) and cause the media encryption keys to be eradicated, which
+has the side effect of securely erasing all data in the User LBA portion of the Storage Device.
+• If the Locking SP is in the “Manufactured-Inactive” life cycle state, then successful invocation of the Revert
+method on the Locking SP SHALL NOT cause user data removal in the Storage Device.
+Interactions with interface commands during the processing of the Revert method are defined in [4].
+If any TCG reset occurs prior to completing user data removal and the eradication of all media encryption keys in the
+Storage Device, then the Revert operation SHALL be aborted and the Locking SP SHALL NOT revert to its Original
+Factory State.
+Start of Informative Comment
+If any TCG reset occurs during the processing of the Revert method, the result of user data removal is undefined
+and the TPer does not erase personalization of the Locking SP. For example, the PIN column value for each row in
+C_PIN table is unchanged.
+End of Informative Comment
+Upon completion of user data removal and the eradication of all media encryption keys in the Storage Device, or if
+the Locking SP is in the “Manufactured-Inactive” life cycle state, the following changes SHALL be made:
+• The row in the Admin SP’s SP table that represents the invoked SP SHALL revert to its original factory values.
+TCG Storage Security Subsystem Class (SSC): Opal
+TCG Storage Security Subsystem Class (SSC): Opal | Version 2.30 | 1/30/2025 | PUBLISHED Page 92 © TCG 2025
+• The SP itself SHALL revert to its Original Factory State. While reverting to its Original Factory State, the TPer
+SHALL securely erase all personalization of the SP, and return personalized values to their Original Factory
+State values. The mechanism for erasure of personalization is implementation-specific.
+• When the Revert method is successfully invoked on the SP object for the Admin SP (UID = 0x00 00 02
+05 00 00 00 01), the entire TPer SHALL revert to its Original Factory State, including:
+o All Admin SP personalization with the exception of the PIN column value of the C_PIN_SID object.
+See section 5.1.2.2.1 for the effects of the Revert method upon the PIN column value of the
+C_PIN_SID object.
+o All issued SPs SHALL be deleted, and all Manufactured SPs SHALL revert to Original Factory State.
+Manufactured SPs in the “Manufactured-Inactive” life cycle state SHALL NOT be affected.
+• Any TPer functionality affected by the life cycle state of the SP based on the templates incorporated into it is
+modified as defined in the appropriate Template reference section of [2], and as defined in the “State
+transitions for Manufactured SPs” section (see section 5.2.2.2) and “State behaviors for Manufactured SPs”
+section (see section 5.2.2.3) of this specification.
+Start of Informative Comment
+Unless already in the Manufactured-Inactive life cycle state, reverting the Locking SP will cause the media encryption
+keys to be eradicated, which has the side effect of securely erasing all data in the User LBA portion of the Storage
+Device.
+End of Informative Comment

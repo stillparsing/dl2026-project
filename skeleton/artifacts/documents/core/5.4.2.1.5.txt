@@ -1,0 +1,3 @@
+5.4.2.1.5 FirmwareVersion
+This is the manufacturer-defined revision number of the TPer firmware.
+This column SHALL NOT be modifiable by the host.

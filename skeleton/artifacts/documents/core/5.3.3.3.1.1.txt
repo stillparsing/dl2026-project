@@ -1,0 +1,5 @@
+5.3.3.3.1.1 Result
+The Delete method returns an empty list.  Success or failure of the method invocation is determinable
+based on the status code returned in response to the method invocation. The object and all of its
+associated objects in other tables SHALL be deleted, or the method SHALL return FAIL status and
+none of those items SHALL be deleted.

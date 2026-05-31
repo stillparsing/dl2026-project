@@ -1,0 +1,4 @@
+5.8.2.1.13 Name
+This is the name, assigned by the user, upon creation of the log entry.  For system generated log
+entries, the Name column value SHALL be "System".
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,35 @@
+5.3.2.7 Table and Method Metadata Group - AccessControl (Object Table)
+Begin Informative Content
+The AccessControl table contains SP/method, table/method, and object/method access control
+associations and logging settings, and each access control association’s related meta-ACL access
+requirements and meta-ACL logging settings.
+End Informative Content
+New rows SHALL NOT be created in or deleted from the AccessControl table directly (i.e. via
+CreateRow, Delete, or DeleteRow).
+New rows are created in the AccessControl table as a side effect whenever a table is created or when
+a row in an object table is created.  New rows added to the AccessControl table in this way SHALL
+NOT cause additional new rows to be added to the AccessControl table.
+AccessControl table rows MAY be deleted through the use of the DeleteMethod method.
+AccessControl table rows associated with a particular object or table SHALL be removed whenever
+that table or object is deleted.
+Table 175 AccessControl Table Description
+```markdown
+| Column Number | Column Name    | IsUnique | Column Type          |
+|---------------|----------------|----------|----------------------|
+| 0x00          | UID            |          | uid                  |
+| 0x01          | InvokingID     | Yes      | table_or_object_ref   |
+| 0x02          | MethodID       | Yes      | MethodID_object_ref   |
+| 0x03          | CommonName     |          | name                 |
+| 0x04          | ACL            |          | ACL                  |
+| 0x05          | Log            |          | log_select           |
+| 0x06          | AddACEACL      |          | ACL                  |
+| 0x07          | RemoveACEACL   |          | ACL                  |
+| 0x08          | GetACLACL      |          | ACL                  |
+| 0x09          | DeleteMethodACL|          | ACL                  |
+| 0x0A          | AddACELog      |          | log_select           |
+| 0x0B          | RemoveACELog   |          | log_select           |
+| 0x0C          | GetACLLog      |          | log_select           |
+| 0x0D          | DeleteMethodLog|          | log_select           |
+| 0x0E          | LogTo          |          | LogList_object_ref   |
+```
+

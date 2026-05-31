@@ -1,0 +1,2 @@
+5.3.3.9.1.1 FreeSpace
+The FreeSpace result value is the approximate amount of free space (in bytes) available in the SP.

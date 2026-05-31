@@ -1,0 +1,15 @@
+5.6.3.2 Cryptographic Support Group - H_SHA_256 (Object Table)
+This section describes the support table for use with SHA-256 hashing operations.  Objects in this table
+are used with the HashInit, Hash, HashFinalize, HMACInit, HMAC, HMACFinalize, Sign, and Verify
+methods.
+Table 221 H_SHA_256 Table Description
+```markdown
+| Column Number | Column Name | IsUnique | Column Type         |
+|---------------|-------------|----------|---------------------|
+| 0x00          | UID         |          | uid                 |
+| 0x01          | Name        | Yes      | name                |
+| 0x02          | CommonName  | Yes      | name                |
+| 0x03          | Proof       |          | bytes_32            |
+| 0x04          | Accumulator |          | bytes_32            |
+| 0x05          | Signer      |          | cred_object_uidref  |
+```

@@ -1,0 +1,5 @@
+5.3.4.1.13 Certificate Presentation
+If an authority has a value of True in its PresentCertificate column; the authority references a public
+key credential; and that credential references a certificate, then a certificate chain SHALL be presented
+when that authority is referenced as an SP authority.
+For details on certificate contents/formatting, see the TCG Storage Certificates Specification.

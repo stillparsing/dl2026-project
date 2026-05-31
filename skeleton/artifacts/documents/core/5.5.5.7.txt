@@ -1,0 +1,10 @@
+5.5.5.7 Reading the Time
+The current time values stored by the Clock Template-enabled SP are retrieved using the GetClock
+method.  The values returned are dependant on the trust values of the time stored.
+If the value of the HaveLow column is True and the value of the HaveHigh column is False, then the
+result of the GetClock method invocation, in pseudo code, are [“Low”, LowTime, LowLag,
+MonotonicTime].
+If the value of the HaveHigh column is True, then the result of the GetClock method invocation, in
+pseudo code, are [“High”, HighTime, HighLag, MonotonicTime].
+If the value of both the HaveLow and HaveHigh columns is False then the result, in pseudo code, is
+[“Timer”, IncrementalClock, 0, MonotonicTime].

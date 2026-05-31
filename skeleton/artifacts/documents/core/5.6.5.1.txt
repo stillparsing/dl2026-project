@@ -1,0 +1,12 @@
+5.6.5.1 Cellblocks
+Methods of the Crypto Template utilize cellblocks for parameters.  Cellblocks are the abstract type
+cell_block, and define a set of rows and columns that make up a contiguous area of a table.  Use of
+cellblocks as method parameters necessitate special access control condition requirements.
+Any cellblock used as input data to a method requires that the host invoking the method satisfy the
+access control requirement necessary to invoke the Get method on the entirety of the parameterized
+cellblock.
+Any cellblock used as an output buffer for a method requires that the host invoking the method satisfy
+the access control requirement necessary to invoke the Set method on the entirety of the
+parameterized cellblock.
+Exceptions or additions to this, such as are required for the XOR method’s PatternInput parameter, are
+noted in the method’s description.

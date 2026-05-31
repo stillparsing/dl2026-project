@@ -1,0 +1,6 @@
+5.7.2.2.4 RangeStart
+This column value defines the starting LBA value for this range. In non-Global Range rows, this column
+MAY be modifiable based on access control settings.  Changes to this column are subject to the same
+constraints and checks defined for this column when rows of the Locking table are created (see
+5.7.3.3).
+For the Locking object that represents the Global Range, this column value SHALL be zeroes.

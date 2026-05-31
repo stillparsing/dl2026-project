@@ -1,0 +1,21 @@
+5.3.2.13 Credential Table Group - C_RSA_1024 (Object Table)
+Table 182 C_RSA_1024 Table Description
+```markdown
+| Column Number | Column Name | IsUnique | Column Type             |
+|---------------|-------------|----------|------------------------|
+| 0x00          | UID         |          | uid                    |
+| 0x01          | Name        | Yes      | name                   |
+| 0x02          | CommonName  | Yes      | name                   |
+| 0x03          | Format      |          | padding_type           |
+| 0x04          | Pu_Exp      |          | uinteger_128           |
+| 0x05          | Mod         |          | uinteger_128           |
+| 0x06          | Pr_Exp      |          | uinteger_128           |
+| 0x07          | P           |          | uinteger_64            |
+| 0x08          | Q           |          | uinteger_64            |
+| 0x09          | Dmp1        |          | uinteger_64            |
+| 0x0A          | Dmq1        |          | uinteger_64            |
+| 0x0B          | Iqmp        |          | uinteger_64            |
+| 0x0C          | Hash        |          | hash_protocol          |
+| 0x0D          | ChainLimit  |          | int_1_def_0            |
+| 0x0E          | Certificate |          | Certificates_object_ref |
+```

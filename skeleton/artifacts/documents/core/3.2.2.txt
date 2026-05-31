@@ -1,0 +1,11 @@
+3.2.2 Data Stream Encoding
+Begin Informative Content
+The messaging model provides for stream encoding of multiple remote procedure calls and multiple
+responses, with the purpose of permitting large data blocks to be broken up and submitted in parts, for
+the parts to be acted on, and for the results to be returned in parts.  This streaming model permits
+results to be asynchronously returned before all the parts are received.
+This section details how values and control markers are encoded into byte sequences for transport over
+session streams (byte streams).
+End Informative Content
+There are no predefined limits on the size or length of these data streams.  An SSC or TPer
+implementation MAY limit the maximum size of encoded values.

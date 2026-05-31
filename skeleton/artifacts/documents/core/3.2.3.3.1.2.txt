@@ -1,0 +1,8 @@
+3.2.3.3.1.2 SeqNumber
+This is an incrementing counter that starts at 1 and increments until 232-1, which identifies the number
+of the packet within the session and defines the ordering of transmitted packets.
+If packet numbering is supported, the message recipient SHALL ignore a packet with an equal or lower
+SeqNumber value than any previously acted-upon packet.  In addition, wrapping of the SeqNumber
+SHALL result in the session being automatically aborted.
+Each communicator SHALL maintain multiple SeqNumber counts, including that of the last packet
+acknowledged, the next packet expected, and the last packet transmitted.

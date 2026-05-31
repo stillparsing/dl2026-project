@@ -1,0 +1,2 @@
+3.2.2.3.2 Sequence Tokens
+Composite values, such as Named values and lists, are represented by a sequence of tokens.

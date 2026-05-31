@@ -1,0 +1,18 @@
+5.1.3.24 clock_time
+This is a struct type made up of name-value pairs, and is used to represent time.  Any value not
+supplied is treated as 0.
+If the host has supplied a trusted time since powerup, that time is used; otherwise a monotonic counter
+is used.
+The clock_time type represents times in either Generalized Time or UTC Time.  Using this type to
+represent UTC Time requires 0’s (zeroes) in fields where Generalized time requires a value but UTC
+Time does not (i.e. 2006 in UTC Time would be represented as 0006).  Per the definition for the
+component types, the names for these name-value types are 0x00 (for the Year), 0x01 (for the Month),
+0x02 (for the Day), 0x03 (for the Hour), 0x04 (for the Minute), 0x05 (for the Seconds), and 0x06 (for the
+Fraction).
+Table 75 clock_time
+```markdown
+| UID                    | Name       | Format                       |
+|------------------------|------------|------------------------------|
+| 00 00 00 05 00 00 18 05| clock_time | Struct_Type, Year, Month, Day, Hour, Minute, Seconds, Fractoin |
+```
+ 

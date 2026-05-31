@@ -1,0 +1,4 @@
+5.3.2.7.4 CommonName
+This is a name that MAY be shared among multiple access control associations.  The value for this
+column when a row is created is the empty string.
+This column SHALL NOT be modifiable by the host.

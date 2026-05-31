@@ -1,0 +1,7 @@
+2.10 Mandatory Feature Sets
+An Opal SSC compliant Storage Device SHALL support the following TCG Storage Feature Sets:
+1) Additional DataStore Tables, Opal Family Feature Set (refer to [6]);
+2) PSID, Opal SSC Feature Set (refer to [6]).
+3) Block SID Authentication Feature Set (refer to [8])
+3
+Opal SSC Features

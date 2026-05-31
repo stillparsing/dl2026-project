@@ -1,0 +1,3 @@
+5.3.3.15.1 InvokingID
+The InvokingID parameter is the uidref to ThisSP (always 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x01), the table, or the object of the access control association.

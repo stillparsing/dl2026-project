@@ -1,0 +1,3 @@
+5.3.3.12.3 Authenticate Result
+The Authenticate method's result is dependant on the parameterized authority's Operation column
+value and the step in the authentication protocol.

@@ -1,0 +1,36 @@
+3.2.2.3.1.3 Medium atoms
+Medium atoms consist of a two-byte header, and between 1 and 2047 bytes of data.
+Table 10 Medium Atom Description
+
+```markdown
+| Header (2 bytes)                                    | Data                         |
+|----------------------------------------------------|------------------------------|
+| 0 1 ...                                            |                              |
+| Medium Atom byte/integer sign/continued length     |                              |
+| 1 1 0 B S n n n n n n n n n n n             |   d ... d                           |
+
+| Field                   | Description                                                                                                                                                                                |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Medium Atom indicator    | These three bits are set to 110b to indicate the atom is a medium atom.                                                                                                                    |
+| Byte/integer indicator   | Value Interpretation: 0b: Data bytes represent integer value; S bit indicates signedness. 1b: Data bytes represent byte sequence; S bit indicates if value is continued in another atom.     |
+| Sign/continued indicator | Value Interpretation: <br>0b: Interpretation depends on byte/integer indicator bit. <br>B==0b: Data treated as unsigned integer. <br>B==1b: Data is complete or final segment of sequence.<br>1b: Interpretation depends on byte/integer bit. <br>B==0b: Data treated as signed integer. <br>B==1b: Data is non-final segment of multi-byte continued value.|
+| Length                  | Specifies length of following data byte sequence. 0 value illegal. Range up to 2047.                                                                                                        |
+```
+
+The encoding is as follows:
+Table 11 Medium Atom Encoding
+```markdown
+| Medium Atom indicator | These three bits are set to 110b to indicate the atom is a medium atom. |
+|----------------------|------------------------------------------------------------------------------|
+| Byte/integer indicator| Value Interpretation                                                         |
+| 0b                   | The data bytes represent an integer value and the S bit indicates if that value is signed. |
+| 1b                   | The data bytes represent a byte sequence and the S bit indicates whether or not this value is continued into another atom. |
+| Sign/continued indicator | Value Interpretation                                                     |
+| 0b                   | The interpretation of the data depends on the byte/integer indicator bit.     |
+|                      | B==0b The data is treated as unsigned integer data.                           |
+|                      | B==1b The data is either the complete byte sequence, or the final segment of a continued byte sequence. |
+| 1b                   | The interpretation of the data depends on the byte/integer indicator bit.     |
+|                      | B==0b The data is treated as signed integer data.                             |
+|                      | B==1b The data is a non-final segment of a multi-byte continued value.         |
+| Length                | These bits specify the length of the following data byte sequence. The value 0 is not a legal value. The permitted range is up to 2047. |
+```

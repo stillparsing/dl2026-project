@@ -1,0 +1,6 @@
+4.3.1.4 Type (N)
+The Type table is not required (N) by Opal. The following types as defined by [2] SHALL meet the following
+requirements:
+• The "boolean_ACE" type (00000005 0000040E) SHALL include the OR Boolean operator.
+• The "AC_element" type (00000005 00000801) SHALL support at least 23 entries (8 User authorities, 4 Admin
+authorities, and 11 Boolean operators).

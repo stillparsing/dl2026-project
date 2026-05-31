@@ -1,0 +1,10 @@
+5.1.3.40 integer_2
+This is an integer type with a size limit of 2 bytes.
+Table 94 integer_2
+```markdown
+| Column Number | Column Name | IsUnique | Column Type |
+|:-------------:|:------------|:--------:|:------------|
+| 0x00          | UID         |          | uid         |
+| 0x01          | integer_2   |          | integer_2   |
+```
+ 

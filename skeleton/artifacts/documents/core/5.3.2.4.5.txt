@@ -1,0 +1,5 @@
+5.3.2.4.5 IsUnique
+The value of this column indicates whether the column participates in the unique column combination
+for the table.  The value of this column is True if this column is, or is part of, the unique columns for the
+table.  If the value of this column is False, this column is not a part of the table’s unique columns.
+This column SHALL NOT be modifiable by the host.

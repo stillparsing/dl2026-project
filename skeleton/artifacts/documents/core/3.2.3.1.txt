@@ -1,0 +1,9 @@
+3.2.3.1 Format
+A ComPacket is the primary unit of communication transmitted as the payload of an interface
+command.  An interface command payload SHALL hold only one ComPacket.  A ComPacket SHALL
+NOT span multiple interface commands.  A ComPacket MAY contain zero or more packets in its
+payload.
+A Packet is associated with a particular session and MAY hold zero or more subpackets.
+A Subpacket MAY hold zero or more tokens.  Tokens MAY span multiple subpackets and multiple
+packets.  However, subpackets SHALL NOT span multiple packets, and packets SHALL NOT span
+multiple ComPackets.

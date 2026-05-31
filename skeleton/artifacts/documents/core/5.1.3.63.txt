@@ -1,0 +1,6 @@
+5.1.3.63 password
+This max bytes type, with a size limitation of 32, is used in the C_PIN table.
+Table 122 password
+| UID                         | Name     | Format      |
+|-----------------------------|----------|-------------|
+| 00 00 00 05 00 00 02 0C     | password | Simple_Type, max_bytes, 32 |

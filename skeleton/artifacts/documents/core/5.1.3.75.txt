@@ -1,0 +1,10 @@
+5.1.3.75 table_or_object_ref
+This alternative type defines a reference to either the uid of a table or the uid of some object, or the UID
+of "ThisSP".
+Table 139 table_or_object_ref
+```markdown
+| UID                    | Name                | Format                           |
+|------------------------|---------------------|---------------------------------|
+| 00 00 00 05 00 00 06 06 | table_or_object_ref | Alternative_Type, object_ref, table_ref |
+
+```

@@ -1,0 +1,7 @@
+5.5.5 Descriptions
+Begin Informative Content
+The Clock Template enables an SP to keep track of date-time utilizing two time markers:
+a. A time value called ExactTime that records a time stamp that is interpretable either in
+Generalized Time or UTC Time format.
+b. An error value called LagTime
+End Informative Content

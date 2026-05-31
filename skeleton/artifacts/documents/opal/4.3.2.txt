@@ -1,0 +1,128 @@
+4.3.2 Base Template Methods
+Refer to section 4.3.1.5 for supported methods.
+Table 41 - Locking SP - C_PIN Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 0B 00 01 00 01",
+        "Name": "C_PIN_Admin1",
+        "CommonName": "",
+        "PIN": "SID or MSID (1)",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 01 00 02",
+        "Name": "C_PIN_Admin2",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 01 00 03",
+        "Name": "C_PIN_Admin3",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 01 00 04",
+        "Name": "C_PIN_Admin4",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 01 00 00 (+XX XX)",
+        "Name": "C_PIN_AdminXXXX",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 03 00 01",
+        "Name": "C_PIN_User1",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 03 00 00 (+MM MM)",
+        "Name": "C_PIN_UserMMMM",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    }
+]
+```
+Table 42 - Locking SP - SecretProtect Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 1D 00 00 00 1D",
+        "Table": "00 00 00 01 00 00 08 05 (K_AES_128)",
+        "ColumnNumber": "0x03",
+        "ProtectMechanisms": "VU"
+    },
+    {
+        "UID": "00 00 00 1D 00 00 00 1E",
+        "Table": "00 00 00 01 00 00 08 06 (K_AES_256)",
+        "ColumnNumber": "0x03",
+        "ProtectMechanisms": "VU"
+    }
+]
+```
+Table 42 - Locking SP - SecretProtect Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 1D 00 00 00 1D",
+        "Table": "00 00 00 01 00 00 08 05 (K_AES_128)",
+        "ColumnNumber": "0x03",
+        "ProtectMechanisms": "VU"
+    },
+    {
+        "UID": "00 00 00 1D 00 00 00 1E",
+        "Table": "00 00 00 01 00 00 08 06 (K_AES_256)",
+        "ColumnNumber": "0x03",
+        "ProtectMechanisms": "VU"
+    }
+]
+```
+Table 42 - Locking SP - SecretProtect Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 1D 00 00 00 1D",
+        "Table": "00 00 00 01 00 00 08 05 (K_AES_128)",
+        "ColumnNumber": "0x03",
+        "ProtectMechanisms": "VU"
+    },
+    {
+        "UID": "00 00 00 1D 00 00 00 1E",
+        "Table": "00 00 00 01 00 00 08 06 (K_AES_256)",
+        "ColumnNumber": "0x03",
+        "ProtectMechanisms": "VU"
+    }
+]
+```

@@ -1,0 +1,2 @@
+5.3.2.16.4 Key
+This column stores the key associated with this C_AES_256 object.

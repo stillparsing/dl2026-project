@@ -1,0 +1,7 @@
+5.2.2.4.1.4 MaxComPacketSize
+The host SHOULD NOT send a ComPacket whose size (including ComPacket header) exceeds the
+value of the TPer’s MaxComPacketSize property. If the host attempts to send a ComPacket that is too
+large, the TPer SHALL abort the IF-SEND command as described in the “Invalid Transfer Length
+parameter on IF-SEND” section of the appropriate interface section of [2].
+The TPer SHALL NOT send a ComPacket whose size (including ComPacket header) exceeds the
+value of the host’s MaxComPacketSize property.

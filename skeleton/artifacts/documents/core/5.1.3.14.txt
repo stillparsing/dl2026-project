@@ -1,0 +1,9 @@
+5.1.3.14 bytes
+This type represents the bytes base type, and is used to represent a value made up of a fixed-size
+sequence of bytes.
+Table 64 bytes
+```markdown
+| UID                         | Name  | Format         |
+|-----------------------------|-------|----------------|
+| 00 00 00 05 00 00 00 02    | bytes | Base_Type      |
+```  

@@ -1,0 +1,6 @@
+5.1.3.91 uinteger_30
+This is a uinteger type with a size restriction of 30 bytes.
+Table 155 uinteger_30
+| UID                             | Name         | Format      |
+|---------------------------------|--------------|-------------|
+| 00 00 00 05 00 00 02 1B         | uinteger_30  | Simple_Type, uinteger, 30 |

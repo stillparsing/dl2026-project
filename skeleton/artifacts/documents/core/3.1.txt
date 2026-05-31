@@ -1,0 +1,5 @@
+3.1 Architecture Elements Overview
+Begin Informative Content
+This section introduces global TCG storage-related document format, data structures, and functional
+behavior.
+End Informative Content

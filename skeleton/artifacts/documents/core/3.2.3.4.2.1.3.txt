@@ -1,0 +1,3 @@
+3.2.3.4.2.1.3 Length
+The field identifies the number of bytes in the in the Credit Control Subpacket payload.  This is always
+0x00000004 for a subpacket of this type.

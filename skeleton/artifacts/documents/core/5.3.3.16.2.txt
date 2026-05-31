@@ -1,0 +1,8 @@
+5.3.3.16.2 PinLength
+If this method is invoked on a C_PIN object, then a new value with PinLength characters is generated
+and stored in that C_PIN object’s Password column.  The character set used to generate the C_PIN
+value is referenced in the C_PIN table’s CharacterSet column, or the default character set if the C_PIN
+table’s CharacterSet column is the NULL UID (see C_PIN table description in section 5.3.2.12).
+For other behavior of GenKey on C_PIN objects see 5.3.4.1.1.2.
+If PinLength is not specified in the method invocation, the default value is 32.  The maximum permitted
+value for the PinLength parameter is 32.

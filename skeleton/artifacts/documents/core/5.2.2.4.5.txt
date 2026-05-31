@@ -1,0 +1,4 @@
+5.2.2.4.5 Interaction with TCG Protocol Stack Reset
+Receiving a TCG Protocol Stack Reset SHALL cause the TPer’s knowledge of the host’s
+communications capabilities, on the ComID receiving the reset command, to be reset to the initial
+minimum assumptions defined in this document or in the TPer’s SSC definition.

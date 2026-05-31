@@ -1,0 +1,7 @@
+5.3.3.9.1.2 TableRows
+The second is a list containing the UID column value of each table descriptor object and the number of
+rows that MAY be additionally created for each table (separately) under current conditions of the SP
+and the TPer.  This number MAY change in subsequent invocations of this method, based on
+modifications subsequent to the method invocation.
+The number of rows returned for a table(s) is not directly related to the free space remaining on the SP.
+The number of rows is only indicative of how many rows the system is able to generate per table.

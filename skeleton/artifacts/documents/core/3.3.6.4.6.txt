@@ -1,0 +1,3 @@
+3.3.6.4.6 ComID Management Supported
+SHALL be set to one if the TPer supports ComID management using Protocol ID 0x02 (see 3.3.3),
+otherwise SHALL be cleared to zero.

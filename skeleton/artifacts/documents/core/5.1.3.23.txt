@@ -1,0 +1,17 @@
+5.1.3.23 clock_kind
+This enumeration type is used to define the type of clock currently active.
+Table 73 clock_kind
+```markdown
+| UID                          | Name       | Format                   |
+|------------------------------|------------|--------------------------|
+| 00 00 00 05 00 00 04 0B      | clock_kind | Enumeration_Type, 0, 3   |
+```
+
+The enumeration values are associated as defined in Table 74.
+Table 74 clock_kind Enumeration Values
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 0                 | Timer            |
+| 1                 | Low              |
+| 2                 | High             |
+| 3                 | LowAndHigh       |

@@ -1,0 +1,9 @@
+5.7.3.7.3 ReEncryptState Column Values
+When the ReEncryptState column value is:
+a. 1 = IDLE: re-encryption is not active for this LBA range.
+b. 2 = PENDING:  This LBA Range’s re-encryption process is waiting to start or continue re-
+encryption.
+c.
+3 = ACTIVE: This LBA Range’s re-encryption process is executing
+d. 4 = COMPLETED: This LBA Range’s re-encryption process has completed without errors
+e. 5 = PAUSED: This LBA Range’s re-encryption has temporarily halted.

@@ -1,0 +1,13 @@
+5.1.1.2 Side effects of Activate
+Upon successful activation of an SP that was in the “Manufactured-Inactive” state, the following changes SHALL be
+made:
+•
+The LifeCycleState column of SP’s object in the Admin SP’s SP table SHALL change to “Manufactured”.
+•
+The current SID PIN (C_PIN_SID) in the Admin SP is copied into the PIN column of Admin1’s C_PIN credential
+(C_PIN_Admin1) in the activated SP.  This allows for taking ownership of the SP with a known PIN credential.
+•
+Any TPer functionality affected by the life cycle state of the SP based on the SP’s templates  is modified as
+defined in the appropriate Template reference section of [2], and as defined in the “State transitions for
+Manufactured SPs” section (see section 5.2.2.2) and “State behaviors for Manufactured SPs” section (see
+section 5.2.2.3) of this specification.

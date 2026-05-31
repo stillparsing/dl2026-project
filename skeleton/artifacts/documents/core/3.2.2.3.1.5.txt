@@ -1,0 +1,21 @@
+3.2.2.3.1.5 Empty Atom
+The Empty atom is one byte consisting of eight 1 bits.
+Table 14 Empty Atom Description
+```markdown
+| Header (1 byte) |
+| --------------- |
+| Empty Atom       |
+| 1 1 1 1 1 1 1 1 |
+```
+Header (1 byte)
+Empty Atom
+1 1 1 1 1 1 1 1
+
+The Empty atom MAY appear at any point in the stream encoding where any other atom is able to
+appear, including between the atoms of a continued value and after the End of Session, and it SHALL
+be ignored.
+Begin Informative Content
+The Empty atom does not encode values.  The Empty atom allows other values in the data subpacket
+contained in that part of the stream to be aligned with multi-byte boundaries for efficiency. It also allows
+areas of a fixed buffer to be filled with a value that is able to be safely ignored.
+End Informative Content

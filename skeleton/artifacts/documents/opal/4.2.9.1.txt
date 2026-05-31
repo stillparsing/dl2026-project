@@ -1,0 +1,7 @@
+4.2.9.1 Random
+The TPer SHALL implement the Random method with the constraints stated in this subsection. TPer support of the
+following parameters is Mandatory:
+•
+Count
+Attempts to use unsupported parameters SHALL result in a method failure response with TCG status
+INVALID_PARAMETER. The TPer SHALL support Count parameter values less than or equal to 32.

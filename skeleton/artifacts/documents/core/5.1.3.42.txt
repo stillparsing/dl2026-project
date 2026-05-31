@@ -1,0 +1,41 @@
+5.1.3.42 key_256
+This is an alternative type, with options for various key sizes.
+Table 96 key_256
+```markdown
+| Column Number | Column Name | IsUnique | Column Type |
+|---------------|-------------|----------|-------------|
+| 0x00          | array       |          | byte[32]    |
+| 0x01          | byte_0      |          | byte        |
+| 0x02          | byte_1      |          | byte        |
+| 0x03          | byte_2      |          | byte        |
+| 0x04          | byte_3      |          | byte        |
+| 0x05          | byte_4      |          | byte        |
+| 0x06          | byte_5      |          | byte        |
+| 0x07          | byte_6      |          | byte        |
+| 0x08          | byte_7      |          | byte        |
+| 0x09          | byte_8      |          | byte        |
+| 0x0A          | byte_9      |          | byte        |
+| 0x0B          | byte_10     |          | byte        |
+| 0x0C          | byte_11     |          | byte        |
+| 0x0D          | byte_12     |          | byte        |
+| 0x0E          | byte_13     |          | byte        |
+| 0x0F          | byte_14     |          | byte        |
+| 0x10          | byte_15     |          | byte        |
+| 0x11          | byte_16     |          | byte        |
+| 0x12          | byte_17     |          | byte        |
+| 0x13          | byte_18     |          | byte        |
+| 0x14          | byte_19     |          | byte        |
+| 0x15          | byte_20     |          | byte        |
+| 0x16          | byte_21     |          | byte        |
+| 0x17          | byte_22     |          | byte        |
+| 0x18          | byte_23     |          | byte        |
+| 0x19          | byte_24     |          | byte        |
+| 0x1A          | byte_25     |          | byte        |
+| 0x1B          | byte_26     |          | byte        |
+| 0x1C          | byte_27     |          | byte        |
+| 0x1D          | byte_28     |          | byte        |
+| 0x1E          | byte_29     |          | byte        |
+| 0x1F          | byte_30     |          | byte        |
+| 0x20          | byte_31     |          | byte        |
+```
+ 

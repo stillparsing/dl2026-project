@@ -1,0 +1,6 @@
+5.6.4.15.2.1 Result
+The method returns the DataInput that has been consumed in the HMAC operation as the method
+result.
+Results of the operation are stored in the BufferOut cellblock of the HMACInit method, if that parameter
+is included.  Otherwise the results are stored in the invoking hash object’s Accumulator column.  If the
+BufferOut parameter is specified in the HMACInit method, the HMAC method Result SHALL be empty.

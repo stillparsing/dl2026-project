@@ -1,0 +1,7 @@
+5.7.2.2.10 LockOnReset
+This value defines the locking behavior of this LBA range at reset, dependent on reset type.  The values
+enumerated in this column identify the reset types that cause the values of the ReadLocked and
+WriteLocked columns of the Locking table to be set to True.
+The Global Range’s LockOnReset value defines global TPer behavior. All other rows override the
+Global Range's behavior, unless otherwise specified in an SSC.
+An empty set indicates that ReadLocked and WriteLocked do not change  on any reset.

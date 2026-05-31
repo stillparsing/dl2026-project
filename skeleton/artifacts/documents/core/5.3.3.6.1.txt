@@ -1,0 +1,3 @@
+5.3.3.6.1 Cellblock
+The Cellblock parameter defines the scope of the data that the method is attempting to retrieve by
+identifying the cells on which the method should operate.

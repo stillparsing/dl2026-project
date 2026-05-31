@@ -1,0 +1,5 @@
+5.4.1 Overview
+Begin Informative Content
+The purpose of the Admin Template is to provide to the Admin SP the capability to optionally issue
+additional SPs and to maintain information about the TPer.
+End Informative Content

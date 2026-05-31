@@ -1,0 +1,12 @@
+5.3.3.15 Access Control Method Group - RemoveACE (Meta-Method)
+This method is used to remove an ACE object uidref from the ACL column of an existing SP/method,
+table/method, or object/method access control association, which are rows in the AccessControl table.
+AccessControlTableUID.RemoveACE [
+
+InvokingID : uidref { SP/table/object },
+
+MethodID : uidref { MethodID },
+ACE : uidref { ACEObjectUID} ]
+=>
+[   ]
+

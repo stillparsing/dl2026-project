@@ -1,0 +1,23 @@
+3.3.9.4 Transmission Timeouts
+The transmission timeout is set during the exchange of session startup methods StartSession and
+SyncSession.  The transmission timeout for a session SHALL take effect after session startup has
+successfully completed.  Both communicators share the same transmission timeout value.
+The transmission timeout in effect for control sessions is the transmission timeout reported in the
+Properties method.
+The sender MAY provide, in the StartSession method, a value for the TransTimeout parameter.  The
+communicator that transmits the SyncSession method MAY include a value for the TransTimeout
+parameter.  If so, that communicator's timeout value SHALL be larger than the StartSession
+TransTimeout value, and SHALL be the transmission timeout value in use for the session being started.
+In either case, the TransTimeout value SHALL be greater than or equal to the MinTransTimeout value
+and smaller than or equal to the MaxTransTimeout parameter reported in the Properties method
+response.  If neither communicator includes a value for the TransTimeout parameter, the
+DefTransTimeout value, as reported in the Properties method response, SHALL be used.
+If the sender detects a missing acknowledgment by means of a timeout, the sender SHALL retransmit
+the data from the last valid acknowledgment. If the sender still receives no acknowledgement after a
+timeout period, the sender SHALL retransmit the same packet with no modifications or additions,
+including packet headers. This retransmission repeats up to an implementation-specific number of
+times.  Thereafter, the sender SHALL terminate the session, i.e. no more data is able to be be
+transmitted for this session (the session times out at some point and is closed by the receiver).
+SSCs that require support for transmission timeouts SHALL define a minimum required value for
+retransmission repeats.
+

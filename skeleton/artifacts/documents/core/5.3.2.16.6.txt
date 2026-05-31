@@ -1,0 +1,2 @@
+5.3.2.16.6 FeedbackSize
+This column defines the feedback size for CFB mode, and SHALL be ignored for all other modes..

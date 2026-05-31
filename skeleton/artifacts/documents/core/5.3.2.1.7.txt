@@ -1,0 +1,8 @@
+5.3.2.1.7 Enabled
+The value of this column identifies whether the SP is enabled or disabled.  The column value is True if
+the SP is enabled, False if the SP is disabled.
+Initial access control over modification of this column SHALL permit only the SP Owner (i.e. the Admins
+class authority) to disable or reenable this SP.
+When the value of this column is False, the operation of the SP is modified according to 5.3.5.1.
+As soon as the method invocation that changes this column value to False completes successfully,
+even inside of a transaction, the SP SHALL be considered disabled.

@@ -1,0 +1,14 @@
+5.8.3.1 AddLog (Table Method)
+AddLog adds a log entry to the Log table on which the method was invoked.
+Successful invocation of this method automatically sets the value of the LogKind column value to 9.
+This method is not subject to transactional abort/rollback, and as such if successfully invoked within a
+Read-Only session its effect is persistent. If multiple Read-Only sessions are open to the same SP, the
+TPer is required to update the shared log without corruption. Log entries from each session are
+guaranteed to be in their proper relative order, but no guarantee is made about the relative ordering of
+entries between separate sessions.
+LogTableUID.AddLog[
+LogEntryName : name,
+Data : bytes ]
+=>
+[ ]
+

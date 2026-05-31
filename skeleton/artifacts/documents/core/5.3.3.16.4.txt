@@ -1,0 +1,6 @@
+5.3.3.16.4 Fails
+a. If the credential object does not exist.
+b. If a bad exponent is included.
+c. If PublicExponent is provided when GenKey is invoked on a non-C_RSA_* credential object.
+d. If PinLength is provided when GenKey is invoked on a non-C_PIN credential object
+e. If PinLength is greater than the size of the Password column in the C_PIN table.

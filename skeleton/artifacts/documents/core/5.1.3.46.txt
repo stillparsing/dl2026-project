@@ -1,0 +1,22 @@
+5.1.3.46 life_cycle_state
+This enumeration is used to represent the current life cycle state of the SP.
+Table 102 life_cycle_state
+```markdown
+| UID                     | Name               | Format                                |
+|-------------------------|--------------------|-------------------------------------|
+| 00 00 00 05 00 00 04 05 | life_cycle_state   | Enumeration_Type, 0, 15              |
+```
+ 
+
+The enumeration values are associated as defined in Table 103.
+Table 103 life_cycle_state Enumeration Values
+| Enumeration Value | Associated Value              |
+|-------------------|------------------------------|
+| 0                 | Issued                      |
+| 1                 | Issued-Disabled             |
+| 2                 | Issued-Frozen               |
+| 3                 | Issued-Disabled-Frozen      |
+| 4                 | Issued-Failed               |
+| 5-7               | Unassigned                  |
+| 8-13              | Reserved for SSC Usage      |
+| 14-15             | Unassigned                  |

@@ -1,0 +1,4 @@
+3.2.4 Methods
+Begin Informative Content
+This section describes the syntax and encoding of method calls.
+End Informative Content

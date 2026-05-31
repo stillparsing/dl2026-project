@@ -1,0 +1,15 @@
+5.4.2.4 SPs on the TPer Group - SP (Object Table)
+The table in this section describes the data that the Admin SP keeps about all of the SPs on the TPer.
+The Admin SP SHALL be UID=0x00 0x00 0x02 0x05 0x00 0x00 0x00 0x01 in the SP Table, and the
+values in this table SHALL be readable by the Anybody authority.
+Table 215 SP Table Description
+| Column Number | Column Name      | IsUnique | Column Type      |
+|---------------|------------------|----------|------------------|
+| 0x00          | UID              |          | uid              |
+| 0x01          | Name             | Yes      | name             |
+| 0x02          | ORG              |          | Authority_object_ref |
+| 0x03          | EffectiveAuth    |          | max_bytes_32     |
+| 0x04          | DateofIssue      |          | date             |
+| 0x05          | Bytes            |          | uinteger_8       |
+| 0x06          | LifeCycleState   |          | life_cycle_state |
+| 0x07          | Frozen           |          | boolean_def_false|

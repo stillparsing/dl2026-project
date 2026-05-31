@@ -1,0 +1,17 @@
+5.3.4.1.2.3 SID
+The SID authority is used by the TPer owner to authenticate to the Admin SP and perform operations
+such as freezing or deleting SPs.
+A copy of the SID is also present in each SP.  This SID authority and credential provides the
+personalizing host with a default password authority that MAY be used to open sessions or verify
+physical presence.  When an SP is issued or created, the value of the Password column of the C_PIN
+credential object referenced by the SID authority is the same as the value of the Password column of
+the C_PIN credential object referenced by the SID authority in the Admin SP.  Modifications to the SID
+authority’s referenced C_PIN credential object in some SP (even the Admin SP) do not affect any other
+SP.
+By default, the SID credential object (the C_PIN credential object referenced by the SID authority) has a
+Password column value length of 25 characters.  The default character set for this value is made up of
+the capital letters A-Z inclusive and the numbers 0-9 inclusive, excluding the letter "I" and the letter "O".
+By default, the CharSet column of the SID credential is the uid to a byte table that stores this character
+set.  Subsequent invocations of GenKey on SID with this CharSet column value utilize this character set
+to generate the new SID value.
+The host application SHOULD manage translation of I's/1's and O's/0's.

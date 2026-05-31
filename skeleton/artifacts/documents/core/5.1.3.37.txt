@@ -1,0 +1,8 @@
+5.1.3.37 hour_enum
+Used in association with the Hour name-value pair.
+Table 91 hour_enum
+```markdown
+| UID                         | Name       | Format                     |
+|-----------------------------|------------|----------------------------|
+| 00 00 00 05 00 00 04 19     | hour_enum  | Enumeration_Type, 0, 23    |
+``` 

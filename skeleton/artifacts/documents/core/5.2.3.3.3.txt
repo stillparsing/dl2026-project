@@ -1,0 +1,3 @@
+5.2.3.3.3 HostResponse
+The HostResponse is included if the SyncSession method contained an SPChallenge parameter.  The
+value of the HostResponse parameter is dictated by the credential of the HostSigningAuthority.

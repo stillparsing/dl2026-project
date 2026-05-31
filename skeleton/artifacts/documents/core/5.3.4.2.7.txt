@@ -1,0 +1,17 @@
+5.3.4.2.7 Iterating Through Tables
+The Next method is used to discover an ordering of rows in an object table.  Since the ordering of
+object tables is unspecified, the ordering that is discovered by successful invocation(s) of this method
+on an object table is some undefined ordering, the "current" ordering.
+When successfully invoked on an object table, the Next method returns a list of zero or more uidrefs
+"following" the specified Where row in the current ordering.  If a value for the Where parameter is not
+specified in the method invocation, the first element, if any, of the list of uidrefs, SHALL denote the
+"beginning" of the ordering, i.e. the row that has no predecessor in the current ordering.
+The implementation is required to discover a consistent ordering of all rows of an object table only if the
+object table is not modified between invocations of Next.  Actions that cause modifications to the object
+table that could result in a new ordering SHALL be specified in each SSC, and SHALL include at least
+the method calls that add or delete rows if those are permitted by the SSC.
+If both the Where parameter and the Count parameter are omitted, the scope of the Next method's
+return value is the entire table.
+If the Where parameter is included in the invocation and the Count parameter is omitted, the scope of
+the Next method's return value begins at the starting point in the table's ordering indicated by the row
+following that identified by the Where parameter, and ends at the end of the table's row ordering.

@@ -1,0 +1,7 @@
+5.6.2 Terminology
+Table 219 Crypto Template Terminology
+```markdown
+| Term     | Definition                                                                                                                                                                                                                                                                                                                                                                                         |
+|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| "stream" | The term "stream", used in quotation marks in this section, is not related to session or messaging streams.  Rather, this term is used to identify a single operational context related to a particular cryptographic operation.  A "stream" is created using an initialization method, is operated on by one or more calculation methods of the type appropriate to the initialized "stream", and is closed by a finalization method.  A particular context SHALL deal only with the operation associated with it (encrypt, decrypt, HMAC, or hash).   |
+```

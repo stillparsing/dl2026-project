@@ -1,0 +1,10 @@
+5.2.3.1.10 TransTimeout
+The TransTimeout parameter is used to allow the host to provide a requested timeout value for
+acknowledgement.
+The value, in milliseconds, SHOULD be less than the TPer's MaxTransTimeout property and greater
+than the TPer's MinTransTimeout property (these values are reported as the results of the Properties
+method (see 5.2.2.1).  If the parameter value is outside of these limits, the method invocation SHALL
+fail.
+If this capability is supported and no value is specified for this parameter, then the TPer's default value
+(identified as the DefaultTransTimeout response to the Properties mehod), SHALL be used as the
+transmission timeout value.  For more information on the transmission timeout mechanism, see 3.3.9.4.

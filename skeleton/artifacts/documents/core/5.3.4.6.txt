@@ -1,0 +1,20 @@
+5.3.4.6 Default Logging Settings
+The default logging settings associated with the Template methods assume that the Log Template has
+been issued with the SP.  Otherwise, these values should be disregarded, as values of log control
+columns SHALL be ignored if the Log Template has not been issued with an SP.
+a. Session startup logging (controlled in the Authority table) and logging invocation of the
+Authenticate method SHALL have default settings of LogAlways.
+b. The following method invocations SHALL by default log as LogAlways:
+a. AddACE
+b. RemoveACE
+c. DeleteMethod
+d. Delete
+e. CreateTable
+f.
+CreateRow
+g. DeleteRow
+c. Invocation of the following method invocations SHALL by default log as LogFailure:
+a. DeleteSP
+b. Set
+c. GenKey
+d. All other methods described in the Base Template SHALL be default log as LogNever.

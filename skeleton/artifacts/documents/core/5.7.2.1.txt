@@ -1,0 +1,13 @@
+5.7.2.1 LockingInfo (Object Table)
+The LockingInfo table is an object table that SHALL contain exactly one row, which contains
+information about the TPer's configuration.
+Table 225 LockingInfo Table Description
+| Column Number | Column Name       | IsUnique | Column Type     |
+|---------------|-------------------|----------|-----------------|
+| 0x00          | UID               |          | uid             |
+| 0x01          | Name              |          | name            |
+| 0x02          | Version           |          | uinteger_4      |
+| 0x03          | EncryptSupport    |          | enc_supported   |
+| 0x04          | MaxRanges         |          | uinteger_4      |
+| 0x05          | MaxReEncryptions  |          | uinteger_4      |
+| 0x07          | KeysAvailableCfg  |          | keys_avail_conds|

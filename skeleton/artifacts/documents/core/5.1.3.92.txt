@@ -1,0 +1,6 @@
+5.1.3.92 uinteger_36
+This is a uinteger type with a size restriction of 36 bytes.
+Table 156 uinteger_36
+| UID                         | Name         | Format                                |
+|-----------------------------|--------------|-------------------------------------|
+| 00 00 00 05 00 00 02 1F     | uinteger_36  | Simple_Type, uinteger, 36            |

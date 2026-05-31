@@ -1,0 +1,5 @@
+5.5.3.1.7 HaveLow
+If the value of this column is True, then the values in the Low Trust time columns (LowByWhom,
+LowSetTime, LowInitialTimer, and LowLag) are meaningful. If TrustMode is High or Timer, then this
+value SHALL be False.
+This column SHALL NOT be modifiable by the host.

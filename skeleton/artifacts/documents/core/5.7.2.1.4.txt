@@ -1,0 +1,4 @@
+5.7.2.1.4 EncryptSupport
+This defines the types of encryption supported by this template.  The value of this column is “None” if
+the drive does not support media encryption.
+This column SHALL NOT be modifiable by the host.

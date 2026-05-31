@@ -1,0 +1,33 @@
+3.2.2.3.1.1 Tiny atoms
+Tiny atom header and data are all contained in eight bits.
+Table 05 Tiny Atom Description
+```json
+[
+    {
+        "Header+Data": "Tiny atom sign data"
+    },
+    {
+        "Header+Data": "0 S d d d d d d"
+    }
+]
+```
+
+The encoding is as follows:
+Table 06 Tiny Atom Encoding
+```json
+[
+    {
+        "Field": "Tiny Atom indicator",
+        "Description": "This bit is set to 0b to indicate the atom is a tiny atom",
+    },
+    {
+        "Field": "Sign indicator",
+        "0b": "The data is treated as unsigned integer data.",
+        "1b": "The data is treated as a signed integer.",
+    },
+    {
+        "Field": "Data bits",
+        "Description": "These represent the data value, an unsigned value in the range of 0...63 or a signed value in the range of -32...31. The interpretation is based on the setting of the sign bit.",
+    }
+]
+```

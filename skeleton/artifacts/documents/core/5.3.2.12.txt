@@ -1,0 +1,19 @@
+5.3.2.12 Credential Table Group - C_PIN (Object Table)
+The C_PIN table contains one row for each password credential.
+The C_PIN object with UID=0x00 0x00 0x00 0x0B 0x00 0x00 0x00 0x01 and Name=“SID” is the
+default SID object.
+Table 181 C_PIN Table Description
+```markdown
+| Column Number | Column Name | IsUnique | Column Type         |
+|---------------|-------------|----------|---------------------|
+| 0x00          | UID         |          | uid                 |
+| 0x01          | Name        | Yes      | name                |
+| 0x02          | CommonName  | Yes      | name                |
+| 0x03          | PIN         |          | password            |
+| 0x04          | CharSet     |          | byte_table_ref      |
+| 0x05          | TryLimit    |          | uinteger_4          |
+| 0x06          | Tries       |          | uinteger_4          |
+| 0x07          | Persistence |          | boolean             |
+```
+  
+ 

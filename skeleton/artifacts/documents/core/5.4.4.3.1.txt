@@ -1,0 +1,13 @@
+5.4.4.3.1 Issuance Sessions
+Issuance requires a session to the Admin SP that incorporates HostSigning, HostExchange,
+SPExchange, and optionally SPSigning, all based on Manufacturer controlled Certificates.  The Admin
+SP SHALL require that the HostSigningAuthority and the HostExchangeAuthority (which MAY be
+different) are present in the ORG section of the Authority Table.  Certificate chain down is possible, to
+the Chain Limit.
+The critical method in issuance is IssueSP.  The ACL on this method contains exactly one ACE that
+SHALL NOT be changed, and it requires a Boolean combination of Authorities: (HostSigning AND
+HostExchange AND SPExchange).  The SPSigningAuthority is optional but recommended.  Issuance
+SHALL NOT be deemed completed until the method has completed successfully and the session has
+successfully closed.
+During issuance, the host is responsible for providing logging, and fetching information it requires to
+confirm the issuance.

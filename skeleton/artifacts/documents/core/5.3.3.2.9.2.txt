@@ -1,0 +1,2 @@
+5.3.3.2.9.2 Rows
+This value is the number of rows allocated for usage for the table.

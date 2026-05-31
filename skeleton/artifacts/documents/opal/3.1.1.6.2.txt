@@ -1,0 +1,9 @@
+3.1.1.6.2 Data Removal Operation Interrupted
+The Data Removal Operation Interrupted bit SHALL be set to one if a previously issued data removal operation such
+as Revert, RevertSP or GenKey was interrupted for any reason (including, power loss, interface reset, etc.).  The
+Data Removal Operation Interrupted bit SHALL be set to zero after successful completion of a data removal operation.
+
+Start of Informative Comment
+The host can reissue a data removal operation that was interrupted (such as RevertSP, Revert, or GenKey), The
+Storage Device can be in a locked state if the operation was interrupted and the Storage Device is now operational.
+End of Informative Comment

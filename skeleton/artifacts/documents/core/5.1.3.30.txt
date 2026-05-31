@@ -1,0 +1,18 @@
+5.1.3.30 enc_supported
+This enumeration type is used to define the types of user data encryption supported by the TPer.
+Table 81 enc_supported
+| UID                             | Name          | Format            |
+|---------------------------------|---------------|-------------------|
+| 00 00 00 05 00 00 04 1D         | enc_supported | Enumeration_Type,  |
+|                                 | 0,            | 15                |
+
+The enumeration values are associated as defined in Table 82.
+Table 82 enc_supported Enumeration Values
+```markdown
+| Enumeration Value | Associated Value    |
+|-------------------|--------------------|
+| 0                 | None               |
+| 1                 | Media Encryption   |
+| 2-15              | Reserved           |
+```
+

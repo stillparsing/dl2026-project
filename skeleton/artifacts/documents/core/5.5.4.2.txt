@@ -1,0 +1,8 @@
+5.5.4.2 ResetClock (Table Method)
+Successful invocation of this method resets the Clock Template-enabled SP’s clock values and puts the
+SP into Timer mode.  This method is invoked automatically when a TPer undergoes a hardware
+reset/power cycle.
+ClockTimeTableUID.ResetClock [ ]
+=>
+[ ]
+

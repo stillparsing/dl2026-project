@@ -1,0 +1,12 @@
+5.3.3.12 Access Control Method Group - Authenticate (SP Method)
+Authorities invoked during session startup are implicitly authenticated.  The Authenticate method is
+used to explicitly authenticate an authority within a session, i.e., after a session has already
+successfully begun.  See 5.3.4.1.14.
+ThisSP.Authenticate [
+
+Authority : uidref { AuthorityObjectUID },
+
+Proof = bytes ]
+=>
+[ Result : typeOr { Success : boolean, Challenge : bytes } ]
+

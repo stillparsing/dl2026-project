@@ -1,0 +1,6 @@
+5.8.4.4 Deleting a Log Table
+Because a Log table and the LogList table is kept in sync, there SHALL be no ACL to allow the Log
+table to be deleted via the Table table. The LogList object’s Delete method SHALL be used to delete a
+Log table.  Successful invocation of that method deletes the Log table and its associated entries in both
+the LogList table and the Table table.  For more information, see the Log Template Life Cycle section
+5.8.5.

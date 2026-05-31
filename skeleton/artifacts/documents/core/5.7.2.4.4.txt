@@ -1,0 +1,5 @@
+5.7.2.4.4 Key
+This column stores the key associated with this K_AES_256 object.  Non-tweakable cipher modes such
+as ECB, CBC, CFB, OFB, GCM, CCM, and CTR SHALL use the 32-byte option for the key size.
+Tweakable cipher modes such as XTS or LRW SHALL use the 64-byte option
+For MediaEncryption mode, the content of the Key column MAY be vendor-specific.

@@ -1,0 +1,20 @@
+5.1.3.35 hash_protocol
+This enumeration type determines the hash algorithm to be used when creating a digital signature.
+Table 88 hash_protocol
+```markdown
+| UID                     | Name          | Format           |                        |        |
+|-------------------------|---------------|------------------|------------------------|--------|
+| 00 00 00 05 00 00 04 0D | hash_protocol | Enumeration_Type | 0                      | 15     |
+
+```
+
+The enumeration values are associated as defined in Table 89.
+Table 89 hash_protocol Enumeration Values
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 0                 | None             |
+| 1                 | SHA 1            |
+| 2                 | SHA 256          |
+| 3                 | SHA 384          |
+| 4                 | SHA 512          |
+| 5-15              | Reserved         |

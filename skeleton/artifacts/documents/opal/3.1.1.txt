@@ -1,0 +1,10 @@
+3.1.1 Level 0 Discovery (M)
+Refer to [2] for more details.
+An Opal SSC compliant Storage Device SHALL return the following Level 0 response:
+• Level 0 Discovery Header (see Table 2)
+• TPer feature descriptor (see Table 3)
+• Locking feature descriptor (see Table 4)
+• Opal SSC V2 feature descriptor (see Table 6)
+Additionally, an Opal SSC compliant Storage Device MAY return the following Level 0 response:
+• Geometry Reporting feature descriptor (see Table 5)
+• Supported Data Removal Mechanism feature descriptor (see Table 8)

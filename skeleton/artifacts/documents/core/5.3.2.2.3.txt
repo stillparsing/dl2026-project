@@ -1,0 +1,5 @@
+5.3.2.2.3 Name
+This is the name of the template used as a component in the creation of this SP.  This SHALL be the
+same as the value recorded in Name column of the Admin SP’s Template table for the associated
+template.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,7 @@
+5.3.3.7.2.2 RowValues
+This value is used when attempting to modify an object in an object table.  When this method is invoked
+on an object table, as either an object method or a table method, this parameter is a list of column
+numbers and values, where the columns are those to be changed and the associated values are the
+values to be set to those columns.
+If the Where parameter is a UID, the Values parameter shall be RowVals or the method invocation shall
+fail and return an error status code.

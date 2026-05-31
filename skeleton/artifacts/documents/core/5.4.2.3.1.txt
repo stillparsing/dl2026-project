@@ -1,0 +1,3 @@
+5.4.2.3.1 UID
+This is the unique identifier of this row in the table.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,29 @@
+3.4.2.1 Overview
+Begin Informative Text
+Access control limits the methods that are able to be processed on an SP, a table, or on specific rows
+and columns of a table.
+Permission to process a method is governed by which secrets the method’s invoker has proven that it
+knows. The secrets and their public parts are called Credentials. The operation for proving knowledge
+of a secret is called an Authentication Operation. The actual proving of knowledge of a secret is called
+Authentication.
+End Informative Text
+Authentication in this document describes either Explicit Authentication, which typically occurs as a
+result of password validation or challenge/response; or Implicit Authentication, which occurs as a result
+of implicitly proving knowledge of a secret, such as during session key exchange.
+An authority SHALL be considered authenticated in either type of authentication scenario - the terms
+explicit and implicit are descriptive and SHALL NOT limit the authentication or capabilities of an
+authority.
+Begin Informative Text
+An authority is used by the host application to represent a person, a role, a program agent, etc. These
+are distinctions of meaning to the application, not to the SP.
+Access Control is specified in layers. The top layer of the mechanism is Access Control Lists (ACLs).
+ACLs are lists of Access Control Elements (ACEs). This layering gives the host a way to delegate
+control of an ACL, via control of its ACEs, to various independent entities.
+ACEs are Boolean combinations of authorities. This permits the ACE to express cross-certification or
+other forms of restriction.
+End Informative Text
+When an authority is authenticated, its value in an ACE Boolean expression SHALL be True.  If the
+authority has not been authenticated, its value in an ACE Boolean expression SHALL be False.
+Figure 8  Access Control
+
+

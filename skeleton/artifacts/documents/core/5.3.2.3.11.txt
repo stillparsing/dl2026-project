@@ -1,0 +1,4 @@
+5.3.2.3.11 LastID
+For object tables, this value is the most recent uid assigned to an object in that table.  For byte tables,
+this value SHALL be the null uid.
+This column SHALL NOT be modifiable by the host.

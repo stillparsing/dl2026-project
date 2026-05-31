@@ -1,0 +1,8 @@
+5.1.3.84 uinteger_128
+This is a uinteger type with a size restriction of 128 bytes.
+Table 148 uinteger_128
+```markdown
+| UID                     | Name         | Format                           |
+|-------------------------|--------------|---------------------------------|
+| 00 00 00 05 00 00 02 12 | uinteger_128 | Simple_Type, uinteger, 128      |
+```

@@ -1,0 +1,4 @@
+5.4.2.3.4 CryptoOp
+This is the name of the crypto operation being timed for this CryptoType/CryptoLen combination (i.e.,
+KeyGen, Encrypt, Decrypt, Sign, Verify, Hash)
+This column SHALL NOT be modifiable by the host.

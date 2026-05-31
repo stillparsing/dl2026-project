@@ -1,0 +1,8 @@
+3.3.6.6 Common SSC feature information
+This information is supplied as part of every reported SSC feature.
+Table 44 Common SSC Information
+```markdown
+| Bit Bytes | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0                           |
+|-----------|---|---|---|---|---|---|---|------------------------------|
+| 0 - 15    |   |   |   |   |   |   |   | Reserved for common SSC parameters |
+```

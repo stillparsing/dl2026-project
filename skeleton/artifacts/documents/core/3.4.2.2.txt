@@ -1,0 +1,30 @@
+3.4.2.2 Authorities
+An authority is an object in the Authority table.  An authority is one of two kinds: Individual or Class.
+Each individual authority MAY be a member of one class authority.  A class authority MAY be a
+member of one class authority.  A class authority SHALL NOT refer directly to a credential.  An
+individual authority specifies one credential and one operation that uses that credential.
+Begin Informative Content
+Class authorities are a convenient way to allow an ACE to be set on a method without enumerating all
+the individual authorities that authorize that method. This means that the individual authorities that
+belong to that class authority are able to be changed without having to change any of the ACEs that
+refer to the class authority.
+End Informative Content
+A class authority SHALL be authenticated when any member of the class is authenticated. Class
+authorities SHALL NOT be directly authenticated.
+•
+A credential is an object in a Credential table.  All credential tables have a name that starts with
+"C_".  A credential table SHALL have at least one column that stores a secret.  It MAY also
+have “public” parts, which contain information such as public keys and certificates.  A particular
+credential MAY have only some of its columns filled in.  For example, if only a public key and
+certificates validating that public key are known, then the private key columns are unused
+(zeroes in these columns indicate that this information is not present).
+Authentication to an authority SHALL occur within a session or during session startup, and SHALL
+apply only to that session. All authorities that participate in successful session startup are authenticated
+for that session.  During a session the host MAY make any number of Authenticate method
+invocations.  There MAY be Security Subsystem Class-defined TPer and per session limits on the
+maximum number of authorities that MAY be authenticated at any one time.
+A set of authorities is defined by this specification. The AdminExch authority, of the class Admins, is
+one such pre-defined authority.  Every SP has an AdminExch authority at time of issuance.  SSCs MAY
+specify authorities in addition to these, or MAY restrict the use of the authorities specified in this
+document.
+For details regarding the Admins authority and other pre-defined authorities, refer to 5.3.4.1.2.

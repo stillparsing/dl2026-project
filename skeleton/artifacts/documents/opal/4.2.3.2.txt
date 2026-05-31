@@ -1,0 +1,28 @@
+4.2.3.2 Template (M)
+The Template table is defined in [2], and Table 28 defines the Preconfiguration Data for the Template table.
+Table 28 - Admin SP - Template Table Preconfiguration
+```json
+[
+    {
+        "UID": "00 00 02 04 00 00 00 01",
+        "Name": "Base",
+        "Revision Number": "1",
+        "Instances": "VU",
+        "MaxInstances": "VU"
+    },
+    {
+        "UID": "00 00 02 04 00 00 00 02",
+        "Name": "Admin",
+        "Revision Number": "1",
+        "Instances": "1",
+        "MaxInstances": "1"
+    },
+    {
+        "UID": "00 00 02 04 00 00 00 06",
+        "Name": "Locking",
+        "Revision Number": "1",
+        "Instances": "1",
+        "MaxInstances": "1"
+    }
+]
+```

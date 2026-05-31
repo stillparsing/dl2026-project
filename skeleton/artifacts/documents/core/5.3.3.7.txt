@@ -1,0 +1,12 @@
+5.3.3.7 Basic Table Method Group - Set (Table and Object Method)
+This method is used to change the values of selected table cells (see 5.3.4.2.6).
+TableUID.Set [
+ObjectUID.Set [
+
+Where = row_address,
+
+Values = typeOr { Bytes : bytes, RowValues : list [ ColumnNumber = <type of
+column> ... ] } ]
+=>
+[ ]
+

@@ -1,0 +1,7 @@
+5.8.2.2.5 Serial
+This is the cursor for the associated Log table. The log is circular. The Serial column value is the UID
+column value of the most recently added entry in the Log table, and is updated for each log entry, in the
+order defined by the Next column values in the Log table. Any row of the Log table that has LogKind =
+0 marks that row as free and unused. At Log table creation, before any log entries have been added,
+the Serial column value SHALL be the null uid.
+This column SHALL NOT be modifiable by the host.

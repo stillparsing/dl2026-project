@@ -1,0 +1,4 @@
+5.8.2.2.3 CommonName
+This is a name that MAY be shared by multiple Log tables.
+This column SHALL NOT be modifiable by the host.
+

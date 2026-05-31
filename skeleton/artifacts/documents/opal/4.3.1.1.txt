@@ -1,0 +1,17 @@
+4.3.1.1 SPInfo (M)
+The SPInfo table is defined in [2], and Table 34 defines the Preconfiguration Data for the SPInfo table.
+Table 34 - Locking SP - SPInfo Table Preconfiguration
+
+```json
+[
+    {
+        "UID": "00 00 00 02 00 00 00 01",
+        "SPID": "00 00 02 05 00 00 00 02",
+        "Name": "Locking",
+        "Size": "",
+        "SizeInUse": "",
+        "SPSessionTimeout": "",
+        "Enabled": "T"
+    }
+]
+```

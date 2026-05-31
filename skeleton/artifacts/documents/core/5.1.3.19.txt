@@ -1,0 +1,6 @@
+5.1.3.19 bytes_32
+This is a bytes type with a size requirement of 32.
+Table 69 bytes_32
+| UID                       | Name        | Format                  |
+|---------------------------|-------------|-------------------------|
+| 00 00 00 05 00 00 02 05   | bytes_32    | Simple_Type, bytes, 32  |

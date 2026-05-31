@@ -1,0 +1,12 @@
+4.3.5.2.2 LockOnReset Restrictions
+The TPer SHALL support the following LockOnReset column values:
+a)
+{ 0 } (i.e. Power Cycle); and
+b)
+{ 0, 3 } (i.e. Power Cycle and Programmatic).
+
+Additionally, the TPer MAY support the following LockOnReset column values:
+a)
+{ 0, 1 } (i.e. Power Cycle and Hardware Reset); and
+b)
+{ 0,1, 3 } (i.e. Power Cycle, Hardware Reset and Programmatic).

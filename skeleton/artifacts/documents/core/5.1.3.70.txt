@@ -1,0 +1,6 @@
+5.1.3.70 SPTemplates_object _ref
+The SPTemplates_object _ref type describes a uidref to an object in the SPTemplates table.
+Table 131 SPTemplates_object _ref
+| UID                          | Name                  | Format                     |
+|------------------------------|-----------------------|----------------------------|
+| 00 00 00 05 00 00 0C 01      | SPTemplates_object_ref | Restricted_Reference_Type{6}, uidref{SPTemplatesTableUID} |

@@ -1,0 +1,13 @@
+5.1.3.10 boolean
+The boolean column type is an enumeration used to represent True or False.
+Table 58 boolean
+| UID                      | Name    | Format          |
+|--------------------------|---------|-----------------|
+| 00 00 00 05 00 00 04 01  | boolean | Enumeration_Type, 0, 1 |
+
+The enumeration values are associated as defined in Table 59.
+Table 59 boolean Enumeration Values
+| Enumeration Value | Associated Value |
+|------------------|------------------|
+| 0                | False            |
+| 1                | True             |

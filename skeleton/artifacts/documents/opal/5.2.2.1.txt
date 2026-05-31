@@ -1,0 +1,9 @@
+5.2.2.1 State definitions for Manufactured SPs
+1. Manufactured-Inactive: This is the Original Factory State for SPs that are created in manufacturing, where it is
+not desired for the functionality of that SP to be active when the TPer is shipped.  All templates that exist in an SP
+that is in the Manufactured-Inactive state SHALL be counted in the Instances column of the appropriate objects
+in the Admin SP’s Template table.  Sessions cannot be opened to SPs in the Manufactured-Inactive state.  Only
+SPs whose Original Factory State was Manufactured-Inactive can return to the Manufactured-Inactive state.
+2. Manufactured: This is the standard operational state of a Manufactured SP, and defines the initial required access
+control settings of an SP based on the Templates incorporated into the SP, prior to personalization.
+The Manufactured state is Mandatory for the Admin SP.

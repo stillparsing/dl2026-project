@@ -1,0 +1,36 @@
+# Python caches and local environments
+__pycache__/
+.ipynb_checkpoints/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Evaluation outputs
+predictions.jsonl
+scores.json
+*.log
+
+# Local caches and model files
+.cache/
+.huggingface/
+hf_cache/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local-only notes
+progress.md
+
+# Public/local dataset is useful for development but should not be pushed.
+dataset/
+
+# Assignment handout kept locally.
+project.pdf.pdf

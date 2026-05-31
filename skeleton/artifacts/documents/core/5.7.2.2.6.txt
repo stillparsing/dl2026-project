@@ -1,0 +1,7 @@
+5.7.2.2.6 ReadLockEnabled
+The value of this column determines whether or not the read-locking feature is enabled for this LBA
+range and indicates whether or not the ReadLocked column value is meaningful for this range.  If the
+value of the ReadLockEnabled column is False, the read-locking feature is disabled, and the value of
+the ReadLocked column is disregarded.  If the value of the ReadLockEnabled column is True, the read-
+locking feature is enabled, and the value of the ReadLocked column identifies the current read locking
+state.

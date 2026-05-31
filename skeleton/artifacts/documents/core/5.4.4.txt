@@ -1,0 +1,6 @@
+5.4.4 Descriptions
+There SHALL be exactly one Admin SP on every TPer that has SPs.  The Admin SP SHALL NOT be
+able to be disabled or deleted.
+For TPers that have SPs when a TPer is shipped from the manufacturer there SHALL be two or more
+predefined Templates and at least one SP (the Admin SP).  There MAY also be additional SPs issued
+on the TPer during the manufacturing process.

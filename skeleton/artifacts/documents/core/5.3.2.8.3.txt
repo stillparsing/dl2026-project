@@ -1,0 +1,4 @@
+5.3.2.8.3 ColumnNumber
+This is a column number.  This number represents a column in table (as identified in the Table column),
+which is protected using the mechanism(s) specified in the ProtectMechanisms column.
+This column SHALL NOT be modifiable by the host.

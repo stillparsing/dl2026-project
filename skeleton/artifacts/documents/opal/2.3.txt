@@ -1,0 +1,7 @@
+2.3 Interface Communication Protocol
+An Opal SSC compliant Storage Device SHALL implement the synchronous communications protocol as defined in
+Section 3.3.4.
+This communication protocol operates based upon configuration information defined by:
+1) the values reported via Level 0 Discovery (see section 3.1.1);
+The combination of the host's communication properties and the TPer's communication properties (see section
+4.1.1.1).

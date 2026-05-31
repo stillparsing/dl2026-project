@@ -1,0 +1,36 @@
+3.3.7.1.5 Ending Sessions
+The Host or TPer is free at any time to end a session in which it is participating, but only the host
+SHALL end the session successfully.
+The session SHALL NOT be considered successfully closed until the party receiving the end of session
+request has responded indicating whether or not it was able to comply with the session ending request.
+Thus, a session is successfully ended when the TPer receives an End of Session token (see section
+3.2.2.2) from the host and prepares a response with an End of Session token, and when transmission
+acknowledgement for ending the session has been performed as noted in Section 3.3.9.5 (if
+transmission acknowledgement is in use).
+The host SHOULD NOT encode additional tokens after the End of Session token in a subpacket.
+Additional tokens encoded after an End of Session token SHALL be ignored by the TPer.
+When a session closes, TPer resources that had been reserved for use with that session SHALL be
+released.  The release of resources is not dependent on whether the session closed successfully or
+unsuccessfully – the end of the session releases the resources.
+Sessions end unsuccessfully (abort) in a number of ways.  These include (but are not limited to):
+a. If the TPer detects any violation of flow control.
+b. If the host does not (or is unable to) send any additional packets to the TPer, and sends no
+other communications, the TPer would time out while waiting for the communication from
+the host.
+c. One of the communicators reached its implementation-specific limit on the number of times
+it re-sends a packet (due to negative acknowledgements or transmission timeouts while
+waiting for acknowledgement).
+If a session is ended in the middle of the transmission of a method call or its parameters, then the
+method call SHALL be aborted in addition to the session being aborted. This is considered a fatal
+session error indicating a communication synchronization error (or worse).
+An aborted session causes the following to occur:
+1. All uncommitted transactions SHALL be aborted.
+2. All method processing for that session SHALL be aborted;
+3. The TPer MAY transmit a CloseSession method on the Session Manager layer.
+When a session is aborted, open transactions within that session SHALL be aborted, and any method
+currently executing SHALL fail in its entirety.
+The CloseSession method allows the TPer to notify the host that it has aborted a session.  The TPer
+MAY send a CloseSession method on the Session Manager layer when it aborts a session.  This is
+done by the TPer to notify the host that the TPer is ending the session.
+Hardware resets and power cycles SHALL cause all open sessions to abort.
+The host is able to abort a session by sending an End of Session token to the TPer.

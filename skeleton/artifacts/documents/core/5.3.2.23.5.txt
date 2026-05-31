@@ -1,0 +1,2 @@
+5.3.2.23.5 k2
+Middle non-leading, non-constant term of irreducible pentanomial

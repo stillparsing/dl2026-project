@@ -1,0 +1,9 @@
+5.2.3.5 CloseSession Method
+This method SHALL only be transmitted by the TPer.  The TPer MAY transmit this method to notify the
+host that it is aborting the session identified in the CloseSession method, as well as all open un-
+committed transactions and methods undergoing processing (see 3.3.7.1.5).
+SMUID.CloseSession [
+RemoteSessionNumber : uinteger,
+LocalSessionNumber : uinteger ]
+
+

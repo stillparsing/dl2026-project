@@ -1,0 +1,12 @@
+5.3.2.27 Credential Table Group – C_HMAC_256 (Object Table)
+Table 206 C_HMAC_256 Table Description
+```markdown
+| Column Number | Column Name | IsUnique | Column Type     |
+|--------------|-------------|----------|-----------------|
+| 0x00         | UID         |          | uid             |
+| 0x01         | Name        | Yes      | name            |
+| 0x02         | CommonName  | Yes      | name            |
+| 0x03         | Key         |          | bytes_32        |
+| 0x04         | Hash        |          | hash_protocol   |
+```
+ 

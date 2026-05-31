@@ -1,0 +1,33 @@
+3.3.4 Protocol Layers
+Begin Informative Content
+In order to describe the overall process for establishing communication with the TPer and initiating a
+session to an SP, it is necessary to partition the protocol stack into layers.   The commands in each
+layer differ in the amount of functionality available.  The lower level allows only one-way communication
+(TPer to host) and uses only simplistic byte field responses.  The higher layers have two-way
+communication and use packets and methods.
+Figure 5  depicts the protocol layers.
+Figure 5  TPer-Host Communication Protocol Layers
+
+
+a. Session layer:  This layer is entered when a session is successfully established between
+the host application and an SP in the TPer.  Most of the commands and functionality
+Payloads in this layer are packetized and tokenized.
+b. Management layer:  This layer deals with establishing a session between an SP and a
+host application.  Payloads in this layer are packetized and tokenized.
+c. Communication (Com) layer:  In this layer the host application already has an assigned
+ComID that is used for establishing two-way communication.  It is a bidirectional
+communication/control layer.   This layer is used for management of ComIDs and dealing
+with error conditions and other Storage Device management issues.
+d. TPer layer:  This is the first entry point to the TPer.  This is a “one-way” communication
+layer.  That is, only IF-RECV commands are dealt with in this layer.  The host application
+does not have a ComID yet.  There is a set of reserved ComIDs that is used to invoke
+special commands at this layer.
+e. Interface layer: This portion of the stack contains the protocol for allowing the host to
+control a specific Storage Device.  The interface protocol must support IF-SEND and IF-
+RECV, i.e., have commands with the properties that are required for these TCG
+commands.
+f.
+Transport layer:  This portion of the stack is responsible for transporting the data from one
+particular host to one particular Storage Device and vice-versa.  An example is Fibre
+Channel.
+End Informative Content

@@ -1,0 +1,3 @@
+5.2.3.1.3 Write
+The Write parameter determines the type of session that is being started.  This value SHALL be True
+when a Read-Write session is requested and False when a Read-Only session is requested.

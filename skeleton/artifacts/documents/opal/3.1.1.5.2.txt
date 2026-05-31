@@ -1,0 +1,3 @@
+3.1.1.5.2 Number of ComIDs
+The Number of ComIDs field provides the number of static, pre-assigned ComIDs.
+

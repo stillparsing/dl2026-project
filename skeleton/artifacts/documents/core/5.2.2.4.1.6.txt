@@ -1,0 +1,6 @@
+5.2.2.4.1.6 MaxAggTokenSize
+The host SHOULD NOT send an aggregate token whose size (including token header) is greater than
+the TPer’s MaxAggTokenSize property. If the TPer encounters a token that is too long, the TPer’s
+response is defined in section 5.2.2.4.3.
+The TPer SHALL NOT send an aggregate token whose size (including token header) is greater than
+the host’s MaxAggTokenSize property.

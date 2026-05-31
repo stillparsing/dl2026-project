@@ -1,0 +1,14 @@
+5.2.3.2 SyncSession Method
+The SyncSession is returned by the TPer in response to invocation of the StartSession method by the
+host.
+SMUID.StartSession [ see StartSession definition in 5.2.3.1]
+=>
+SMUID.SyncSession [
+HostSessionID : uinteger,
+SPSessionID : uinteger,
+SPChallenge = bytes,
+SPExchangeCert = bytes,
+SPSigningCert = bytes,
+TransTimeout = uinteger,
+InitialCredit = uinteger,
+SignedHash = bytes ]

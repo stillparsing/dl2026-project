@@ -1,0 +1,5 @@
+5.5.3.1.13 MonotonicReserve
+The value of this column indicates the frequency that the value of the MonotonicBase column is
+updated.  The value of MonotonicIncrement is added to MonotonicBase whenever MonotonicIncrement
+== MonotonicReserve.
+This column SHALL NOT be modifiable by the host.

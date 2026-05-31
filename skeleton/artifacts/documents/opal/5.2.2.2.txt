@@ -1,0 +1,14 @@
+5.2.2.2 State transitions for Manufactured SPs
+The following sections describe the Mandatory and Optional state transitions for Opal SSC-compliant
+Manufactured SPs.
+For the Admin SP, the only transition for which support is mandatory is “ANY STATE to ORIGINAL FACTORY STATE”
+(see section 5.2.2.2.2).  As the only mandatory state for the Admin SP is Manufactured, the only mandatory transition
+is from Manufactured to Manufactured with the side effect of reverting the entire TPer to its Original Factory State.
+See section 5.1.2 for details.
+If the Locking SP is a Manufactured SP, support for the “ANY STATE to ORIGINAL FACTORY STATE” transition (see
+section 5.2.2.2.2) is Mandatory.  Specifically, support for the transition from Manufactured to either Manufactured-
+Inactive or Manufactured is Mandatory, depending on the Locking SP’s Original Factory State.  This transition is
+accomplished via the Revert or RevertSP method (see sections 5.1.2 and 5.1.2.3).
+If the Locking SP’s Original Factory State is Manufactured-Inactive, then support for the “Manufactured-Inactive to
+Manufactured” transition (see section 5.2.2.2.1) is Mandatory.  This transition is accomplished via the Activate
+method (see section 5.1.1).

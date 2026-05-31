@@ -1,0 +1,5 @@
+5.3.3.1 SP Method Group - DeleteSP (SP Method)
+This method is used to delete the SP to which the DeleteSP method has been invoked (see 5.3.4.4).
+ThisSP.DeleteSP[]
+=>
+[  ]

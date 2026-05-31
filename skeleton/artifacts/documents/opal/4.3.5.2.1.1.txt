@@ -1,0 +1,19 @@
+4.3.5.2.1.1 RangeStart Behavior
+This column value defines the starting LBA value for this range. In non-Global Range rows, this column MAY be
+modifiable based on access control settings. Changes to this column are subject to the same constraints and
+checks defined for this column when rows of the Locking table are created (see [2]).
+When processing a Set method or CreateRow method on the Locking table for a non-Global Range row, if:
+a)
+the AlignmentRequired column in the LockingInfo table is TRUE;
+b)
+RangeStart is non-zero; and
+c)
+StartAlignment (see Figure 1) is non-zero,
+then the method SHALL fail and return an error status code INVALID_PARAMETER.
+Figure 1 - StartAlignment Calculation
+
+StartAlignment = (RangeStart - LowestAlignedLBA) modulo AlignmentGranularity
+where:
+LowestAlignedLBA and AlignmentGranularity are columns in the LockingInfo table (see
+section 4.3.5.1)
+

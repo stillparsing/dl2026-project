@@ -1,0 +1,6 @@
+5.3.3.7.4 Fails
+a. If the table/object doesn’t exist.
+b. If an attempt is made to change the value of an UID or other system cell.
+c. If an attempt is made to set a cell to a value larger than that cell’s type allows.
+d. If the method is invoked on a byte table and the Values parameter contains column values
+e. Set is restricted by an access control limitation on any of the rows and columns requested.

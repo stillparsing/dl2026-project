@@ -1,0 +1,16 @@
+2.3.2 SP Issuance & Personalization Overview
+Begin Informative Content
+When TPers are capable of SP issuance, special resources called templates are required. Templates
+define the initial tables and methods upon which new SPs are based when issued.
+The Base Template provides to SPs the tables and methods required for authentication and access
+control management.  SPs are built from a combination of templates, and always include at least a
+subset of the Base Template. Some templates that extend the capabilities provided by the Base
+Template are: Admin Template, Clock Template, Crypto Template, Locking Template, and Log
+Template.
+All SPs incorporate at least a subset of the Base Template’s tables and methods.
+Personalization is the customization of a newly created SP. The primary purposes of personalization
+are modification of the SP’s initial table data and/or the administrative authority on that specific SP, as
+well as creating additional authorities and customization of the default access control settings.
+Personalization typically refers to the initial customization of an SP, but the personalization process
+continues throughout the life of an SP.
+End Informative Content

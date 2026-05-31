@@ -1,0 +1,7 @@
+5.3.2.5.5 Size
+This is the size (in bytes) needed to store a value of this type.  The value of the Size column includes
+any necessary overhead (such as for bytes{max=<n>}, for tagging a value of an Alternative_Type,
+etc.  The TPer calculates the value of this column.  It is an error for the host to specify a value for this
+column in the CreateRow method invocation.  This value SHALL be 0 for a base type (integer, uinteger,
+bytes, max bytes).
+This column SHALL NOT be modifiable by the host.

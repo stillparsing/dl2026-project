@@ -1,0 +1,6 @@
+5.1.3.56 Minute
+Name-value pair that has a Name of "" and takes minute_enum as the value.
+Table 114 Minute
+| UID                      | Name   | Format                    |
+|--------------------------|--------|---------------------------|
+| 00 00 00 05 00 00 14 05  | Minute | Name_Value_Uinteger_Type, 4, minute_enum |

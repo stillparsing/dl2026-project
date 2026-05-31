@@ -1,0 +1,10 @@
+3.3.6.1 IF-SEND Command
+IF-SEND command, with
+
+Protocol ID = 0x01
+
+ComID = 0x0001
+
+Transfer Length= (any length)
+There is no IF-SEND command defined for Level 0 Discovery, so the TPer SHALL transfer all of the
+data from the host, SHALL discard it, and return ’good’ status to the host.

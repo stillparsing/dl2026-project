@@ -1,0 +1,12 @@
+5.1.3.5 ACL
+The ACL type is a list of uidrefs to ACE objects.  The length of the list, and therefore the number of
+ACEs that MAY be included in a single Access Control List, is SSC/implementation dependant.
+Table 50 ACL
+```markdown
+| Column Number | Column Name | IsUnique | Column Type |
+|---------------|-------------|----------|-------------|
+| 0x00          | UID         |          | acl         |
+| 0x01          | ACE         |          | ace_object_ref |
+| 0x02          | Active      |          | boolean     |
+
+```

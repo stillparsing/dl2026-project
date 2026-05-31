@@ -1,0 +1,2 @@
+5.5.4.1.1.4 MonotonicTime
+This value is the current value of the monotonic counter.  See 5.5.5.2

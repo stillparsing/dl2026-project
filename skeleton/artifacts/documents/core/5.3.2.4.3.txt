@@ -1,0 +1,5 @@
+5.3.2.4.3 CommonName
+This is a name that MAY be shared among multiple table descriptor objects.  The value of the
+CommonName column for rows that exist upon issuance is the name of the template (from the
+SPTemplates table) to which that column belongs.
+This column SHALL NOT be modifiable by the host for tables that are created during issuance.

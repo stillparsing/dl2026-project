@@ -1,0 +1,24 @@
+1.3.6 Numbering Conventions
+A binary number is represented in this specification by any sequence of digits consisting of only the Western-Arabic
+numerals 0 and 1 immediately followed by a lowercase b (e.g., 0101b). Underscores or spaces may be included
+between characters in binary number representations to increase readability or delineate field boundaries
+(e.g., 0 0101 1010b or 0_0101_1010b).
+
+A hexadecimal number is represented in this specification by any sequence of digits consisting of only the Western-
+Arabic numerals 0 through 9 and/or the uppercase English letters A through F immediately preceded by “0x”.
+Underscores or spaces may be included between characters in hexadecimal number representations to increase
+readability or delineate field boundaries (e.g., 0xFD8C FA23 or 0x0B_FD8C_FA23). Hexadecimal numbers are in
+Courier New font.
+
+A decimal number is represented in this specification by any sequence of digits consisting of only the Western-Arabic
+numerals 0 through 9 not immediately followed by a lowercase b or lowercase h (e.g., 25). This specification uses the
+following conventions for representing decimal numbers:
+a) the decimal separator (i.e., separating the integer and fractional portions of the number) is a period;
+b) the thousands separator (i.e., separating groups of three digits in a portion of the number) is a space; and
+c) the thousands separator is used in both the integer portion and the fraction portion of a number.
+
+A decimal number represented in this specification with an overline over one or more digits following the decimal point
+is a number where the overlined digits are infinitely repeating (e.g., 666.6ത Error! Bookmark not defined.means
+666.666 666… or 666 2/3, and 12.142857
+തതതതതതതതതത means 12.142 857 142 857… or 12 1/7).
+

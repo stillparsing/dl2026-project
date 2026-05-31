@@ -1,0 +1,7 @@
+5.6.3 Data Structures
+Begin Informative Content
+The Crypto Template provides tables similar to the Credential tables described by the Base and other
+Templates.  However, unlike those Credential tables, which represent key stores for authentication
+associations, the Crypto Template’s tables are Credential support tables optimized for incremental on-
+TPer operations.
+End Informative Content

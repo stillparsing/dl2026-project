@@ -1,0 +1,8 @@
+5.3.3.4.3 Fails
+a. When the table is full (i.e. MaxSize of the table was reached).
+b. If a row where the unique column value combination already exists that is the same as that
+requested in the method
+c. Columns specified are not part of table definition.
+d. Attempts to create more rows than are able to be allocated
+e. If all required associated rows are not able to be created in all related tables (i.e. the Table,
+AccessControl, Column, and ACE tables)

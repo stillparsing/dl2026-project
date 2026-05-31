@@ -1,0 +1,7 @@
+5.7.2.2.19 LastReEncStat
+This column value defines the last good re-encryption read-modify-write-verify sequence. This column
+value is only valid when the ReencryptState is COMPLETED, PENDING or PAUSED. When the
+LastReEncStat value is anything other than SUCCESS, the value of LastReEncryptLBA+1 is the LBA
+in error or the LBA located at RangeStart if LastReEncryptLBA contains 0xFFFFFFFF_FFFFFFFF.  Valid
+values are defined in table Table 101.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,8 @@
+5.1.3.55 messaging_type
+This enumeration is used to describe the options for selecting secure messaging.
+Table 113 messaging_type
+```markdown
+| UID                         | Name            | Format                          |
+|-----------------------------|-----------------|--------------------------------|
+| 00 00 00 05 00 00 04 04     | messaging_type  | Enumeration_Type, 0, 255       |
+```

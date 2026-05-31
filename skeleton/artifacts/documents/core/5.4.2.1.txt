@@ -1,0 +1,50 @@
+5.4.2.1 TPer Metadata Group - TPerInfo (Object Table)
+The table in this section describes the metadata that the Admin SP stores about the TPer.  The
+TPerInfo table SHALL contain exactly one row that is always readable by the Anybody authority.
+Table 211 TPerInfo Table Description
+```markdown
+| Column Number | Column Name      | IsUnique | Column Type   |
+|--------------:|------------------|---------:|--------------:|
+| 0x00          | UID              |          | uid           |
+| 0x01          | Bytes            |          | uinteger_8    |
+| 0x02          | GUDID            |          | bytes_12      |
+| 0x03          | Generation       |          | uinteger_4    |
+| 0x04          | FirmwareVersion  |          | uinteger_4    |
+| 0x05          | ProtocolVersion  |          | uinteger_4    |
+| 0x06          | SpaceForIssuance |          | uinteger_8    |
+| 0x07          | SSC              |          | SSC           |
+```
+
+Column Number Column Name
+IsUnique Column Type
+0x00
+UID
+
+uid
+0x01
+Bytes
+
+uinteger_8
+0x02
+GUDID
+
+bytes_12
+0x03
+Generation
+
+uinteger_4
+0x04
+FirmwareVersion
+
+uinteger_4
+0x05
+ProtocolVersion
+
+uinteger_4
+0x06
+SpaceForIssuance
+uinteger_8
+0x07
+SSC
+
+SSC

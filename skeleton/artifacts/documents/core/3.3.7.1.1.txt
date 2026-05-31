@@ -1,0 +1,11 @@
+3.3.7.1.1 Regular Sessions
+Each Regular Session is identified by a distinct Session Number (SN).  The SN is an 8-byte quantity
+composed of two subparts: the TPer Session Number (TSN) and the Host Session Number (HSN),
+each of which has 4 bytes.  This is the value used in a packet's Session field.
+SN =  (TSN, HSN)
+The HSN is assigned by the HSM.  The HSM MAY assign HSNs in such a way as to make them unique
+for all of its communications with one or more TPers.
+The TSN is assigned by the TSM.  The TSM SHALL guarantee that all Regular Sessions associated
+with a particular ComID are assigned a different TSN.  In addition, the TSM SHALL NOT assign any
+TSN in the range 0 to 4095 to a regular session.  These TSNs are reserved by TCG for special
+sessions, of which the control session (0) is the only one currently defined.

@@ -1,0 +1,82 @@
+4.3.1.9 C_PIN (M)
+Table 41 includes Optional rows designated with (O)
+Notes:
+1. If the Locking SP's original life cycle state is Manufactured-Inactive, see 5.1.1.2 for the initial value of
+C_PIN_Admin1.PIN. If the Locking SP's original life cycle state is Manufactured, then the initial value of
+C_PIN_Admin1.PIN is the same as the Admin SP's C_PIN_MSID.PIN value.
+Table 41 - Locking SP - C_PIN Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 0B 00 01 00 01",
+        "Name": "C_PIN_Admin1",
+        "CommonName": "",
+        "PIN": "SID or MSID (1)",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 01 00 02",
+        "Name": "C_PIN_Admin2",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 01 00 03",
+        "Name": "C_PIN_Admin3",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 01 00 04",
+        "Name": "C_PIN_Admin4",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 01 00 00 (+XX XX)",
+        "Name": "C_PIN_AdminXXXX",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 03 00 01",
+        "Name": "C_PIN_User1",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    },
+    {
+        "UID": "00 00 00 0B 00 03 00 00 (+MM MM)",
+        "Name": "C_PIN_UserMMMM",
+        "CommonName": "",
+        "PIN": "\"\"",
+        "CharSet": "Null",
+        "TryLimit": 0,
+        "Tries": 0,
+        "Persistence": "FALSE"
+    }
+]
+```
+

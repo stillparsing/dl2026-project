@@ -1,0 +1,12 @@
+4.2.7.1 DataRemovalMechansim (M)
+The DataRemovalMechanism table SHALL contain exactly one row with UID = 0x00 00 11 01 00 00 00 01.
+The DataRemovalMechanism table SHALL be supported (see Table 33).
+Table 33 - Admin SP – DataRemovalMechansim Table Preconfiguration
+```json
+[
+    {
+        "UID": "00 00 11 01 00 00 00 01",
+        "ActiveDataRemovalMechanism": "VU"
+    }
+]
+```

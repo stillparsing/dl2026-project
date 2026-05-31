@@ -1,0 +1,63 @@
+4.1.1.1 Properties (M)
+An Opal SSC compliant Storage Device SHALL support the Properties method.  The requirements for support of
+the various TPer and Host properties, and the requirements for their values, are shown in Table 17.
+Table 17 - Properties Requirements 
+```json
+[
+    {
+        "Property Name": "MaxComPacketSize",
+        "TPer Property Requirements and Values Reported": "(M)\n2048 minimum",
+        "Host Property Requirements and Values Accepted": "(M)\nInitial Assumption: 2048\nMinimum allowed: 2048\nMaximum allowed: VU"
+    },
+    {
+        "Property Name": "MaxResponseComPacketSize",
+        "TPer Property Requirements and Values Reported": "(M)\n2048 minimum",
+        "Host Property Requirements and Values Accepted": "(N)\nAlthough this is a legal host\nproperty, there is no requirement\nfor the TPer to use it. The TPer\nMAY ignore this host property\nand not list it in the\nHostProperties result of the\nProperties method response."
+    },
+    {
+        "Property Name": "MaxPacketSize",
+        "TPer Property Requirements and Values Reported": "(M)\n2028 minimum",
+        "Host Property Requirements and Values Accepted": "(M)\nInitial Assumption: 2028\nMinimum allowed: 2028\nMaximum allowed: VU"
+    },
+    {
+        "Property Name": "MaxIndTokenSize",
+        "TPer Property Requirements and Values Reported": "(M)\n1992 minimum",
+        "Host Property Requirements and Values Accepted": "(M)\nInitial Assumption: 1992\nMinimum allowed: 1992\nMaximum allowed: VU"
+    },
+    {
+        "Property Name": "MaxPackets",
+        "TPer Property Requirements and Values Reported": "(M)\n1 minimum",
+        "Host Property Requirements and Values Accepted": "(M)\nInitial Assumption: 1\nMinimum allowed: 1\nMaximum allowed: VU"
+    },
+    {
+        "Property Name": "MaxSubpackets",
+        "TPer Property Requirements and Values Reported": "(M)\n1 minimum",
+        "Host Property Requirements and Values Accepted": "(M)\nInitial Assumption: 1\nMinimum allowed: 1\nMaximum allowed: VU"
+    },
+    {
+        "Property Name": "MaxMethods",
+        "TPer Property Requirements and Values Reported": "(M)\n1 minimum",
+        "Host Property Requirements and Values Accepted": "(M)\nInitial Assumption: 1\nMinimum allowed: 1\nMaximum allowed: VU"
+    },
+    {
+        "Property Name": "MaxSessions",
+        "TPer Property Requirements and Values Reported": "(M)\n1 minimum",
+        "Host Property Requirements and Values Accepted": "N/A – not a host property"
+    },
+    {
+        "Property Name": "MaxAuthentications",
+        "TPer Property Requirements and Values Reported": "(M)\n2 minimum",
+        "Host Property Requirements and Values Accepted": "N/A – not a host property"
+    },
+    {
+        "Property Name": "MaxTransactionLimit",
+        "TPer Property Requirements and Values Reported": "(M)\n1 minimum",
+        "Host Property Requirements and Values Accepted": "N/A – not a host property"
+    },
+    {
+        "Property Name": "DefSessionTimeout",
+        "TPer Property Requirements and Values Reported": "(M)\nVU",
+        "Host Property Requirements and Values Accepted": "N/A – not a host property"
+    }
+]
+```

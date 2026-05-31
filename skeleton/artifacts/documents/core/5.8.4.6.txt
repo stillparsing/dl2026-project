@@ -1,0 +1,8 @@
+5.8.4.6 Default Logging Settings
+The default logging settings associated with the Log Template methods are:
+a. The default logging setting for the Delete object method on objects in the LogList table is
+LogAlways.
+b. The default logging setting for the ClearLog method on all Log tables is LogAlways.
+c. All other methods that apply to the Log and LogList tables are as described in the Base
+Template reference section (See Section 5.3.4.4).
+

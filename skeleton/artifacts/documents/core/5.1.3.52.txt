@@ -1,0 +1,10 @@
+5.1.3.52 max_bytes_64
+This is a max bytes type that provides a maximum size of 64.
+Table 110 max_bytes_64
+```markdown
+| UID                      | Name         | Format             |
+|--------------------------|--------------|--------------------|
+| 00 00 00 05 00 00 02 0E  | max_bytes_64 | Simple_Type,       |
+|                          |              | max_bytes,         |
+|                          |              | 64                 |
+```

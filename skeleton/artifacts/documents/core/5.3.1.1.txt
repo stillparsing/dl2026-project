@@ -1,0 +1,18 @@
+5.3.1.1 Base Template Tables and Methods Overview
+Begin Informative Content
+Base Template tables are categorically divided into the following groups:
+a. General metadata tables – store an SP’s self-descriptive information, such as SP identification,
+size, and version numbers.
+b. Table and method metadata tables – store data about the tables and methods that make up this
+SP.
+c. Access control tables – define authorities, the secrets and authentication methods those authorities
+require, and the access control associations that permit method operation.
+d. Credential tables – define available encryption/decryption algorithms and authentication
+mechanisms, and also store associated secrets or keys.
+Base Template methods are divided into the following groups:
+a. Basic table – enable creation of tables, addition and deletion of rows to tables, and modification of
+table cell values.
+b. Access control – define which authorities are permitted to successfully invoke which methods and
+modify ACLs.
+End Informative Content
+

@@ -1,0 +1,10 @@
+5.3.3.5 Basic Table Method Group - DeleteRow (Table Method)
+This method is used to delete table rows. This method SHALL NOT be able to be successfully invoked
+on byte tables. See 5.3.4.2.4 for information on deleting table rows and 5.3.4.2.5 for information on
+deleting tables.
+TableUID.DeleteRow [
+
+Rows : list [ uidref ... ] ]
+=>
+[ Result : boolean ]
+

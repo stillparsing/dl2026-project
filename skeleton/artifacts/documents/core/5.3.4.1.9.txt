@@ -1,0 +1,37 @@
+5.3.4.1.9 Session Key Exchange
+If the Host Signing Authority requires secure messaging, session keys are encrypted with the SP
+Exchange Authority’s symmetric key or public key.  If there is no SP Exchange Authority, or if there is
+an SP Exchange Authority but it does not reference a credential, then session keys are encrypted with
+the Host Exchange Authority’s symmetric key.  If there is also no Host Exchange Authority, or if there is
+a Host Exchange Authority but it does not reference an appropriate credential, an error SHALL be
+returned.
+If the SP Signing Authority requires secure messaging, session keys are encrypted with the Host
+Exchange Authority’s symmetric key or public key.  If there is no Host Exchange Authority, or if there is
+a Host Exchange Authority but it does not reference a credential, then session keys are encrypted with
+the SP Exchange Authority’s symmetric key.  If there is also no SP Exchange Authority, or if there is an
+SP Exchange Authority but it does not reference an appropriate credential, an error SHALL be returned.
+If there is no Host Signing Authority, the Host Exchange Authority MAY require secure messaging.  If
+so, session keys are encrypted with the SP Exchange Authority’s symmetric or public key.  If there is no
+SP Exchange Authority, or if there is an SP Exchange Authority but it does not reference a credential,
+then session keys are encrypted with the Host Exchange Authority’s symmetric key.  If the Host
+Exchange Authority does not reference an appropriate credential, an error SHALL be returned.
+If there is no SP Signing Authority, the SP Exchange Authority MAY require secure messaging.  If so,
+session keys are encrypted with the Host Exchange Authority’s symmetric key or public key.  If there is
+no Host Exchange Authority, or if there is a Host Exchange Authority but it does not reference a
+credential, then session keys are encrypted with the SP Exchange Authority’s symmetric key.  If the SP
+Exchange Authority does not reference an appropriate credential, an error SHALL be returned.
+When a key is required for integrity checking, that key SHALL always be exchanged as the
+HostIntegritySessionKey or SPIntegritySessionKey parameters in the StartTrustedSession or
+SyncTrustedSession method invocations.  These keys are not used in the CCM and GCM
+authenticated encryption modes.  When a key is used for message encryption, that key is exchanged
+as the HostEncryptSessionKey or SPEncryptSessionKey, even for authenticated encryption modes.
+For secure messaging modes that use HMAC for message integrity, the following list identifies the size
+of the key that SHALL be exchanged as the integrity session key for the appropriate HMAC usage.
+a. For HMAC using SHA 256:  The integrity session key SHALL be 256 bits.
+b. For HMAC using SHA 384:  The integrity session key SHALL be 384 bits.
+c. For HMAC using SHA 512:  The integrity session key SHALL be 512 bits.
+For integrity algorithms that utilize public key cryptography, the Host uses the private key corresponding
+to the chained down certificate supplied in the StartSession algorithm to sign the hash of the
+message.  The hash protocol for this operation is identified in the host control authority’s credential.
+The SP uses the chained down certificate supplied in the SyncSession algorithm to sign the hash of the
+message.  The hash protocol for this operation is identified in the SP control authority’s credential.

@@ -1,0 +1,25 @@
+3.3.4.1.1 Stream Encoding Modifications
+The TPer SHALL support tokens listed in Table 15. If an unsupported token is encountered, the TPer SHALL treat the
+token as a streaming protocol violation and return an error per the definition in section 3.3.4.1.3.
+
+Table 15 - Supported Tokens
+```json
+[
+    {"Token": "Tiny atom", "Acronym": "N/A"},
+    {"Token": "Short atom", "Acronym": "N/A"},
+    {"Token": "Medium atom", "Acronym": "N/A"},
+    {"Token": "Long atom", "Acronym": "N/A"},
+    {"Token": "Start List", "Acronym": "SL"},
+    {"Token": "End List", "Acronym": "EL"},
+    {"Token": "Start Name", "Acronym": "SN"},
+    {"Token": "End Name", "Acronym": "EN"},
+    {"Token": "Call", "Acronym": "CALL"},
+    {"Token": "End of Data", "Acronym": "EOD"},
+    {"Token": "End of session", "Acronym": "EOS"},
+    {"Token": "Start transaction", "Acronym": "ST"},
+    {"Token": "End of transaction", "Acronym": "ET"},
+    {"Token": "Empty atom", "Acronym": "MT"}
+]
+```
+
+The TPer SHALL support the above token atoms with the B bit set to zero or one and the S bit set to zero.

@@ -1,0 +1,25 @@
+6.2 Reserved UIDs
+The first 216 + 1 uids in each table are reserved for use by the TCG.  This represents reservation of the
+lower 4 bytes of each uid, 0x00 0x00 0x00 0x00 to 0x00 0x01 0x00 0x00 inclusive.  Reservation
+allows categorization of table rows using the lower order bytes of each UID.
+These default UIDs enable grouping for the following purposes:
+a. To categorize rows of the Table table by Template
+b. To categorize rows of the MethodID table by Template
+c. To categorize rows of the Type table by type format
+Each of these categories in each of the respective tables is grouped into 128 categories with 512 UIDs
+reserved for each category.  The following tables identify the values reserved, and the associated
+category for which they are reserved.    For additional information on UID assignment, see section
+3.2.5.3.
+Table 237 MethodID Table and Table Table LSB Value Ranges Assignment
+| Template Name           | Range Start               | Range End                 |
+|------------------------|---------------------------|---------------------------|
+| Unassigned             | 00 00 00 00 00 00 00 00   |                           |
+| Base                   | 00 00 00 01 00 00 02 00   |                           |
+| Admin                  | 00 00 02 01 00 00 04 00   |                           |
+| Clock                  | 00 00 04 01 00 00 06 00   |                           |
+| Crypto                 | 00 00 06 01 00 00 08 00   |                           |
+| Locking                | 00 00 08 01 00 00 0A 00   |                           |
+| Log                    | 00 00 0A 01 00 00 0C 00   |                           |
+| Unassigned             | 00 00 0C 01 00 01 00 00   |                           |
+| Non-reserved non-assigned | 00 01 00 01               | FF FE FF FF               |
+| Vendor unique (upper 64K) | FF FF 00 00               | FF FF FF FF               |

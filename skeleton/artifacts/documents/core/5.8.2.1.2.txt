@@ -1,0 +1,7 @@
+5.8.2.1.2 Prev
+The value of this column is the UID of the log entry (Log table row) added in this table immediately
+preceding the addition of this log entry. If this row represents the first log entry added to the table, then
+this value SHALL be the UID of the Log table row that is the final row used prior to reuse of the first row.
+The value of this column is assigned upon creation of the table, and SHALL be updated only in the
+event that the number of rows present in the table is modified.
+This column SHALL NOT be modifiable by the host.

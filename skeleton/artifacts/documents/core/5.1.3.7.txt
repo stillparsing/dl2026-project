@@ -1,0 +1,19 @@
+5.1.3.7 attr_flags
+This set type describes the types of attributes available for the AttributeFlags column of the Column
+table.
+Table 53 attr_flags
+```markdown
+| UID                      | Name       | Format                     |
+|--------------------------|------------|----------------------------|
+| 00 00 00 05 00 00 1A 04  | attr_flags | Set_Type,                  |
+|                          |            | 0,                         |
+|                          |            | 31                         |
+```
+
+The set values are associated with column behaviors as defined in Table 54.
+Table 54 attr_flags Set Values
+| Set Value | Behavior          |
+|-----------|-------------------|
+| 0         | Get Not Permitted  |
+| 1         | Set Not Permitted  |
+| 2-31      | Reserved          |

@@ -1,0 +1,2 @@
+5.2.2.1.2.1 Properties
+This is a list of property names and values that represent the communications capabilities of the TPer.

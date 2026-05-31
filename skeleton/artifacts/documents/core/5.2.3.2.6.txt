@@ -1,0 +1,14 @@
+5.2.3.2.6 TransTimeout
+The TransTimeout parameter in the SyncSession method is used by the TPer to report the Timeout
+value it SHALL use.  This parameter is used to allow the TPer to provide a transmission timeout value
+for acknowledgement larger than that requested by the host.
+This optional parameter SHALL be greater than or equal to the value of the TransTimeout parameter of
+the StartSession method, unless the TransTimeout parameter of StartSession contained a value
+that was greater than the TPer's MaxTransTimeout property, in which case the SyncSession method
+SHALL indicate a failure result.
+The TransTimeout parameter value (measured in milliseconds) SHALL be less than the TPer's
+MaxTransTimeout property and greater than the TPer's MinTransTimeout property  (see 5.2.2.1).
+If this capability is supported and no value is specified for this parameter in either the StartSession or
+SyncSession methods, then the TPer's default value (identified as the DefTransTimeout response to
+the Properties mehod), SHALL be used as the transmission timeout value.  For more information on
+the transmission timeout mechanism, see 3.3.9.4.

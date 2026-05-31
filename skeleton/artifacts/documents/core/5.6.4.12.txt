@@ -1,0 +1,11 @@
+5.6.4.12 Hash Method Group – Hash (Object Method)
+Invocation of the Hash method causes the data supplied in the Input parameter to be hashed.  The TPer
+hashes the data on block boundaries as they are reached.
+This method SHALL require that the HashInit method has been invoked previously during the session
+to start a hash “stream” for the invoking hash object, and that the HashFinalize method has not yet
+been invoked to close that “stream”.  Invoking the Hash method when there is not an open hash
+“stream” (i.e. before HashInit or after HashFinalize) SHALL result in an error.
+HashObjectUID.Hash [
+Input : typeOr { Data : bytes, BufferIn : cell_block } ]
+=>
+[ Result : bytes ]

@@ -1,0 +1,7 @@
+5.7.2.2.12 NextKey
+This column identifies the LBA range’s next media encryption key. This value and the referenced media
+encryption key object SHALL be writable when the value of the ReEncryptState column is IDLE only.
+Otherwise, attempts to invoke any of the Set, Delete, DeleteRow, or GenKey methods on the
+associated credential object SHALL return an error.
+User Data SHALL be returned to clear text when the value stored in NextKey is a NULL UID and re-
+encryption has been requested.

@@ -1,0 +1,5 @@
+5.1.5.8 UNIQUENESS_CONFLICT
+This occurs when a conflict between objects is created due to the attempt to create a second object
+with a unique column combination that is already in use by another object.  For instance, this status
+MAY be received when attempting to create a table, when a table already exists with the Name-
+CommonName-TemplateID combination submitted in the CreateTable invocation.

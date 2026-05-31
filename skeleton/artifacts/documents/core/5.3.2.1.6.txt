@@ -1,0 +1,2 @@
+5.3.2.1.6 SPSessionTimeout
+This is the length of timeout interval (in milliseconds) that this SP uses by default.

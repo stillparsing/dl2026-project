@@ -1,0 +1,8 @@
+5.7.2.2.9 WriteLocked
+The value of this column identifies the current write lock state for the associated LBA Range if the
+range's WriteLockEnabled column is True.  This column is ignored if the range's WriteLockEnabled
+column is False.  If this value is True, then the TPer SHALL NOT allow requests to write user data.  If
+this value is False, then the TPer SHALL allow requests to write user data (see 5.7.3.2).
+The Set method MAY be invoked by the host to change the value of this column and alter the write lock
+state.  Setting the column value to True write locks the range.  Setting the column value to False write
+unlocks the range.

@@ -1,0 +1,7 @@
+5.1.3.27 date
+The date type represents the date portion of the time from the system clock.  This is a set of name-
+value pairs, with the names 0x00 (for the Year), 0x01 (for the Month), and 0x02 (for the Day).
+Table 78 date
+| UID                         | Name | Format                             |
+|-----------------------------|------|----------------------------------|
+| 00 00 00 05 00 00 18 04     | date | Struct_Type, Year, Month, Day    |

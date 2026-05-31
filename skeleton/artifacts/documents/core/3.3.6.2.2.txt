@@ -1,0 +1,5 @@
+3.3.6.2.2 Data Structure Major Version
+This is the Major Version number of the Data Structure format of the Level 0 Discovery header
+returned. The value of this field SHALL be 0x0000.
+This value SHALL be incremented when non-backwards compatible changes are made to the header
+or to the format of the feature descriptors.

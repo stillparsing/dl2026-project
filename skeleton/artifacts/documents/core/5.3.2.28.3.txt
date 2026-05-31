@@ -1,0 +1,3 @@
+5.3.2.28.3 CommonName
+This is a name that MAY be shared by multiple C_HMAC_384 objects.
+For C_HMAC_384 objects that exist at issuance, this column SHALL NOT be modifiable by the host.

@@ -1,0 +1,6 @@
+5.3.3.7.2.1 Bytes
+When this method is invoked on a byte table, this parameter is used.  It is a bytes value, used when
+attempting to modify the values in a byte table, The byte table is modified beginning at the byte address
+indicated in the Where parameter, or at the beginning of the table if the Where parameter is omitted.
+If the Where parameter is a Row, the Values parameter SHALL be Bytes or the method invocation
+SHALL fail and return an error status code.

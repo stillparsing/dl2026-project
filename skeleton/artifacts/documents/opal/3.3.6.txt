@@ -1,0 +1,3 @@
+3.3.6 Protocol Stack Reset Commands (M)
+An IF-SEND containing a Protocol Stack Reset Command SHALL be supported.
+Refer to [2] for details.

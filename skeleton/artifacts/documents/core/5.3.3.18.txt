@@ -1,0 +1,15 @@
+5.3.3.18 Key Related Method Group - SetPackage Method (Object Method)
+The SetPackage method is used to set the key material columns of a credential with key material that is
+sent securely to the TPer (see 5.3.4.5). For other behavior of SetPackage on C_PIN objects see
+5.3.4.1.1.2.
+CredentialObjectUID.SetPackage [
+Value : package,
+
+WrappingKey = uidref { CredentialObjectUID },
+
+SigningKey = uidref { CredentialObjectUID },
+
+]
+=>
+[ ]
+

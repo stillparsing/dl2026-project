@@ -1,0 +1,2 @@
+5.6.4.1.1 Count
+This parameter specifies the size, bytes, of the sequence of random bytes to be generated.

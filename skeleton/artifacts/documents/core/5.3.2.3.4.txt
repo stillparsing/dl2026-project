@@ -1,0 +1,5 @@
+5.3.2.3.4 TemplateID
+In the Admin SP, this column is used to identify the template to which this table belongs and indicates a
+table that is not present in the Admin SP.  In SPs other than the Admin SP, the value of this column
+SHALL be zeroes.  See 5.4.4.1 for details.
+This column SHALL NOT be modifiable by the host.

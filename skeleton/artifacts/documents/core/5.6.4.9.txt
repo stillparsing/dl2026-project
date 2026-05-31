@@ -1,0 +1,9 @@
+5.6.4.9 Sign (Object Method)
+This method is used to sign a data input using the private part of a public-private key pair.
+CredentialObjectUID.Sign
+HashObjectUID.Sign[
+Input = typeOr { Data : bytes, Buffer : cell_block },
+BufferOut = cell_block ]
+=>
+[ Result : bytes ]
+

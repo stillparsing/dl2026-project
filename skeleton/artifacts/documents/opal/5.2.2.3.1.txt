@@ -1,0 +1,5 @@
+5.2.2.3.1 Manufactured-Inactive
+Any functionality enabled by the templates incorporated into the SP is inactive in this state.  Sessions cannot be
+opened to SPs in this state.
+When the Locking SP is in the Manufactured-Inactive state, the Locking SP’s management of the Storage Device's
+locking and media encryption features SHALL be disabled.

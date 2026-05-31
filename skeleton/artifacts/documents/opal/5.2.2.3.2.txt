@@ -1,0 +1,5 @@
+5.2.2.3.2 Manufactured
+Behavior of an SP in the Manufactured state is identical to the behavior of an SP in the Issued state, as described in
+[2].
+When the Locking SP is in the Manufactured state, the Locking SP’s management of the Storage Device's locking
+and media encryption features SHALL be enabled.

@@ -1,0 +1,3 @@
+5.4.3.1.2 Size
+This value is the size in 512 byte blocks that is requested for this SP. If the TPer is unable to allocate
+the requested Size, the IssueSP method invocation SHALL result in an error.

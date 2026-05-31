@@ -1,0 +1,24 @@
+5.2.2.3 Setting HostProperties
+If the method is invoked with the optional HostProperties parameter, the list of name/value pairs that the
+TPer MAY support is the list of properties inTable 168.
+These values MAY be submitted in any order by the host.  Not all values are required to be submitted.
+Subsequent submission of these values (in a subsequent invocation of the Properties method)
+SHALL supersede values submitted to previous invocations of the Properties method for that ComID.
+Submitted values, if applicable, SHALL only apply to sessions started after the submission of those
+values, and not to sessions that are already open on that ComID.
+The TPer uses these host properties when it is constructing responses to be transmitted to the host.
+The host MAY omit properties as necessary, depending on the host’s communications capabilities.  If
+the host omits a property, the value of that property SHALL NOT change from its current value.  If the
+host specifies a value for a property that does not meet the minimum requirement as defined in Table
+168, then the TPer SHALL use the minimum value defined in Table 168  in place of the value supplied
+by the host.
+These values reflect the cumulative modifications of all processed Properties methods for the
+associated ComID.
+If the host sends the HostProperties parameter in its Properties invocation, the TPer SHALL respond
+with ALL host properties it supports, with their current values, in the HostProperties parameter of its
+method response.
+If a host includes property parameters to the Properties method invocation that the TPer does not
+support, the TPer SHALL ignore those parameters, and SHALL NOT return them in its response.
+It is the host's responsibility to insure that Properties method invocations have processed prior to
+invocation of any session startup methods that rely on those invocations.  Values for HostProperties at
+session startup rely on the Properties method invocations that have been processed by the TPer.

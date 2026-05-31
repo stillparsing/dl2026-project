@@ -1,0 +1,21 @@
+5.3.1 Table Table Modification
+In order to allow a Storage Device to report its mandatory and recommended data alignment restrictions when
+accessing byte tables, the Table table SHALL contain the additional columns shown in Table 50.
+The mandatory and recommended data alignment restrictions do not apply to Object tables.
+Table 50 - Table Table Additional Columns 
+```json
+[
+    {
+        "Column Number": "0x0D",
+        "Column Name": "MandatoryWriteGranularity",
+        "IsUnique": "",
+        "Column Type": "uinteger_4"
+    },
+    {
+        "Column Number": "0x0E",
+        "Column Name": "RecommendedAccessGranularity",
+        "IsUnique": "",
+        "Column Type": "uinteger_4"
+    }
+]
+```

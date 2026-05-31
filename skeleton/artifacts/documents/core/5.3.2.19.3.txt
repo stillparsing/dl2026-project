@@ -1,0 +1,18 @@
+5.3.2.19.3 CommonName
+This is a name that MAY be shared by multiple C_EC_224 objects.
+For C_EC_224 objects that exist at issuance, this column SHALL NOT be modifiable by the host.
+5.3.2.19.4
+p
+Modulus
+5.3.2.19.5
+r
+Order of the curve
+5.3.2.19.6
+b
+Curve coefficient (y2=x3–3x+b mod p)
+5.3.2.19.7
+x
+Base point x-coordinate
+5.3.2.19.8
+y
+Base point y-coordinate

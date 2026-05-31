@@ -1,0 +1,75 @@
+5.3.4.1.14.1 Authenticate Method Failures
+Authenticate returns different status codes and return results dependant on the success or failure of
+the method.
+The nature of the Authenticate method prescribes two states:
+a. Awaiting Challenge
+b. Awaiting Challenge Response
+Behavior of the Authenticate method when the SP is in the Awaiting Challenge state:
+1. The method returns INVALID_PARAMETER with an empty result list if the following conditions
+apply, and remains in the Awaiting Challenge state:
+a. There is no authority supplied to the method, or an invalid authority (as in, an authority
+that does not exist in the Authority table) is supplied to the method, or
+b. A class authority is supplied to the method, or
+c. An incorrect optional parameter identifier or extra parameters are supplied, or a proof is
+supplied to a non-Password/non-Anybody authority.
+2. If the conditions defined in 5.1.5.15 are met, the method SHALL either return
+AUTHORITY_LOCKED_OUT with an empty result list and remain in the Awaiting Challenge
+state, or follow the result and status behavior defined in 5 below.
+3. If the Authenticate invocation does not violate any of the conditions in 1 and 2, above, and if
+the following conditions are met, then the method returns SUCCESS with a result of True
+(authentication succeeded), and remains in the Awaiting Challenge state:
+a. The authority invoked in the method is a valid individual authority object in the
+Authority table.
+b. All of the authority’s attributes are appropriate for the existing session and
+authentication attempt – the secure messaging properties are appropriate, the authority
+is enabled, has an Operation column value of Password, etc.
+c. The authority references a valid C_PIN credential or the authority is the Anybody
+authority.
+d. For authorities other than the Anybody authority, the correct password was submitted
+to the Authenticate method invocation.
+4. If the Authenticate invocation does not violate any of the conditions in 1 and 2 above, and if
+the following conditions are met, then the method returns SUCCESS with a result of a 32-byte
+challenge, and transitions to the Awaiting Challenge Response state:
+a. The authority invoked in the method is a valid individual authority object in the
+Authority table.
+b. All of the authority’s attributes are appropriate for the existing session and
+authentication attempt – the secure messaging properties are appropriate, the authority
+is enabled, references a valid credential, etc.
+5. If the Authenticate invocation does not violate any of the conditions in 1 and 2 above, and if
+the following conditions are met, then the method returns SUCCESS with a result of False
+(authentication failed), and remains in the Awaiting Challenge state:
+a. The authority is a valid authority but one or more of its attributes are not appropriate or
+valid – the secure messaging requirements have not been met, the authority is
+disabled, the authority references an invalid credential, the authority has an Operation
+column value of Exchange or TPerSign, etc.
+b. The authority is a valid authority but an incorrect password is submitted to the
+Authenticate method invocation.
+Behavior of the Authenticate method when the SP is in the Awaiting Challenge Response state:
+1. The method returns INVALID_PARAMETER with an empty result list if the following conditions
+apply, and transitions to the Awaiting Challenge state:
+a. There is no authority supplied to the method, or an invalid authority (as in, an authority
+that does not exist in the Authority table) is supplied to the method
+b. An incorrect optional parameter identifier or extra parameters are supplied.
+2. If the Authenticate invocation does not violate any of the conditions in 1 above, and if the
+following conditions are met,  then the method returns SUCCESS with a result of True
+(authentication succeeded), and transitions to the Awaiting Challenge state:
+a. The authority invoked in the method is a valid individual authority object in the
+Authority table.
+b. The authority invoked in the method is the same authority invoked in the initial
+Authenticate invocation.
+c. All of the authority’s attributes are appropriate for the existing session and
+authentication attempt – the secure messaging properties are appropriate, the authority
+is enabled, references a valid credential, etc.
+d. The correct response was submitted to the Authenticate method invocation.
+3. If the Authenticate invocation does not violate any of the conditions in 1 above, and if the
+following conditions are met, then the method returns SUCCESS with a result of False
+(authentication failed), and transitions to the Awaiting Challenge state:
+a. The authority is a class authority.
+b. The authority invoked in the method is not the same authority invoked in the initial
+Authenticate invocation.
+c. The authority is a valid authority but one or more of its attributes are not appropriate or
+valid – the secure messaging requirements have not been met, the authority is
+disabled, the authority references an invalid credential, the authority has exceed its
+uses, etc.
+d. The authority is a valid authority but an incorrect challenge response is submitted to the
+Authenticate method invocation.

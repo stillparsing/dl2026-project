@@ -1,0 +1,15 @@
+5.1.3.98 verify_mode
+This enumeration type defines the verification operation the TPer SHALL perform during the re-
+encryption process after a sector has been written with the new encryption key.
+Table 162 verify_mode
+| UID                       | Name        | Format               |               |          |
+|---------------------------|-------------|----------------------|---------------|----------|
+| 00 00 00 05 00 00 04 12   | verify_mode | Enumeration_Type, 0,7|               |          |
+
+The enumeration values are associated as defined in Table 163.
+Table 163 verify_mode Enumeration Values
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 0                 | No verify        |
+| 1                 | Verify enabled   |
+| 2-7               | Reserved         |

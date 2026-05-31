@@ -1,0 +1,4 @@
+5.4.2.1.8 SSC
+This is a list of the names of the SSCs supported by the TPer.  An SSC's name is defined in the
+specification that defines it.
+This column SHALL NOT be modifiable by the host.

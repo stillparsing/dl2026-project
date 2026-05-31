@@ -1,0 +1,2 @@
+5.3.2.13.6 Mod
+The value of this column is the RSA Public Modulus.

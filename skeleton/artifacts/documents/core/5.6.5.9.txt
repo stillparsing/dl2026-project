@@ -1,0 +1,9 @@
+5.6.5.9 Default Logging Settings
+The default logging settings associated with the Crypto Template methods are:
+a. The default logging setting for the Delete object method on objects in the H_SHA_* tables,
+and for invocation of the Verify method, is LogAlways.
+b. The default setting for all instances of the Crypto Template methods (Sign, HashInit,
+Hash, HashFinalize, HMACInit, HMAC, HMACFinalize, XOR, EncryptInit, Encrypt,
+EncryptFinalize, DecryptInit, Decrypt, and DecryptFinalize) is LogSuccess.
+c. All other methods that apply to the H_SHA_* tables SHALL be as described in the Base
+Template reference section on Default Logging Settings (See 5.3.4.4).

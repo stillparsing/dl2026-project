@@ -1,0 +1,8 @@
+5.1.3.47 LogList_object_ref
+The LogList_object_ref type describes a uidref to an object in the LogList table.
+Table 104 LogList_object_ref
+```markdown
+| UID                         | Name             | Format                                |
+|-----------------------------|------------------|-------------------------------------|
+| 00 00 00 05 00 00 0C 0D     | LogList_object_ref| Restricted_Reference_Type{6}, uidref {LogListTableUID} |
+```

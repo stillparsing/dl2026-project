@@ -1,0 +1,79 @@
+3.1.1.6.4 Data Removal Time Format and Data Removal Time Definition
+Table 10 - Supported Data Removal Mechanism 
+```json
+[
+    {
+        "Bit": 0,
+        "Name": "Overwrite Data Erase",
+        "Condition of user data after Data Removal": "The Overwrite Data Erase mechanism causes TPer to alter information by writing a vendor specific data pattern to the medium."
+    },
+    {
+        "Bit": 1,
+        "Name": "Block Erase",
+        "Condition of user data after Data Removal": "The Block Erase mechanism causes the TPer to alter information by setting the physical blocks to a vendor specific value."
+    },
+    {
+        "Bit": 2,
+        "Name": "Cryptographic Erase",
+        "Condition of user data after Data Removal": "The TPer SHALL support this data erasure mechanism. Further this mechanism SHALL be executed in addition to any other supported data removal mechanism that is being executed. This bit MAY be used by the Revert or the RevertSP or the GenKey (band erase) mechanisms of data removal, where the cryptographic keys used to encrypt the user data are changed."
+    },
+    {
+        "Bit": "3-4",
+        "Name": "Reserved",
+        "Condition of user data after Data Removal": ""
+    },
+    {
+        "Bit": 5,
+        "Name": "Vendor Specific Erase",
+        "Condition of user data after Data Removal": "The Vendor Specific Erase mechanisms cause all user data to be removed by a vendor specific method."
+    },
+    {
+        "Bit": "6-7",
+        "Name": "Reserved",
+        "Condition of user data after Data Removal": ""
+    }
+]
+```
+Each Data Removal Time field provides the worst case estimate of the time required to perform the erasure
+corresponding to each Data Removal Mechanism defined in the Supported Data Removal Mechanism field. The
+Data Removal Time Format bit identifies the format used to express the time as follows:
+a) if the Data Removal Time Format bit is set to zero, then the estimated time is defined in Table 11; and
+b) if the Data Removal Time Format bit is set to one, then the estimated time is defined in Table 12.
+The Data Removal Time Format bit and Data Removal Time Format field are defined in Table 11 and Table 12.
+
+Table 11 - Data Removal Time (Data Removal Time Format bit= 0)
+```json
+[
+    {
+        "Value": 0,
+        "Time": "Not reported"
+    },
+    {
+        "Value": "1..65534",
+        "Time": "(Value x 2) seconds"
+    },
+    {
+        "Value": 65535,
+        "Time": ">= 131068 seconds"
+    }
+]
+```
+
+Table 12 - Data Removal Time (Data Removal Time Format bit= 1)
+```json
+[
+    {"Value": 0, "Time": "Not reported"},
+    {"Value": "1..65534", "Time": "(Value x 2) minutes"},
+    {"Value": 65535, "Time": ">= 131068 minutes"}
+]
+```
+
+Start of Informative Comment
+Each Data Removal Time field gives an estimate of the total time required to perform the erasure for each
+corresponding Data Removal Mechanism. This field is not a dynamic estimate of the remaining time for completion.
+When GenKey is performed on a range that’s less than the global range, the time needed for the completion of the
+operation can be less than the time reported for the operation.  The reported estimated time for the data removal
+operation will be for the entire capacity of the Storage Device.  The host software can use the ratio of the band size
+to the entire capacity of the Storage Device, to derive the estimated time for erasing a band.
+End of Informative Comment
+

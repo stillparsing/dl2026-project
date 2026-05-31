@@ -1,0 +1,71 @@
+3.2.4.2 Method Encoding
+A method invocation is made up of a sequence of tokens that are sent from the application to the TPer,
+and from the TPer to the host for Session Manager method responses, as follows:
+1. Call token – A Call token is transmitted to indicate that a method invocation is to follow.
+2. Method Header – This is the encoding of the InvokingID and the MethodID. This value is:
+1. InvokingID – The InvokingID is a bytes token representing the 8-byte value that is the
+first part of the Method Header being transmitted.
+2. MethodID – The MethodID is a bytes token representing the 8-byte value that is the
+second part of the Method Header being transmitted.
+3. Parameters – The parameters are submitted to a method invocation as a list.  The parameter
+list follows this format:
+1. Start List token – This identifies the beginning of the list of parameters.
+2. Required parameters – This is the set of parameters that are required to be sent to a
+method.  The encoding of required parameters is dependent on the type associated
+with that parameter, as defined by the method signature and the context in which the
+method is being invoked.
+3. Optional parameters – this is the set of zero or more Named value pairs that MAY be
+sent to the method to represent the method's optional parameters.    Each optional
+parameter SHALL be made up of the following parts:
+1. The Start Name token, which indicates the start of this optional parameter.
+2. The encoded name, which in the case of optional parameters is a uinteger.
+3. The encoded value.  The encoding of the parameter value is dependent on the
+type associated with that parameter, as defined by the method signature and the
+context in which the method is being invoked.
+4. The End Name token, which indicates the end of this optional parameter
+4. End List token – this identifies the end of the list of parameters.
+4. End Of Data token – The End of Data token is transmitted to indicate that the method
+invocation is ended.
+5. Status Code List – This is the status list, a list of values of type uinteger, which contains the
+status codes expected from the host's invocation of the method.  These status values are
+encoded using List tokens.
+1. The first value in the list SHALL be 0x00 for a method that the host expects to
+complete properly.  For a method that the host wishes to abort, the host SHALL NOT
+include a value that is 0x00 as the first value in the status list, which SHALL cause the
+TPer to abort processing on that method and return that non-0x00 value as the first
+value in the status list.
+2. The second and third values in the status list are reserved, and are defined in this
+specification to be 0x00 and 0x00 and SHOULD be ignored by the TPer.
+Except for the Session Manager methods, each method call SHALL have a response that is a
+sequence of tokens that are sent from the TPer to the host as follows.
+1. Start List token – This identifies the beginning of the list of results.
+2. Output Results – This is zero or more token sequences that represent the response to the
+method, as defined in the method signature.
+3. End List token – This identifies the end of the list of results.
+4. End Of Data – The End of Data token is transmitted to indicate that the result list has ended.
+5. Status List – This is the status list, a list of values of type uinteger, which contains the status
+codes expected from the host's invocation of the method.  These status values are encoded
+using List tokens.
+i. If the host invoked the method with a status list whose first uinteger was 0x00, then the
+first value in the status list SHALL always be the status of the method, as described in
+5.1.5.  If the host invoked the method with a status list whose first byte was not 0x00,
+then the first value in the status list SHALL contain the same value that was sent by the
+host in the first uinteger of the host's status list.
+ii. The second and third values in the list are uintegers reserved for use by the TCG, and
+are defined in this specification to be 0x00 and 0x00 and SHOULD be ignored by the
+host.
+iii. Additional values MAY be returned in the status list, as long as the first three values in
+the status list are returned as required by this specification.
+Method responses SHALL be returned for all method invocations or method invocation attempts within
+a session.  Responses for method invocation attempts of methods not recognized by the TPer or that
+result in some other failure condition MAY return an empty method result (the output result is an empty
+list) and an error code.  Unrecognized method invocation attempts outside of Regular sessions SHALL
+be ignored by the TPer – in these cases, no response is sent.
+Session Manager protocol layer method invocations that are recognized but fail SHALL result in the
+normal response format for that method, accompanied by an error status code.  Session startup
+methods that fail in this way SHALL have returned the expected method response, but that method
+SHALL have only the identifying parameters (Host, SP) and an error status code.  If the identifying
+parameters (particularly the Host parameter) are invalid (i.e. of the incorrect type), the TPer MAY ignore
+the method.
+The TPer MAY begin sending the response as soon as enough parameters have been received to
+prepare a response.

@@ -1,0 +1,27 @@
+5.4.4.4 Authorities
+The authorities that SHALL be required by the Admin Template are enumerated in Table 216.
+Table 216 Default Admin Template Authorities
+| Name     | UID                         | Common Name | IsClass |
+|----------|-----------------------------|-------------|---------|
+| Issuers  | 00 00 00 09 00 00 02 01     | SPControl   | True    |
+| Editors  | 00 00 00 09 00 00 02 02     | SPControl   | True    |
+| Deleters | 00 00 00 09 00 00 02 03     | SPControl   | True    |
+| Servers  | 00 00 00 09 00 00 02 04     | SPControl   | True    |
+| Reserve0 | 00 00 00 09 00 00 02 05     | SPControl   | True    |
+| Reserve1 | 00 00 00 09 00 00 02 06     | SPControl   | True    |
+| Reserve2 | 00 00 00 09 00 00 02 07     | SPControl   | True    |
+| Reserve3 | 00 00 00 09 00 00 02 08     | SPControl   | True    |
+
+The TPerExch authority allows a secure session to be established immediately with the Admin SP.
+Note the corresponding credentials contain certificate chains that establish the validity of TPerSign and
+TPerExch signed by the manufacturer.
+In addition to the authorities defined in Table 216, if a TPer supports Issuance, then it SHALL be
+required that the Admin SP have up to an additional 216 entries in this table, in blocks of 16, starting
+immediately after the default Base and Admin Template authorities.  These are called ORG authority
+blocks.
+ORG0 is the ORG (anization) of the manufacturer or SP licensing authority. Other ORGs MAY include
+other SP licensing authorities. The classes include SP Issuance authorities (Issuers), SP ORG Editors
+that are able to edit values within an ORG block, SP Deleters that are restricted to deleting ORG
+authorities within a 16 block, and SP Servers that are used to set up confidential messaging between
+Issuance participants.  Members of the Servers class are Sign and Exchange authorizations in order to
+permit secure messaging.

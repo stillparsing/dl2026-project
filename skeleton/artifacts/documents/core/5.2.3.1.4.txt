@@ -1,0 +1,6 @@
+5.2.3.1.4 HostChallenge
+If the Signing Authority (identified in the HostSigningAuthority parameter) has an Operation column
+value of Password in the Authority table and references a C_PIN credential, then the HostChallenge
+parameter is used by the host to submit a password for authentication.  Otherwise, this parameter is
+used to submit a nonce to the SP that, during secure session startup, returns a response based on the
+HostChallenge value and the authentication requirements of the Signing Authority.

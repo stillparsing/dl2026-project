@@ -1,0 +1,2 @@
+5.3.2.11.5 CertSize
+The value of this column is the number of bytes actually used in the certificate.

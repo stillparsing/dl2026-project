@@ -1,0 +1,10 @@
+5.1.3.60 name
+This max bytes type, with a size limitation of 32, is used to represent names.
+Table 118 name
+```markdown
+| UID                         | Name | Format               |
+|-----------------------------|------|----------------------|
+| 00 00 00 05 00 00 02 0B    | name | Simple_Type,         |
+|                             |      | max_bytes,           |
+|                             |      | 32                   |
+```

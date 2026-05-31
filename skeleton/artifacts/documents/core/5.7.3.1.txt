@@ -1,0 +1,11 @@
+5.7.3.1 Locking State Descriptions
+Figure 11  displays the states and state transitions for read lock and write lock.  For simplicity, the
+diagram and the accompanying textual information describe the operation of locking in general, rather
+than both read lock and/or write lock in particular.
+Note that the reset behavior of both read and write locking for each locking object is controlled at the
+same point, by a single column in the Locking table, called LockOnReset.
+When a reset is described in these state transitions, “reset” is used generically to refer to qualifying
+resets, as determined by the value of the LockOnReset column and the reset behavior associated with
+particular resets as determined by the appropriate interface-specific description of that reset.  Interface-
+specific reset definitions are defined in [2].
+Figure 11  Locking State Diagram

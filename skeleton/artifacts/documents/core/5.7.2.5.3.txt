@@ -1,0 +1,7 @@
+5.7.2.5.3 Done
+This value indicates whether the TPer has completed processing the contents of the MBR table.  After
+the occurrence of a reset event that is listed in MBRDoneOnReset, until the host sets the MBRControl
+table's Done column to True, LBA requests made by the host, for LBA 0 up to the LBA that maps to the
+end of the MBR table, SHALL only be fulfillable by values from the MBR table.
+The Done column is set to False on every occurrence of a reset event that is listed in MBRDoneOnReset.
+The state of Done SHALL NOT affect the capacity of the Storage Device.

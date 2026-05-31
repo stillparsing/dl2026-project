@@ -1,0 +1,2 @@
+5.5.4.7.1.1 MonotonicTime
+This method returns a uinteger that is the current value of the monotonic counter.

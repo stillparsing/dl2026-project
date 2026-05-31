@@ -1,0 +1,51 @@
+3.3.4.7.4 VERIFY_COMID_VALID
+On receiving this request, the TPer checks if the ComID sent in the payload matches any of the
+ComIDs currently active in the TPer.
+The command is delivered in the payload of the HANDLE_COMID_REQUEST command.  The
+response is reported in the payload of the next GET_COMID_RESPONSE command sent to the
+requested ComID.
+The VERIFY_COMID_VALID command is defined in Table 32.  TRNSFLEN is defined as number of
+bytes transferred via the interface.
+Table 32 VERIFY_COMID_VALID Request
+```markdown
+| BYTES       | FIELD           | VALUE                       |
+|-------------|-----------------|-----------------------------|
+| 0 to 3      | Extended ComID  | Allocated ComID             |
+| 4 to 7      | Request Code    | 00 00 00 01                 |
+| 8 to TRNSFLEN - 1 | Reserved    | zero                        |
+```
+
+The payload built by the TPer in response to the VERIFY_COMID_VALID command is defined in Table
+33.
+Table 33 VERIFY_COMID_VALID Command Response
+| BYTE      | FIELD                               | VALUE                                                                                     |
+|-----------|-----------------------------------|-------------------------------------------------------------------------------------------|
+| 0 to 3    | Extended ComID                    | Requested ComID                                                                           |
+| 4 to 7    | Request Code                     | 00 00 00 01                                                                              |
+| 8 to 9    | Reserved                        | 00 00                                                                                     |
+| 10 to 11  | Available Data Length in bytes   | 00 22                                                                                     |
+| 12 to 15  | Current state of Extended ComID  | 00 00 00 00 = Invalid, 00 00 00 01 = Inactive, 00 00 00 02 = Issued, 00 00 00 03 = Associated|
+| 16 to 25  | Absolute time of allocation       | Relative to last reset of TPer 10 byte format – see Table 34.                            |
+| 26 to 35  | Absolute time of expiry           | Relative to last reset of TPer 10 byte format – see Table 34.                            |
+| 36 to 45  | Time since last reset of TPer    | 10 byte format – see Table 34.                                                           |
+| 46 to TRNSFLEN - 1 | Reserved                  | 00                                                                                        |
+
+The Extended ComID field value is the ComID being verified.
+If the TPer does not support a real-time clock, the Time values in the VERIFY_COMID_VALID
+response (bytes 16 to 45) SHALL be all zeroes.  If the TPer supports a real-time clock, the fields that
+report the time SHALL use the following format described in Table 34.
+Table 34 Date Values
+| Value Type | Range             |
+|------------|-------------------|
+| Year       | uinteger_2        | 1970 to 9999   |
+| Month      | uinteger_1        | 1 to 12        |
+| Day        | uinteger_1        | 1 to 31        |
+| Hour       | uinteger_1        | 0 to 23        |
+| Minute     | uinteger_1        | 0 to 59        |
+| Second     | uinteger_1        | 0 to 59        |
+| Fraction   | uinteger_2        | 0 to 999       |
+| Reserved   | uinteger_1        | 0             |
+
+If the current state of the ComID is reported as Invalid or Inactive, only the time since last reset of the
+TPer is valid in the data payload. If the ComID state is reported as Issued, or Associated, the time of
+expiry SHALL be greater than the time since last reset of the TPer.

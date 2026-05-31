@@ -1,0 +1,5 @@
+5.2.3.2.8 SignedHash
+The SignedHash of the SyncSession method, if present, is the hash of the method’s parameter’s
+signed by the response signing credential that is the credential referred to by the SPSigningAuthority.
+The SP Control Authority, if referenced by the Host Control Authority, identifies the hash type and
+signing type if hashing has been called out on messages from the SP to the host (see 5.3.4.1.7).

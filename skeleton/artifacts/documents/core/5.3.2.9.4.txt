@@ -1,0 +1,4 @@
+5.3.2.9.4 BooleanExpr
+This column value is a Boolean expression of Authorities that authorizes the ACE if the expression
+evaluates to True.  If the conditions described in this access control element are True, then the ACE is
+considered authenticated.

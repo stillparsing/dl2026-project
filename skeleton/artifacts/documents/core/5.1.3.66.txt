@@ -1,0 +1,27 @@
+5.1.3.66 reencrypt_state
+This enumeration type identifies the present re-encryption state for an LBA range.
+Table 125 reencrypt_state
+```markdown
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 1                 | Idle             |
+| 2                 | Pending          |
+| 3                 | Active           |
+| 4                 | Completed        |
+| 5                 | Paused           |
+| 6-16              | Reserved         |
+``` 
+
+The enumeration values are associated as defined in Table 126.
+Table 126 reencrypt_state Enumeration Values
+```markdown
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 1                 | Idle             |
+| 2                 | Pending          |
+| 3                 | Active           |
+| 4                 | Completed        |
+| 5                 | Paused           |
+| 6-16              | Reserved         |
+```
+

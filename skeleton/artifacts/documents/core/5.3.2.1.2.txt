@@ -1,0 +1,3 @@
+5.3.2.1.2 SPID
+This is the unique identifier of this SP as assigned in the Admin SP’s SP table.
+This column SHALL NOT be modifiable by the host.

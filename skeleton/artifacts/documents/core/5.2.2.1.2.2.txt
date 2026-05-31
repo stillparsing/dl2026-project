@@ -1,0 +1,5 @@
+5.2.2.1.2.2 HostProperties
+If the host includes the HostProperties parameter to the Properties method invocation, then this
+portion of the method result SHALL include the communications limitations and capabilities that the
+TPer SHALL use for messages sent from the TPer to the Host.
+

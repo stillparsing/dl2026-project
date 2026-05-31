@@ -1,0 +1,15 @@
+3.2.5.1 Kinds of Tables
+There are two kinds of tables:
+a. Byte table. Byte tables provide raw data storage.  A byte table has one unnamed column
+of type bytes_1. The address of the first row in a byte table is 0.  Upon creation, the value
+of all cells in a byte table SHALL be 0x00.  The rows of a byte table SHALL NOT be
+allocated or freed (i.e. via CreateRow or DeleteRow).  Byte table rows are addressed by
+row number.
+b. Object table. Object tables provide storage for data that binds a set of methods and
+access controls to that data.  When a table is created it SHALL be allocated a fixed number
+of fixed-size columns.  Zero or more columns are designated as the unique set of values
+(see 3.2.5.4).
+For Object tables:
+a. A newly created table is initially empty and rows SHALL be created using the CreateRow
+method, before they are usable.
+b. There is always a UID column of type UID. In object tables, rows are addressed by UID.

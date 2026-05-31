@@ -1,0 +1,6 @@
+4.2.6.1.2 ActiveDataRemovalMechanism
+This column value selects which Data Removal Mechanism in the Supported Data Removal Mechanism field in the
+Supported Data Removal Mechanism feature descriptor is active and will be used to remove data upon execution of
+the Revert method, the RevertSP method or the GenKey method. If an attempt is made to set the
+ActiveDataRemovalMechanism column value to an unsupported value of the data_removal_mechanism type, then
+the Set method invocation SHALL result in the method failing with the status INVALID_PARAMETER.

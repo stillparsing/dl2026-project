@@ -1,0 +1,3 @@
+5.8.2.1.7 ExchangeAuthority
+This value is the UID column value of the Host Exchange Authority, if any, that opened the session.
+This column SHALL NOT be modifiable by the host.

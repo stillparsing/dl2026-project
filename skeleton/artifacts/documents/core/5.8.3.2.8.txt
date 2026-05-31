@@ -1,0 +1,6 @@
+5.8.3.2.8 Fails
+a. If a log table with the specified name already exists.
+b. If there isn’t space in the SP for the new table.
+c. If metadata/support tables (i.e. Table, Column, Method, or ACE) are not all able to create all
+required rows to support this table.
+d. If TPer determines MinSize is too large.

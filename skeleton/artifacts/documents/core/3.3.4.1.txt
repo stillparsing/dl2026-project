@@ -1,0 +1,8 @@
+3.3.4.1 Transport Layer
+Begin Informative Content
+This layer of the protocol stack is responsible for transmitting the data from one particular host to one
+particular Storage Device and vice-versa.  There are no specific interactions with this layer described in
+the TCG Core Specification.  The only requirement is that this layer interact with the Interface layer in
+such a way as to guarantee that the order of commands sent from a single host to a single Storage
+Device are preserved.
+End Informative Content

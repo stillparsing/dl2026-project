@@ -1,0 +1,3 @@
+5.2.2.4.3 TPer Response for Invalid or Unexpected Token
+See 3.2.2.4 for the TPer’s response if an invalid or unexpected token is received in the message
+stream.

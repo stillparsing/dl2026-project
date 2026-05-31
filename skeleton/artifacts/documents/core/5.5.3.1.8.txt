@@ -1,0 +1,4 @@
+5.5.3.1.8 LowByWhom
+Authority that set the Low Trust time.  This value is valid only if HaveLow is set to True; otherwise it
+should be zeroes.  This is the uidref to the Authority that is the control authority of the session.
+This column SHALL NOT be modifiable by the host.

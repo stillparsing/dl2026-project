@@ -1,0 +1,8 @@
+5.1.3.3 ACE_expression
+This is an alternative type where the options are either a uidref to an Authority object or one of the
+boolean_ACE (AND = 0 and OR = 1) options.  This type is used within the AC_element list to form a
+postfix Boolean expression of Authorities.
+Table 48 ACE_expression
+| UID                     | Name         | Format                                      |
+|-------------------------|--------------|---------------------------------------------|
+| 00 00 00 05 00 00 06 01 | ACE_expression | Alternative_Type, Authority_object_ref, boolean_ACE |

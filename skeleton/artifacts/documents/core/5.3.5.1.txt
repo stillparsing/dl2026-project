@@ -1,0 +1,11 @@
+5.3.5.1 Base Template-Specific Life Cycle State Descriptions/Exceptions
+An SP issued with the Base Template has the following characteristics based on the current life cycle
+state of that SP:
+a. Disabled – A Base Template-enabled SP that is in the Disabled state SHALL NOT be able
+to perform any user-invoked SP operations enabled, with the exceptions noted in section
+4.5.2.  These exceptions include invocation of the Authenticate method, the DeleteSP
+method, and the Set method used to re-enable the SP.  Session Manager protocol layer
+methods invoked to the disabled SP SHALL operate as normal.
+b. Frozen – Attempts to open sessions to an SP in the Issued-Frozen state SHALL fail.
+c. Issued-Disabled-Frozen – Attempts to open sessions to an SP in the Issued-Disabled-
+Frozen state SHALL fail.

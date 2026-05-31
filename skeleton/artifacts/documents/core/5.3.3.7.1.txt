@@ -1,0 +1,8 @@
+5.3.3.7.1 Where
+This parameter identifies the location of the cells whose values the method is attempting to change.
+If the Set method is invoked on an object, the Where parameter SHALL be omitted, or the method
+SHALL fail and return an error status code.
+If the Set method is invoked on an object table, the Where parameter SHALL be the UID option, or the
+method SHALL fail and return an error status code.
+If the Set method is invoked on a byte table and the Where parameter is included in the invocation, the
+Where parameter SHALL be the Row option, or the method SHALL fail and return an error status code.

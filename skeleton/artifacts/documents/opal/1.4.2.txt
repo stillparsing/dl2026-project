@@ -1,0 +1,12 @@
+1.4.2 Approved References
+[1]. IETF RFC 2119, 1997, “Key words for use in RFCs to Indicate Requirement Levels”
+[2]. Trusted Computing Group (TCG), “TCG Storage Architecture Core Specification”, Version 2.01
+[3]. NIST, FIPS-197, 2001, “Advanced Encryption Standard (AES)”
+[4]. Trusted Computing Group (TCG), “TCG Storage Interface Interactions Specification“, Version 1.11
+[5]. Trusted Computing Group (TCG), “TCG Storage Security Subsystem Class: Opal”, Versions 1.00, 2.00, 2.01,
+2.02
+[6]. Trusted Computing Group (TCG), “TCG Storage Opal Family Feature Set: Additional DataStore Tables”, Version
+1.01
+[7]. Trusted Computing Group (TCG), “TCG Storage Opal SSC Feature Set: PSID”, Version 1.00
+[8]. Trusted Computing Group (TCG), “TCG Storage Feature Set: Block SID Authentication”, Version 1.01
+

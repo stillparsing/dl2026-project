@@ -1,0 +1,4 @@
+5.6.4.2.2 Fails
+a. BufferOut is not big enough to hold "Count" bytes
+b. Set access control is not satisfied for BufferOut
+c. BufferOut does not reference a byte table or references a cell that is not of type bytes

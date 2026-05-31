@@ -1,0 +1,4 @@
+5.4.2.3.5 Special
+This column value defines if special operating properties exist for this CryptoType/CryptoLen
+combination.
+This column SHALL NOT be modifiable by the host.

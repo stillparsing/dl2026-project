@@ -1,0 +1,14 @@
+1.3.5.1 Lists Overview
+Lists are associated with an introductory paragraph or phrase, and are numbered relative to that paragraph or phrase
+(i.e., all lists begin with an a) or 1) entry).
+
+Each item in a list is preceded by identification with the style of the identification being determined by whether the list
+is intended to be an ordered list or an unordered list.
+
+If the item in a list is not a complete sentence, the first word in the item is not capitalized. If the item in a list is a
+complete sentence, the first word in the item is capitalized.
+
+Each item in a list ends with a semicolon, except the last item, which ends in a period. The next to the last entry in the
+list ends with a semicolon followed by an “and” or an “or” (i.e., “…; and”, or “…; or”). The “and” is used if all the items
+in the list are required. The “or” is used if only one or more items in the list are required.
+

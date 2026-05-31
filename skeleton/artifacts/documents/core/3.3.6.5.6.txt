@@ -1,0 +1,3 @@
+3.3.6.5.6 MBRDone
+MBRDone SHALL be set to one if MBREnabled is set to one, and the MBRControl table’s Done column
+has a value of "True"; otherwise MBRDone SHALL be set to zero.

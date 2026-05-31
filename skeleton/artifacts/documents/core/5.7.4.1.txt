@@ -1,0 +1,13 @@
+5.7.4.1 Locking Template-Specific Life Cycle State Descriptions/Exceptions
+An SP issued with the Locking Template has the following characteristics based on the current life cycle
+state of that SP:
+a. Disabled – A Locking Template-enabled SP that is in the Disabled state SHALL NOT be
+able to perform any user-invoked SP operations, with the exceptions noted in section 4.5.2.
+This MAY result in boot-up failure (if MBR Shadowing is enabled), or the inability to lock or
+unlock certain LBA ranges for reading and/or writing.
+b. Frozen – Attempts to open sessions to an SP in the Issued-Frozen state SHALL fail.  This
+MAY result in boot-up failure (if MBR Shadowing is enabled), or the inability to lock or
+unlock certain LBA ranges for reading and/or writing.
+c. Issued-Disabled-Frozen – Attempts to open sessions to an SP in the Issued-Disabled-
+Frozen state SHALL fail.  This MAY result in boot-up failure (if MBR Shadowing is enabled),
+or the inability to lock or unlock certain LBA ranges for reading and/or writing.

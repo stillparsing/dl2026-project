@@ -1,0 +1,13 @@
+5.3.3.8 Basic Table Method Group - Next (Table Method)
+The Next method is used to iterate through an object table, returning that the UID column value for
+zero or more rows in the table based on the current ordering of the rows in the table; the requested
+starting point for the method's operation; and the number of uids requested.  For information on the
+operation of this method, see 5.3.4.2.7.
+TableUID.Next [
+
+Where = uidref,
+
+Count = uinteger ]
+=>
+[ Result : list [ uidref ... ] ]
+

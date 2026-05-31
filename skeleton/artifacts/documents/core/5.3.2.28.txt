@@ -1,0 +1,12 @@
+5.3.2.28 Credential Table Group – C_HMAC_384 (Object Table)
+Table 207 C_HMAC_384 Table Description
+```markdown
+| Column Number | Column Name | IsUnique | Column Type  |
+|---------------|-------------|----------|--------------|
+| 0x00          | UID         |          | uid          |
+| 0x01          | Name        | Yes      | name         |
+| 0x02          | CommonName  | Yes      | name         |
+| 0x03          | Key         |          | bytes_48     |
+| 0x04          | Hash        |          | hash_protocol|
+```
+ 

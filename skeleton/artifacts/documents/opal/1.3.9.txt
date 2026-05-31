@@ -1,0 +1,6 @@
+1.3.9 Specify and Indicate Conventions
+In a given message, command, or other information exchange between a requestor (e.g., a host) and a responder
+(e.g., a Storage Device):
+a) the word ‘specifies’ means that the requestor provides information in the request; and
+b) the word ‘indicates’ means that the responder provides information in the response.
+

@@ -1,0 +1,32 @@
+3.3.7.1.6 Session Timeouts
+The session timeout is used to limit the lifetime of a session.  A session timeout is associated with every
+session and is specified in milliseconds.
+The session timeout is a property of the session and is derived from three sources.
+a. DefaultSessionTimeout : A value in the Properties method response.
+b. SPSessionTimeout : A column in the SPInfo table.
+c. SessionTimeout : An optional parameter in the StartSession method call used to open the
+session to the SP.
+The TPer and the Host both maintain a timer associated with every active session. The timer starts
+when a session is successfully opened to an SP. Depending on the type of session started, this occurs
+when the tokens for the SyncSession or the SyncTrustedSession method call are built by the TPer
+and made available to the host.
+The TPer MAY impose conditions on maximum and minimum timeouts supported by the device
+depending on hardware and other design considerations. These are indicated in the Properties
+method response values MaxSessionTimeout and MinSessionTimeout. These limits apply to all of the
+three timeouts listed above.
+A column in the SPInfo table contains the SP default timeout.  Modification of this value SHALL take
+effect on all future sessions opened on the SP.
+If no value is specified for the SessionTimeout parameter of the StartSession method, then the SP's
+default value, stored in the SPInfo table's SPSessionTimeout column, SHALL be used.  If no value
+exists as an SP default (i.e. the SPSessionTimeout column value is zero), then the TPer default (as
+reported in the Properties method response, DefSessionTimeout) SHALL be used.
+A value of zero is permitted for the SessionTimeout parameter.  The value is only permitted if the
+TPer’s property response for MaxSessionTimeout is zero and the SP’s SPSessionTimeout value is
+zero.  Otherwise, the method SHALL fail with a SyncSession status of INVALID_PARAMETER.
+The TPer MAY abort the session any time after the session's lifetime exceeds the session timeout
+value. The session is considered to have been closed / terminated when the last status token sent by
+the TPer is picked out of the output buffer by the host, or when the TPer releases all the resources
+(including the output buffer) for the session.
+Session timeout SHALL NOT apply to the Session Manager Layer control session since it is always
+open. The time taken to complete the Session Manager Layer exchange to successfully start a session
+is not in the scope of this feature.

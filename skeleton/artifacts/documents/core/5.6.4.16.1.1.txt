@@ -1,0 +1,3 @@
+5.6.4.16.1.1 Result
+The method returns the input data not consumed by the HMAC prior to this method invocation.    If the
+BufferOut parameter is specified in the HashInit method, the HMAC method Result SHALL be empty.

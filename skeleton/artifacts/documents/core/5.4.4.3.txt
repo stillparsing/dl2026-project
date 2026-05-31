@@ -1,0 +1,4 @@
+5.4.4.3 Admin SP Sessions
+An open Read-Write session to the Admin SP SHALL NOT be able to be combined with sessions of
+any type open to any other SPs on the TPer (including sessions that are already open when the attempt
+to open a Read-Write session to the Admin SP is made).

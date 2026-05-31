@@ -1,0 +1,4 @@
+4.2.6.1.1 UID
+This is the unique identifier of this row in the DataRemovalMechanism table.
+This column SHALL NOT be modifiable by the host.
+

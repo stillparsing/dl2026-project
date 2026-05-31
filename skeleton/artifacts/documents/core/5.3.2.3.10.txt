@@ -1,0 +1,5 @@
+5.3.2.3.10 RowBytes
+This value is the number of bytes in each row of the table.  This is the total number of bytes utilized by
+each table row, and SHALL include bytes devoted to overhead for system columns, type identification,
+etc.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,3 @@
+5.3.3.2.4 Columns
+The Columns parameter defines the columns of the new table. For byte tables this parameter SHALL
+be an empty list.

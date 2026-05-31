@@ -1,0 +1,31 @@
+5.8.4.2 Log Entries
+Each log entry is a row in a Log table.  Each of these rows includes columns for the Session ID, uidrefs
+to Session authorities, the names of those authorities, a timestamp, a monotonic counter value, a
+LogKind, a name for the log entry, and a data field that holds up to 64 bytes of data for a log message.
+The value of the data field for system entries is dependent on the value of the LogKind column.
+The LogKind column SHALL have one of the values defined in Table 235.
+Table 235 LogKind Column Values
+| LogKind Column Value | Meaning                          |
+|----------------------|---------------------------------|
+| 0                    | Available                       |
+| 1                    | Method failed                  |
+| 2                    | Method succeeded               |
+| 3                    | Authentication attempt failed  |
+| 4                    | Authentication attempt succeeded|
+| 5                    | Transaction opened successfully |
+| 6                    | Transaction committed successfully|
+| 7                    | Transaction aborted            |
+| 8                    | Session ended successfully     |
+| 9                    | User generated                 |
+| 10 to 23             | reserved                       |
+
+The structure of the system entry is defined in Table 236.
+Table 236 System Log Entry Structure
+```markdown
+| Bytes  | Values                                                                                  |
+|--------|-----------------------------------------------------------------------------------------|
+| 0 to 7 | The invoking uid of the method (either a table or object UID, or this SP)               |
+| 8      |                                                                                         |
+| 9 to 15| The uid of the method involved in the operation. If there is no method, these bytes SHALL be zeroes. |
+| 16 to 17| Status code for the operation.                                                         |
+``` 

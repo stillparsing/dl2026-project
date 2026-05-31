@@ -1,0 +1,6 @@
+5.1.3.99 Year
+Name-value pair that has a Name of "0" and takes year_enum as the value.
+Table 164 Year
+| UID                         | Name | Format                          |
+| --------------------------- | ---- | ------------------------------- |
+| 00 00 00 05 00 00 14 01     | Year | Name_Value_Uinteger_Type, 0, year_enum |

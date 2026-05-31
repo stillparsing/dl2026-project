@@ -1,0 +1,8 @@
+4.3.8.1 DataStore (M)
+The DataStore is a byte table. It can be used by the host for generic secure data storage. The DataStore table
+SHALL be at least 10MB in size (the Table table object that represents the DataStore table SHALL have a Rows
+column value of at least 0x00A00000). The access control for modification or retrieval of data in the table initially
+requires a member of the Admins class authority. These access control settings are personalizable. The Initial
+DataStore content value is VU.
+5
+Appendix – SSC Specific Features

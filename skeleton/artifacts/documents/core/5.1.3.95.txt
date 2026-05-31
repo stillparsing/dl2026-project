@@ -1,0 +1,10 @@
+5.1.3.95 uinteger_64
+This is a uinteger type with a size restriction of 64 bytes.
+Table 159 uinteger_64
+```markdown
+| UID                           | Name       | Format        |
+|-------------------------------|------------|---------------|
+| 00 00 00 05 00 00 02 24       | uinteger_64| Simple_Type,  |
+|                               |            | uinteger,     |
+|                               |            | 64            |
+```

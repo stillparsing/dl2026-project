@@ -1,0 +1,2 @@
+5.3.2.12.8 Persistence
+The value of this column identifies if value of Tries column is persistent through power cycles.

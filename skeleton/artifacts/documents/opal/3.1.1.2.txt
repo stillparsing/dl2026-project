@@ -1,0 +1,100 @@
+3.1.1.2 TPer Feature (Feature Code = 0x0001)
+Table 3 - Level 0 Discovery - TPer Feature Descriptor
+```json
+[
+    {
+        "Bit": "",
+        "Byte": "",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": ""
+    },
+    {
+        "Bit": "0",
+        "Byte": "(MSB)",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": "Feature Code (0x0001)"
+    },
+    {
+        "Bit": "1",
+        "Byte": "",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": "(LSB)"
+    },
+    {
+        "Bit": "2",
+        "Byte": "",
+        "7": "",
+        "6": "",
+        "5": "Version",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": "Reserved"
+    },
+    {
+        "Bit": "3",
+        "Byte": "",
+        "7": "",
+        "6": "",
+        "5": "Length",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": ""
+    },
+    {
+        "Bit": "4",
+        "Byte": "",
+        "7": "Reserved",
+        "6": "ComID Mgmt Supported",
+        "5": "Reserved",
+        "4": "Streaming Supported",
+        "3": "Buffer Mgmt Supported",
+        "2": "ACK/NAK Supported",
+        "1": "Async Supported",
+        "0": "Sync Supported"
+    },
+    {
+        "Bit": "5 - 15",
+        "Byte": "Reserved",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": ""
+    }
+]
+```
+An Opal SSC compliant Storage Device SHALL return the following:
+• Feature Code = 0x0001
+• Version = 0x1 or any version that supports the defined features in this SSC
+• Length = 0x0C
+• ComID Mgmt Supported = VU
+• Streaming Supported = 1
+• Buffer Mgmt Supported = VU
+• ACK/NACK Supported = VU
+• Async Supported = VU
+• Sync Supported = 1

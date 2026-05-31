@@ -1,0 +1,4 @@
+5.3.2.3.12 MinSize
+This is the number of rows initially requested for this table.  The table is able to contain at least this
+many rows.  This column is user-settable (access control permitting).  For more information see
+5.3.4.2.1.

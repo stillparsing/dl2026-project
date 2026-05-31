@@ -1,0 +1,42 @@
+3.1.1.6.3 Supported Data Removal Mechanism Definition
+Each bit of the Supported Data Removal Mechanism (see Table 10) SHALL be set to one if the TPer supports the
+corresponding Data Removal Mechanism; otherwise, each bit SHALL be set to zero. The TPer SHALL support the
+Crypto Erase mechanism and MAY support the Overwrite Data Erase or Block Erase or other mechanisms. The
+TPer MAY support multiple Data Removal Mechanisms described in Table 10. After a RevertSP method has
+completed without an error, the condition of user data SHALL be indicated as specified in Table 10.
+
+Table 10 - Supported Data Removal Mechanism
+```json
+[
+    {
+        "Bit": 0,
+        "Name": "Overwrite Data Erase",
+        "Condition of user data after Data Removal": "The Overwrite Data Erase mechanism causes TPer to alter information by writing a vendor specific data pattern to the medium."
+    },
+    {
+        "Bit": 1,
+        "Name": "Block Erase",
+        "Condition of user data after Data Removal": "The Block Erase mechanism causes the TPer to alter information by setting the physical blocks to a vendor specific value."
+    },
+    {
+        "Bit": 2,
+        "Name": "Cryptographic Erase",
+        "Condition of user data after Data Removal": "The TPer SHALL support this data erasure mechanism. Further this mechanism SHALL be executed in addition to any other supported data removal mechanism that is being executed. This bit MAY be used by the Revert or the RevertSP or the GenKey (band erase) mechanisms of data removal, where the cryptographic keys used to encrypt the user data are changed."
+    },
+    {
+        "Bit": "3-4",
+        "Name": "Reserved",
+        "Condition of user data after Data Removal": ""
+    },
+    {
+        "Bit": 5,
+        "Name": "Vendor Specific Erase",
+        "Condition of user data after Data Removal": "The Vendor Specific Erase mechanisms cause all user data to be removed by a vendor specific method."
+    },
+    {
+        "Bit": "6-7",
+        "Name": "Reserved",
+        "Condition of user data after Data Removal": ""
+    }
+]
+```

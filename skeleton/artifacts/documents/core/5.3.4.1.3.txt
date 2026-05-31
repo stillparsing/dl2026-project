@@ -1,0 +1,68 @@
+5.3.4.1.3 Authority Operations
+The Operation column of the Authority table identifies the authentication method for which an
+authority object SHALL be used.
+The value of an Operation for a given authority SHALL match the purpose for which that authority is
+being used during session startup.  For instance, an authority with an Operation value of Signing or
+None SHALL only be able to be successfully invoked during session startup as either a
+HostSigningAuthority or SPSigningAuthority.
+The operation types and their requirements are as follows:
+a. None – This describes an authority that MAY be used to reference a response signing or
+exchange authority.  If used during session startup, an authority with this Operation
+column value SHALL be referenced as the HostSigningAuthority or SPSigningAuthority.
+Referencing an authority with this Operation column value as an exchange authority
+SHALL result in an error.  In the event that an attempt is made to invoke Authenticate
+with an authority that has an Operation column value of None, that authentication SHALL
+succeed if all other necessary requirements, as defined by the Authority object, are met.
+b. Password – This describes an authority that MAY be used and authenticated with its
+referenced C_PIN credential, either during session startup or using the Authenticate
+method.  If used during session startup, this authority SHALL be referenced as the
+HostSigningAuthority or the SPSigningAuthority.  Referencing an authority with this
+Operation column value in another authority parameter of the session startup methods
+SHALL result in an error.
+c. Sign – This describes an authority that MAY be used and authenticated using a challenge
+and response with its referenced public key (RSA/EC) credential, either during session
+startup or using the Authenticate method.  If used during session startup, an authority
+with this Operation column value SHALL be referenced as the HostSigningAuthority or as
+the SPSigningAuthority.  Referencing an authority with this Operation column value in
+another authority parameter of the session startup methods SHALL result in an error.  The
+Sign operation encompasses both Signing and Verification activities – the TPer SHALL
+perform a signature operation for the SPSigningAuthority, and SHALL perform a signature
+verification for the HostSigningAuthority.
+d. Exchange – This describes an authority that MAY be used during session startup, and
+SHALL be referenced as the HostExchangeAuthority or the SPExchangeAuthority.
+Referencing an authority with this Operation column value in another authority parameter
+of the session startup methods SHALL result in an error.  The credential referenced by this
+authority SHALL be used to encrypt session keys for transmission to the other party
+involved in the session.  This authority SHALL NOT be able to be authenticated explicitly
+using the Authenticate method.
+e. SymK – This describes an authority that MAY be used and authenticated using a challenge
+and response with its referenced symmetric key credential, either during session startup or
+using the Authenticate method.  If invoked during session startup, an authority with this
+Operation column value SHALL be referenced as the HostSigningAuthority or the
+SPSigningAuthority.  Referencing an authority with this Operation column value in another
+authority parameter of the session startup methods SHALL result in an error.
+f.
+HMAC – This describes an authority that MAY be used and authenticated using a
+challenge and response with its referenced HMAC key credential and the referenced
+HMAC algorithm, either during session startup or using the Authenticate method.  The
+HMAC credential referenced by the authority using this operation identifies the hash
+algorithm used to generate the HMAC. If invoked during session startup, an authority with
+this Operation column value SHALL be referenced as the HostSigningAuthority or the
+SPSigningAuthority. Referencing an authority with this Operation column value in another
+authority parameter of the session startup methods SHALL result in an error.
+g. TPerSign – This describes the signing authority that represents the TPer, which enables
+the host to verify the TPer credentials. This authority MAY be used and authenticated using
+a challenge and response with its referenced public key (RSA/EC) credential during
+session startup.  If used  during session startup, an authority with this Operation column
+value SHALL be referenced as the SPSigningAuthority.  Referencing an authority with this
+Operation column value in another authority parameter of the session startup methods
+SHALL result in an error.  The TPer signing credential contains certificate chains that
+establish the validity of this authority.
+h. TPerExchange – This describes the exchange authority that represents the TPer.  This
+authority enables the host to establish a secure session with an SP using the TPer’s
+exchange authority.  Referencing an authority with this Operation column value in another
+authority parameter of the session startup methods SHALL result in an error.  The
+credential referenced by this authority SHALL be used to encrypt session keys for
+transmission to the other party involved in the session.  This authority SHALL NOT be able
+to be authenticated explicitly using the Authenticate method.  The TPer exchange
+credential contains certificate chains that establish the validity of this authority.

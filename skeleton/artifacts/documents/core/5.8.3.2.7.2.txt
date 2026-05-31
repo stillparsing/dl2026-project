@@ -1,0 +1,2 @@
+5.8.3.2.7.2 LogTableUID
+This is the UID column value that is assigned to the newly created Log table in the Table table.

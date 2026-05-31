@@ -1,0 +1,2 @@
+3.2.3.4.2.1.2 Kind
+This field identifies the type of the subpacket.  For Credit Control Subpackets, this field is set to 0x8001.

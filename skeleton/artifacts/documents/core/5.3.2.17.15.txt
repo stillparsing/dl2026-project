@@ -1,0 +1,15 @@
+5.3.2.17.15 Values for C_EC_160
+Table 188 represents the set of elliptic curve domain parameters as specified in [4].  The entries p, r, b,
+x and y are represented in decimal format.  These are example values for a curve that MAY be used
+with the C_EC_160 table.  These values are set as the default values for the associated columns when a
+new row is created in the C_EC_160 table and when values for those columns are not specified at table
+creation.  These default values are not represented by a Type table entry; the TPer SHALL be required
+to keep track of these values and set them as defaults for new objects, as necessary.
+Table 188 AACS Values for C_EC_160
+| Column | Value                                                   |
+|--------|---------------------------------------------------------|
+| p      | 900812823637587646514106462588455890498729007071       |
+| r      | 900812823637587646514106555566573588779770753047       |
+| b      | 366394034647231750324370400222002566844354703832       |
+| x      | 264865613959729647018113670854605162895977008838       |
+| y      | 51841075954883162510413392745168936296187808697        | 

@@ -1,0 +1,20 @@
+3.3.4.7.2 GET_COMID_RESPONSE
+This command is used to retrieve the response of the TPer to a previous HANDLE_COMID_REQUEST
+command. The command is sent to the ComID for which the status is requested. The command block
+for the GET_COMID_RESPONSE command is defined in Table 30
+Table 30 GET_COMID_RESPONSE Command Block
+```markdown
+| FIELD          | VALUE             |
+|----------------|-------------------|
+| Command        | IF-RECV           |
+| Protocol ID    | 02                |
+| Transfer Length| 00 01             |
+| ComID          | Request_ComID     |
+```
+
+The Transfer Length is the amount of data that the TPer SHALL send in response to the command. If
+the actual length of the response data is smaller, then the TPer SHALL pad the data with zeros. If the
+actual length of the response data is larger, then the TPer SHALL only send the requested amount of
+data.
+Bytes 10-11 of the payload contain the length of the response data. The host MAY use this information
+to repeat the response command with a transfer length that fits the available data.

@@ -1,0 +1,11 @@
+5.1.3.44 lag
+A struct made up of 2 uinteger_2 name-value types, used to define the lag when setting time. The two
+types represent seconds and fraction of seconds. The names required, as defined by the component
+types, are 0x05 ("Seconds") for the first value and 0x06 ("Fraction") for the second. The "Fraction" value
+is a number of milliseconds.
+Table 99 lag
+```markdown
+| UID                    | Name | Format                                                                                |
+|------------------------|------|---------------------------------------------------------------------------------------|
+| 00 00 00 05 00 00 18 02 | lag  | Struct_Type, Seconds, Fraction                                                        |
+```

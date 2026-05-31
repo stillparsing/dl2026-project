@@ -1,0 +1,6 @@
+5.3.2.12.6 TryLimit
+The value of this column is the maximum number of failed authentication attempts that are able to be
+made using this C_PIN object.
+The default value of the TryLimit column when a new C_PIN object is created is 0.  The value 0 in this
+column indicates that there is no limit on the number of authentication attempts for that object.
+For more information on the uses of this column see 5.3.4.1.1.2.

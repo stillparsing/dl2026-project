@@ -1,0 +1,15 @@
+5.2.2.4.1.10 AckNak
+If both the host’s AckNak property and the TPer’s AckNak property are TRUE:
+a. The TPer SHALL use the Transmission Acknowledgement protocol.
+b. The host SHOULD use the Transmission Acknowledgement protocol. If it does not, the
+TPer will not be able to discard the packets it has sent to the host, causing a transmit buffer
+overflow and a session abort.
+If either the host’s AckNak property or the TPer’s AckNak property are FALSE:
+a. The TPer SHALL NOT use the Transmission Acknowledgement protocol, and SHALL
+ignore the AckType and Acknowledgement fields on all packets received from the host.
+The TPer SHALL put a value of 0x0000 in the AckType field and a value of 0x00000000 in
+the Acknowledgement field for Packets sent to the host.
+b. The host SHOULD NOT use the Transmission Acknowledgement protocol, and SHOULD
+ignore the AckType and Acknowledgement fields on all packets received from the TPer.
+The host SHOULD put a value of 0x0000 in the AckType field and a value of 0x00000000 in
+the Acknowledgement field for Packets sent to the TPer.

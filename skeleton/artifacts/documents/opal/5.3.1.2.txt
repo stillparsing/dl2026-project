@@ -1,0 +1,4 @@
+5.3.1.2 RecommendedAccessGranularity
+This column is used to report the granularity that the Storage Device recommends when the host invokes the Set or
+Get method on byte tables.
+This column SHALL NOT be modifiable by the host.

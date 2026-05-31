@@ -1,0 +1,16 @@
+5.1.2.2.1 Effects of Revert on the PIN Column Value of C_PIN_SID
+When Revert is successfully invoked on the SP object for the Admin SP (UID = 0x00 00 02 05 00 00 00 01),
+the PIN column value of the C_PIN_SID object SHALL be affected as follows:
+1. If the SID authority has never been successfully authenticated, then the C_PIN_SID PIN column SHALL
+remain at its current value.
+2. If the SID authority has previously been successfully authenticated, then:
+a) If the value of the “Behavior of C_PIN_SID PIN upon TPer Revert” field in the Opal SSC V2 feature
+descriptor is 0x00, then the C_PIN_SID PIN column SHALL be set to the PIN column value of the
+C_PIN_MSID object.  Additionally, the “Initial C_PIN_SID PIN Indicator” field SHALL be set to 0x00
+upon completion of the Revert.
+b) If the value of the “Behavior of C_PIN_SID PIN upon TPer Revert” field in the Opal SSC V2 feature
+descriptor is not 0x00, then the C_PIN_SID PIN column SHALL be set to a vendor unique (VU) value.
+Start of Informative Comment
+In the case where the “Initial C_PIN_SID PIN Indicator” and “Behavior of C_PIN_SID PIN upon TPer Revert” fields
+are both 0x00, the above rules for Revert are backward compatible with Opal v1.00.
+End of Informative Comment

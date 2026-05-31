@@ -1,0 +1,4 @@
+5.5.3.1.11 LowLag
+The value of this column is set by the SetClockLow method.  This value is valid only if HaveLow is set to
+True; otherwise it SHOULD be zeroes.  This represents seconds and fractions of a second.
+This column SHALL NOT be modifiable by the host.

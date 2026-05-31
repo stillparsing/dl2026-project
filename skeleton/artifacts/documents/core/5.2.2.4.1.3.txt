@@ -1,0 +1,6 @@
+5.2.2.4.1.3 MaxPackets
+The host SHOULD NOT send a ComPacket that contains more Packets than the value of the TPer’s
+MaxPackets property. If the host sends a ComPacket that contains too many Packets, the TPer MAY
+ignore the extra Packets.
+The TPer SHALL NOT send a ComPacket that contains more Packets than the value of the host’s
+MaxPackets property.

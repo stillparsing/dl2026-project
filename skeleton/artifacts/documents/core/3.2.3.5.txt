@@ -1,0 +1,31 @@
+3.2.3.5 Secure Messaging Packet Format
+Begin Informative Content
+Secure messaging enables confidentiality of the packet payload and integrity/authenticity of the entire
+packet (including header).  Secure messaging comes in three types:
+a. Confidential Messaging – this provides encryption on the message being transmitted.
+Confidential Messaging prevents the packet contents from being read by an intruder between
+the packet source and destination.
+b. Integrity/Authenticity Checking – this provides the ability to detect corruption and/or tampering
+with packets in a session.
+c. Confidential Messaging with Integrity/Authenticity Checking – this provides encryption on the
+message being transmitted and the added ability to detect corruption and/or tampering with
+packets in a session.
+End Informative Content
+A secure messaging packet SHALL be used when encryption or integrity/authenticity checking (or both)
+is enabled for a session.  The format of the Secure Messaging Packet follows that defined in Table 18.
+The contents of the Secure Messaging Packet payload field are displayed in Table 22 and Table 23.
+Table 22 Secure Messaging Packet – Payload Field
+```markdown
+| Field      | Type  |
+|------------|-------|
+| IV         | bytes |
+| SecureData | bytes |
+| MAC        | bytes |
+```
+Table 23 Secure Messaging Packet Payload– SecureData Field
+| Field     | Type    | Description                                                                                                                                                                                                 |
+|-----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DataLength| uinteger| This field is the length of the SecureData's Data field, in bytes.                                                                                                                                          |
+| Data      | bytes   | This field contains the encrypted or integrity-checked subpackets                                                                                                                                           |
+| Pad       | bytes   | This field contains any necessary padding required to fulfill the alignment constraints for the encryption mode in use.  For AES-CBC encryption, the length of the Pad field SHALL include a number of padding bytes such that the total length of the Data field plus the Pad field is congruent to zero mod 16.  For GCM and CCM, there is no required padding. The value for pad bytes SHALL be 0x00. |
+

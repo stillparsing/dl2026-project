@@ -1,0 +1,20 @@
+4.2.1.2 SPTemplates (M)
+The SPTemplates table is defined in [2], and Table 19 defines the Preconfiguration Data for the SPTemplates table.
+*ST1 means this version number or any version number that complies with this SSC.
+Table 19 - Admin SP - SPTemplates Table Preconfiguration
+```json
+[
+    {
+        "UID": "00 00 00 03 00 00 00 01",
+        "TemplateID": "00 00 02 04 00 00 00 01",
+        "Name": "Base",
+        "Version": "00 00 00 02 *ST1"
+    },
+    {
+        "UID": "00 00 00 03 00 00 00 02",
+        "TemplateID": "00 00 02 04 00 00 00 02",
+        "Name": "Admin",
+        "Version": "00 00 00 02 *ST1"
+    }
+]
+```

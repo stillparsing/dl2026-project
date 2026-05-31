@@ -1,0 +1,5 @@
+2.1 Architecture Overview
+Begin Informative Content
+The TCG Storage Architecture supports use cases and threat models developed for the TCG Storage
+use cases (see [1]).  Peripherals based on this architecture are called Trusted Peripherals or TPers.
+End Informative Content

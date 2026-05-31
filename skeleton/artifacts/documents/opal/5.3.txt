@@ -1,0 +1,7 @@
+5.3 Byte Table Access Granularity
+Start of Informative Comment
+While the general architecture defined in [2] allows data to be written into byte tables starting at any arbitrary byte
+boundary and with any arbitrary byte length, certain types of Storage Devices work more efficiently when data is
+written aligned to a larger block boundary.  This section defines extensions to [2] that allow a Storage Device to report
+the restrictions that it enforces when the host invokes the Set method on byte tables.
+End of Informative Comment

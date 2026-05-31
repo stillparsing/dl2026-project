@@ -1,0 +1,12 @@
+5.6.4.9.1 Input
+The value of the Input parameter MAY be either a bytes value, wherein bytes to be signed are passed
+as a parameter of the method; or a cellblock that addresses a subset of a table on the SP that holds the
+data to be signed.
+For the Sign method invoked on an asymmetric credential object, the Input value is signed using the
+private part of the key pair of the specified public key credential.
+For the Sign method invoked on a hash object, the data in the hash object’s Accumulator column is
+signed using the private part of the key pair of the public key credential referenced in the hash object’s
+Signer column.  It is an error for the Sign method to be invoked on a hash object and have the Input
+parameter specified.
+When invoking Sign on a hash object, access control on the Sign method for the credential referenced
+in the Signer column of the hash object SHALL be fulfilled.

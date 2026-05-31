@@ -1,0 +1,10 @@
+5.1.3.29 day_enum
+Used in association with the Day name-value pair.
+Table 80 day_enum
+```markdown
+| UID                       | Name     | Format               |
+|---------------------------|----------|----------------------|
+| 00 00 00 05 00 00 04 18   | day_enum | Enumeration_Type,    |
+|                           |          | 1,                   |
+|                           |          | 31                   |
+```

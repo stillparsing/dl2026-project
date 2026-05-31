@@ -1,0 +1,13 @@
+5.6.4.4.4 Fails
+a. If the object does not exist
+b. If the object does not contain a valid credential
+c. If the DataInput cellblock reference is not a to valid cellblock
+d. If the DataInput is a cellblock reference and Get access control on that cellblock has not
+been fulfilled
+e. If the BufferOut is not a valid cellblock
+f.
+If BufferOut has been specified and Set access control on that cellblock has not been
+fulfilled
+g. If the DataInput byte size is not the same size as or smaller than the BufferOut cell size (if
+specified)
+h. If Decrypt has been invoked when no decryption “stream” is open

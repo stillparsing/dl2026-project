@@ -1,0 +1,2 @@
+5.3.3.2.9.1 UID
+This is the UID column value that is assigned to the newly created table in the Table table.

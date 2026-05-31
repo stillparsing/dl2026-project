@@ -1,0 +1,20 @@
+5.7.3.7.4 ReEncryption Request Attempts
+If a Set method invocation attempts to set a value to the ReEncryptRequest column that is not valid for
+the current ReEncryptState column value, then this Set method invocation SHALL return an error.
+a. 1 = START_req: Host requests a new re-encryption process. Only accepted when the
+ReEncryptState column value is IDLE. The TPer changes the value of the
+ReEncryptState column to PENDING.
+b. 2 = ADVKEY_req: Host requests TPer to change the ReEncryptState column value to IDLE
+AND move the value of the NextKey column to the ActiveKey column (this move also sets
+the value of the NextKey column to a null uid reference). This request is only valid when the
+ReEncryptState column is COMPLETED or PAUSED.
+c. 3 = RETIDLE_req: Host requests a return to the IDLE state WITHOUT moving keys. This
+request provides the host application control over re-encryption resources and background
+activity.  This request is only valid when the ReEncryptState column is PAUSED.
+d. 4 = CONT_req: Host requests the re-encryption process transition from
+ReEncryptState=PAUSED to ReEncryptState=PENDING. Re-encryption begins at
+(LastReEncryptLBA + 1). Invocation of the Set method to perform this operation SHALL
+only succeed if the current ReEncryptState column value is PAUSED.
+e. 5 = PAUSE_req: Host requests the quiescing of the re-encryption process. Invocation of the
+Set method to perform this operation SHALL only succeed if the current ReEncryptState
+column value is ACTIVE or PENDING.

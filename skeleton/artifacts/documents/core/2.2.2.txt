@@ -1,0 +1,6 @@
+2.2.2 Host
+Begin Informative Content
+For the purposes of this specification, a Host is the entity that initiates ATA (T13) TRUSTED
+SEND/RECEIVE commands or SCSI (T10) SECURITY PROTOCOL IN/OUT commands under Security
+Protocol 0x01-0x06.
+End Informative Content

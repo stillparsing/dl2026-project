@@ -1,0 +1,5 @@
+5.3.2.7.15 LogTo
+This column value is a uidref to a LogList object.  Log entries for this access control association are
+added to the Log table associated with that LogList object.  This column SHALL be disregarded if the
+Log Template has not been issued into the SP, and SHOULD be set to the NULL UID.
+

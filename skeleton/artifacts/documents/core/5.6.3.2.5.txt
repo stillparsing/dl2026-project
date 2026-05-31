@@ -1,0 +1,3 @@
+5.6.3.2.5 Accumulator
+This is the accumulator where a new hash is incrementally created upon invocation of the Hash or
+HMAC methods on this credential, or where an initial condition is set.

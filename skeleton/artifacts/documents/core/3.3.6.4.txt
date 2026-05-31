@@ -1,0 +1,39 @@
+3.3.6.4 TPer Feature
+This information reports support for various TPer parameters. This mandatory feature SHALL always be
+returned in the Level 0 Discovery response.
+These parameters indicate whether the TPer supports a variety of features. Having a given “support’
+flag true does not imply that the feature is required or enabled. Actually enabling a feature MAY require
+setting of host properties by invoking the Properties method.
+The Feature Code value for the TPer feature is 0x0001.
+
+Table 42 TPer Feature Descriptor
+| Bit/Byte | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 | Description                   |
+| -------- | - | - | - | - | - | - | - | - | -----------------------------|
+| 0 (MSB)  |   |   |   |   |   |   |   |   | Feature Code                 |
+| 1 (LSB)  |   |   |   |   |   |   |   |   |                             |
+| 2        | Version | Reserved |                        |                             |
+| 3        | Length                    |                 |                             |
+| 4        | Reserved                  | ComID Management Supported | Reserved | Streaming Supported |
+| 5        | Buffer Management Supported | ACK/NAK Supported | Async Supported | Sync Supported |
+| 6-15     | Reserved                  |                             |                             |
+
+- The Feature Code field SHALL be set to 0x0001.
+- The Version field SHALL be set to 0x01.
+- The Length field SHALL be set to 0x0C.
+
+Descriptions of fields:
+
+| Field                      | Description                                                                                          |
+|----------------------------|----------------------------------------------------------------------------------------------------|
+| Sync Supported             | Set to 1 if the TPer supports the Synchronous Protocol, otherwise 0.                                |
+| Async Supported            | Set to 1 if the TPer supports the Asynchronous Protocol, otherwise 0.                               |
+| ACK/NAK Supported          | Set to 1 if the TPer supports transmission ACK/NAK flow control or communications, otherwise 0.   |
+| Buffer Management Supported| Set to 1 if the TPer supports buffer management flow control for communications, otherwise 0.     |
+| Streaming Supported        | Set to 1 if the TPer supports data stream encoding, otherwise 0.                                   |
+| ComID Management Supported | Set to 1 if the TPer supports ComID management using Protocol ID 0x02, otherwise 0.                |
+
+All other bits are reserved.
+
+The Feature Code field SHALL be set to 0x0001.
+The Version field SHALL be set to 0x01.
+The Length field SHALL be set to 0x0C.

@@ -1,0 +1,7 @@
+5.3.2.4.7 Transactional
+This value indicates whether the column is subject to transactional rollback.
+If the value of the Transactional column is False, then modifications to this column take effect
+immediately, even if the method invocation that modifies the column is included in a transaction that
+has not yet resolved.  Changes to the column are not rolled back if the transaction containing the
+modification is aborted.  The value of this column for user-created table columns SHALL be True.
+This column SHALL NOT be modifiable by the host.

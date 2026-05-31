@@ -1,0 +1,104 @@
+3.1.1.3 Locking Feature (Feature Code = 0x0002)
+** means the present current state of the respective feature
+Table 4 - Level 0 Discovery - Locking Feature Descriptor
+```json
+[
+    {
+        "Bit": "",
+        "Byte": "",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": ""
+    },
+    {
+        "Bit": "",
+        "Byte": "0 (MSB)",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": "Feature Code (0x0002)"
+    },
+    {
+        "Bit": "",
+        "Byte": "1 (LSB)",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": ""
+    },
+    {
+        "Bit": "",
+        "Byte": "2",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": "Version Reserved"
+    },
+    {
+        "Bit": "",
+        "Byte": "3",
+        "7": "",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": "Length"
+    },
+    {
+        "Bit": "",
+        "Byte": "4",
+        "7": "HW Reset for LOR/DOR Supported",
+        "6": "MBR Shadowing Not Supported",
+        "5": "MBR Done",
+        "4": "MBR Enabled",
+        "3": "Media Encryption",
+        "2": "Locked",
+        "1": "Locking Enabled",
+        "0": "Locking Supported"
+    },
+    {
+        "Bit": "",
+        "Byte": "5 - 15",
+        "7": "Reserved",
+        "6": "",
+        "5": "",
+        "4": "",
+        "3": "",
+        "2": "",
+        "1": "",
+        "0": ""
+    }
+]
+```
+An Opal SSC compliant Storage Device SHALL return the following:
+• Feature Code = 0x0002
+• Version = 0x3 or any version that supports the defined features in this SSC
+• Length = 0x0C
+• HW Reset for LOR/DOR Supported = VU
+• MBR Shadowing Not Supported = 0
+o MBR Shadowing feature SHALL be supported. See section 4.3.5.4.
+• MBR Done = **
+• MBR Enabled = **
+• Media Encryption = 1
+• Locked = **
+• Locking Enabled = See section 3.1.1.3.1
+• Locking Supported = 1

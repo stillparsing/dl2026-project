@@ -1,0 +1,24 @@
+3.3.4.5 Management Layer
+Begin Informative Content
+Commands dealt with in this layer are IF-SEND and IF-RECV with Protocol ID = 0x01 and with a valid
+active ComID.
+This is the first layer that makes use of tokenized and packetized payloads.  Communications in this
+layer occur between the TPer Session Manager (TSM) and the Host Session Manager (HSM).   All
+communications happen within Control Sessions.
+The Control Session associated with a particular ComID starts as soon as the ComID is issued.  When
+the ComID becomes inactive, the Control Session is terminated.  The flow control for the Control
+Session is performed in the same manner as the flow control for Regular Sessions, with the difference
+that the communication is between the TSM and the HSM and these entities are responsible for the
+flow control.
+One of the main tasks of this layer is to manage the startup of Regular Sessions.  During this process,
+the TSM and the HSM assign the TSN and the HSN that compose the SN for the Session to be
+created.
+When the process is initiated the HSM assigns an HSN (i.e. newHSN).  The HSM has the opportunity to
+make sure newHSN is different from any other HSNs in use by other sessions managed by it, though
+this is not required.
+End Informative Content
+Once the TSM processes the StartSession method and returns the SyncSession response, the
+Regular Session SHALL be considered open for the case of sessions that do not require challenge-
+response and/or key exchange.  For sessions that require challenge-response and/or key exchange,
+the Regular Session SHALL be considered open when the TSM finishes processing the
+StartTrustedSession and has prepared the SyncTrustedSession response.

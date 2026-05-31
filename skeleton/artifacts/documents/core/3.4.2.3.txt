@@ -1,0 +1,10 @@
+3.4.2.3 ACEs and ACLs
+Begin Informative Content
+ACEs apply to methods on an SP, on a particular table in an SP, or on arbitrary parts of a particular
+table in an SP, down to the granularity of a single table cell.
+With ACEs as the building blocks of ACLs, each ACE is able to have separate managerial control.  For
+example, a host authenticated with one authority creates a table and gives another authority control of
+some of the ACEs on that table.  This allows flexible, fine-grained management of access.
+End informative Content
+The minimum and maximum number of ACEs in an ACL and the minimum and maximum number of
+authorities in an ACE are SSC-specific.  Every SSC SHALL at least stipulate the minimum.

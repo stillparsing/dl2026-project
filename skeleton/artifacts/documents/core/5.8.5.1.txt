@@ -1,0 +1,15 @@
+5.8.5.1 Log Template-Specific Life Cycle State Descriptions/Exceptions
+Method invocations that occur to the Admin SP during the Issuance process are logged to the Admin
+SP default Log table (if the Log Template is part of the Admin SP and if logging of those method
+invocations is enabled).
+An SP issued with the Log Template has the following characteristics based on the current life cycle
+state of that SP:
+a. Disabled – A Log Template-enabled SP in the Disabled state SHALL log authority
+authentication attempts, session startup attempts, and all method invocation attempts
+(dependent on log settings in the Authority and AccessControl tables).  A Log Template-
+enabled SP that is in the Disabled state SHALL NOT be able to perform any user-invoked
+SP operations, with the exceptions noted in section 4.5.2.
+b. Frozen – Attempts to open sessions to an SP in the Issued-Frozen state SHALL fail.
+c. Issued-Disabled-Frozen – Attempts to open sessions to an SP in the Issued-Disabled-
+Frozen state SHALL fail.
+6 Appendix 1 – Required UID Assignments

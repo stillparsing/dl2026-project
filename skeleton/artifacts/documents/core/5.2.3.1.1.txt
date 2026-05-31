@@ -1,0 +1,6 @@
+5.2.3.1.1 HostSessionID
+The HostSessionID parameter in the StartSession invocation is the host-side session number
+assigned and used by the host to identify this session.  All further invocations in this series of method
+invocations and responses use this host-assigned session number in the HostSessionID parameter.
+This is the number that becomes the HSN portion of the packet header Session field (see 3.2.3.3 and
+3.3.7.1).

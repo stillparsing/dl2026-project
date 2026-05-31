@@ -1,0 +1,2 @@
+3.1.1.4.4 AlignmentGranularity
+AlignmentGranularity SHALL be set to the value of the AlignmentGranularity column in the LockingInfo table.

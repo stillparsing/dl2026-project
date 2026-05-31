@@ -1,0 +1,5 @@
+5.7.2.2.20 GeneralStatus
+This field defines why the re-encryption operation arrived at the PAUSED or PENDING state. The value
+in this column is only valid when in the PAUSED or PENDING state. The values are defined in table Table
+87.
+This column SHALL NOT be modifiable by the host.

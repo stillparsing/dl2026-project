@@ -1,0 +1,2 @@
+5.5.3.1.14 TrustMode
+This column value identifies whether HaveHigh, HaveLow, both, or neither are currently in effect.

@@ -1,0 +1,4 @@
+4.5.4 Issued-Disabled-Frozen
+If the Log template has been issued into the SP, logging in the SP’s default log table MAY reflect failed
+session startup attempts, dependent on personalization.
+Attempts to open sessions to an SP in the Issued-Frozen state SHALL fail with status SP_FROZEN.

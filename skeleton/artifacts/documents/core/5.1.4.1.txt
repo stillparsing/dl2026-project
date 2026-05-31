@@ -1,0 +1,17 @@
+5.1.4.1 Name Representations in Abstract Type Named Value Components
+Named values used in abstract types SHALL be encoded in the messaging stream using the rules
+described in this section.
+a. The name in the Named values that represent Named value components of method
+parameters in a method invocation SHALL be a uinteger.  Starting at zero, these uinteger
+values are assigned based on the ordering of the components of these abstract types.
+a. The first component of one of these grouped types SHALL be represented by the
+"name" zero (0x00) in the Named value pair when that method is invoked, and thus has
+the format "0x00 = value" when that method is invoked.
+b. Each subsequent component in the grouped type after the first SHALL be represented
+by the uinteger of the previous component, as indicated in the method's signature or
+the abstract type definition, incremented by one.  Thus, the second component of such
+a type in an invocation of a particular method has the format "0x01 = value".
+Components of such types are not required to be sent in a method invocation, but if
+sent must appear in the order specified.
+c. For each subsequent relevant type grouping in the method invocation, if such exists,
+the components SHALL be numbered restarting at 0x00.

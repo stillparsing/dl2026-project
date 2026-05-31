@@ -1,0 +1,4 @@
+5.8.2.1.11 TimeKind
+This is the kind of time used (if any), as defined in section 5.5.  Note that if the Clock Template was not
+issued into this SP then this value SHALL be zero.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,5 @@
+5.7.2.5.2 Enable
+This column value identifies if this feature is enabled or disabled.
+MBR shadowing is active when Enable is True and Done is False.  When MBR shadowing is active, the
+TPer responds to LBA requests for LBA 0 to the LBA that maps to the end of the MBR table with values
+from the MBR table.

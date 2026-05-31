@@ -1,0 +1,3 @@
+3.3.6.4.5 Streaming Supported
+StreamingSupported SHALL be set to one if the TPer supports data stream encoding (see 3.2.2 and
+3.2.3), otherwise StreamingSupported SHALL be cleared to zero.

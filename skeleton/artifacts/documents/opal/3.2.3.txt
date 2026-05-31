@@ -1,0 +1,45 @@
+3.2.3 TPER_RESET command (M)
+If the TPER_RESET command is enabled, it SHALL cause the following before the TPer accepts the next IF-SEND
+or IF-RECV command:
+a) all dynamically allocated ComIDs SHALL return to the Inactive state;
+b) all open sessions SHALL be aborted on all ComIDs;
+c) all uncommitted transactions SHALL be aborted on all ComIDs;
+d) the synchronous protocol stack for all ComIDs SHALL be reset to its initial state
+e) all TCG command and response buffers SHALL be invalidated for all ComIDs;
+f)
+all related method processing occurring on all ComIDs SHALL be aborted;
+g) The TPer’s knowledge of the host’s communications capabilities, on all ComIDs, SHALL be reset to the
+initial minimum assumptions defined in [2] or the TPer’s SSC definition;
+h) the values of the ReadLocked and WriteLocked columns SHALL be set to True for all Locking SP’s Locking
+objects that contain the Programmatic enumeration value in the LockedOnReset column;
+i)
+the value of the Done column of the Locking SP’s MBRControl table SHALL be set to False, if the
+DoneOnReset column contains the Programmatic enumeration value.
+The TPER_RESET command is delivered by the transport IF-SEND command. If the TPER_RESET command is
+enabled, the TPer SHALL accept and acknowledge it at the interface level. If the TPER_RESET command is disabled,
+the TPer SHALL abort it at the interface level with the “Other Invalid Command Parameter” status (see [4]). There is
+no IF-RECV response to the TPER_RESET command.
+The TPER_RESET command is defined in Table 13.
+The Transfer Length SHALL be non-zero. All data transferred SHALL be ignored.
+
+Table 13 - TPER_RESET Command
+```json
+[
+    {
+        "FIELD": "Command",
+        "VALUE": "IF-SEND"
+    },
+    {
+        "FIELD": "Protocol ID",
+        "VALUE": "0x02"
+    },
+    {
+        "FIELD": "Transfer Length",
+        "VALUE": "Non-zero"
+    },
+    {
+        "FIELD": "ComID",
+        "VALUE": "0x0004"
+    }
+]
+```

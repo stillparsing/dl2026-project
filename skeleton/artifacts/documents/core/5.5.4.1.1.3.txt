@@ -1,0 +1,3 @@
+5.5.4.1.1.3 LagTime
+This value returns the lag time associated with the current time stored in the ClockTime table.  The
+value returned is dependent on the clock Kind that is currently active.

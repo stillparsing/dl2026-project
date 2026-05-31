@@ -1,0 +1,7 @@
+5.2.2.4.1.1 MaxSubpackets
+The host SHOULD NOT send a Packet that contains more Subpackets than the value of the TPer’s
+MaxSubpackets property. If the host sends a Packet that contains too many Subpackets, the TPer
+SHALL abort the session associated with the Packet. In the case of too many Subpackets in a Control
+Session Packet, the TPer SHALL discard and ignore the Packet.
+The TPer SHALL NOT send a Packet that contains more Subpackets than the value of the host’s
+MaxSubpackets property.

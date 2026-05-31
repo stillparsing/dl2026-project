@@ -1,0 +1,40 @@
+5.1.3.72 symmetric_mode
+Defines the mode to be used with an AES credential.
+Table 133 symmetric_mode
+```markdown
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 0                 | ECB              |
+| 1                 | CBC              |
+| 2                 | CFB              |
+| 3                 | OFB              |
+| 4                 | GCM              |
+| 5                 | CTR              |
+| 6                 | CCM              |
+| 7                 | XTS              |
+| 8                 | LRW              |
+| 9                 | EME              |
+| 10                | CMC              |
+| 11                | XEX              |
+| 12-23             | Reserved         |
+```
+
+The enumeration values are associated as defined in Table 134.
+Table 134 symmetric_mode Enumeration Values
+```markdown
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 0                 | ECB              |
+| 1                 | CBC              |
+| 2                 | CFB              |
+| 3                 | OFB              |
+| 4                 | GCM              |
+| 5                 | CTR              |
+| 6                 | CCM              |
+| 7                 | XTS              |
+| 8                 | LRW              |
+| 9                 | EME              |
+| 10                | CMC              |
+| 11                | XEX              |
+| 12-23             | Reserved         |
+```

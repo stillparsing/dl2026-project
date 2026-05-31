@@ -1,0 +1,9 @@
+5.3.4.1.4 Disabled Authorities
+If the value of the Enabled column of an authority is False (see 5.3.2.10.6), then the authority is
+disabled and SHALL NOT be authenticatable.
+Attempts to authenticate a disabled authority during session startup (see 5.3.4.1.5) SHALL result in
+session startup failure, and a SyncSession status code of NOT_AUTHORIZED (see 5.1.5.2).
+Attempts to authenticate a disabled authority using the Authenticate method SHALL return a result of
+False and a method status of SUCCESS (see 5.3.4.1.14.1).
+Once an authority is authenticated within a session, setting its Enabled column to False SHALL NOT
+affect the authenticated state of the authority.

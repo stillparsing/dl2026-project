@@ -1,0 +1,5 @@
+5.3.3.8.1 Where
+This parameter identifies the row from which iteration begins.  If the Where parameter is specified, the
+Next method returns a list of zero or more UID column values following the specified row.
+If Where is not specified, the first row in the TPer's current ordering of the table SHALL be the first UID
+column value returned.

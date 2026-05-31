@@ -1,0 +1,11 @@
+3.3.6.5.3 Locked
+Locked SHALL be set to one if LockingEnabled is set to one, and one or more LBA ranges in the
+Locking
+table
+have
+either
+(ReadLockEnabled=True
+and
+ReadLocked=True)
+or
+(WriteLockEnabled=True and WriteLocked=True); otherwise Locked SHALL be set to zero.

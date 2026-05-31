@@ -1,0 +1,46 @@
+5.3.4.2.3 Creating Table Rows
+Tables MAY be modified in the following ways:
+a. New rows MAY be created
+b. Existing rows MAY be deleted
+c. Cell values MAY be changed
+In most cases, new rows SHALL be added to a table through successful invocation of the CreateRow
+method on that table.  Exceptions to this, where rows are created in tables by methods other than
+CreateRow, are defined as follows:
+a. Table – the TPer automatically creates rows in the Table table upon successful invocation
+of the CreateTable method.
+b. Column – the TPer automatically creates rows in the Column table upon successful
+invocation of the CreateTable method.
+c.
+MethodID – the TPer SHALL NOT permit rows to be created in the MethodID table via the
+CreateRow method.
+d. AccessControl the TPer automatically creates rows in the AccessControl table when a
+table or object is created, except in the case where those rows are created in the
+AccessControl table.
+e. Log – the TPer SHALL NOT permit rows to be created in the Log table via the CreateRow
+method.
+f.
+LogList – the TPer automatically creates rows in the LogList table upon successful
+invocation of the CreateLog method.
+Successful invocation of the CreateRow method creates a row in the invoking table where the column
+values for that row are the values passed as parameters to the method invocation.  Successful
+invocation of the CreateRow method requires that the host supply values for each column in the row.
+When invoking the CreateRow method on a table that requires certain column values to be unique, an
+attempt to create a row with parameterized values equivalent to the values in the unique columns of
+some row of that table SHALL fail.
+When a row in an object table is created, a number of AccessControl table rows are created that
+correspond to the default methods permitted for the created object.  ACLs are set on those methods,
+and in the meta-ACL columns associated with those methods, as follows:
+a. Using the HostSigningAuthority from the StartSession method, if provided.
+b. Otherwise, using the HostExchangeAuthority from the StartSession method, if provided.
+c. Otherwise, using the Anybody Authority.
+A new ACE SHALL be created in the ACE table for the new rows of the AccessControl table to
+reference in its ACLs.  All of the new AccessControl table rows reference the same ACE in their ACLs.
+For the new ACE created in the ACE table, additional new rows are created in the AccessControl table
+for the new ACE's methods.  Those new AccessControl table rows SHALL also reference the newly
+created ACE in their ACLS.
+Note that CreateRow MAY be limited in some instances based on required default values for some table
+columns, and MAY be required to make certain validity checks when creating rows for some tables.
+If a new object is unable to be created due to insufficient additional space in the containing table, the
+CreateRow method SHALL fail (INSUFFICIENT_SPACE).  If the associated rows in all associated
+tables are unable to be created, then the invocation of the CreateRow method SHALL fail
+(INSUFFICIENT_ROWS).

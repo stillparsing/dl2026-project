@@ -1,0 +1,23 @@
+4.3.5.2.1.2 RangeLength Behavior
+This column value defines the quantity of contiguous LBAs for this LBA range (starting with the value defined in the
+RangeStart column). In non-Global Range rows, this column MAY be modifiable based on access control settings.
+Changes to this column are subject to the same constraints and checks defined for this column when rows of the
+Locking table are created (see [2]).
+When processing a Set method or CreateRow method on the Locking table for a non-Global Range row, if:
+a)
+the AlignmentRequired column in the LockingInfo table is TRUE;
+b)
+RangeLength is non-zero; and
+c)
+LengthAlignment (see Figure 2) is non-zero,
+then the method SHALL fail and return an error status code INVALID_PARAMETER.
+Figure 2 - LengthAlignment Calculation
+
+If RangeStart is zero, then
+LengthAlignment = (RangeLength - LowestAlignedLBA) modulo AlignmentGranularity
+If RangeStart is non-zero, then
+LengthAlignment = (RangeLength modulo AlignmentGranularity)
+where:
+LowestAlignedLBA and AlignmentGranularity are columns in the LockingInfo table (see
+section 4.3.5.1)
+

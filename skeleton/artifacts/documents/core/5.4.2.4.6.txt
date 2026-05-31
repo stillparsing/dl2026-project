@@ -1,0 +1,3 @@
+5.4.2.4.6 Bytes
+This is the size in bytes of the SP.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,33 @@
+5.3.4.1.7 Hashing and Signing Method Parameters
+If the Host Signing Authority is the “Host Control Authority”, then its Authority.HashAndSign value
+identifies whether or not it is required that the parameters of the Host-to-TPer session startup methods
+(StartSession/StartTrustedSession) be hashed. If Authority.HashAndSign=True, then the
+parameters of these methods are hashed and signed using Authority.Credential and the hash
+protocol identified in that credential.
+If the Host Exchange Authority is the “Host Control Authority”, then its Authority.HashAndSign value
+identifies whether or not it is required that the parameters of the Host-to-TPer session startup methods
+(StartSession/StartTrustedSession) be hashed and signed. If Authority.HashAndSign=T, then
+the parameters of these methods are hashed and signed using Authority.Credential and the hash
+protocol identified in that credential.
+If the Response (SP) Signing Authority is the “SP Control Authority”, then its Authority.HashAndSign
+value identifies whether or not it is required that the parameters of the TPer-to-Host session startup
+methods (SyncSession/SyncTrustedSession) be hashed and signed.  If Authority.HashAndSign=T,
+then the parameters of these methods are hashed and signed using Authority.Credential and the
+hash protocol identified in that credential.
+If
+the
+Response
+(SP)
+Exchange
+Authority
+is
+the
+“SP
+Control
+Authority”,
+then
+its
+Authority.HashAndSign value identifies whether or not it is required that the parameters of the TPer-
+to-Host session startup methods (StartSession/StartTrustedSession) be hashed and signed. If
+Authority.HashAndSign=T, then the parameters of these methods are hashed and signed using
+Authority.Credential and the hash protocol identified in that credential.

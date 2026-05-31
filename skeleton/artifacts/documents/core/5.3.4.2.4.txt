@@ -1,0 +1,21 @@
+5.3.4.2.4 Deleting Table Rows
+Rows MAY be deleted from a table in two ways:
+a. Successful invocation of the DeleteRow method on the table
+b. Successful invocation of the Delete object method on an object
+When an object is deleted by a successful invocation of the DeleteRow method, the side effects of the
+method are the same as if the object had been deleted via invocation of the Delete method.
+Deleting objects MAY have side effects.  For instance, invoking the Delete method on a Table table
+row has the side effect of deleting the table with which that table descriptor object is associated.  Side
+effects that occur upon deletion of objects are documented where appropriate.
+Deleting objects SHALL also cause all AccessControl table rows where this object’s UID appears in
+the InvokingID column to be deleted.
+Deletion of table rows via invocation of DeleteRow or Delete SHALL NOT be permitted for the following
+tables:
+a. Column – the TPer automatically deletes rows from the Column table when a table is
+deleted.
+b. MethodID – the TPer SHALL NOT permit rows to be deleted from the MethodID table.
+c.
+AccessControl – the TPer automatically deletes rows from the AccessControl table whan
+a table or object is deleted.
+d. LogList - the TPer automatically deletes rows from the LogList table when a Log table is
+deleted.

@@ -1,0 +1,5 @@
+1.2 Scope and Intended Audience
+This specification defines the Opal Security Subsystem Class (SSC). Any Storage Device that claims compliance to
+the Opal SSC SHALL conform to this specification.
+The intended audience for this specification is both trusted Storage Device manufacturers and developers that want
+to use these Storage Devices in their systems.

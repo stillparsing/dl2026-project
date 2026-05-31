@@ -1,0 +1,6 @@
+5.1.3.82 uinteger
+This is the base type that is used to represent an unsigned integer.
+Table 146 uinteger
+| UID                          | Name      | Format     |
+|------------------------------|-----------|------------|
+| 00 00 00 05 00 00 00 05      | uinteger  | Base_Type  |

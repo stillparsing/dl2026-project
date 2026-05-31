@@ -1,0 +1,5 @@
+5.1.4.2.1 access_control_list
+An access_control_list is a list of uidrefs to objects in the ACE table.  The length of the list is
+implementation/SSC-specific.
+Format:
+[ uidref ... ]

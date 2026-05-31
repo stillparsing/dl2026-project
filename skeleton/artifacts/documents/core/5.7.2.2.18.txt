@@ -1,0 +1,7 @@
+5.7.2.2.18 LastReEncryptLBA
+This column value defines the last good re-encrypted LBA for this region. This field is only valid when
+the ReEncryptState is ACTIVE, COMPLETED, PENDING, or PAUSED. Typically, when the
+ReencryptState is ACTIVE, this value is updated periodically. In COMPLETED, PENDING, or PAUSED
+this value SHALL be valid. When no LBA has been successfully been re-encrypted, the value SHALL
+be 0xFFFFFFFF_FFFFFFFF.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,2 @@
+5.3.2.11.4 CertData
+This is the uidref to the byte table that holds the certificate data for this Certificates object.

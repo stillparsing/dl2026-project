@@ -1,0 +1,38 @@
+3.2.4.1 Method Syntax
+A method invocation is made up of the following parts:
+1. Method Header – The method header is made up of the InvokingID and the MethodID, and
+identifies what method is being called and on what the method is operating.
+1. InvokingID – This is the 8-byte UID of the table, object, or SP upon which the method is
+being invoked.
+a. For SP methods invoked within a session, the InvokingID SHALL be 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x01, which is used to signify “this SP”.
+b. For methods invoked at the Session Manager Layer, the InvokingID SHALL be 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0xFF, known as the "SMUID".
+c. For other methods, this is the 8-byte UID of the table or object upon which the method
+is being invoked.
+2. MethodID – This is the 8-byte UID of the method being invoked.
+a. For methods invoked within a session, this SHALL be the UID column value of the
+object that represents the methed as assigned in the MethodID table.
+b. For Session Manager Layer methods, this SHALL be the UID as assigned in Table
+241.  There SHALL NOT be rows in the MethodID table that represent these methods.
+2. Method Parameters – This is a list of the parameters submitted to the method.  These
+parameters MAY be one of two types.
+1. Required parameters – These parameters are required to be submitted to the method
+invocation.  These parameters SHALL appear first in the method invocation, ahead of any
+optional parameters, and SHALL be submitted in the order in which they are listed in a
+method's signature as defined in this specification.
+2. Optional parameters – These parameters SHALL NOT be required to be submitted to the
+method invocation.  Optional parameters that are submitted to a method invocation SHALL
+be submitted after all required parameters, and SHALL appear in the order defined in this
+specification.
+a. Optional parameters are submitted to the method invocation as Named value pairs.
+The Name portion of the Named value pair SHALL be a uinteger.  Starting at zero,
+these uinteger values are assigned based on the ordering of the optional parameters
+as defined in this document.
+b. The first optional parameter in a method signature SHALL be represented by the
+"name" zero (0x00) in the Named value pair when that method is invoked, and SHALL
+thus have the format "0x00 = value" when that method is invoked.
+c. Each optional parameter in a method signature after the first SHALL be represented by
+the uinteger of the previous optional parameter indicated in the method's signature
+incremented by one. Thus, the second optional parameter in an invocation of a
+particular method SHALL have the format "0x01 = value".

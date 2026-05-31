@@ -1,0 +1,3 @@
+5.5.4.7.2 Fails
+a. If ClockTimeTableUID is not the uid of the ClockTime table.
+

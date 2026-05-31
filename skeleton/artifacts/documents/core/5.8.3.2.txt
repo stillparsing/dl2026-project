@@ -1,0 +1,19 @@
+5.8.3.2 CreateLog (Table Method)
+Successful invocation of this method creates a row in the LogList table with the given name and
+security level, and creates a corresponding Log table with the name given in the method invocation.
+The Log table described in 5.8.2.1 is used as the template for the new table. ACLs are set for the new
+row in the LogList table as if CreateRow had been used to create it, as described in 5.8.5.  A row in the
+Table table is created as normal for the new log table.
+LogListUID.CreateLog[
+NewLogTableName : name,
+HighSecurity : boolean,
+MinSize : uinteger,
+MaxSize = uinteger,
+Hintsize = uinteger,
+CommonName = name ]
+=>
+[ LogListUID : uid, LogTableUID : uid, Rows : uinteger ]
+
+
+The result of a successful CreateLog method invocation is the uid of the new LogList object, the uid of
+the new Log table, and the number of rows created in the new Log table.

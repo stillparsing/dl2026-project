@@ -1,0 +1,9 @@
+5.5.4.3 SetClockHigh (Table Method)
+This is the first method in the method pair used to set the time from a High Trust source.  For more
+information on setting High Trust time, see 5.5.5.1.2.
+ClockTimeTableUID.SetClockHigh [
+
+ExactTime : clock_time ]
+=>
+[   ]
+

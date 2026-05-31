@@ -1,0 +1,2 @@
+3.1.1.4.3 LogicalBlockSize
+LogicalBlockSize SHALL be set to the value of the LogicalBlockSize column in the LockingInfo table.

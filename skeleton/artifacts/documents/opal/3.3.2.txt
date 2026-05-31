@@ -1,0 +1,4 @@
+3.3.2 Supported Security Protocols
+The TPer SHALL support:
+• IF-RECV commands with a Security Protocol values of 0x00, 0x01, 0x02.
+• IF-SEND commands with a Security Protocol values of 0x01, 0x02.

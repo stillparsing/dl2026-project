@@ -1,0 +1,28 @@
+2.2.3 Trusted Peripheral (TPer)
+Begin Informative Content
+The Trusted Peripheral (TPer) resides in the Storage Device. The TPer manages trusted storage-
+related functions and data structures. Two main aspects to the TPer use cases as they pertain to the
+TCG Storage Architecture are:
+a. Data confidentiality and access control over TPer features and capabilities:  TPer
+functions and capabilities are built upon policy driven setup and the use of cryptographic
+access control over TPer content. Such features and capabilities include access controlled
+readable and writeable data areas, and access control to built-in firmware functions or
+hardware functions in the TPer.  It is possible for a single trusted host application to gain
+exclusive access to subsets of these features and capabilities. The protection provided by this
+exclusive access extends to confidentiality of instructions and data in transit between the
+trusted host application (or a TPM it uses) and the TPer.
+b. TPers and Hosts bilateral enrollment and connection: Enrollment establishes the conditions
+under which data/instruction connections are established between TPers and hosts.  The
+access control conditions for enrollment could be different than those for connection.  The
+data/instruction consequences of a failure to be enrolled or connected MAY be different for
+different TPers and hosts.  The permissions/authorizations required for enrollment and
+connection of a TPer with a host could be different than the permissions/authorizations required
+for enrollment and connection of a Host with a TPer.
+The TCG Storage Architecture provides for a system of tables where the content and meaning of the
+table entries are potentially different for different types of Storage Devices with different features and
+capabilities.
+This TCG Storage Architecture’s access control system scales with the available Storage Device
+resources. Storage Device resources include processor performance, memory space, and media
+capacity. TPer data tables, methods, and capabilities are able to  be fixed (and limited) or host
+application-definable up to the limit of the Storage Device’s available resources.
+End Informative Content

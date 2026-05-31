@@ -1,0 +1,9 @@
+1.4.1 Document Precedence
+If there is a conflict between this specification and any other reference, then the precedence is (where a lower number
+indicates higher precedence):
+1. this specification;
+2. references under development (see section 1.4.3); and
+3. approved references (see section 1.4.2) .
+
+Each reference under development and each approved reference may specify its own document precedence.
+

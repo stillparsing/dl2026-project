@@ -1,0 +1,18 @@
+1.2 Key Words
+Key words are used to signify the requirements in the specification.  The key words “SHALL,” "SHALL
+NOT," “SHOULD,” "SHOULD NOT," “MAY,” and “OPTIONAL” are used in this document. These key
+words are to be interpreted as described in [8]
+The key word "OBSOLETE" is used to indicate that the designated methods, tables, or values that may
+have been defined in previous standards are not defined in this standard and SHALL NOT be reclaimed
+for other uses in future standards. However, some degree of functionality may be required for items
+designated as OBSOLETE to provide for backward compatibility.
+Invocation of methods defined as OBSOLETE may result in an error status method response returned
+by devices conforming to this specification.
+Tables and values defined as OBSOLETE may result in an error status method response returned by
+devices conforming to this specification when attempts to reference those tables or values are made.
+Bits, bytes, fields, and values identified as “Reserved” are set aside for future standardization.  Their
+use and interpretation MAY be specified by future versions of this or other standards.  A reserved bit,
+byte, field, or value SHALL be cleared to zero where applicable, or in accordance with a future version
+of this standard.  A communicator SHALL NOT check reserved bits, bytes, fields, or values.
+Values identified as “Reserved for TCG” SHOULD NOT be used by implementers in a manner other
+than that required by the TCG specifications.

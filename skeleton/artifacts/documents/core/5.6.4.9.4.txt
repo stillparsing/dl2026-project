@@ -1,0 +1,13 @@
+5.6.4.9.4 Fails
+a. If the invoking object does not exist
+b. If the Sign method is invoked on a hash object and that object does not reference a valid
+public key credential (RSA, EC)
+c. If the invoking credential, or the credential referenced from the hash object, does not
+contain a valid private key
+d. If the DataInput cellblock reference is not a to valid cellblock
+e. If the host application has not fulfilled the access control requirements necessary to invoke
+the Get method on the DataInput cellblock
+f.
+If the BufferOut is not a valid cellblock
+g. If the host application has not fulfilled the access control requirements necessary to invoke
+the Set method on the BufferOut cellblock

@@ -1,0 +1,11 @@
+5.6.5.5.1 Invocation of Sign on a Public Key Credential
+Invocation of the Sign method is be done by invoking the method on a key pair credential object that
+has a private key (for example, C_RSA_1024 or C_EC_256 objects) and either passing in data or
+referencing data to be used as the input for signing.  The TPer utilizes the private key stored in the
+credential object referenced in the invocation and performs a private key signing operation on the input
+data.
+For this usage, if a cellblock is referenced to hold the output of the Sign method invocation, then no
+data is returned, and the result of the Sign is stored in the referenced cell_block.  The host SHALL fulfill
+access control requirements necessary to invoke the Set method on the entirety of that target cellblock.
+If a cellblock is not referenced to hold the Sign method output, the data returned is the result of the
+signing operation performed on the input data with the private key of the referenced credential object.

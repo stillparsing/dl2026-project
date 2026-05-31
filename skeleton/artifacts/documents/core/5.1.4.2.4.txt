@@ -1,0 +1,10 @@
+5.1.4.2.4 clock_kind
+This type is similar to the column type of the same name, and represents the type of clock time that has
+been set, and is a return value of the GetClock method.
+The possible values returned are as follows:
+a. If the currently active clock kind is "Timer", the returned value is 0x00.
+b. If the currently active clock kind is "Low", the returned value is 0x01.
+c. If the currently active clock kind is "High", the returned value is 0x02.
+d. If the currently active clock kind is "LowAndHigh", the returned value is 0x03.
+Format:
+uinteger

@@ -1,0 +1,24 @@
+5.2.2.4.1.11 Asynchronous
+If both the host’s Asynchronous property and the TPer’s Asynchronous property are TRUE:
+a. The TPer SHALL use the Asynchronous Communication protocol.
+b. The TPer SHALL generate Credit Control Subpackets for informing the host how much
+data can be sent to the TPer.
+c. The TPer SHALL accept Credit Control Subpackets from the host, and SHALL only send as
+much data as it has credit to send.
+d. The host SHOULD use the Asynchrounous Communication protocol.
+e. The host SHOULD generate Credit Control Subpackets for informing the TPer how much
+data can be sent to the host. If it does not, the TPer will eventually stop sending data to the
+host after it uses all of the initial credit it was granted during session start up.
+f.
+The host SHOULD accept Credit Control Subpackets from the TPer, and SHOULD only
+send as much data as it has credit to send. If it sends more data than it has credit to send,
+the TPer MAY abort the session.
+If either the host’s Asynchronous property or the TPer’s Asynchronous property are FALSE:
+a. The TPer SHALL use the Synchronous Communication protocol.
+b. The TPer SHALL NOT generate Credit Control Subpackets.
+c. The TPer SHALL ignore Credit Control Subpackets from the host.
+d. The host SHOULD use the Synchronous Communication protocol. If it does not, it will likely
+cause Synchronous Protocol Violations on the TPer, and possible session aborts.
+e. The host SHOULD NOT generate Credit Control Subpackets.
+f.
+The host SHOULD ignore Credit Control Subpackets from the TPer.

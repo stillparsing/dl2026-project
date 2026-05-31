@@ -1,0 +1,43 @@
+5.6.5.7 Encrypting
+Invocation of the EncryptInit method, followed by one or more Encrypt method invocations and the
+EncryptFinalize method, encrypts data that has either been sent to the Crypto template-enabled SP
+from the host in the method invocation, or that is currently stored in the SP.
+Successful invocation of the EncryptInit method is used to initiate an encryption “stream” using the
+credential object that invoked the method.  Only one encryption “stream” SHALL be open in a session
+at any one time for a particular credential object.  During a session, invoking the EncryptInit method
+on a credential object after invoking EncryptInit on that object but before invoking the
+EncryptFinalize method SHALL cause the second EncryptInit method invocation to fail.
+If the optional IV parameter is used in the EncryptInit method, the parameterized IV is used in place
+of that which is stored in the ResidualData column of the invoking credential.  Otherwise, the value of
+the ResidualData column of the invoking credential is used as the IV, as required by the value of the
+credential object’s Mode column.
+As indicated, the host MAY generate an initialization vector externally and either pass it as a parameter
+to the EncryptInit method, or Set the ResidualData column of the symmetric credential object that is
+referenced for use with the encryption.  Alternatively, the host MAY invoke the Random method and set
+its output to the ResidualData column of the symmetric credential object that is referenced for use with
+the encryption.  For details and guidelines on generation and handling of initialization vectors, see [14].
+If the EncryptInit method is invoked with an IV and the credential object or credential object’s Mode
+column value do permit use of an IV, then the EncryptInit method SHALL fail.
+The EncryptInit method, upon successful invocation, sets the ResidualData column of the invoking
+credential to zero.
+Successful invocation of the Encrypt method causes the TPer to use the key stored in the invoked
+credential object to encrypt the input data.
+The input data MAY either be parameterized in the Encrypt method invocation, or stored in a table that
+is referenced as a cellblock from the Encrypt method invocation.  If the Encrypt method's DataInput
+parameter references a cellblock, the host SHALL fulfill access control requirements necessary to
+invoke the Get method on the entirety of that cellblock or the method invocation SHALL fail.
+If a cellblock is referenced to hold the output of the Encrypt method invocation, then no data is
+returned, and the result of the Encrypt is stored in the referenced cellblock.  If the output cellblock is
+used, the host SHALL be required to fulfill the access control requirements necessary to permit
+invocation of the Set method on the entirety of the referenced cellblock.  If the cellblock is not specified,
+the data returned is the result of the encryption operation performed on the input data.
+The length of the data input to the Encrypt method SHALL be as required by the block size of the
+particular key type and mode used.  Should padding be required, the host SHALL perform it.
+Successful invocation of the Encrypt method causes the invoking symmetric credential object’s
+ResidualData column to have the value specified in Table 185.
+Upon invocation of the EncryptFinalize method, the encryption “stream” for the invoking credential
+SHALL be closed.  Invoking Encrypt or EncryptFinalize on a hash object that does not have an
+open “stream” SHALL cause that method invocation to fail.
+Note that only one write session is open at any given point in time.  After closing a write session and
+opening another write session to the same SP, the host MAY find that the ResidualData value MAY
+have been modified by another write session.

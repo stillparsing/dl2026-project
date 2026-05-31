@@ -1,0 +1,6 @@
+5.3.2.16.7 ResidualData
+The value in the ResidualData column provides the IV for the Encrypt/Decrypt method (unless the IV
+parameter in the EncryptInit/DecryptInit method is invoked).  The TPer then sets this value based
+on the last block encrypted by the Encrypt method or last block decrypted by the Decrypt method.
+Subsequent method invocations use this column value as its IV.   The value set to this column during
+Encrypt/Decrypt operations is dependent on this object’s mode, as defined in Table 185.

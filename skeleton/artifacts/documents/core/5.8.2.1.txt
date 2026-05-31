@@ -1,0 +1,27 @@
+5.8.2.1 Log (Object Table)
+Log tables are object tables that store log entries.  Each row in a Log table is an entry.
+There MAY be more than one Log table in an SP.  Each of these Log tables SHALL have a unique
+name.  Only the default Log table, which has the name “Log”, stores System log entries.  The Log table
+described in this section acts as the template for all log tables.  Log tables are created using the
+CreateLog method.  User-created log tables each have an associated row in the LogList table.
+Log tables SHALL only be accessible via table level methods. Individual log table rows SHALL NOT
+have associated rows in the AccessControl table.
+Table 233 Log Table Description
+```markdown
+| Column Number | Column Name        | IsUnique | Column Type           |
+|---------------|--------------------|----------|-----------------------|
+| 0x00          | UID                |          | uid                   |
+| 0x01          | Prev               |          | log_row_ref           |
+| 0x02          | Next               |          | log_row_ref           |
+| 0x03          | Session            |          | uinteger_4            |
+| 0x04          | SigningAuthority   |          | Authority_object_ref  |
+| 0x05          | SigningAuthName    |          | name                  |
+| 0x06          | ExchangeAuthority  |          | Authority_object_ref  |
+| 0x07          | ExchangeAuthName   |          | name                  |
+| 0x08          | MonotonicTime     |          | uinteger_8            |
+| 0x09          | ExactTime          |          | clock_time            |
+| 0x0A          | TimeKind           |          | clock_kind            |
+| 0x0B          | LogKind            |          | log_kind              |
+| 0x0C          | Name               |          | name                  |
+| 0x0D          | Data               |          | max_bytes_64          |
+```

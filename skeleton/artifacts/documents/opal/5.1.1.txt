@@ -1,0 +1,18 @@
+5.1.1 Activate – Admin Template SP Object Method
+Activate is an Opal SSC-specific method for managing the life cycle of SPs created in manufacturing (Manufactured
+SP), whose initial life cycle state is “Manufactured-Inactive”. The following pseudo-code is the signature of the
+Activate method (see [2] for more information).
+SPObjectUID.Activate[ ]
+=>
+[ ]
+
+Activate is an object method that operates on objects in the Admin SP’s SP table.  The TPer SHALL NOT permit
+Activate to be invoked on the SP objects of issued SPs.
+Invocation of Activate on an SP object that is in the “Manufactured-Inactive” state causes the SP to transition to the
+“Manufactured” state.  Invocation of Activate on an SP in any other life cycle state SHALL complete successfully
+provided access control is satisfied, and have no effect.  The Activate method allows the TPer owner to “turn on”
+an SP that was created in manufacturing.
+This method operates within a Read-Write session to the Admin SP.  The SP SHALL be activated immediately after
+the method returns success if its invocation is not contained within a transaction.
+In case of an “Activate Error” (see [4]), Activate SHALL fail with a status of FAIL.
+The MethodID for Activate SHALL be 0x00 00 00 06 00 00 02 03.

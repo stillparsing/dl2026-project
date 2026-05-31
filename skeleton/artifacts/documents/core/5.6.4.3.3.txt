@@ -1,0 +1,4 @@
+5.6.4.3.3 Fails
+a. If the object does not exist
+b. If the object does not contain a valid credential
+c. If the object currently already has a decryption “stream” open

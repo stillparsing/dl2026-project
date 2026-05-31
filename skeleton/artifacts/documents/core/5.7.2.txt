@@ -1,0 +1,10 @@
+5.7.2 Data Structures
+Begin Informative Content
+The Locking Template contains the following tables:
+a. LockingInfo: Information about the TPer’s configuration
+b. Locking: The storage encryption and read/write locking controls covering different
+contiguous ranges of storage space on the TPer.
+c. MBRControl and MBR: For MBR shadowing, needed to handle pre-boot authentication
+environments.
+d. K_AES_128 and K_AES_256:  Tables used to store media encryption keys
+End Informative Content

@@ -1,0 +1,11 @@
+5.1.4.2.16 table_kind
+This abstract type is similar to an enumeration column type, and is used to represent table types in the
+Table table.  This type has valid values in the range of integers from 1-2.  These integers have the
+following values:
+a. 1 = Object
+b. 2 = Byte
+Format:
+uinteger
+In the messaging stream, these values are represented as follows:
+a. 0x01 represents Object
+b. 0x02 represents Byte

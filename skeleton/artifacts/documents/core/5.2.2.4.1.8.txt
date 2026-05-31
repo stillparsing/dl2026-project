@@ -1,0 +1,9 @@
+5.2.2.4.1.8 ContinuedTokens
+If the TPer’s ContinuedTokens property is TRUE, the host MAY send continued tokens to the TPer.
+Otherwise, the host SHOULD NOT send continued tokens to the TPer. If the TPer encounters a
+continued token when its ContinuedTokens property is FALSE, the TPer’s response is defined in
+section3.2.2.4.
+If the host’s ContinuedTokens property is TRUE, the TPer MAY send continued tokens to the host.
+Otherwise, the TPer SHALL NOT send continued tokens to the host.
+If a communicator's ContinuedTokens property is FALSE, then that communicator's MaxAggTokenSize
+property value SHALL be ignored by the other communicator.

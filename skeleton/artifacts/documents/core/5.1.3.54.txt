@@ -1,0 +1,9 @@
+5.1.3.54 MethodID_object _ref
+The MethodID_object _ref type describes a uidref to an object in the MethodID table.
+Table 112 MethodID_object _ref
+```markdown
+| UID                         | Name              | Format                             |
+|-----------------------------|-------------------|----------------------------------|
+| 00 00 00 05 00 00 0C 03     | MethodID_object_ref| Restricted_Reference_Type{6},     |
+|                             |                   | uidref {MethodIDTableUID}          |
+```

@@ -1,0 +1,12 @@
+3.2.4.3 Method Result Retrieval Protocol
+A method is invoked by tokenizing the method call and its parameters as described in previous
+sections, using the token encoding format and Subpacket-Packet-ComPacket format.  The host sends
+the ComPacket to the TPer in an IF-SEND command.    Multiple IF-SEND commands MAY be required
+to encompass the entirety of a method invocation or series of method invocations and their related
+data.
+The host then polls the TPer by transmitting IF-RECV commands.  When the TPer has packaged its
+response, it transmits the tokenized results to the host in the payload of an IF-RECV command.
+Multiple IF-RECV commands MAY be required to retrieve all of the results of a particular method
+invocation or series of method invocations.
+For additional information on the operation of the IF-SEND and IF-RECV commands, see the
+descriptions for those commands as detailed in the appropriate interface specifications.

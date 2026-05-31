@@ -1,0 +1,34 @@
+4.3.1.2 SPTemplates (M)
+The SPTemplates table is defined in [2], and Table 35 defines the Preconfiguration Data for the SPTemplates table.
+Table 34 - Locking SP - SPInfo Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 02 00 00 00 01",
+        "SPID": "00 00 02 05 00 00 00 02",
+        "Name": "Locking",
+        "Size": "",
+        "SizeInUse": "",
+        "SPSessionTimeout": "",
+        "Enabled": "T"
+    }
+]
+```
+*SP1 means that this version number or any number that supports the defined features in this SSC
+Table 35 - Locking SP - SPTemplates Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 03 00 00 00 01",
+        "TemplateID": "00 00 02 04 00 00 00 01",
+        "Name": "Base",
+        "Version": "00 00 00 02 *SP1"
+    },
+    {
+        "UID": "00 00 00 03 00 00 00 02",
+        "TemplateID": "00 00 02 04 00 00 00 06",
+        "Name": "Locking",
+        "Version": "00 00 00 02 *SP1"
+    }
+]
+```

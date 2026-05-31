@@ -1,0 +1,17 @@
+5.6.5.5.2 Invocation of Sign on a Hash Object
+A second way to accomplish signing is to invoke the Sign method on a H_SHA_* object.  If the
+invocation is done in this manner, then the H_SHA_* object upon which the method was invoked SHALL
+reference a key pair credential object that has a private key.  The signing operation in this case is done
+using the private key of that referenced credential object.
+When invocation of the Sign method is done on a H_SHA_* object, the signing operation MAY be
+performed on either:
+a. Data parameterized in or referenced from the Sign method invocation.  If this is the case,
+the signed data SHALL either be stored in a cell_block referenced in the invocation or
+returned as the result of the method invocation.  If a cellblock is referenced as the target of
+the signed data, the host SHALL be required to fulfill access control requirements
+necessary to invoke the Set method on the entirety of that cellblock, or the Sign method
+invocation SHALL fail.
+b. Or, if no input data or reference is included in the method invocation, the signing operation
+is performed on the value of the H_SHA_* object’s Accumulator column.  If this is the case,
+the signed data SHALL be stored to the Proof column of the H_SHA_* object, and MAY be
+retrieved with a successful invocation of the Get method on that column.

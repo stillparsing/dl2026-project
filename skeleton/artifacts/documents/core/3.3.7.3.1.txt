@@ -1,0 +1,13 @@
+3.3.7.3.1 Nested Transactions
+A session MAY include nested transactions. The maximum number of transactions that MAY be nested
+is Security Subsystem Class-specific, and SHALL be specified in response to the Properties method
+invocation in the MaxTransactionLimit property if transactions are supported.  If the TPer does not
+support transactions, the Properties method response SHALL NOT contain the MaxTransactionLimit
+property.
+Nested transactions SHALL abort or commit relative to their parent transaction. In the case of an
+aborted transaction, the SP state SHALL be rolled back to the point where the transaction was started,
+unless otherwise noted in this specification (e.g. logging). This is true whether or not the transaction is
+nested. In the case of a commit, the nested transaction’s changes SHALL become part of its parent
+transaction, as if the nested transaction boundaries had never been established.
+A commit of a nested transaction does not make a commit that necessarily persists since the parent
+transaction is not yet ended.  All transactions SHALL be committed before data is written to the SP.

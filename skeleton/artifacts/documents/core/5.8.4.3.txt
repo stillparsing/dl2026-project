@@ -1,0 +1,28 @@
+5.8.4.3 Log Table Operation
+Logs are maintained in a cyclical manner. All rows in a Log table SHALL be pre-allocated (that is, none
+of them are free). UIDs for these rows SHALL be assigned at the time of table creation. The value 0 in
+the LogKind column of a row indicates that that row has not yet been used. As log entries are added,
+the value in the LogKind column for each of those used rows changes to reflect the type of log entry
+added.
+If dynamic row allocation is supported, the log table MAY have additional rows created. New rows
+SHALL be added at the point in the table immediately following the value of the Serial column in the
+LogList object that represents that table. The linking values in the Prev and Next columns of the
+affected Log table SHALL be updated accordingly. These newly added rows, like the rows present at
+table creation, are considered allocated and have the value 0 in the LogKind column.
+Logs are maintained in a cyclical manner.  For efficiency, all rows in a Log table should be pre-allocated
+(that is, none of them is free).  The value 0 in the LogKind column of a row indicates that that row has
+not yet been used.  As log entries are added, the value in the LogKind column for each of those used
+rows changes to reflect the type of log entry added.
+If dynamic row allocation is supported, the log table MAY have additional rows created.  New rows are
+added at the end of the table.  These rows, like the rows present at table creation, are considered
+allocated and have the value 0 in the LogKind column.  The number of rows in a table MAY be changed
+by invoking the Set method on the Rows column of the Table table.  For information on adding rows to
+a table, see section 5.3.4.2.1.
+A Log table row contains a timestamp and uidrefs to and names of the authorities used to start the
+session in which the activity is being logged. Actual log data (the value stored to the Data column)
+depends on the LogKind field (see section 5.8.4.2).
+If the Clock Template has not been issued into the SP with the Log Template, when a new entry is
+created in a Log table the values for the MonotonicTime, ExactTime, and TimeKind columns SHALL be
+0.
+The TPer SHALL atomically add log entries to a log table if multiple read sessions are open to the SP
+and are affecting that log table.

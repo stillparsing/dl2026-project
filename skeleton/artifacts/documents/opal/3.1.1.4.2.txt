@@ -1,0 +1,4 @@
+3.1.1.4.2 ALIGN
+If the value of the AlignmentRequired column of the LockingInfo table is TRUE, then the ALIGN bit shall be set to
+one. If the value of the AlignmentRequired column of the LockingInfo table is FALSE, then the ALIGN bit shall be
+cleared to zero.

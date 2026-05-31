@@ -1,0 +1,28 @@
+5.6.5.4 XOR
+Invocation of the XOR method causes the XOR method’s input data to be XORed with the pattern
+specified in the PatternInput parameter of the method invocation.
+The XOR method SHALL accept either bytes passed across the interface as a parameter of the method
+invocation; or SHALL identify a cellblock that holds the data to be XORed.  If the data is addressed via
+cellblock, the host SHALL fulfill access control requirements necessary to invoke the Get method on the
+entirety of that cellblock, or the XOR method invocation SHALL fail.
+The PatternInput parameter of the method SHALL be the uid of a byte table that holds the pattern with
+which the input data SHALL be XORed.  The PatternInput SHALL be the same size or larger than the
+input data or the method SHALL fail.  The host SHALL be required to fulfill access control requirements
+necessary to invoke the Get method on the PatternInput byte table, or the XOR method invocation
+SHALL fail.
+The DeletePattern parameter identifies the behavior of the PatternInput table after the XOR operation is
+complete.  If the DeletePattern parameter is True, then at completion of the XOR operation the contents
+of the byte table referenced as the PatternInput SHALL be set to all 00’s.  If the DeletePattern
+parameter is False, the method SHALL NOT alter the contents of the referenced byte table.  If
+DeletePattern is True, , the host SHALL fulfill access control requirements that permit invocation of the
+Set method on the PatternInput table or the XOR method invocation SHALL fail.
+If the host’s intention is to use the XOR method as a one-time pad, the host SHOULD invoke the XOR
+method with a DeletePattern value of True.
+The XOR method returns data in one of two ways.  If the BufferOut parameter is specified in the method
+invocation, then the XOR method result is set to that cellblock.  The BufferOut parameter is specified, the
+cellblock SHALL be the same size or larger than the XOR result.    The host SHALL be required to fulfill
+access control requirements necessary to invoke the Set method on the entirety of that cellblock, or the
+XOR method invocation SHALL fail.  If the BufferOut parameter is specified, the method result SHALL be
+empty.
+If the BufferOut parameter is not specified, the method result SHALL be the result of the XOR
+operation.

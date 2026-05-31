@@ -1,0 +1,6 @@
+5.1.4.2.2 boolean
+This abstract type is similar to an enumeration column type, and has a valid range of the integer 0 to
+the integer 1, where 0 is used to represent "False" and 1 is used to represent "True".
+Format:
+uinteger
+In the messaging stream, "False" is represented as 0x00 and "True" is represented as 0x01.

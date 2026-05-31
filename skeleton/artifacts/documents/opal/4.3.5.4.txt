@@ -1,0 +1,3 @@
+4.3.5.4 MBR (M)
+The MBR minimum size SHALL be 128 MB (0x08000000).
+The initial contents of the MBR table SHALL be vendor unique.

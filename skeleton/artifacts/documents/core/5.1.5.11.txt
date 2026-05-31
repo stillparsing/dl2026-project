@@ -1,0 +1,19 @@
+5.1.5.11 INVALID_PARAMETER
+This status is returned if a method invocation has any invalid parameters or parameter values, and is
+applicable to any parameter inside the invoked method's parameter list, unless otherwise indicated or
+another status code is directly applicable to the method failure.
+There are many situations in which this error could be returned.  Some of the specific situations where
+this could occur are:
+a. Columns specified in the CreateRow method invocation are not part of the table definition.
+b. If an attempt is made to set a cell to a value larger (or smaller) than that cell’s type allows,
+or attempts to set a value of a type different than that of the column.
+c. If an incorrect credential type is parameterized.
+d. A parameterized value is of the incorrect type for that method.
+e. One of the context-related restrictions defined for an abstract type is violated (see 5.1.4.2).
+f.
+A parameterized value is larger or smaller than the value required by that method
+invocation
+a. An example of this MAY occur if the TransTimeout parameter value submitted in a
+StartSession method invocation is larger than the TPer's MaxTransTimeout property.
+This status code SHALL be sent as the SyncSession method status code if the preceding
+StartSession method’s HostSigningAuthority parameter is a class authority.

@@ -1,0 +1,8 @@
+5.6.4.15.3 Fails
+a. If the object does not exist
+b. If the object does not reference a valid symmetric credential object that contains a valid key
+c. If the DataInput cellblock reference is not a to valid cellblock
+d. If the DataInput is a cellblock reference and Get access control on that cellblock has not
+been fulfilled
+e. If HMAC has been invoked when no HMAC “stream” is open
+

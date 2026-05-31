@@ -1,0 +1,75 @@
+3.3.3 ComID Management
+Begin Informative Content
+A mechanism is required to enable dynamic management of ComIDs so as to minimize the chances of
+two host applications using the same ComID in the rare occasions in which there are ComID conflicts.
+Support for dynamic ComID management is SSC-specific.
+End Informative Content
+ComIDs SHALL be assigned based on the allocation presented in Table 26.
+Table 26 ComID Assignments
+```json
+[
+  {
+    "ComID": "0x0000",
+    "Description": "Reserved"
+  },
+  {
+    "ComID": "0x0001",
+    "Description": "Level 0 Device Discovery"
+  },
+  {
+    "ComID": "0x0002-0x07FF",
+    "Description": "Reserved for TCG"
+  },
+  {
+    "ComID": "0x0800-0x0FFF",
+    "Description": "Vendor Unique"
+  },
+  {
+    "ComID": "0x1000-0xFFFF",
+    "Description": "ComID management (Protocol ID=0x01, and 0x02) - these are \"non-reserved\" ComIDs"
+  }
+]
+```
+
+The lower 4096 out of the possible ComIDs SHALL be reserved – 0-2047 are reserved for TCG
+use/assignment, and 2048-4095 are reserved as vendor-unique.   The other, non-reserved ComIDs
+SHALL be used for multiplexing the TPer responses to IF-RECVs.
+A ComID SHALL be in one of the following three states:
+1. Inactive: The ComID has not been assigned to anyone since the last hardware reset or power
+cycle, or because the ComID was retired due to all sessions on the ComID being closed.
+2. Issued: The ComID has been issued (it was returned to the host during a successful
+completion of a GET_COMID command) but no sessions have been started using this ComID.
+3. Associated:  One or more open sessions are associated with the ComID.
+ComIDs that are either in the Issued state or the Associated state are considered Active.  The state
+diagram in Figure 4  shows these states and the possible transitions among them.
+
+Figure 4  ComID State Transition Diagram
+
+The possible state transitions are:
+a. Inactive to Issued: A ComID SHALL transition from the Inactive state to the Issued state
+when it is returned to the host during a successful execution of the GET_COMID command.
+b. Issued to Associated: A ComID SHALL transition from the Issued state to the Associated
+state once a session is open using that ComID.  This occurs at the point when session
+startup has successfully completed.
+c. Issued to Inactive: A ComID SHALL transition from Issued to Inactive when any one of the
+following conditions hold:
+i. There is a hardware reset or power cycle.
+ii. The host does not start a session using the ComID within MaxComIDTime from the
+ComID being issued.  MaxComIDTime defines a limit on the amount of time a
+ComID is able to exist in the Issued state without an active session.  A TPer's
+MaxComIDTime value is retrieved using the Properties method.  Support for
+MaxComIDTime is SSC-dependent.
+d. Associated to Inactive: A ComID SHALL transition from Associated to Inactive when any
+of the following conditions are met:
+i. There is a hardware reset or power cycle.
+ii. After all sessions associated with the ComID are closed, and no session startup
+activities are in progress.
+In order to minimize the possibility of conflict, the ComID issuance mechanism SHALL have the
+following two characteristics:
+a. A ComID that is in an active state SHALL NOT be issued again.  That is, only ComIDs that
+are in the inactive state SHALL be returned to the host as a response to the GET_COMID
+command.
+b. The TPer SHALL issue ComIDs in a sequential manner (wrapping around cyclically as
+needed).
+In addition to the above transitions, the TPer MAY transition a ComID to the Inactive state at any time
+for any reason.

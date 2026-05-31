@@ -1,0 +1,11 @@
+5.5.5.4 Timer Mode
+The Clock Template provides an additional time mode, Timer Mode, to identify when the time has been
+un-set after a disk controller reset or if the SP has never had a time set.
+After a TPer reset or upon issuance, the SP is in Timer mode. In Timer mode, the time is incremented,
+but a successful invocation of the GetClock method SHALL return a clock_kind of “Timer”, the values of
+the IncrementalClock and MonotonicTime, and a LagTime of 0.  This indicates that the time value is not
+able to be trusted as an absolute because of the reset.
+The ResetClock method is invoked at power up or after a TPer reset, before the SP that incorporates
+the Clock Template is accessible.  This places the TPer into Timer Mode.
+If the TPer has a real-time clock, the TPer SHALL use that value at power up or after a TPer reset while
+the real-time clock has power.  Otherwise, the TPer reverts to the behavior previously described.

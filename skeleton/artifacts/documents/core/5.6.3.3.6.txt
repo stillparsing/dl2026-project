@@ -1,0 +1,5 @@
+5.6.3.3.6 Signer
+This is a uidref to the signing/verification credential object.  This is the signing credential whose public
+key or symmetric key decrypts the proof to reveal the proof’s underlying hash when the Verify method
+is invoked; or whose private or symmetric key encrypts the proof when the Sign method is invoked on
+this credential; or whose HMAC key is used when the HMAC methods are invoked on this credential.

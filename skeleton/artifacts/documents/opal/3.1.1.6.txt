@@ -1,0 +1,119 @@
+3.1.1.6 Supported Data Removal Mechanism Feature (Feature Code = 0x0404)
+This feature MAY be returned in the Level 0 Discovery response.
+Table 8 - Level 0 Discovery – Supported Data Removal Mechanism Feature Descriptor 
+```json
+[
+    {
+        "Bit": "",
+        "Byte": "7 6 5 4 3 2 1 0"
+    },
+    {
+        "0": "(MSB)",
+        "Feature Code (0x0404)": "(LSB)"
+    },
+    {
+        "1": "",
+        "": ""
+    },
+    {
+        "2": "Version Reserved",
+        "": ""
+    },
+    {
+        "3": "Length",
+        "": ""
+    },
+    {
+        "4": "Reserved",
+        "": ""
+    },
+    {
+        "5": "Reserved",
+        "Data Removal Operation Interrupted": "",
+        "Data Removal Operation Processing": ""
+    },
+    {
+        "6": "Supported Data Removal Mechanism",
+        "": ""
+    },
+    {
+        "7": "Reserved",
+        "Data Removal Time Format for Bit 5": "Reserved",
+        "Data Removal Time Format for Bit 2": "",
+        "Data Removal Time Format for Bit 1": "",
+        "Data Removal Time Format for Bit 0": ""
+    },
+    {
+        "8 - 9": "Data Removal Time for Supported Data Removal Mechanism Bit 0",
+        "": ""
+    },
+    {
+        "10 - 11": "Data Removal Time for Supported Data Removal Mechanism Bit 1",
+        "": ""
+    },
+    {
+        "12 - 13": "Data Removal Time for Supported Data Removal Mechanism Bit 2",
+        "": ""
+    },
+    {
+        "14 - 17": "Reserved",
+        "": ""
+    },
+    {
+        "18 - 19": "Data Removal Time for Supported Data Removal Mechanism Bit 5",
+        "": ""
+    },
+    {
+        "20 - 35": "Reserved for future Supported Data Removal Mechanism parameters",
+        "": ""
+    }
+]
+```
+
+An Opal Compliant Storage Device SHALL return the parameters listed in Table 9:
+
+Table 9 - Parameter explanation 
+```json
+[
+    {
+        "Parameter": "Feature code",
+        "Value": "0x0404",
+        "Details": "Feature code value"
+    },
+    {
+        "Parameter": "Version",
+        "Value": "0x02",
+        "Details": "Version of the descriptor"
+    },
+    {
+        "Parameter": "Length",
+        "Value": "0x20",
+        "Details": "Length of the feature descriptor"
+    },
+    {
+        "Parameter": "Data Removal Operation Processing",
+        "Value": "",
+        "Details": "see section 3.1.1.6.1"
+    },
+    {
+        "Parameter": "Data Removal Operation Interrupted",
+        "Value": "",
+        "Details": "see section 3.1.1.6.2"
+    },
+    {
+        "Parameter": "Reserved",
+        "Value": "",
+        "Details": "Return all zeros"
+    },
+    {
+        "Parameter": "Supported Data Removal Mechanism",
+        "Value": "",
+        "Details": "see section 3.1.1.6.3"
+    },
+    {
+        "Parameter": "Data Removal Time Format for each bit",
+        "Value": "",
+        "Details": "see section 3.1.1.6.4"
+    }
+]
+```

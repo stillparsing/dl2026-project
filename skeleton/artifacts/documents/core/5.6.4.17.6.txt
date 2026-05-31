@@ -1,0 +1,8 @@
+5.6.4.17.6 Fails
+a. If the PatternInput is not a byte table
+b. If the Input cellblock reference is not to a valid cellblock
+c. If BufferOut is not a valid cellblock
+d. If PatternInput is smaller than the input data
+e. If BufferOut is smaller than the input data
+f.
+If associated access control conditions, as described in 5.6.5.4 are not met

@@ -1,0 +1,13 @@
+3.3.4.4 Communication Layer
+Begin Informative Content
+The Communcation Layer provides a mechanism for two-way communication between the host
+application and the TPer. The primary purpose of the communication at this layer is to manage the
+allocated ComID and to verify the validity of the allocated ComID.
+Communication at this layer occurs using IF-SEND and IF-RECV commands using Protocol ID 0x02.
+The host must have a ComID that has been assigned by the TPer using the GET_COMID command
+available at the TPer Layer.
+If the host application uses a ComID that is not valid or has become invalid since its last usage (see
+3.3.3.1), the host application may query the TPer at this layer to retrieve ComID state without raising
+exceptions on lower layers such as the Interface or TPer layers. This allows host applications to verify
+validity of ComIDs without disturbing the operation of the TPer.
+End Informative Content

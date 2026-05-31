@@ -1,0 +1,4 @@
+5.1.5.10 INSUFFICIENT_ROWS
+This status MAY be returned if an attempt is made to create a table or object, but the associated
+metadata or support table rows (i.e., the Table, Column, AccessControl, or ACE tables) are not able to
+be created to support the new object or table.

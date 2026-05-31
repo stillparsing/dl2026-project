@@ -1,0 +1,15 @@
+3.2.1 Document Data Formats
+Begin Informative Content
+This specification defines three distinct but closely related data models:
+a. Tables: Data stored in tables is of a maximum fixed size.
+b. Messaging: Data moving across the interface is encoded into byte streams. These streams
+carry encodings for method calls, parameters, and results, as well as other control information.
+c. Exposition Pseudo-code: This provides a C-like representation of methods and table structure
+and contents.  The definition of the exposition pseudo-code is in section 3.2.1.2.
+Data is encoded in different ways depending on the context in which the data is being used.  One data
+context is data stored in tables.  Another data context is data crossing the interface in messaging – this
+is called “Stream Encoding”.
+This section introduces the different basic data types, provides a brief introduction on how these types
+are used, and shows how they are displayed in this document.  See Section 3.2.2 for additional details
+regarding data types and data type Stream Encoding.
+End Informative Content

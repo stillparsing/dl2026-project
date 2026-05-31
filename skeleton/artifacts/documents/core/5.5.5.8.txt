@@ -1,0 +1,17 @@
+5.5.5.8 Resetting the Clock
+The time values in a Clock Template-enabled SP are reset using the ResetClock method.
+The following properties are set when this method is invoked:
+a. The HaveHigh column of the ClockTime table is set to False, and the values of the
+HighByWhom, HighSetTime, HighInitialTimer, and HighLag columns are set to zeroes.
+b. The HaveLow column of the ClockTime table is set to False, and the values of the
+LowByWhom, LowSetTime, LowInitialTimer, and LowLag columns are set to zeroes.
+c. MonotonicIncrement = 0
+d. ClockTime.TrustMode = Timer
+e. If ClockTime.MonotonicReserve == 0x00
+a. ClockTime.MonotonicReserve = <some small value, e.g. 100>
+b. ClockTime.MonotonicBase = ClockTime.MonotonicBase + ClockTime.MonotonicRe
+serve
+c. MonotonicBase = ClockTime.MonotonicBase
+d. MonotonicReserve = ClockTime.MonotonicReserve
+Note that this guarantees that the MonotonicTime value always increases (although it MAY, in a
+ResetClock, skip up to the value of MonotonicReserve).

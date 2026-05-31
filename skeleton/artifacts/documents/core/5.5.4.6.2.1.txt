@@ -1,0 +1,3 @@
+5.5.4.6.2.1 Result
+The SetLagLow method returns an empty list.  Success or failure of the method invocation is
+determinable based on the status code returned in response to the method invocation.

@@ -1,0 +1,4 @@
+5.4.2.1.3 GUDID
+This column value is the TPer’s globally unique serial number - See Table 212 and accompanying text
+for GUDID content description
+This column SHALL NOT be modifiable by the host.

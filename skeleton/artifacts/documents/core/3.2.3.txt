@@ -1,0 +1,9 @@
+3.2.3 ComPackets, Packets & Subpackets
+Begin Informative Content
+The low-level interface transport layer handles the retransmission of damaged or incomplete
+commands. Secure messaging, detailed in later sections of this specification, permits the host
+application to secure its data from malicious attack, not to address hardware and low-level transport
+issues. (Similarly with the session start up protocol, hashing is intended to detect tampering.)
+The payloads of ComPackets convey tokenized byte streams (method calls, parameters, results, and
+status codes) and other control information, such as ACKs and NAKs.
+End Informative Content

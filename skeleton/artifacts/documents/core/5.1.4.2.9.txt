@@ -1,0 +1,12 @@
+5.1.4.2.9 key_size
+This abstract type is used for the AdminExch parameter of the IssueSP method, and enables the host
+to select from supplying either a bytes_16 or a bytes_32 value to represent the size of the exchange
+key being submitted to the newly created SP.
+Only one of these two values appears in the messaging stream.  The "typeOr" identifier and
+accompanying curly brackets ("{", "}") have no effect on the values as represented in the message.
+Format
+
+typeOr { AES_128 : bytes_16, AES_256 : bytes_32 }
+In the message stream itself, the value is one of the following:
+a. bytes_16
+b. bytes_32

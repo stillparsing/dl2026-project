@@ -1,0 +1,6 @@
+5.6.4.12.2.1 Result
+The method returns the data input that has been consumed in the hash as the method result.
+Results of the hashing operation are stored in the BufferOut cellblock of the HashInit method, if that
+parameter is included.  Otherwise the results are stored in the invoking hash object’s Accumulator
+column.  If the BufferOut parameter is specified in the HashInit method, the Hash method Result
+SHALL be empty.

@@ -1,0 +1,11 @@
+5.3.4.2.6 Modifying Tables
+In most cases, modifications to tables are accomplished using the Set method (access control
+permitting).  Other cases that allow modification of tables without use of the Set method are noted in
+the appropriate section of this specification.
+Unlike with the Get method, when the Set method is invoked on a table but access control does not
+permit some cell to be changed that the Set method invocation is attempting to change, the entire
+method fails and returns NOT_AUTHORIZED.  All changes parameterized in the Set method SHALL
+be made for the method to resolve successfully.
+Columns submitted in the RowValues parameter of the Set method are permitted to be sent in any
+order.  Including the same column multiple times in a single Set method invocation SHALL result in the
+method failing with the status INVALID_PARAMETER.

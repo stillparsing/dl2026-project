@@ -1,0 +1,23 @@
+5.6.5.6.2 Invocation of Verify on a Hash Object
+To perform signed hash verification in this way, the Verify method is invoked on a hash object.
+The proof to be verified against MAY be supplied in one of three ways.
+a. The proof MAY be parameterized in bytes as the Proof parameter of the Verify method
+invocation.
+b. The proof MAY be stored in a cellblock, which is addressed by the Proof parameter of the
+Verify method.
+c. If Proof parameter is not supplied to the Verify method, the proof used SHALL be the
+value of the invoking hash object’s Proof column.
+The value to be verified MAY also be supplied in one of three ways.
+a. The value for verification MAY be supplied in bytes as the DataInput parameter of the
+Verify method invocation.
+b. The value for verification MAY be stored in a cellblock, which is addressed by the DataInput
+parameter of the Verify method.
+c. If the DataInput parameter is not supplied to the Verify method, the proof used SHALL be
+the value of the invoking hash object’s Accumulator column.
+If the Proof parameter is supplied and is a cellblock, the host SHALL be required to fulfill the access
+control requirements necessary to invoke the Get method on the entirety of that cellblock or the Verify
+method invocation SHALL fail.
+Verification of the input against the proof is performed using the public key of the public key credential
+that SHALL be referenced from the invoking hash object.
+Invocation of the Verify method SHALL return True if the verified value matches the proof.  Otherwise,
+the method invocation SHALL return False.

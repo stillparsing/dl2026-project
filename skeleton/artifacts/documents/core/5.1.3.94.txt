@@ -1,0 +1,9 @@
+5.1.3.94 uinteger_48
+This is a uinteger type with a size restriction of 48 bytes.
+Table 158 uinteger_48
+```markdown
+| UID                          | Name        | Format                 |
+|------------------------------|-------------|------------------------|
+| 00 00 00 05 00 00 02 23      | uinteger_48 | Simple_Type, uinteger, 48 |
+```
+ 

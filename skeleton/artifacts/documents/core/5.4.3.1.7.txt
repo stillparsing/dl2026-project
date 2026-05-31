@@ -1,0 +1,4 @@
+5.4.3.1.7 Fails
+a. If there is already an SP of the same name.
+b. If the maximum number of SPs permitted for this template already exist.
+c. If there’s not enough free space for the new SP in the TPer.

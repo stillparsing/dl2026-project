@@ -1,0 +1,6 @@
+3.2.3.5.2.1 Initialization Vector (IV)
+This field contains the Initialization Vector (IV) input for the selected encryption or integrity checking
+mode.  For GCM, GMAC, and CCM, the IV is 8 bytes long and SHALL contain a unique value with each
+encryption invocation.  A simple algorithm is for the sender to use the sequence number as the IV.
+For AES-CBC encryption, the IV SHALL contain a random 16-byte value.
+For all other modes, the IV SHALL have zero length.

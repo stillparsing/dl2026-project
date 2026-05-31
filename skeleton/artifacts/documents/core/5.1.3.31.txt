@@ -1,0 +1,11 @@
+5.1.3.31 feedback_size
+This uinteger type represents the feedback sizes for AES used in CFB mode.  If AES Mode is CFB, this
+SHALL be between 1 and the block length.
+Table 83 feedback_size
+```markdown
+| UID                      | Name          | Format                |
+|--------------------------|---------------|-----------------------|
+| 00 00 00 05 00 00 02 14 | feedback_size | Simple_Type,          |
+|                          |               | uinteger,             |
+|                          |               | 2                     |
+```

@@ -1,0 +1,6 @@
+5.5.5.9 Default Logging Settings
+The default logging settings associated with the Clock Template methods are:
+a. The default logging for all Clock Template-enabled methods (ResetClock, SetClockHigh,
+SetClockLow, IncrementCounter) is LogAlways.
+b. All other methods that apply to the ClockTime table are as described in the Base Template
+reference section (See Section 5.3.4.4).

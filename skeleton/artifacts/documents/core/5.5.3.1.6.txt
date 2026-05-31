@@ -1,0 +1,4 @@
+5.5.3.1.6 HighLag
+The value of this column is set by the SetClockHigh method.  This value is valid only if HaveHigh is set
+to True; otherwise it should be zeroes.  This represents seconds and fractions of a second.
+This column SHALL NOT be modifiable by the host.

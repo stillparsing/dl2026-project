@@ -1,0 +1,12 @@
+5.1.4.2.18 uidref
+The uidref abstract type represents a uid of an object, table, or ThisSP that is expressed using a bytes
+type with a size of 8, and corresponds to an object or table's UID column value.
+In the pseudo-code method signatures, the uidref abstract type is often followed by curly brackets ("{",
+"}") that are used to define the limitation of a valid value for that uidref.  These valid values are typically
+represented as requiring an object of a specific type.  Limitations expressed with curly brackets have no
+effect on the appearance of the associated uid value as it appears in the message stream.
+Because this abstract type describes the inclusion of a uid, it represents a bytes value that has an
+implicit size restriction, and that value SHALL always be 8 bytes long.
+Format:
+
+bytes

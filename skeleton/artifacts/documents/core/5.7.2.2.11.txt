@@ -1,0 +1,3 @@
+5.7.2.2.11 ActiveKey
+This column points to this LBA range’s media encryption key.  If the value of this column is a NULL UID
+then data in this range is stored in plaintext.

@@ -1,0 +1,2 @@
+5.3.3.2.2 Kind
+The Kind parameter identifies the table’s type (object or byte).

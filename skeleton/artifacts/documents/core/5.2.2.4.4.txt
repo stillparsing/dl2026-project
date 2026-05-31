@@ -1,0 +1,5 @@
+5.2.2.4.4 Interaction with TCG Reset Events
+TCG Hardware Resets and TCG Power Cycle Resets SHALL cause the TPer’s knowledge of the host’s
+communications capabilities, on all ComIDs, to be reset to the initial minimum assumptions defined in
+this document or in the TPer’s SSC definition. Other TCG reset events SHALL NOT cause the TPer’s
+knowledge of the host’s communications capabilities to be reset.

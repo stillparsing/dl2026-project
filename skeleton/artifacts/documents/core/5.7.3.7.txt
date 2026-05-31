@@ -1,0 +1,30 @@
+5.7.3.7 Re-encryption
+The host has the following re-encryption responsibilities:
+a. Configures re-encryption options
+b. Initiates re-encryption operations
+c. Manages error recovery strategy when TPer detects errors. The host defines the next re-
+encryption state
+d. Optionally, acknowledge re-encryption completion
+The TPer has the following re-encryption responsibilities:
+a. Maintain persistent re-encryption state and status information across power cycles.
+b. Quiesce and report re-encryption state and status
+c. Detect re-encryption errors, completion and reset conditions
+Re-encryption and read commands and write commands are concurrent activities. Re-encryption is a
+TPer background task. As such, synchronization between read command and write command
+processing and background re-encryption processing is required. The means by which this
+synchronization is accomplished is implementation dependent. However, the normal Storage Device
+firmware requires a way to view the re-encryption process so that the proper encryption keys are
+selected for user data read commands and write commands.
+Attempts to modify the RangeStart and RangeLength columns of a Locking object that is undergoing
+re-encryption (the Locking object's ReEncryptState column value is not IDLE) SHALL fail and return a
+non-success status (FAIL) for the invoked method.
+Attempts to delete a Locking object that has a ReEncryptState column of ACTIVE SHALL fail and
+return a non-success status (FAIL) for the invoked method.
+When the Global Locking Range is undergoing re-encryption (the Global Range's ReEncryptState
+column value is not IDLE):
+a. Attempts to modify the RangeStart and RangeLength columns of any Locking object
+SHALL fail and return a non-success status (FAIL) for the invoked method.
+b. Attempts to delete any Locking object SHALL fail and return a non-success status (FAIL)
+for the invoked method.
+c. Attempts to create a new Locking object SHALL fail and return a non-success status
+(FAIL) for the invoked method.

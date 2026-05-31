@@ -1,0 +1,3 @@
+5.3.3.7.3 Set Result
+The Set method returns an empty list.  Success or failure of the requested modifications is
+determinable based on the status code returned in response to the method invocation.

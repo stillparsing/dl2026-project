@@ -1,0 +1,6 @@
+5.2.3.2.2 SPSessionID
+The SPSessionID parameter in the SyncSession invocation is the TPer side session number, which is
+assigned by the TPer. All further invocations in this series of method invocations and responses use
+this TPer-assigned session number in the SPSessionID parameter.
+This is the number that becomes the TSN portion of the packet header Session field (see 3.2.3.3 and
+3.3.7.1).

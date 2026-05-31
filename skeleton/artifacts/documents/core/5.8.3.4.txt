@@ -1,0 +1,8 @@
+5.8.3.4 FlushLog (Table Method)
+Upon successful invocation of this method, all entries that exist only in the main memory and have not
+yet been committed to media are committed to the indicated Log table on media.
+When HighSecurity is true, FlushLog is implicitly invoked after any AddLog method invocation.
+LogTableUID.FlushLog [ ]
+=>
+[ ]
+

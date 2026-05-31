@@ -1,0 +1,38 @@
+2.3.4 Preliminary Architectural Components
+This section identifies a series of architectural components in this specification that are to be
+considered as preliminary.  Implementations of any these elements as defined in this specification MAY
+NOT be compliant with either SSCs or future versions of this specification.
+a. Secure session start up.  This applies to challenge response authentication and key
+exchange that occurs during session startup.  In addition, if two SP Authorities refer to the
+same ResponseExch authority, and therefore use the same public-private keypair for
+encrypting the HostSessionKey to be sent to the TPer,, then there is an escalation replay
+attack possible where one authority can successfully replay the commands of another.
+b. Session Timeouts, Flow Control, and Session Reliability in regards to control
+sessions.  This includes, but is not limited to, session timeouts, acknowledgements,
+negative acknowledgements, transmission timeouts, packet sequence numbers, and credit
+exchange.
+c. The Log Template and related logging functionality.  In addition to the Log Template,
+this applies to components in other templates that relate to logging, such as those in the
+Base Template's Authority and AccessControl tables.  Methods to manage the logging
+functionality presented in the AccessControl table are also TBD.
+d. The Clock Template and functionality related to timekeeping.  In addition to the Clock
+Template, this applies to components in other templates that relate to timekeeping, such as
+those in the Base Template's Authority table.
+e. Admin SP discovery mechanisms related to TemplateID columns.  This also applies to
+the TemplateID column in tables in Templates other than the Admin Template.
+f.
+Default ACL values for access control associations when a new table or object is
+created.  This affects the values are placed in the ACL columns of the AccessControl
+table when a new table or object is created and associated rows are created in the Table,
+Column, ACE, and AccessControl tables.
+g. Mechanisms for retrieval of meta-ACL column values from the AccessControl table.
+h. The Crypto Template and functionality related to host-requested on-device
+cryptographic operations.  This includes on-device encryption, decryption, etc.  This does
+not include the Random method.
+i.
+Certificate related components, including the
+Certificates table and the
+PresentCertificate column of the Authority table.
+j.
+Issuance related components, including the IssueSP method.
+3 Architecture Elements

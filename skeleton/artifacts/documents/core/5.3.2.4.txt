@@ -1,0 +1,22 @@
+5.3.2.4 Table and Method Metadata Group - Column (Object Table)
+The Column table SHALL have one row for every column of every object table.  Byte tables SHALL
+NOT have representative columns in the Column table.
+The SP implementation is free to have hidden system columns in any table, as long as those columns
+do not interfere with host operations, including the operation of any methods invoked on that table.
+These columns SHALL NOT be recorded in the Column table.
+The Column table in the Admin SP includes a row for each column that the TPer supports, in addition to
+a row for each column that exists in the Admin SP.
+Table 172 Column Table Description
+| Column Number | Column Name     | IsUnique | Column Type         |
+|---------------|-----------------|----------|---------------------|
+| 0x00          | UID             |          | uid                 |
+| 0x01          | Name            |          | name                |
+| 0x02          | CommonName      |          | name                |
+| 0x03          | Type            |          | Type_object_ref     |
+| 0x04          | IsUnique        |          | boolean             |
+| 0x05          | ColumnNumber    |          | uinteger_4          |
+| 0x06          | Transactional   |          | boolean_def_true    |
+| 0x07          | Next            |          | Column_object_ref   |
+| 0x08          | AttributeFlags  |          | attr_flags          |  
+
+   

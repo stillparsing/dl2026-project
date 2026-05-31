@@ -1,0 +1,33 @@
+5.1.3.3 Effects of RevertSP
+Upon successful invocation of the RevertSP method, the following changes SHALL be made:
+• If the KeepGlobalRangeKey parameter is not present or set to False, then successful invocation of the
+RevertSP method on the Locking SP or Admin SP SHALL cause user data removal as defined by the
+ActiveDataRemovalMechanism (see Table 33) and cause the media encryption keys to be eradicated, which
+has the side effect of securely erasing all data in the User LBA portion of the Storage Device.
+• If the KeepGlobalRangeKey parameter is set to True, then successful invocation of the RevertSP method
+on the Locking SP SHALL cause user data removal as defined by the ActiveDataRemovalMechanism (see
+Table 33) and cause all media encryption keys to be eradicated except for the Global Range’s media
+encryption key (K_AES_{128,256}_GlobalRange_Key).
+• Interactions with interface commands during the processing of the RevertSP method are defined in [4].
+If any TCG reset occurs prior to completing user data removal and the eradication of media encryption keys in the
+Storage Device, then the operation SHALL be aborted and the Locking SP SHALL NOT revert to its Original Factory
+State.
+Start of Informative Comment
+If any TCG reset occurs during the processing of the RevertSP method, the result of user data removal is undefined.
+End of Informative Comment
+Upon completion of user data removal and the eradication of media encryption keys in the Storage Device, the
+following changes SHALL be made:
+• The row in the Admin SP’s SP table that represents the Locking SP SHALL revert to its original factory value.
+• The Locking SP itself SHALL revert to its Original Factory State.  While reverting to its Original Factory State,
+the TPer SHALL erase all personalization of the SP, and return the personalized values to their Original
+Factory State values.  The mechanism for erasure of personalization implementation-specific.
+• Any TPer functionality affected by the life cycle state of the SP based on the templates incorporated into it is
+modified as defined in the appropriate Template reference section of [2], and as defined in the “State
+transitions for Manufactured SPs” section (see section 5.2.2.2) and “State behaviors for Manufactured SPs”
+section (see section 5.2.2.3) of this specification.
+Start of Informative Comment
+Reverting the Locking SP will cause the media encryption keys to be eradicated (except for the GlobalRange key if
+the KeepGlobalRangeKey parameter is present and set to True), which has the side effect of securely erasing all
+data in the User LBA portion of the Storage Device.
+End of Informative Comment
+

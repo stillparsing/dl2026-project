@@ -1,0 +1,8 @@
+2.2 Architecture Components
+Begin Informative Content
+The architecture is illustrated in Figure 1, which shows a single Multicomponent Trusted Platform
+(MCTP) with one Trusted Peripheral (TPer).  An MCTP supports 1 or more TPers.  Figure 1 shows just
+one example.  Other possibilities include multiple hosts communicating with a single Storage
+Device/TPer, a single host communicating with multiple Storage Devices/TPers, etc.
+End Informative Content
+Figure 1    Diagram of the Core Architecture

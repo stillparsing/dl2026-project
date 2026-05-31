@@ -1,0 +1,60 @@
+3.3 Interface Communications
+Begin Informative Content
+an interface protocol-independent way.   The implementation of this specification on various interfaces
+does have some differences (see [2]).
+This section abstracts out the common features of these commands that serve as a requirement for an
+interface protocol to implement the present specification.  These sections address communications on
+protocols 0x01 and 0x02 only (see Table 25).
+The following assumptions are made regarding the interface commands:
+a. The interface commands have two parts: (1) a command block and (2) a data payload.
+Each host interface protocol has its own minimum payload size. The payload size is not
+related to the 'logical block size' of the user data on the medium of the Storage Device. See
+the definitions of IF-SEND and IF-RECV for details.
+b. There is at least one command in the interface protocol that transfers data from the host to
+the Storage Device.  These commands are called IF-SEND.
+c. There is at least one command in the interface protocol that transfers data from the Storage
+Device to the host.  These commands are called IF-RECV.
+The abstracted command block of the interface commands are described in the format defined in Table
+24.
+The mapping of the IF-SEND and IF-RECV commands to specific interface protocol commands are
+described in [2].
+End Informative Content
+Table 24 Interface Command – Command Block
+```markdown
+| Field           | Description                                                   |
+|-----------------|---------------------------------------------------------------|
+| Command         | Either IF-SEND or IF-RECV.                                   |
+| Protocol ID     | Between 0x01 and 0x06 (see Table 25)                         |
+| Transfer Length | at least 2 bytes (the length of this field varies by host interface) The amount of data to be transferred. |
+| ComID          | The ComID to be used, for Protocol IDs 0x01, 0x02, 0x06 (see 3.3.2 and 3.3.3). |
+
+Table 25 Protocol IDs
+| ID   | Description               |
+|------|---------------------------|
+| 0x00 | See [6]                   |
+| 0x01 | Defined in this document   |
+| 0x02 | Defined in this document   |
+| 0x03 | Reserved for TCG          |
+| 0x04 | Reserved for TCG          |
+| 0x05 | Reserved for TCG          |
+| 0x06 | Reserved for TCG          |
+| All others | See [6]              |
+```
+
+Table 25 Protocol IDs
+```markdown
+| ID   | Description               |
+|------|---------------------------|
+| 0x00 | See [6]                   |
+| 0x01 | Defined in this document   |
+| 0x02 | Defined in this document   |
+| 0x03 | Reserved for TCG           |
+| 0x04 | Reserved for TCG           |
+| 0x05 | Reserved for TCG           |
+| 0x06 | Reserved for TCG           |
+| All others | See [6]              |
+```
+
+IF-SEND and IF-RECV commands to a Protocol ID between 0x00 and 0x06 that the TPer does not
+support SHALL result in the IF command failing with a status of Invalid Security Protocol ID Parameter
+(see [2]).

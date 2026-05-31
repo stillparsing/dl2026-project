@@ -1,0 +1,4 @@
+4.5.1 Issued
+Behavior of an SP in the Issued state is described in the Template Reference sections, and specifically
+in the sections of the templates of which the SP has been constructed.  Access control settings in those
+sections apply at the point when an SP has been Issued and before personalization occurs.

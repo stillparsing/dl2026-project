@@ -1,0 +1,3 @@
+5.4.2.1.7 SpaceForIssuance
+This is the total amount of available bytes remaining for issuance.
+This column SHALL NOT be modifiable by the host.

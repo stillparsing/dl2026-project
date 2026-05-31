@@ -1,0 +1,44 @@
+5.7.3.2 Reading/Writing User Data
+This section identifies the device response for attempts by the host to read or write user data.
+Table 230 specifies the device response for all cases when the host attempts to read user data.
+Table 231 specifies the device response for all cases when the host attempts to write user data.
+
+Table 230 Interface Read Command Access
+```markdown
+| MBR Control Enable | MBR Control Done | Starting LBA Within MBR | Ending LBA within MBR | ReadLockEnabled for Requested LBA range | ReadLocked for Requested LBA Range | Required Behavior                                                                                 |
+|--------------------|------------------|------------------------|----------------------|------------------------------------------|----------------------------------|-------------------------------------------------------------------------------------------------|
+| True               | False            | True                   | True                 | N/A                                      | N/A                              | Return Data from MBR table                                                                      |
+| True               | False            | True                   | False                | N/A                                      | N/A                              | Transfer no data to the host and terminate the command with a "Data Protection Error" (see [2]) |
+| True               | False            | False                  | False                | False                                    | N/A                              | Return user data                                                                                |
+| True               | False            | False                  | False                | True                                     | False                            | Return user data                                                                                |
+| True               | False            | False                  | False                | True                                     | True                             | Return all zeroes                                                                              |
+| True               | False            | False                  | False                | True                                     | Mixed (when crossing range boundaries) | Transfer no data to the host and terminate the command with a "Data Protection Error" (see [2])  |
+| True               | True             | N/A                    | N/A                  | False                                    | N/A                              | Return user data                                                                                |
+| True               | True             | N/A                    | N/A                  | True                                     | False                            | Return user data                                                                                |
+| True               | True             | N/A                    | N/A                  | True                                     | True                             | Transfer no data to the host and terminate the command with a "Data Protection Error" (see [2]) |
+| True               | True             | N/A                    | N/A                  | True                                     | Mixed (when crossing range boundaries) | Transfer no data to the host and terminate the command with a "Data Protection Error" (see [2])  |
+| False              | N/A              | N/A                    | N/A                  | False                                    | N/A                              | Return user data                                                                                |
+| False              | N/A              | N/A                    | N/A                  | True                                     | False                            | Return user data                                                                                |
+| False              | N/A              | N/A                    | N/A                  | True                                     | True                             | Transfer no data to the host and terminate the command with a "Data Protection Error" (see [2]) |
+| False              | N/A              | N/A                    | N/A                  | True                                     | Mixed (when crossing range boundaries) | Transfer no data to the host and terminate the command with a "Data Protection Error" (see [2])  |
+```
+
+Table 231 Interface Write Command Access
+```markdown
+| MBRControlEnable | MBRControlDone | Starting LBA Within MBR | Ending LBA within MBR | WriteLockEnabled for Requested LBA range | WriteLocked for Requested LBA Range | Required Behavior                                                                                  |
+|------------------|----------------|------------------------|----------------------|-----------------------------------------|-------------------------------------|---------------------------------------------------------------------------------------------------|
+| True             | False          | True                   | N/A                  | N/A                                     | N/A                                 | Transfer no data from the host and terminate the command with a "Data Protection Error" (see [2]) |
+| True             | False          | False                  | False                | False                                   | N/A                                 | Write user data                                                                                   |
+| True             | False          | False                  | False                | True                                    | False                               | Write user data                                                                                   |
+| True             | False          | False                  | False                | True                                    | True                                | Transfer no data from the host and terminate the command with a "Data Protection Error" (see [2]) |
+| True             | False          | False                  | False                | True                                    | Mixed (when crossing range boundaries) | Transfer no data from the host and terminate the command with a "Data Protection Error" (see [2]) |
+| True             | True           | N/A                    | N/A                  | False                                   | N/A                                 | Write user data                                                                                   |
+| True             | True           | N/A                    | N/A                  | True                                    | False                               | Write user data                                                                                   |
+| True             | True           | N/A                    | N/A                  | True                                    | True                                | Transfer no data from the host and terminate the command with a "Data Protection Error" (see [2]) |
+| True             | True           | N/A                    | N/A                  | True                                    | Mixed (when crossing range boundaries) | Transfer no data from the host and terminate the command with a "Data Protection Error" (see [2]) |
+| False            | N/A            | N/A                    | N/A                  | False                                   | N/A                                 | Write user data                                                                                   |
+| False            | N/A            | N/A                    | N/A                  | True                                    | False                               | Write user data                                                                                   |
+| False            | N/A            | N/A                    | N/A                  | True                                    | True                                | Transfer no data from the host and terminate the command with a "Data Protection Error" (see [2]) |
+| False            | N/A            | N/A                    | N/A                  | True                                    | Mixed (when crossing range boundaries) | Transfer no data from the host and terminate the command with a "Data Protection Error" (see [2]) |
+```
+ 

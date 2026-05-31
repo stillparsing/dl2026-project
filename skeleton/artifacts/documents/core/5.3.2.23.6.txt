@@ -1,0 +1,15 @@
+5.3.2.23.6 k3
+Low non-leading, non-constant term of irreducible pentanomial
+5.3.2.23.7
+r
+Order of the curve
+5.3.2.23.8
+a
+Curve coefficient (y2 +xy = x3 + ax2 + b), SHALL be zero or one
+5.3.2.23.9
+b
+Curve coefficient (y2 +xy = x3 + ax2 + b)
+5.3.2.23.10 x
+Base point x-coordinate
+5.3.2.23.11 y
+Base point y-coordinate

@@ -1,0 +1,3 @@
+5.3.3.4.2.1 Result
+The result of the CreateRow method is a list containing the UID column values assigned to each of the
+newly created rows in the table.

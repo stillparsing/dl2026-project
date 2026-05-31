@@ -1,0 +1,6 @@
+5.8.2.2.6 HighSecurity
+This column value identifies the relative frequency with which log entries are committed to persistent
+storage.
+When HighSecurity is True, every log message is committed to persistent storage when received.
+When False, messages MAY be queued for later writing (some messages could potentially be lost
+when a TPer reset occurs).

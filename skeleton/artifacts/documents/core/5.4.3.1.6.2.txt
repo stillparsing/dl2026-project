@@ -1,0 +1,3 @@
+5.4.3.1.6.2 Size
+The returned Size is the size actually allocated.   The Size returned SHALL be equal to or greater than
+the Size requested.

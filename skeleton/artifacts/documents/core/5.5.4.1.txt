@@ -1,0 +1,8 @@
+5.5.4.1 GetClock (Table Method)
+This method is used to fetch information about the current time.  See 5.5.5.7.
+Successful invocation of this method increments the MonotonicTime.
+ClockTimeTableUID.GetClock [ ]
+=>
+[ Kind : clock_kind, ExactTime : clock_time, LagTime : lag, MonotonicTime : uinteger
+]
+

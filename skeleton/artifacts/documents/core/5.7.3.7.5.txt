@@ -1,0 +1,11 @@
+5.7.3.7.5 AdvKeyMode Column Values
+a. When AdvKeyMode = 0 AND TPer_Job_Done condition is detected AND ReencryptState is
+ACTIVE, TPer changes the ReEncryptState value to COMPLETED.
+b. When AdvKeyMode = 1 AND TPer_Job_Done condition is detected AND the value of the
+ReencryptState column is ACTIVE, the TPer changes the ReEncryptState column value
+to IDLE. In addition, the TPer changes the value of the ActiveKey column to be the value
+of the NextKey column, and then sets the value of the NextKey column to a null uid
+reference.
+c. When AdvKeyMode = 0 AND Reencryptstate is COMPLETED AND AdvKey_req is True, the
+TPer changes the ReEncryptState column value to IDLE AND NextKey becomes
+ActiveKey.

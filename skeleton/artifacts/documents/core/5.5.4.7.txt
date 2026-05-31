@@ -1,0 +1,11 @@
+5.5.4.7 IncrementCounter (Table Method)
+This method increments and then returns the value of the monotonic counter.  For more information see
+5.5.5.2.
+For two calls to IncrementCounter, the later call SHALL always return a value that is greater than that
+returned by the earlier call.
+This method is permitted in a Read-Only session. The incrementing of the counter’s value is not subject
+to transactional rollback.
+ClockTimeUID.IncrementCounter [ ]
+=>
+[ MonotonicTime : uinteger ]
+

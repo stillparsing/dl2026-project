@@ -1,0 +1,4 @@
+5.3.3.2.7 HintSize
+The optional HintSize parameter is used to suggest a number of rows to be created for the table.  If this
+parameter is included when creating a byte table, the method invocation SHALL fail with
+INVALID_PARAMETER.

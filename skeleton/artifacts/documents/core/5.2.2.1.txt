@@ -1,0 +1,16 @@
+5.2.2.1 Properties (Method)
+The Properties method is a control session method used by the host to provide its communication
+properties to the TPer, and to retrieve the communication properties of the TPer.  The purpose of the
+Properties method is to permit the host and the TPer to exchange the information about their
+respective communications capabilities required for session startup and maintenance, without the need
+to first start a session.
+Properties are maintained on a per-ComID basis in both the host and the TPer.  The HostProperties
+parameter is used to describe the communications capabilities that the host possesses, and apply to
+any sessions started using the ComID associated with this Properties method invocation once the
+TPer has processed the method and prepared a response.
+
+SMUID.Properties[ HostProperties = list [ name = value ... ] ]
+=>
+SMUID.Properties[ Properties : list [ name = value ... ], HostProperties = list [
+name = value ... ] ]
+

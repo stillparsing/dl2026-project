@@ -1,0 +1,7 @@
+5.2.2.4.1.2 MaxPacketSize
+The host SHOULD NOT send a Packet whose size (including Packet header) exceeds the value of the
+TPer’s MaxPacketSize property. If the host sends a Packet that is too large, the TPer SHALL abort the
+session associated with the Packet. In the case of a Packet that is too large on the Control Session, the
+TPer SHALL discard and ignore the Packet.
+The TPer SHALL NOT send a Packet whose size (including Packet header) exceeds the value of the
+host’s MaxPacketSize property.

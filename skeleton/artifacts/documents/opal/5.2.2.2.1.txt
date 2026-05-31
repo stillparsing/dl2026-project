@@ -1,0 +1,16 @@
+5.2.2.2.1 Manufactured-Inactive to Manufactured
+Triggers:
+•
+The Activate method (see section 5.1.1) is successfully invoked on the SP’s object in the Admin SP’s SP
+table.
+Side effects:
+•
+The value in the LifeCycleState column of the SP’s object in the Admin SP’s SP table changes to
+Manufactured.
+•
+The current SID PIN (C_PIN_SID) in the Admin SP is copied into the PIN column of Admin1’s C_PIN credential
+(C_PIN_Admin1) in the activated SP.  This allows taking ownership of the SP with a known PIN credential.
+•
+Any functionality enabled by the templates incorporated into the SP becomes active.
+When the Locking SP transitions from the Manufactured-Inactive state to the Manufactured state (via invocation of
+the Activate method), the Storage Device SHALL NOT destroy any user data.

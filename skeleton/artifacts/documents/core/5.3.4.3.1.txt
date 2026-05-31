@@ -1,0 +1,18 @@
+5.3.4.3.1 Meta-ACLs
+The ability to add ACEs to or delete ACEs from ACLs provides granularity of access control, as the
+authorization required to add or remove ACEs from ACLs MAY be different from the authorization
+required to invoke the method described in the access control association.
+The methods that perform the operations that add or remove ACEs from ACLs, or retrieve the list of
+ACEs from an ACL, are AddACE, RemoveACE, and GetACL.  Additionally, access control associations
+MAY be removed from the AccessControl table through successful invocation of the DeleteMethod
+method.  These four methods together are the meta-ACL methods.
+Each access control association stores ACLs that govern the authorization requirements for these
+methods on that access control association.  A separate column in the AccessControl table exists for
+each of the meta-ACL methods to store the ACL for that meta-ACL method.  A separate column in the
+AccessControl table also exists for each of the meta-ACL methods to store the logging settings for that
+meta-ACL method.  The AccessControl table does not have rows for access control associations
+representing the meta-ACL methods.
+In order to add an ACE to an ACL, the ACL for the AddACE method associated with that access control
+association (stored in the AddACEACL column) SHALL be satisfied.  RemoveACE, GetACL, and
+DeleteMethod function in a similar way, and would have to fulfill the ACL stored in the RemoveACEACL,
+GetACLACL, and DeleteMethodACL column respectively.

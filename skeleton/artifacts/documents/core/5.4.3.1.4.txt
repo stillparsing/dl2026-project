@@ -1,0 +1,4 @@
+5.4.3.1.4 AdminExch
+A C_AES_* object of the size indicated by the parameter used is created upon SP issuance that uses
+the key submitted in this parameter.  The AdminExch authority in the new SP SHALL have a
+Credential column value that references the newly created credential.

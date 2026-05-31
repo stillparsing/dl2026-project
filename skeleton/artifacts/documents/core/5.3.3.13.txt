@@ -1,0 +1,11 @@
+5.3.3.13 Access Control Method Group - GetACL (Meta-Method)
+This method is used to retrieve the contents of an access control association’s ACL, which are stored in
+the AccessControl table.
+AccessControlTableUID.GetACL [
+
+InvokingID : uidref { SP/table/object },
+
+MethodID : uidref { MethodID } ]
+=>
+[ Result : access_control_list ]
+

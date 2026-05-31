@@ -1,0 +1,9 @@
+5.6.4.3 Decryption Method Group – DecryptInit (Object Method)
+This method is used to initiate a decryption “stream” using the credential object that invoked the
+method.  Only one decryption “stream” SHALL be able to be open at any one time for any individual
+credential object.
+CredentialObjectUID.DecryptInit [
+IV = bytes ]
+=>
+[   ]
+

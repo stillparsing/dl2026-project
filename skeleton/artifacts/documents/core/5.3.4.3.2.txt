@@ -1,0 +1,40 @@
+5.3.4.3.2 BooleanExpr Column Format
+The BooleanExpr column of the ACE table has a type of AC_element.  Table 210 contains an encoding
+example of the AC_element list representing the infix ACE expression:
+((00 00 00 09 00 00 00 32 AND 00 00 00 09 00 00 00 24) OR 00 00 00 09 00 00 82 73) AND 00 00 00
+09 00 00 77 28
+Table 210 ACE_expression Encoding Example
+```json
+[
+    {"Token": "F0", "Meaning": "Start List"},
+    {"Token": "F2", "Meaning": "Start Name"},
+    {"Token": "A4 00 00 0C 05", "Meaning": "Half-UID – Authority_object_ref"},
+    {"Token": "A8 00 00 00 09 00 00 00 32", "Meaning": "Authority_object_ref"},
+    {"Token": "F3", "Meaning": "End Name"},
+    {"Token": "F2", "Meaning": "Start Name"},
+    {"Token": "A4 00 00 0C 05", "Meaning": "Half-UID – Authority_object_ref"},
+    {"Token": "A8 00 00 00 09 00 00 00 24", "Meaning": "Authority_object_ref"},
+    {"Token": "F3", "Meaning": "End Name"},
+    {"Token": "F2", "Meaning": "Start Name"},
+    {"Token": "A4 00 00 04 0E", "Meaning": "Half-UID – boolean_ACE"},
+    {"Token": "00", "Meaning": "boolean_ACE - AND"},
+    {"Token": "F3", "Meaning": "End Name"},
+    {"Token": "F2", "Meaning": "Start Name"},
+    {"Token": "A4 00 00 0C 05", "Meaning": "Half-UID – Authority_object_ref"},
+    {"Token": "A8 00 00 00 09 00 00 82 73", "Meaning": "Authority_object_ref"},
+    {"Token": "F3", "Meaning": "End Name"},
+    {"Token": "F2", "Meaning": "Start Name"},
+    {"Token": "A4 00 00 04 0E", "Meaning": "Half-UID – boolean_ACE"},
+    {"Token": "01", "Meaning": "boolean_ACE - OR"},
+    {"Token": "F3", "Meaning": "End Name"},
+    {"Token": "F2", "Meaning": "Start Name"},
+    {"Token": "A4 00 00 0C 05", "Meaning": "Half-UID – Authority_object_ref"},
+    {"Token": "A8 00 00 00 09 00 00 77 28", "Meaning": "Authority_object_ref"},
+    {"Token": "F3", "Meaning": "End Name"},
+    {"Token": "F2", "Meaning": "Start Name"},
+    {"Token": "A4 00 00 04 0E", "Meaning": "Half-UID – boolean_ACE"},
+    {"Token": "00", "Meaning": "boolean_ACE - AND"},
+    {"Token": "F3", "Meaning": "End Name"},
+    {"Token": "F1", "Meaning": "End List"},
+]
+```

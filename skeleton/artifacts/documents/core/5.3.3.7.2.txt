@@ -1,0 +1,9 @@
+5.3.3.7.2 Values
+This parameter contains the values to be set to the indicated table cells.
+If the Set method is invoked on an object or an object table, the Values parameter SHALL be the
+RowValues option, or the method SHALL fail and return an error status code.
+If the Set method is invoked on a byte table, the Values parameter SHALL be the Bytes option, or the
+method SHALL fail and return an error status code.
+Since the Values parameter is an optional parameter, excluding the parameter from a Set method
+invocation SHALL NOT cause the method to fail.  An otherwise correct invocation of the Set method
+that does not contain the Values parameter SHALL succeed but have no effect.

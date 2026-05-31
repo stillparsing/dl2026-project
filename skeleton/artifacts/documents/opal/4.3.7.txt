@@ -1,0 +1,12 @@
+4.3.7 Storage Device Read/Write Data Command Locking Behavior Interactions with Range
+Crossing
+If a Storage Device receives a read or write command that spans multiple Locking ranges and the Locking ranges
+are not locked, the Storage Device SHALL either:
+•
+Process the data transfer as defined in [2], if Range Crossing Behavior bit is set to zero (in Level 0 Discovery
+Opal SSC V2 Feature, see section 3.1.1.5)
+OR
+•
+Terminate the command with “Other Invalid Command Parameter” as defined in [4],
+if Range Crossing Behavior bit is set to one (in Level 0 Discovery Opal SSC V2 Feature, see section
+3.1.1.5).

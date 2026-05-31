@@ -1,0 +1,6 @@
+5.6.4.8 Encryption Method Group – EncryptFinalize (Object Method)
+Invocation of this method closes the encryption “stream” associated with this object.
+CredentialObjectUID.EncryptFinalize [ ]
+=>
+[ Result : bytes]
+

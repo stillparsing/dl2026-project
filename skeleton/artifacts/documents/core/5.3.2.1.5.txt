@@ -1,0 +1,3 @@
+5.3.2.1.5 SizeInUse
+This value is the amount of the allocated space that is in use (for tables), in bytes.
+This column SHALL NOT be modifiable by the host.

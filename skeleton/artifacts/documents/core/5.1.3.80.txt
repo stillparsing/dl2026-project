@@ -1,0 +1,8 @@
+5.1.3.80 Type_object _ref
+The Type_object _ref type describes a uidref to an object in the Type table.
+Table 144 Type_object _ref
+```markdown
+| UID                         | Name           | Format                                    |
+|-----------------------------|----------------|-------------------------------------------|
+| 00 00 00 05 00 00 0C 02     | Type_object_ref| Restricted_Reference_Type{6}, uidref {TypeTableUID} |
+```

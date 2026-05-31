@@ -1,0 +1,82 @@
+3.3.4.7.5 STACK_RESET
+This command is used to reset that state of the synchronous protocol stack (see 3.3.10).
+The command is delivered in the payload of the HANDLE_COMID_REQUEST command.  The ComID
+field identifies the ComID being reset.  The response to the STACK_RESET is retrieved using the
+GET_COMID_RESPONSE command.
+The STACK_RESET command is defined in Table 35.
+TRNSFLEN is defined as number of bytes transferred via the interface.  Reserved bytes SHOULD be
+set to zero and SHALL be ignored by both host and device.
+The device SHALL return an “Invalid Transfer Length parameter on IF-SEND” TPer Error[2] if less than
+8 bytes are sent to the device.
+
+Depending on the SSC, if the ComID value in the IF-SEND for the HANDLE_COMID_REQUEST
+command represents a non Active ComID, the device SHALL respond as described in 3.3.3.2.
+Table 35 STACK_RESET Command Request
+```markdown
+| BYTES         | FIELD         | VALUE            |
+|---------------|---------------|------------------|
+| 0 to 3        | Extended ComID| Allocated ComID  |
+| 4 to 7        | Request Code  | 00 00 00 02      |
+| 8 to TRNSFLEN-1 | Reserved     | 00               |
+```
+
+Once received, the TPer SHALL reset the protocol stack for the ComID value defined in bytes 0-3 of the
+command block payload. While resetting the stack, the Tper SHALL NOT process any command for
+that ComID received via an IF-SEND on Protocol ID 0x01. A Security Protocol stack reset results in:
+
+1. All open sessions for that ComID SHALL be aborted.  CloseSession methods SHALL NOT be
+prepared by the TPer;
+2. All uncommitted transactions SHALL be aborted;
+3. All pending session startup activities occurring on that ComID SHALL be aborted;
+4. All TCG command and response buffers SHALL be invalidated for that ComID;
+5. All related method processing occurring on that ComID SHALL be aborted;
+6. The protocol stack SHALL reset to its initial state for that ComID only;
+7. All communications properties (set via Properties method) and ComID associated properties
+for that ComID SHALL be reset to their default values;
+8. No notification of these events SHALL be sent to the host.
+The response SHALL be returned via the GET_COMID_RESPONSE (IF-RECV) command. The
+STACK_RESET command response payload is defined in Table 36.
+If the STACK_RESET is still processing and another HANDLE_COMID_REQUEST is received, the
+STACK_RESET SHALL complete but a response for that STACK_RESET command SHALL NOT be
+available.
+Table 36 STACK_RESET Command Response
+```markdown
+| BYTES      | FIELD                  | VALUE               |
+|------------|------------------------|---------------------|
+| 0 to 3     | Extended ComID         | Allocated ComID     |
+| 4 to 7     | Request Code           | 00 00 00 02         |
+| 8 to 9     | Reserved               | 00 00               |
+| 10 to 11   | Available Data Length in bytes | 00 04        |
+| 12 to 15   | Success/Failure        | 00 00 00 00 / 00 00 00 01 |
+| 16 to TRNSFLEN - 1 | Reserved         | 00                  |
+
+Success (0x00000000) indicates that the protocol stack has been reset for the specified ComID.  
+Failure (0x00000001) indicates that the protocol stack has not been reset for the specified ComID.
+```
+
+
+Success (0x00000000) indicates that the protocol stack has been reset for the specified ComID.
+Failure (0x00000001) indicates tha the protocol stack has not been reset for the specified ComID.
+The response SHALL be cleared from the response buffer if one of the following conditions is true:
+a. The host retrieves the entire response via the GET_COMID_RESPONSE command;
+b. The device is hard-reset or power-cycled.
+c. Another HANDLE_COMID_REQUEST is made for that ComID.
+
+The device SHALL return “No Response Available” if:
+a. No HANDLE_COMID_REQUEST command preceded the GET_COMID_RESPONSE
+command;
+b. An error is detected in the HANDLE_COMID_REQUEST command payload.
+If no Handle_ComID_Request was sent, the Extended ComID field SHALL contain zeroes.
+The "No Response Available" payload is defined in Table 31.
+The device SHALL return “Pending” if:
+a. The host retrieves the command result via the GET_COMID_RESPONSE command while
+the stack reset is in progress for that specific ComID.
+The "Pending" payload is defined in Table 37.
+Table 37 STACK_RESET Pending
+| BYTES   | FIELD                    | VALUE           |
+|---------|--------------------------|-----------------|
+| 0 to 3  | Extended ComID           | Allocated ComID |
+| 4 to 7  | Request Code             | 00 00 00 02     |
+| 8 to 9  | Reserved                 | 00 00           |
+| 10 to 11| Available Data Length in bytes | 00 00      |
+| 12 to TRNSFLEN - 1 | Reserved         | 00              |

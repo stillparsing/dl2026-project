@@ -1,0 +1,3 @@
+5.6.3.4.2 Name
+This is the name of the object.
+For H_SHA_512 objects that exist at issuance, this column SHALL NOT be modifiable by the host.

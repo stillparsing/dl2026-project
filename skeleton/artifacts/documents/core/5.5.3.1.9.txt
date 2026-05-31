@@ -1,0 +1,5 @@
+5.5.3.1.9 LowSetTime
+The value of this column is the time set to the value of the ExactTime parameter of the SetClockLow
+method when that method is successfully invoked.  This value is valid only if HaveLow is set to True;
+otherwise it SHOULD be zeroes.
+This column SHALL NOT be modifiable by the host.

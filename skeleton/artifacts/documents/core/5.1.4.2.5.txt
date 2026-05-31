@@ -1,0 +1,50 @@
+5.1.4.2.5 clock_time
+This type represents a grouping of Named values that are used to identify time values, and is similar to
+the column type of the same name.  In messaging, this grouping is enclosed by List value delimiters,
+and each component is enclosed by Named value delimiters.
+The name of each component is a uinteger representing the positioning of that component within the
+grouping, as defined by this specification. The associated number also appears in the appropriate
+component description.
+Because this is a group of Named values, its separate components are optional.  Components that are
+omitted are considered to have a value of 0.
+The components are as follows:
+a. Year – this Named value has the Name "0x00" and a value that is implicitly defined as
+being of uinteger of size 2.  This Named value abstract type represents the year in a
+timestamp.  Valid values are unsigned integers ranging from 1970 to 9999
+b. Month – this Named value has the Name "0x01" and a value that is implicitly defined as
+being of uinteger of size 2.  This Named value abstract type represents the month in a
+timestamp.  Valid values are unsigned integers ranging from 1 to 12, which correspond to
+the months of the year as follows:
+a. January = 1 (0x01)
+b. February = 2 (0x02)
+c. March = 3 (0x03)
+d. April = 4 (0x04)
+e. MAY = 5 (0x05)
+f. June = 6 (0x06)
+g. July = 7 (0x06)
+h. August = 8 (0x08)
+i. September = 9 (0x09)
+j. October = 10  (0x0A)
+k. November = 11 (0x0B)
+l. December = 12 (0x0C)
+c. Day – this Named value has the Name "0x02" and a value that is implicitly defined as being
+of uinteger of size 1.  This Named value abstract type represents the day of the month in a
+timestamp.  Valid values are unsigned integers ranging from 1 to 31.
+d. Hour – this Named value has the Name "0x03" and a value that is implicitly defined as
+being of uinteger size 1.  This Named value abstract type represents the hour of the day in
+a timestamp.  Valid values are unsigned integers ranging from 0 to 23.
+e. Minute – this Named value has the Name "0x04" and a value that is implicitly defined as
+being of uinteger size 1.  This Named value abstract type represents the minute of the hour
+in a timestamp.  Valid values are unsigned integers ranging from 0 to 59.
+f.
+Seconds – this Named value has the Name "0x05" and a value that is implicitly defined as
+being of uinteger size 1.  This Named value abstract type represents the second of the
+minute in a timestamp.  Valid values are unsigned integers ranging from 0 to 59.
+g. Fraction – this Named value has the Name "0x06" and a value that is implicitly defined as
+being of uinteger size 2.  This Named value abstract type represents fractions of a second
+in a timestamp, measured in milliseconds.  Valid values are unsigned integers ranging from
+0 to 999.
+Format:
+
+[ Year = uinteger, Month = uinteger, Day = uinteger, Hour = uinteger, Minute =
+uinteger, Second = uinteger, Fraction = uinteger ]

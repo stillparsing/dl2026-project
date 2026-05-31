@@ -1,0 +1,6 @@
+3.2.3.5.2.2.3 Pad
+This field contains any necessary padding required to fulfill the alignment constraints for the encryption
+mode in use.  For AES-CBC encryption, the length of the Pad field SHALL include a number of padding
+bytes such that the total length of the Data field plus the Pad field is congruent to zero mod 16.  For
+GCM and CCM, there is no required padding.
+The value for pad bytes SHALL be 0x00.

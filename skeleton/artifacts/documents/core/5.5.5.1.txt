@@ -1,0 +1,9 @@
+5.5.5.1 Setting the Time
+The SP that incorporates the Clock Template receives the time from a Host Application.  It is expected
+that the Host Application or some process communicating through the Host Application monitors and
+records the time lag between the point when the Host Application reads the clock time from the source
+it is using to get the time, and the point when the Host Application receives confirmation from the SP
+that the value has been received.
+The Host Application then sends to the SP the lag that it has recorded and, on receipt of this value, the
+SP records both the time and the lag in the ClockTime table. In this way, the SP has a value for the
+time and is able to bracket the error.

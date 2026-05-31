@@ -1,0 +1,8 @@
+4.4 Default Authorities
+The initial authorities defined in this specification that MAY affect the life cycle states are defined for:
+a. Base Template (Table 209) – the Admins Authority (SP owner) and Makers Authority.
+b. Admin Template (Table 216) – In addition to the Base Template Authorities, the Issuing
+(and related) authorities, and the SID (TPer Owner) authority.
+These are the only authorities that are within the scope of the specification.  Additional authorities MAY
+be defined in a Security Subsystem Class; during SP personalization and operational use, as required
+and permitted by the access control settings defined here; or both.

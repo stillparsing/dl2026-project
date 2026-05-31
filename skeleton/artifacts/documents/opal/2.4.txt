@@ -1,0 +1,3 @@
+2.4 Cryptographic Features
+An Opal SSC compliant Storage Device SHALL implement Full Disk Encryption for all host accessible user data
+stored on media. AES-128 or AES-256 SHALL be supported (see [3]).

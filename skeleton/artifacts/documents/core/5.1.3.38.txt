@@ -1,0 +1,8 @@
+5.1.3.38 integer
+This is the base type used to represent a signed integer.
+Table 92 integer
+```markdown
+| UID                    | Name    | Format    |  
+|------------------------|---------|-----------|  
+| 00 00 00 05 00 00 00 04 | integer | Base_Type |  
+```  

@@ -1,0 +1,4 @@
+5.6.4.7.1.1 Data
+This input parameter is used to supply bytes directly from the host for encryption.  The required length
+of the bytes is dependant upon the mode of operation selected for the credential.  Should padding be
+required, the host SHALL perform it.

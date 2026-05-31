@@ -1,0 +1,80 @@
+4.2.1.6 ACE (M)
+Table 23 contains Optional rows designated with (O).
+Start of Informative Comment
+*ACE1 means that row is (M) if the TPer supports either Activate or Revert, and (N) otherwise.
+End of Informative Comment
+Table 23 - Admin SP - ACE Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 08 00 00 00 01",
+        "Name": "ACE_Anybody",
+        "CommonName": "",
+        "BooleanExpr": "Anybody",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 00 00 02",
+        "Name": "ACE_Admin",
+        "CommonName": "",
+        "BooleanExpr": "Admins",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 03 00 01",
+        "Name": "ACE_Set_Enabled",
+        "CommonName": "",
+        "BooleanExpr": "SID",
+        "Columns": "Enabled"
+    },
+    {
+        "UID": "00 00 00 08 00 00 8C 02",
+        "Name": "ACE_C_PIN_SID_Get_NOPIN",
+        "CommonName": "",
+        "BooleanExpr": "Admins OR SID",
+        "Columns": "UID, CharSet, TryLimit, Tries, Persistence"
+    },
+    {
+        "UID": "00 00 00 08 00 00 8C 03",
+        "Name": "ACE_C_PIN_SID_Set_PIN",
+        "CommonName": "",
+        "BooleanExpr": "SID",
+        "Columns": "PIN"
+    },
+    {
+        "UID": "00 00 00 08 00 00 8C 04",
+        "Name": "ACE_C_PIN_MSID_Get_PIN",
+        "CommonName": "",
+        "BooleanExpr": "Anybody",
+        "Columns": "UID, PIN"
+    },
+    {
+        "UID": "00 00 00 08 00 03 A0 01",
+        "Name": "ACE_C_PIN_Admins_Set_PIN",
+        "CommonName": "",
+        "BooleanExpr": "Admins OR SID",
+        "Columns": "PIN"
+    },
+    {
+        "UID": "00 00 00 08 00 03 00 03",
+        "Name": "ACE_TPerInfo_Set_ProgrammaticResetEnable",
+        "CommonName": "",
+        "BooleanExpr": "SID",
+        "Columns": "ProgrammaticResetEnable"
+    },
+    {
+        "UID": "00 00 00 08 00 03 00 02",
+        "Name": "ACE_SP_SID",
+        "CommonName": "",
+        "BooleanExpr": "SID",
+        "Columns": "All"
+    },
+    {
+        "UID": "00 00 00 08 00 05 00 01",
+        "Name": "ACE_DataRemovalMechanism_Set_ActiveDataRemovalMechanism",
+        "CommonName": "",
+        "BooleanExpr": "Admins OR SID",
+        "Columns": "ActiveDataRemovalMechanism"
+    }
+]
+```

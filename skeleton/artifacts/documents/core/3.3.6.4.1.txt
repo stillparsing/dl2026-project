@@ -1,0 +1,3 @@
+3.3.6.4.1 Sync Supported
+SyncSupported SHALL be set to one if the TPer supports the Synchronous Protocol (see 3.3.10),
+otherwise SyncSupported SHALL be cleared to zero.

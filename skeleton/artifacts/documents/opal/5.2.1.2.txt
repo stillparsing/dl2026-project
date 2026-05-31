@@ -1,0 +1,3 @@
+5.2.1.2 Manufactured SPs
+Opal SSC-compliant SPs that are created in manufacturing (Manufactured SPs) SHALL NOT have an implementation-
+specific life cycle, and SHALL conform to the life cycle defined in section 5.2.2.

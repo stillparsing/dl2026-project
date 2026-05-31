@@ -1,0 +1,2 @@
+3.2.3.5.2.2 SecureData
+This field contains the encrypted and/or integrity-protected data being transmitted in the packet.

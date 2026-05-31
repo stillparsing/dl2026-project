@@ -1,0 +1,4 @@
+5.6.5.5 Signing
+Signing of a selected input is accomplished as described in the following subsections.  The exact
+algorithms used in the signing and verification of digital signatures are defined in [11], and are
+dependent on the public scheme (RSA, EC, etc.) used.

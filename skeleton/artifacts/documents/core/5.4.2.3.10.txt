@@ -1,0 +1,4 @@
+5.4.2.3.10 RevisionNumber
+For Templates defined by the TCG Core Specification, this value is the TCG Core Specification revision
+number of the Template.
+This column SHALL NOT be modifiable by the host.

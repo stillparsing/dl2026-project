@@ -1,0 +1,7 @@
+5.6.4.14.1 BufferOut
+This parameter is used to identify a block of table cells to which the HMACed data is to be set. If the
+this value is specified, the Input byte length SHALL be equal in size to or smaller than the cellblock
+specified for the Result.
+If the host invokes this method using the BufferOut cellblock as the target for the result, then in addition
+to fulfilling the access control on the HMAC method, the host SHALL also fulfill the access control
+required to invoke the Set method on the entirety of that cellblock.

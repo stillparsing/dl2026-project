@@ -1,0 +1,6 @@
+5.1.3.88 uinteger_24
+This is a uinteger type with a size restriction of 24 bytes.
+Table 152 uinteger_24
+| UID                           | Name       | Format                 |
+|-------------------------------|------------|------------------------|
+| 00 00 00 05 00 00 02 18       | uinteger_24| Simple_Type, uinteger, 24 |

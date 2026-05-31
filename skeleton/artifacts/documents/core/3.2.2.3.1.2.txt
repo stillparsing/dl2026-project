@@ -1,0 +1,55 @@
+3.2.2.3.1.2 Short atoms
+Short atoms consist of a one-byte header and between 0 and 15 bytes of data.
+Table 07 Short Atom Description
+```json
+[
+    {
+        "Header (1 byte)": "Short Atom byte/integer sign/ continued length (0...15 bytes)",
+        "Data": "1 0 B S n n n n d ... d",
+    }
+]
+```
+
+The encoding is as follows:
+
+Table 08 Short Atom Encoding
+```json
+[
+  {
+    "Short Atom": "indicator",
+    "Value Interpretation": "These two bits are set to 10b to indicate the atom is a short atom."
+  },
+  {
+    "Short Atom": "Byte/integer indicator = 0b",
+    "Value Interpretation": "The data bytes represent an integer value and the S bit indicates if that value is signed."
+  },
+  {
+    "Short Atom": "Byte/integer indicator = 1b",
+    "Value Interpretation": "The data bytes represent a byte sequence and the S bit indicates whether or not this value is continued into another atom."
+  },
+  {
+    "Short Atom": "Sign/continued indicator = 0b",
+    "Value Interpretation": "The interpretation of the data depends on the byte/integer indicator bit. B==0b The data is treated as unsigned integer data. B==1b The data is either the complete byte sequence, or the final segment of a continued byte sequence."
+  },
+  {
+    "Short Atom": "Sign/continued indicator = 1b",
+    "Value Interpretation": "The interpretation of the data depends on the byte/integer indicator bit. B==0b The data is treated as signed integer data. B==1b The data is a non-final segment of a multi-byte continued value."
+  },
+  {
+    "Short Atom": "Length",
+    "Value Interpretation": "These bits specify the length of the following data byte sequence. The permitted range is from 0 to 15, inclusive."
+  }
+]
+```
+
+A length of 0 SHALL only be permitted for non-continued bytes tokens. The encoding of a 0-length byte value is displayed in Table 09.
+
+Table 09 0-Length Byte Encoding
+```json
+[
+    {
+        "Header (1 byte)": "Short Atom byte/integer sign/continued length 1 0 1 0 0 0 0 0 A 0-length byte value is encoded using only 1 byte:",
+        "_source": ""
+    }
+]
+```

@@ -1,0 +1,4 @@
+5.5.4.4.2.1 LowPreserved
+This value is a Boolean that returns True if Low Trust time values are preserved after setting of the High
+Trust time source, and returns False otherwise.
+

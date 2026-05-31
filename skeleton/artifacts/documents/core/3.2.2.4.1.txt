@@ -1,0 +1,19 @@
+3.2.2.4.1 Invalid Tokens
+An invalid token is a token that is not supported by the TPer’s current communications configuration.
+The list of invalid tokens is as follows:
+1. A token whose size is greater than the TPer’s MaxIndTokenSize property.
+2. A token whose size is greater than the TPer’s MaxAggTokenSize property.
+3. A continued token, if the TPer does not support continued tokens (the ContinuedTokens
+property is reported by the TPer as FALSE).
+4. Transaction Control tokens, if the TPer does not support transactions (the MaxTransactionLimit
+property is omitted from the TPer’s Properties method response).
+5. Unsupported simple tokens (ie if an SSC does not require support for certain simple tokens).
+6. A TCG Reserved token.
+When an invalid token appears in a communication from the host, the TPer SHALL behave as follows:
+1. For regular sessions the TPer SHALL abort the session associated with the Packet that
+contained the violating token.  Results for methods that were completed before the violating
+token was encountered SHALL be sent to the host.
+2. For control sessions the TPer SHALL stop processing the packet where the violating token
+occurs, and ignore the remainder of the packet.  Results for methods completed before the
+violating token was encountered SHALL be sent to the host.
+

@@ -1,0 +1,3 @@
+5.4.2.3.3 CryptoLen
+This is the key length of the crypto type whose characteristics are presented in this row.
+This column SHALL NOT be modifiable by the host.

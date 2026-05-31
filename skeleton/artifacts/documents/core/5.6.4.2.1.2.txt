@@ -1,0 +1,5 @@
+5.6.4.2.1.2 Internal
+Invocation of the Stir method with the Boolean Internal parameter indicates that the TPer should
+generate the information to be used by the Random method.
+Invocation of the Stir method with a Value parameter of False SHALL result in the method invocation
+failing and returning a non-success status code.

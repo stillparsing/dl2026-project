@@ -1,0 +1,10 @@
+5.1.3.89 uinteger_256
+This is a uinteger type with a size restriction of 256 bytes.
+Table 153 uinteger_256
+```markdown
+| UID                          | Name           | Format       |
+|------------------------------|----------------|--------------|
+| 00 00 00 05 00 00 02 19      | uinteger_256   | Simple_Type, |
+|                              |                | uinteger,    |
+|                              |                | 256          |
+```

@@ -1,0 +1,34 @@
+5.6.5.3 HMAC
+Invocation of the HMACInit method, followed be one or more HMAC method invocations and the
+HMACFinalize method on a H_SHA_* object, causes the data parameterized in or referenced from the
+HMAC method invocation to have a message authentication code computed on that input data using the
+H_SHA_* object upon which the method was invoked, the HMAC key referenced from that H_SHA_*
+object, and the HMAC algorithm described in [13].
+An HMAC “stream” is initiated using the HMACInit method invoked upon a hash object.  Only one
+HMAC “stream” SHALL be open at any one time for any individual hash object.
+During a session, invoking the HMACInit method on a hash object after invoking HMACInit on that
+object but before invoking the HMACFinalize method SHALL cause the second HMACInit method
+invocation to fail.  The HMACInit method SHALL be invoked prior to invocation of the HMAC method.
+Successful invocation of the HMAC method causes the data input to be hashed on block boundaries as
+they are reached.  Intermediate results are stored as internal state and are not accessible from the
+host.
+The HMAC method SHALL accept either bytes passed across the interface as a parameter of the method
+invocation; or SHALL identify a cellblock that holds the data to be hashed.  If the data is addressed via
+cellblock, the host SHALL fulfill access control requirements necessary to invoke the Get method on the
+entirety of that cellblock, or the HMAC method invocation SHALL fail.
+Successful invocation of the HMAC method returns the input data that was consumed in the hash
+method.
+Upon invocation of the HMACFinalize method, the TPer flushes the remaining, non-blocked data
+through the hash function represented by the invoking hash object, computes the HMAC, and sets the
+result to the BufferOut cellblock if specified.  If the BufferOut cellblock is specified, the host SHALL be
+required to fulfill access control requirements necessary to successfully invoke the Set method on the
+entirety of that cellblock.
+If the BufferOut cellblock has been specified in the HMACFinalize method invocation, that cellblock
+SHALL be larger than or equal to the size of the HMAC calculation result or the HMACFinalize method
+invocation SHALL fail.
+If the BufferOut cellblock has not been supplied, the HMAC result is set to the Accumulator column of
+the invoking hash object.
+The HMACFinalize method invocation SHALL return the data that had been supplied as input to the
+HMAC method that had not yet been consumed.
+Invoking HMAC or HMACFinalize on a hash object that does not have an open “stream” SHALL cause
+that method invocation to fail.

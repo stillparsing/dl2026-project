@@ -1,0 +1,8 @@
+5.1.3.76 Table_object _ref
+The Table_object _ref type describes a uidref to an object in the Table table.
+Table 140 Table_object _ref
+```markdown
+| UID                         | Name             | Format                                      |
+|-----------------------------|------------------|---------------------------------------------|
+| 00 00 00 05 00 00 0C 09     | Table_object_ref | Restricted_Reference_Type{6}, uidref {TableTableUID} |
+```

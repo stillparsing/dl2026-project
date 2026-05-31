@@ -1,0 +1,3 @@
+5.1.5.7 NO_SESSIONS_AVAILABLE
+This status is returned if an attempt is made to open a session on a TPer on which the maximum
+number of concurrent sessions available for use are already being used.

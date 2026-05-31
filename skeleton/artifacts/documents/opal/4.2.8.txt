@@ -1,0 +1,2 @@
+4.2.8 Crypto Template Tables
+An Opal SSC compliant Storage Device is not required to support any Crypto template tables.

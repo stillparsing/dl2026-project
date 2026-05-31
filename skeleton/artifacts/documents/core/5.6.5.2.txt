@@ -1,0 +1,44 @@
+5.6.5.2 Hashing
+Invocation of the HashInit method, followed by one or more Hash method invocations and the
+HashFinalize method on a H_SHA_* object, causes the data parameterized in or referenced from the
+Hash method invocations to be hashed in the manner described in [10].
+A hash “stream” is initiated using the HashInit method invoked upon a hash object.  Only one hash
+“stream” SHALL be open at any one time for any individual hash object.  During a session, invoking the
+HashInit method on a hash object after invoking HashInit on that object but before invoking the
+HashFinalize method SHALL cause the second HashInit method invocation to fail.
+The HashInit method SHALL be invoked prior to invocation of the Hash method.  In preparation for
+beginning the hash “stream”, upon successful invocation of the HashInit method, the invoking hash
+object’s Accumulator column is set to zeroes.  After invocation of the HashInit method, the Set
+method MAY be used to set an initial condition in the Accumulator column.  Invoking the Set method
+on the Accumulator column after the HashInit invocation and after one or more successful Hash
+invocations MAY cause the final hash result to be an unexpected or inconsistent value.
+The HashInit method has a parameter that allows the host to specify a particular cellblock as the
+target of the hash’s final result.  This cellblock SHALL be set to the final hash result upon successful
+invocation of the HashFinalize method.  Access control requirements necessary to permit invocation
+of the Set method on the entirety of this cellblock SHALL be fulfilled, or the HashInit method
+invocation SHALL fail.  If the BufferOut parameter of the HashInit method was used, the cellblock
+SHALL be larger than or equal to the size of the expected final hash calculation result, or the HashInit
+method invocation SHALL fail.
+Successful invocation of the Hash method causes the data input to the Hash method to be hashed with
+the value currently stored in the Accumulator column of the invoking hash object.  The Hash method
+returns as its result the input data that has been consumed in the hash.  Hashing is done at block
+boundaries appropriate for the hash object type.
+The Hash method SHALL accept either bytes passed across the interface as a parameter of the method
+invocation; or SHALL identify a cellblock that holds the data to be hashed.  If the data is addressed via
+cellblock, the host SHALL fulfill access control requirements necessary to invoke the Get method on the
+entirety of that cellblock, or the Hash method invocation SHALL fail.
+Upon invocation of the HashFinalize method, the TPer flushes the remaining, non-blocked data
+through the hash function represented by the invoking hash object.  Upon completion of hashing, the
+final hash result is set to the cellblock specified in the HashInit method.  If this parameter was not
+included in the HashInit method, then the Accumulator column of the invoking hash object is set to
+the final hash result.  The HashFinalize method returns any data that had previously been input but
+had not yet been hashed and returned in the Hash method.  The HashFinalize method closes the hash
+“stream” on the invoking hash object.
+If the BufferOut parameter of the HashInit method was used, the referenced cellblock SHALL be set to
+the final hash value.  Access control requirements necessary to permit invocation of the Set method on
+the entirety of this cellblock SHALL be fulfilled, or the HashFinalize method SHALL fail.  If the
+BufferOut parameter of the HashInit method was used, the cellblock SHALL be larger than or equal to
+the size of the expected final hash calculation result, or the HashFinalize method invocation SHALL
+fail.
+Invoking Hash or HashFinalize on a hash object that does not have an open “stream” SHALL cause
+that method invocation to fail.

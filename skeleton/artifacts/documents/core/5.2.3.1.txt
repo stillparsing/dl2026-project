@@ -1,0 +1,17 @@
+5.2.3.1 StartSession Method
+SMUID.StartSession [
+HostSessionID : uinteger,
+SPID : uidref {SPObjectUID},
+Write : boolean,
+HostChallenge = bytes,
+HostExchangeAuthority = uidref {AuthorityObjectUID},
+HostExchangeCert = bytes,
+HostSigningAuthority = uidref {AuthorityObjectUID},
+HostSigningCert = bytes,
+SessionTimeout = uinteger,
+TransTimeout = uinteger,
+InitialCredit = uinteger,
+SignedHash = bytes ]
+=>
+SMUID.SyncSession [ see SyncSession definition in 5.2.3.2]
+

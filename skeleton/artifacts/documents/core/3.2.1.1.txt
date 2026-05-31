@@ -1,0 +1,48 @@
+3.2.1.1 Table Definition Format
+Begin Informative Content
+Each table in this specification is defined in a manner that follows the format described in this section.
+A table's structure follows the format that appears in Table 03.
+End Informative Content
+The description table column "Column Number" identifies the number assigned to that column, which is
+unique within that table and is used to address the column in methods and other tables.  See Table 02
+for how Column Numbers are assigned.  Column numbers assigned in TCG specs will be assigned
+from the range of numbers reserved for TCG usage.
+Table 02 Column Number Assignment
+| Column Number       | Description                                  |
+|---------------------|----------------------------------------------|
+| 0x00-0xFFFEFFFF     | Reserved for TCG usage                       |
+| 0xFFFF0000-0xFFFFFFFF| Vendor Unique                               |
+Column Number Range
+Description
+0x00-0xFFFEFFFF
+Reserved for TCG usage
+0xFFFF0000-0xFFFFFFFF Vendor Unique
+The description table column "Column Name" identifies the name of the column.  This is the name
+assigned to that column in the Column table, a Base Template table that stores metadata about each
+column in each table in an SP.
+The description table column "IsUnique" identifies whether that column is required to be part of the
+unique set of column values for that table (See 3.2.5.4).
+The description table column "Type" identifies the format of the data stored in that column.  The
+definition of the type itself is found in the Type table, a Base Template table that stores metadata about
+each type used in an SP.  Each type used in this specification is defined in 5.1.3.
+Each column being described is defined in its own subsection that follows the description table.
+Table 03 Foo Table Description
+```markdown
+| Column Number | Column Name | IsUnique | Column Type           |
+|---------------|-------------|----------|----------------------|
+| 0x00          | UID         |          | uid                  |
+| 0x01          | Name        | Yes      | name                 |
+| 0x02          | CommonName  | Yes      | name                 |
+| 0x03          | k           |          | uinteger_2           |
+| 0x04          | r           |          | uinteger_30          |
+| 0x05          | a           |          | uinteger_1           |
+| 0x06          | b           |          | uinteger_30          |
+| 0x07          | x           |          | uinteger_30          |
+| 0x08          | y           |          | uinteger_30          |
+| 0x09          | alpha       |          | uinteger_30          |
+| 0x0A          | u           |          | uinteger_30          |
+| 0x0B          | v           |          | uinteger_30          |
+| 0x0C          | Hash        |          | hash_protocol        |
+| 0x0D          | ChainLimit  |          | integer_1            |
+| 0x0E          | Certificate |          | Certificates_object_ref |
+``` 

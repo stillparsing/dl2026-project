@@ -1,0 +1,4 @@
+5.8.2.1.12 LogKind
+This is the user-provided type of this log entry.  If the log is system generated, the value of this column
+SHALL be "System".
+This column SHALL NOT be modifiable by the host.

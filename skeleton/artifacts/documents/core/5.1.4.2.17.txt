@@ -1,0 +1,12 @@
+5.1.4.2.17 table_sizes
+This abstract type defines a grouping of pairs of values that are table object uidrefs and the size
+associated with that particular table.  The grouping is a list of uidrefs and uintegers.  The set of values
+are encapsulated by List value delimiters ("[", "]").  Inside the delimiters is a series of one or more pairs
+of values.  The first value in each pair is a uidref to a table descriptor object and the second value in
+each pair is a uinteger that describes the number of rows that MAY be additionally created for that
+table.
+Format:
+[ [ uidref {TableObjectUID}, uinteger ] ... ]
+Pseudo-code example:
+
+[ [ uidref1 uinteger1 ] [ uidref2 uinteger2 ] [ uidref3 uinteger3 ] ]

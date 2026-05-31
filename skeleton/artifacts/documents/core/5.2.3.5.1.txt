@@ -1,0 +1,3 @@
+5.2.3.5.1 RemoteSessionNumber
+This is the portion of the session number assigned by the host (i.e. the HSN portion of the packet
+header Session field for the aborted session).

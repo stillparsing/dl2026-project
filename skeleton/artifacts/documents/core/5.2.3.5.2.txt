@@ -1,0 +1,3 @@
+5.2.3.5.2 LocalSessionNumber
+This is the portion of the session number assigned by the TPer (i.e. the TSN portion of the packet
+header Session field for the aborted session).

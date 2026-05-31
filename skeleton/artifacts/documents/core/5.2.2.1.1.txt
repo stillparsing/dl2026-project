@@ -1,0 +1,4 @@
+5.2.2.1.1 HostProperties
+This parameter is a list of name/value pairs that MAY be submitted when invoking the Properties
+method.  This is a list of the communications capabilities that the host is able to support on
+communications it receives.

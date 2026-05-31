@@ -1,0 +1,10 @@
+5.1.3.65 reencrypt_request
+This enumeration is used to identify the host re-encryption request value.
+Table 124 reencrypt_request
+```markdown
+| UID                       | Name               | Format                                               |
+|---------------------------|--------------------|-----------------------------------------------------|
+| 00 00 00 05 00 00 04 13   | reencrypt_request   | Enumeration_Type, 1, 16                              |
+
+```
+The enumeration values are associated as defined in 5.7.2.2.14.

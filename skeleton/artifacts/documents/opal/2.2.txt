@@ -1,0 +1,5 @@
+2.2 Security Providers (SPs)
+An Opal SSC compliant Storage Device SHALL support at least two Security Providers (SPs):
+1) Admin SP
+2) Locking SP
+The Locking SP MAY be created by the Storage Device manufacturer.

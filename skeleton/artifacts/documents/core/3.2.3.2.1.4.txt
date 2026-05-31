@@ -1,0 +1,11 @@
+3.2.3.2.1.4 OutstandingData
+For ComPackets sent by the TPer to the Host, this field contains the total number of bytes that the TPer
+has available for the host on this ComID.  This value is based on the data available in the TPer at the
+point in time when the ComPacket is transmitted to the host by the TPer.
+This total SHALL NOT include the data being transferred in the current ComPacket.  This total SHALL
+include Compacket/Packet/Subpacket overhead.  If the TPer has no additional data for this ComID, this
+value SHALL be 0x0000_0000.  If the TPer has more than 0xFFFF_FFFF bytes for this ComID, this
+value SHALL be 0xFFFF_FFFF.  If the TPer is still processing a response but no additional data is ready
+yet, this value SHALL be 0x0000_0001.
+For ComPackets sent by the Host to the TPer, this field is reserved and SHOULD contain
+0x0000_0000, and SHALL be ignored by the TPer.

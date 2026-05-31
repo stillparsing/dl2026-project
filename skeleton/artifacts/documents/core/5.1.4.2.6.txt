@@ -1,0 +1,33 @@
+5.1.4.2.6 columns
+This is a list of two lists of Named values, where the List value delimiters enclose the entire list and both
+subordinate lists, and the Named value delimiters enclose each component of each subordinate list.
+The name of each component is a uinteger representing the positioning of that component within the
+grouping, as defined by this specification. The associated number also appears in the appropriate
+component description.
+The Named values in both subordinate lists represent column names and their associated types. Each
+Name portion of the Named value SHALL be the host-supplied name of a column to be created in the
+new table, and the associated value is the uidref to the type to be assigned for that column.
+The ordering of and within the subordinate lists determines the ordering of the columns and the unique
+column combination in the newly created table. The first subordinate list contains the columns whose
+combination of values is required to be unique within the table. The columns described within that list
+are ordered first.  The name associated with this Named value type is "0x00".
+The second subordinate list contains the rest of the columns of the table. The columns described within
+the second subordinate list are ordered according to their order in the list, all of which come after the
+columns defined in the first subordinate list.  The name associated with this Named value type is
+"0x01".
+For Byte tables, the external grouping SHALL be empty. For tables with no host-assigned unique
+column combination, the first subordinate list SHALL be empty. For tables with no host assigned non-
+unique columns, the second list SHALL be empty. For tables with no host assigned columns, both lists
+SHALL be empty.
+Format:
+
+[ IsUnique = [ ColumnName = uidref { TypeUID } ... ], IsColumn = [ ColumnName
+= uidref { TypeUID } ... ] ]
+
+Byte table format pseudo-code example:
+
+[ ]
+Object table with no unique column combination pseudo-code example:
+
+[ IsUnique = [ ]  IsColumn = [ ColumnName1 = uidref1 ColumnName2 = uidref2
+ColumnName3 = uidref3 ] ]

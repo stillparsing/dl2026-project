@@ -1,0 +1,28 @@
+5.3.2.3 Table and Method Metadata Group - Table (Object Table)
+Begin Informative Content
+The Table table contains one row for each table descriptor object, which store metadata about each of
+the tables in the SP.
+End Informative Content
+In the Table table of every SP, there SHALL be a row for each table that exists in that SP.  Each of
+these rows SHALL have a CommonName column value.  Each table at issuance SHALL have a
+CommonName column value that is the name of the template from which that table was issued – the
+template name is the name from the associated row in the Admin SP’s Template table.
+The Table table in the Admin SP includes a row for each table that the TPer supports, in addition to a
+row for each table that exists in the Admin SP.
+Table 171 Table Table Description
+| Column Number | Column Name | IsUnique | Column Type         |
+|---------------|-------------|----------|---------------------|
+| 0x00          | UID         |          | uid                 |
+| 0x01          | Name        | Yes      | name                |
+| 0x02          | CommonName  | Yes      | name                |
+| 0x03          | TemplateID  | Yes      | Template_object_ref |
+| 0x04          | Kind        |          | table_kind          |
+| 0x05          | Column      |          | Column_object_ref   |
+| 0x06          | NumColumns  |          | uinteger_4          |
+| 0x07          | Rows        |          | uinteger_4          |
+| 0x08          | RowsFree    |          | uinteger_4          |
+| 0x09          | RowBytes    |          | uinteger_4          |
+| 0x0A          | LastID      |          | uid                 |
+| 0x0B          | MinSize     |          | uinteger_4          |
+| 0x0C          | MaxSize     |          | uinteger_4          |  
+ 

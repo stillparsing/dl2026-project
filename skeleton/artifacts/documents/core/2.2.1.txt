@@ -1,0 +1,6 @@
+2.2.1 Multicomponent Trusted Platform (MCTP)
+Begin Informative Content
+A Multicomponent Trusted Platform (MCTP) describes a platform in which one or more hosts,
+applications, peripherals, or devices participate in the trust state.  In an MCTP, various host applications
+communicate with the TPer through a peripheral interface such as ATA or SCSI.
+End Informative Content

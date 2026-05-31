@@ -1,0 +1,2 @@
+5.3.2.23.4 k1
+High non-leading, non-constant term of irreducible pentanomial

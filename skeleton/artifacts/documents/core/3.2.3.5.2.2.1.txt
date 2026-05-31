@@ -1,0 +1,2 @@
+3.2.3.5.2.2.1 DataLength
+This field is the length of the SecureData's Data field, in bytes.

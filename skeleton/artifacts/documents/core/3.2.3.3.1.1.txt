@@ -1,0 +1,5 @@
+3.2.3.3.1.1 Session
+This field identifies the session number associated with this packet.  The session number is composed
+of two uinteger_4 values – the TPer session number and the Host session number (Session = TPerSN
+concatenated with the HostSN).  The TPer Session Number is sent first; the Host Session Number is
+second.  Consequently, the same session number is used for communications between both parties.

@@ -1,0 +1,43 @@
+4.3 Life Cycle State Transitions
+This section identifies and describes the possible transitions between life cycle states as depicted in
+Figure 10 .
+a. Nonexistent/Issued
+i. An SP transitions from Nonexistent to Issued when successful invocation of the
+IssueSP method causes the SP to be created.  The SP SHALL be created in this state
+if the SP is operational and if the value of the IssueSP method's parameter Enabled
+was True.
+ii. An SP transitions from Issued to Nonexistent when that SP is deleted.
+b. Any State/Issued-Failed
+i. An SP MAY transition into the Issued-Failed state if an unrecoverable write error or
+other failure occurs. The TPer SHALL control entry to this state.
+ii. The Failed state is a terminal state. The only exit available from the Failed state is to
+the theoretical Nonexistent state, by invoking Delete on the SP's object in the Admin
+SP's SP table.
+c. Issued/Issued-Disabled
+i. An SP is transitioned from the Issued state into the Issued-Disabled state by setting the
+value of the Enabled column of the SP’s SPInfo table to False.
+ii. An SP is transitioned from the Issued-Disabled state to the Issued state by setting the
+value of the Enabled column of the SP's SPInfo table to True.
+d. Issued/Issued-Frozen
+i. An SP transitions from the Issued state into the Issued-Frozen state by setting the
+value of the Frozen column of the SP's object in the Admin SP’s SP table to True.
+ii. An SP transitions from the Issued-Frozen state into the Issued state by setting the
+value of the Frozen column of the SP's object in the Admin SP’s SP table to False.
+e. Issued-Disabled/Issued-Disabled-Frozen
+i. An SP is transitioned from the Issued-Disabled state to the Issued-Disabled-Frozen
+state by setting the value of the Frozen column of the SP's object in the Admin SP’s SP
+table to True.
+ii. An SP is transitioned from the Issued-Disabled-Frozen state to the Issued-Disabled
+state by setting the value of the Frozen column of the SP's object in the Admin SP’s SP
+table to False.
+f.
+Issued-Disabled/Nonexistent
+i. The SP MAY be deleted, and thus enter the Nonexistent state, by successful invocation
+of the DeleteSP method from within a session to the SP, or by successful invocation of
+the Delete method on the SP's object in the Admin SP's SP table.
+g. Issued-Frozen/Nonexistent
+i. The SP MAY be deleted, and thus enter the Nonexistent state, by successful invocation
+of the Delete method on the SP's object in the Admin SP's SP table.
+h. Issued-Disabled-Frozen/Nonexistent
+i. The SP MAY be deleted, and thus enter the Nonexistent state, by successful invocation
+of the Delete method on the SP's object in the Admin SP's SP table.

@@ -1,0 +1,14 @@
+3.3.4.7.1 HANDLE_COMID_REQUEST
+This command is used to inquire about or manage the state of the ComID previously allocated by the
+TPer. The command block for the HANDLE_COMID_REQUEST command is defined in Table 29.
+Table 29 HANDLE_COMID_REQUEST Command Block
+```markdown
+| FIELD       | VALUE          |
+|-------------|----------------|
+| Command     | IF-SEND        |
+| Protocol ID | 02             |
+| Transfer Length | 00 01       |
+| ComID       | Allocated ComID|
+```
+The payload sent by the host to the TPer, at the minimum, consists of the 4-byte Extended ComID and a Request code. Additional fields MAY be required for some request codes. Currently two request codes are defined: VERIFY_COMID_VALID and STACK_RESET.
+ 

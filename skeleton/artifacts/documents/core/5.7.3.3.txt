@@ -1,0 +1,14 @@
+5.7.3.3 Creating Locking Ranges
+The TPer SHALL enforce that the creation of additional Locking objects complies with the following
+rules:
+a. Each additional row in this table represents a contiguous “subdivision” of the entire User-
+Addressable LBA Range.
+b. The number of rows in this table SHALL NOT exceed the value of the Locking_Info
+table’s MaxRanges column + 1.  If MaxRanges = 0, this is and SHALL only be a one row
+table.
+c. New rows of the Locking table are created using the CreateRow method. A valid
+CreateRow method SHALL contain the following attributes:
+a. The specified RangeStart and RangeLength values SHALL NOT overlap the LBA
+range defined by any other row but the Global Range. The TPer SHALL validate the
+parameterized LBA range before creating a row. An overlapping request SHALL result
+in the CreateRow method failing and returning an error.

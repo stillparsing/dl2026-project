@@ -1,0 +1,8 @@
+5.3.2.4.9 AttributeFlags
+Identifies globally assigned attributes for this table column, such as whether or not the Get and Set
+methods are globally permitted for this column regardless of access controls.
+In the case of tables created by the host post-issuance, the value of this column for resulting additional
+rows in the Column table SHALL be the empty set.  System-managed columns (such as the UID
+column) of those tables SHALL have a value of {1} for that column in the corresponding Column table
+row.
+This column SHALL NOT be modifiable by the host.

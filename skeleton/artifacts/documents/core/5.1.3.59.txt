@@ -1,0 +1,9 @@
+5.1.3.59 month_enum
+Used in association with the Month name-value pair.
+Table 117 month_enum
+```markdown
+| UID                               | Name       | Format           |
+|----------------------------------|------------|------------------|
+| 00 00 00 05 00 00 04 17          | month_enum | Enumeration_Type, |
+|                                  | 1,         | 12               |
+```

@@ -1,0 +1,17 @@
+5.7.3.6 MBR Table
+Begin Informative Content
+The intended purpose of the MBR table is to store code to be processed by the host after a power cycle
+of the host and TPer, for example as part of the system bootstrapping process where the host's BIOS
+reads the contents of LBA 0 and executes the instructions stored there.    One use of this feature is to
+load a pre-boot authentication program for authenticating the system's user and unlocking the Storage
+Device.
+The size of the MBR table is retrievable from the Table table of the SP that incorporates the Locking
+template.
+End Informative Content
+The values in the MBR table SHALL only be modifiable by properly authenticated Set method
+invocations, even during the boot process.  The size of the table is Security Subsystem Class (SSC)
+specific, and is to be specified in the description of each SSC that supports the use of this functionality.
+Media encryption does not apply to the code stored in the MBR table, since this code is part of the
+secure area and media encryption applies to the user LBA ranges defined in the Locking table.
+MBR table data is byte addressable, so the host is required to map byte addresses to LBA addresses
+when performing Get/Set operations on the MBR table.

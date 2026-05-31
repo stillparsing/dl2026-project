@@ -1,0 +1,8 @@
+5.1.3.77 table_ref
+Type used for referencing a table.
+Table 141 table_ref
+```markdown
+| UID                        | Name      | Format                    |
+|----------------------------|-----------|---------------------------|
+| 00 00 00 05 00 00 0F 03    | table_ref | General_Reference_Type {9}|
+```

@@ -1,0 +1,42 @@
+5.1.3.73 symmetric_mode_media
+Defines the modes availableto be used with AES for user data encryption.
+Table 135 symmetric_mode_media
+```markdown
+| Enumeration Value | Associated Value  |
+|-------------------|-------------------|
+| 0                 | ECB               |
+| 1                 | CBC               |
+| 2                 | CFB               |
+| 3                 | OFB               |
+| 4                 | GCM               |
+| 5                 | CTR               |
+| 6                 | CCM               |
+| 7                 | XTS               |
+| 8                 | LRW               |
+| 9                 | EME               |
+| 10                | CMC               |
+| 11                | XEX               |
+| 12-22             | Reserved          |
+| 23                | Media Encryption  |
+```
+
+The enumeration values are associated as defined in Table 134.
+Table 136 symmetric_mode_media Enumeration Values
+```markdown
+| Enumeration Value | Associated Value |
+|-------------------|------------------|
+| 0                 | ECB              |
+| 1                 | CBC              |
+| 2                 | CFB              |
+| 3                 | OFB              |
+| 4                 | GCM              |
+| 5                 | CTR              |
+| 6                 | CCM              |
+| 7                 | XTS              |
+| 8                 | LRW              |
+| 9                 | EME              |
+| 10                | CMC              |
+| 11                | XEX              |
+| 12-22             | Reserved         |
+| 23                | Media Encryption |
+```

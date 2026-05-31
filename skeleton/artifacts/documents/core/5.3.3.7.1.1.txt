@@ -1,0 +1,6 @@
+5.3.3.7.1.1 UID
+For Object.Set, if a value for the Where parameter is included in the method invocation, the method
+SHALL fail and return an error status code.
+For Table.Set on an object table, "Where = { UID }" indicates the row upon which the operation is
+taking place. Invocations of Table.Set on an object table without a value for the Where parameter
+SHALL fail and return an error status code.

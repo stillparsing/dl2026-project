@@ -1,0 +1,3 @@
+5.7.2.4.3 CommonName
+This is a name that MAY be shared by multiple K_AES_256 objects.
+For objects in this table that exist at issuance, this column SHALL NOT be modifiable by the host.

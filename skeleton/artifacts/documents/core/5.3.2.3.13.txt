@@ -1,0 +1,7 @@
+5.3.2.3.13 MaxSize
+This is a host-defined maximum number of rows that MAY exist in this table.  The table SHALL never
+have more than this many rows, although the TPer is not required to guarantee that the table can grow
+to MaxSize rows.
+This column is user-settable (access control permitting), but the TPer MAY prevent the value in this
+column from being changed.    A value of 0 indicates no host-defined limit of rows that MAY be created
+in this table.

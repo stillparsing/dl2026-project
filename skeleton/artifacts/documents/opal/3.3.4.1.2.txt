@@ -1,0 +1,12 @@
+3.3.4.1.2 TCG Packets
+Within a single IF-SEND/IF-RECV command, the TPer SHALL support a ComPacket containing one Packet, which
+contains one Subpacket. The host may discover TPer support of capabilities beyond this requirement in the
+parameters returned in response to a Properties method.
+The TPer MAY ignore Credit Control Subpackets sent by the host. The host may discover TPer support of Credit
+Management with Level 0 Discovery. For more details refer to Section 3.1.1 Level 0 Discovery (M)
+The TPer MAY ignore the AckType and Acknowledgement fields in the Packet header on commands from the host
+and set these fields to zero in its responses to the host. The host may discover TPer support of the TCG packet
+acknowledgement/retry mechanism with Level 0 Discovery. For more details refer to Section 3.1.1 Level 0 Discovery
+(M)
+The TPer MAY ignore packet sequence numbering and not enforce any sequencing behavior. Refer to [2] for details
+on discovery of packet sequence numbering support.

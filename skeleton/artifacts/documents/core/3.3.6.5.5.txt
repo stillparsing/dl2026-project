@@ -1,0 +1,4 @@
+3.3.6.5.5 MBREnabled
+MBREnabled SHALL be set to one if LockingEnabled is set to one, and the MBRControl and MBR
+tables are implemented, and that the MBRControl table’s Enable column has a value of "True";
+otherwise MBREnabled SHALL be set to zero.

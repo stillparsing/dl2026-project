@@ -1,0 +1,3 @@
+3.3.6.4.3 ACK/NAK Supported
+ACK/NAKSupported SHALL be set to one if the TPer supports transmission ACK/NAK flow control (see
+3.3.8) or communications, otherwise ACK/NAKSupported SHALL be cleared to zero.

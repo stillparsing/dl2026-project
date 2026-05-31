@@ -1,0 +1,5 @@
+5.6.4.17.5.1 Result
+The method returns the result of the XOR operation.
+If the BufferOut parameter is specified, the result of the operation is stored in that location.  Otherwise
+the result of the operation is returned in the method result.
+If the BufferOut parameter is specified, the Result value SHALL be empty.

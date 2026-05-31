@@ -1,0 +1,23 @@
+3.3.7.1.2 Additional details regarding session startup can be found in 3.3.7.1.4 and 5.3.4.1.4.Control
+Sessions
+All Session Manager Layer Methods SHALL be transmitted in packets where Packet.Session =
+0x00000000_00000000.
+Session Manager layer methods are:
+a. Properties
+b. StartSession
+c.
+SyncSession
+d. StartTrustedSession
+e. SyncTrustedSession
+f.
+CloseSession
+Once a session has started (the session startup protocol has completed successfully), data is able to
+be transmitted for that newly started session.  The Packet.Session for that session SHALL be the
+concatenation of the TSN and HSN (see 3.3.7.1.1), where HSN is initially transmitted in the
+StartSession method and TSN is initially transmitted in the SyncSession method.
+The life cycle of the Control Session is tied to the life cycle of the ComID, in that the Control Session
+associated with a particular ComID starts as soon as the ComID is issued.  When the ComID is retired,
+the Control Session is terminated.  The flow control for the Control Session is performed in the same
+manner as the flow control for Regular Sessions, with the difference that the communication is between
+the TSM and the HSM and these entities are responsible for the flow control.
+There SHALL be only one Control Session per ComID.

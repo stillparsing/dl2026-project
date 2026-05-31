@@ -1,0 +1,4 @@
+5.4.2.4.5 DateofIssue
+This value is the date of Issuance (enabled by Clock Template).  If the Clock Template is not issued
+into the Admin SP, this value is set to an empty struct.
+This column SHALL NOT be modifiable by the host.

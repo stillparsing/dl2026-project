@@ -1,0 +1,4 @@
+5.3.2.5.4 Format
+The value of this column describes the format of the data type.  For details, see the format specification,
+section 5.1.1.
+This column SHALL NOT be modifiable by the host.

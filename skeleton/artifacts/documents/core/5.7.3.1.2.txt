@@ -1,0 +1,133 @@
+5.7.3.1.2 State Change Descriptions
+This section describes the state changes depicted in the picture.  In parentheses next to each state
+transition identifier are the values that change to cause that transition.  "Reset" indicates that a reset
+occurs to cause the state change.  "ResetStateMatch" is used to indicate if a reset event type that
+occurred is applicable or matches the LockOnReset column value.
+S0:T0 (Reset)
+This state change occurs as the result of some device reset event.  The locking range with
+LockingEnabled=F exits the reset state into its previous state.
+S0:S1 (LockEnabled=T, Locked=T, LockOnReset=non-null)
+This state change occurs when the host invokes the Set method to change the range's LockEnabled
+column value to True, the Locked column value to True, and the LockOnReset column value to non-
+null.
+S0:S2 (LockEnabled=T, Locked=T, LockOnReset=null)
+This state change occurs when the host invokes the Set method to change the range's LockEnabled
+column value to True, the Locked column value to True, and the LockOnReset column value to null.
+S0:S3 (LockEnabled=T, Locked=F, LockOnReset=non-null)
+This state change occurs when the host invokes the Set method to change the range's LockEnabled
+column value to True, the Locked column value to False, and the LockOnReset column value to non-
+null.
+S0:S4 (LockEnabled=T, Locked=F, LockOnReset=null)
+This state change occurs when the host invokes the Set method to change the range's LockEnabled
+column value to True, the Locked column value to False, and the LockOnReset column value to null.
+S1:S0 (LockEnabled=F)
+This state change occurs when the host invokes the Set method to change the range's LockEnabled
+column value to False from True.
+S1:S2 (LockOnReset=null)
+This state change occurs when the host invokes the Set method to change the range's LockOnReset
+column value to null from non-null.  The value of the LockEnabled column is still True, and the value of
+the corresponding Locked column is still True.
+S1:S3 (Locked=F)
+This state change occurs when the host invokes the Set method to change the range's Locked column
+to False from True.  The value of the corresponding LockEnabled column is still True, and the value of
+the LockOnReset column is still non-null.
+S1:S4 (Locked=F, LockOnReset=null)
+This state change occurs when the host invokes the Set method to change the range's Locked column
+to False from True, and the value of the LockOnReset column from null to non-null.  The value of the
+corresponding LockEnabled column is still True.
+S1:T1 (Reset, ResetStateMatch=T)
+This state change occurs as the result of some device reset event, where the reset type matches the
+value defined in the LockOnReset column.
+S1:T2 (Reset, ResetStatematch=F)
+This state change occurs as the result of some device reset event, where the reset type does not match
+the value defined in the LockOnReset column.
+S2:S0 (LockEnabled=F)
+This state change occurs when the host invokes the Set method to change the range's LockEnabled
+column value to False from True.
+S2:S1 (LockOnReset=non-null)
+This state change occurs when the host invokes the Set method to change the range's LockOnReset
+column value to non-null from null.  The value of the LockEnabled column remains True, and the value
+of the corresponding Locked column remains True.
+S2:S3 (Locked=F, LockOnReset=non-null)
+This state change occurs when the host invokes the Set method to change the range's Locked column
+value to False from True, and to change the range's LockOnReset column value to non-null from null.
+The value of the LockEnabled column remains True.
+S2:S4 (Locked=F)
+This state change occurs when the host invokes the Set method to change the range's Locked column
+value to False from True.  The value of the corresponding LockEnabled column remains True, and the
+value of the LockOnReset column remains null.
+S2:T3 (Reset)
+This state change occurs as the result of some device reset event.  The range with a LockOnReset
+column value of null and other column values of the S2 state exits the T3 state back into the S2 state.
+S3:S0 (LockEnabled=F)
+This state change occurs when the host invokes the Set method to change the range's LockEnabled
+column value to False from True.
+S3:S1 (Locked=F)
+This state change occurs when the host invokes the Set method to change the range's Locked column
+value to False from True.  The value of the corresponding LockEnabled column remains True, and the
+value of the LockOnReset column remains non-null.
+S3:S2 (Locked=T, LockOnReset=null)
+This state change occurs when the host invokes the Set method to change the range's Locked column
+value to True from False, and to change the range's LockOnReset column value to null from non-null.
+The value of the LockEnabled column remains True.
+S3:S4 (LockOnReset=null)
+This state change occurs when the host invokes the Set method to change the range's LockOnReset
+column value to null from non-null.  The value of the LockEnabled column remains True, and the value
+of the corresponding Locked column remains False.
+S3:T4 (Reset, ResetStateMatch=T)
+This state change occurs as the result of some device reset event, where the reset type matches the
+value defined in the LockOnReset column.
+S3:T5 (Reset, ResetStateMatch=F)
+This state change occurs as the result of some device reset event, where the reset type does not match
+the value defined in the LockOnReset column.
+S4:S0 (LockEnabled=F)
+This state change occurs when the host invokes the Set method to change the range's LockEnabled
+column value to False from True.
+S4:S1 (Locked=T, LockOnReset=non-null)
+This state change occurs when the host invokes the Set method to change the range's Locked column
+value to False from True, and the value of the LockOnReset column from null to non-null.  The value of
+the corresponding LockEnabled column remains True.
+S4:S2 (Locked=T)
+This state change occurs when the host invokes the Set method to change the range's Locked column
+value to False from True.  The value of the LockEnabled column remains True, and the value of the
+LockOnReset column remains null.
+S4:S3 (LockOnReset=non-null)
+This state change occurs when the host invokes the Set method to change the range's LockOnReset
+column from null to non-null.  The value of the LockEnabled column remains True, and the value of the
+corresponding Locked column remains False.
+S4:T6 (Reset)
+This state change occurs as the result of some device reset event.  The range with a LockOnReset
+column value of null and other column values of the S4 state exits the T6 state back into the S4 state.
+T0:S0 (Reset recover)
+This state change occurs as the result of a recovery from some device reset event.  This state change
+represents behavior of a range for which LockEnabled is False.
+T1:S1 (Reset recover)
+This state change occurs as the result of a recovery from some device reset event.  In this case, the
+reset event matched that specified in the range's LockOnReset column.  This causes the device to enter
+the S1 state upon reset recovery, with a LockEnabled column value of True, a corresponding Locked
+column value of True, and the same LockOnReset column value as existed immediately preceding
+entry to T1.
+T2:S1 (Reset recover)
+This state change occurs as the result of a recovery from some device reset event.  In this case, the
+reset event did not match that specified in the range's LockOnReset column.  This causes the device to
+recover from the reset with the same LockEnabled, Locked, and LockOnReset column values that
+existed previous to entry to T2.
+T3:S2 (Reset recover)
+This state change occurs as the result of a recovery from some device reset event.  In this case, the
+LockOnReset column value of null causes the range to recover from the reset with the same
+LockEnabled, Locked, and LockOnReset column values that existed previous to entry to T3.
+T4:S1 (Reset recover)
+This state change occurs as the result of a recovery from some device reset event.  In this case, the
+reset event matched that specified in the range's LockOnReset column.  This causes the device to enter
+the S1 state upon reset recovery, with a LockEnabled column value of True, a corresponding Locked
+column value of True, and the same LockOnReset column value as existed immediately preceding
+entry to T4.
+T5:S3 (Reset recover)
+This state change occurs as the result of a recovery from some device reset event.  In this case, the
+reset event did not match that specified in the range's LockOnReset column.  This causes the device to
+recover from the reset with the same LockEnabled, Locked, and LockOnReset column values that
+existed previous to entry to T5.
+T6:S4 (Reset recover)
+This state change occurs as the result of a recovery from some device reset event.  In this case, the
+LockOnReset column value of null causes the range to recover from the reset with the same
+LockEnabled, Locked, and LockOnReset column values that existed previous to entry to T6.

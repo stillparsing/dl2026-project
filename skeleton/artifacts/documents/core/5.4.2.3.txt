@@ -1,0 +1,21 @@
+5.4.2.3 TPer Metadata Group - CryptoSuite (Object Table)
+The table in this section describes the metadata the TPer keeps about its cryptographic capabilities.
+The rows in this table SHALL represent all of the crypto functionality on the TPer available to SPs.
+The times recorded in the CryptoSuite table SHALL be average time based on 100 independent
+samples using randomly generated keys. The times MAY be taken when the TPer is otherwise idle and
+represent relative performance of the operations, not a guarantee of actual performance in the field.
+Every type of crypto functionality present on the TPer SHALL have one row where the value of the
+Special column is False, and MAY have one or more rows where the value of the Special column is
+True.  Rows where Special=True represent functionality that MAY be defined by special properties of
+the device such as hardware accelerators or pre-computed cache values (in the case, for example, of
+some key generation or random number provisioning).
+Table 213 CryptoSuite Table Description
+| Column Number | Column Name | IsUnique | Column Type  |
+|--------------|-------------|----------|--------------|
+| 0x00         | UID         |          | uid          |
+| 0x01         | CryptoCall  |          | name         |
+| 0x02         | CryptoLen   |          | uinteger_2   |
+| 0x03         | CryptoOp    |          | name         |
+| 0x04         | Special     |          | boolean      |
+| 0x05         | Time        |          | uinteger_4   |
+| 0x06         | Variance    |          | uinteger_4   |

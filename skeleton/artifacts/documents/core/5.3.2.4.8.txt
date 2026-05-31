@@ -1,0 +1,4 @@
+5.3.2.4.8 Next
+This is a reference to the row of the Column table that represents the next column in this column’s table.
+If this is the last column in the containing table, then the value of this column is the NULL UID.
+This column SHALL NOT be modifiable by the host.

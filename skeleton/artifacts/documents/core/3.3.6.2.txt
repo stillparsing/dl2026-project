@@ -1,0 +1,42 @@
+3.3.6.2 IF-RECV Command
+IF-RECV command, with
+
+Protocol ID = 0x01
+
+ComID = 0x0001
+
+Transfer Length = maximum length of the Level 0 Discovery response data that the host elects
+to receive.
+This IF-RECV command MAY be processed at any time, without regard to sessions or prior
+authentication.
+If the Transfer Length is less than the size of the Level 0 Discovery response data that is available, the
+TPer SHALL return the requested amount of data, even if it is truncated.
+If the Transfer Length is greater than the size of the Level 0 Discovery response data, the device shall
+pad according to the rules specified in [6] and [5].
+The Level 0 Discovery response data (see Table 38) consists of a header field and zero or more
+variable length feature descriptors. A TPer SHALL NOT include feature descriptors for features that it
+does not implement. The data is not packetized.
+
+Table 38 Level 0 Discovery Response Data Format
+| Byte | Bit 7 | Bit 6 | Bit 5 | Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0                                  |
+|-------|-------|-------|-------|-------|-------|-------|-------|---------------------------------------|
+| 0-47  | Level 0 Discovery header (see Table 39)                                                                   |
+| 48-n  | Feature Descriptor(s) (see 3.3.6.3)                                                                         |
+
+Table 39 Level 0 Discovery Header Format
+| Bit        | Byte | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |         |                         |
+|------------|------|---|---|---|---|---|---|---|---|---------|-------------------------|
+| 0 (MSB)    |      |   |   |   |   |   |   |   |   | Length  | of Parameter Data       |
+| 1          |      |   |   |   |   |   |   |   |   |         |                         |
+| 2          |      |   |   |   |   |   |   |   |   |         |                         |
+| 3 (LSB)    |      |   |   |   |   |   |   |   |   |         |                         |
+| 4 (MSB)    |      |   |   |   |   |   |   |   |   | Data    | Structure Major Version |
+| 5 (LSB)    |      |   |   |   |   |   |   |   |   |         |                         |
+| 6 (MSB)    |      |   |   |   |   |   |   |   |   | Data    | Structure Minor Version |
+| 7 (LSB)    |      |   |   |   |   |   |   |   |   |         |                         |
+| 8 (MSB)    |      |   |   |   |   |   |   |   |   | Reserved|                         |
+| ...        |      |   |   |   |   |   |   |   |   |         |                         |
+| 15 (LSB)   |      |   |   |   |   |   |   |   |   |         |                         |
+| 16 (MSB)   |      |   |   |   |   |   |   |   |   | Vendor  | Unique                  |
+| ...        |      |   |   |   |   |   |   |   |   |         |                         |
+| 47 (LSB)   |      |   |   |   |   |   |   |   |   |         |                         |

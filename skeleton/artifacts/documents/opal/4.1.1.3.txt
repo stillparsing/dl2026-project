@@ -1,0 +1,4 @@
+4.1.1.3 SyncSession (M)
+An Opal SSC compliant Storage Device SHALL support the following parameters for the SyncSession method:
+• HostSessionID
+• SPSessionID

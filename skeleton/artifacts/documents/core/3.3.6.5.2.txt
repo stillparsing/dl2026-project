@@ -1,0 +1,3 @@
+3.3.6.5.2 LockingEnabled
+LockingEnabled SHALL be set to one if an SP that incorporates the Locking template is in any state
+other than nonexistent; otherwise LockingEnabled SHALL be set to zero.

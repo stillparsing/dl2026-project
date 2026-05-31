@@ -1,0 +1,16 @@
+1.3.5.2 Unordered Lists
+An unordered list is one in which the order of the listed items is unimportant (i.e., it does not matter where in the list
+an item occurs as all items have equal importance). Each list item shall start with a lowercase letter followed by a
+close parenthesis. If it is necessary to subdivide a list item further with an additional unordered list (i.e., have a nested
+unordered list), then the nested unordered list shall be indented and each item in the nested unordered list shall start
+with an uppercase letter followed by a close parenthesis.
+
+The following is an example of an unordered list with a nested unordered list:
+
+EXAMPLE - The following are the items for the assembly:
+a) a box containing:
+A) a bolt;
+B) a nut; and
+C) a washer;
+b) a screwdriver; and
+c) a wrench.

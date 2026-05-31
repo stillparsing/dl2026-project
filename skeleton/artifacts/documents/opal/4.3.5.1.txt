@@ -1,0 +1,70 @@
+4.3.5.1 LockingInfo (M)
+The LockingInfo table has the columns defined in Table 43, in addition to those defined in [2]:
+Table 43 - Locking SP – LockingInfo Columns
+```json
+[
+    {
+        "Column Number": "0x07",
+        "Column Name": "AlignmentRequired",
+        "IsUnique": "",
+        "Column Type": "boolean"
+    },
+    {
+        "Column Number": "0x08",
+        "Column Name": "LogicalBlockSize",
+        "IsUnique": "",
+        "Column Type": "uinteger_4"
+    },
+    {
+        "Column Number": "0x09",
+        "Column Name": "AlignmentGranularity",
+        "IsUnique": "",
+        "Column Type": "uinteger_8"
+    },
+    {
+        "Column Number": "0x0A",
+        "Column Name": "LowestAlignedLBA",
+        "IsUnique": "",
+        "Column Type": "uniteger_8"
+    }
+]
+```
+
+• AlignmentRequired
+This column indicates whether the TPer requires ranges in the Locking table to be aligned (see section
+4.3.5.2.1). If AlignmentRequired is TRUE, then the TPer requires ranges to be aligned. If AlignmentRequired
+is FALSE, then the TPer does not require ranges to be aligned.
+This column SHALL NOT be modifiable by the host and MAY be retrieved by Anybody.
+• LogicalBlockSize
+This column indicates the number of bytes in a logical block.
+This column SHALL NOT be modifiable by the host and MAY be retrieved by Anybody.
+• AlignmentGranularity
+This column indicates the number of logical blocks in a group, for alignment purposes (see section 5.4).
+This column SHALL NOT be modifiable by the host and MAY be retrieved by Anybody.
+• LowestAlignedLBA
+This column indicates the lowest logical block address that is located at the beginning of an alignment
+granularity group (see section 5.4).
+This column SHALL NOT be modifiable by the host and MAY be retrieved by Anybody.
+
+Table 44 - Locking SP - LockingInfo Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 08 01 00 00 00 01",
+        "Name": "",
+        "Version": "",
+        "EncryptSupport": "Media Encryption",
+        "MaxRanges": "8 (1)",
+        "MaxReEncryptions": "",
+        "KeysAvailableCfg": "",
+        "AlignmentRequired": "",
+        "LogicalBlockSize": "",
+        "AlignmentGranularity": "",
+        "LowestAlignedLBA": ""
+    }
+]
+```
+
+Note:
+1. The MaxRanges column in Table 44 specifies the number of supported ranges and SHALL have a minimum
+of 8 ranges.

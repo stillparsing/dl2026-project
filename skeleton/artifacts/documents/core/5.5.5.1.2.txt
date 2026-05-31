@@ -1,0 +1,29 @@
+5.5.5.1.2 Setting High Trust Time
+High Trust Time is set using the SetClockHigh/SetLagHigh method pair.
+The invocation of these methods operate as follows:
+1. The host invokes the SetClockHigh method on the ClockTime table.  The ExactTime input is
+received and processed.  At this time the value that is eventually used to set
+HighInitialTimer should be computed by the SP, by reading the IncrementalClock value.
+2. The SP returns a Result of “True”, indicating that the ExactTime value was received and
+processed.
+3. The host invokes the SetLagHigh method on the ClockTime table.  This method SHALL be the
+next method invoked by the host after invocation of the SetClockHigh method invocation.  If it
+is not, the SetClockHigh method’s ExactTime values to be stored in the ClockTime table
+SHALL NOT be saved to the table.  When the SetLagHigh method is received under this
+condition, the LagTime input is received and processed.  If this invocation is accepted, then
+1. The value of the HaveHigh column is set to True.
+2. The value of the HighByWhom column is set to the authority for this session.
+3. The value of the HighSetTime column is set to ExactTime.
+4. The value of the HighInitialTimer column is set to the previously read
+IncrementalClock value.
+5. The value of the HighLag column is set to LagTime.
+4. If the new HighSetTime and HighLag values do not bracket existing LowSetTime and LowLag
+values, then the value of the HaveLow column is set to False and the values of the LowByWhom,
+LowSetTime, LowInitialTimer, and LowLag columns are set to zeroes.  For additional
+information, see 5.5.5.1.1.
+Once all of the above steps have been processed, the SP SHALL return the method result.  If step 3
+was completed successfully, the Result is returned as True.  If any of the updates in step 3 were not
+successfully completed, Result is returned as False.  If the HaveLow column is not set to False from
+True and the LowByWhom, LowSetTime, LowInitialTimer and LowLag columns are not set to zeroes
+due to the described bracketing, then LowPreserved is returned as True.  Otherwise, Low is returned as
+False.

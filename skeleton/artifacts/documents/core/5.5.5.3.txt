@@ -1,0 +1,24 @@
+5.5.5.3 Incremental Clock
+Each TPer SHALL have a quickly accessible incremental clock. This is referred to as IncrementalClock.
+Although this clock does not have the correct absolute time, it is accurate in measuring time intervals.
+To support Host interaction with the Clock Template-enabled SP, two virtual variables – HighTime and
+LowTime – are used.  HighTime and LowTime internally represent actual current time values.
+Calculation of the values of HighTime and LowTime uses the original time set (the value of the
+HighSetTime or LowSetTime columns), the value of IncrementalClock when those columns were set
+(the value of the HighInitialTimer or LowInitialTimer columns), and the current value of
+IncrementalClock:
+
+HighTime = HighSetTime + (IncrementalClock – HighInitialTimer)
+
+LowTime = LowSetTime + (IncrementalClock – LowInitialTimer)
+The HighTime value is changed to new value v as follows (as when a SetClockHigh or SetClockLow
+method invocation is received):
+
+HighSetTime = v
+
+HighInitialTimer = IncrementalClock
+The LowTime virtual variable is changed similarly.
+This approach avoids the need to update the media as the value of IncrementalClock changes.
+Some TPers MAY also include other special hardware that is used to implement the Clock Template.
+These include a real-time clock (with battery backup) and non-volatile memory that is used to store
+monotonic counter values.

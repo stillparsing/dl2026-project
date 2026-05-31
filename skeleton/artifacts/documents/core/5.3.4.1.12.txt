@@ -1,0 +1,9 @@
+5.3.4.1.12 EC-DH Session Startup
+It is possible to use the session startup method exchanges to start a session using EC-DH.  In order to
+do so, it is necessary to follow the following protocol:
+1. The host ECDH static public key is conveyed in HostExchangeCert
+2. The host nonce (the value NonceU used in key derivation and key confirmation) is conveyed in
+HostChallenge
+3. The SP ECDH static public key is conveyed in SPExchangeCert
+4. The SP nonce (the value NonceV used in just key confirmation) is conveyed in the SPChallenge
+5. The Cofactor Static Unified Model C(0,2,ECC CDH) scheme of NIST SP 800-56A, Section

@@ -1,0 +1,34 @@
+3.2.5 Tables
+Tables SHALL be stored in SP-specific parts of the secure storage area of the TPer. The SP-related
+secure storage area(s) of a TPer SHALL only be accessible via the host interface-specific IF-SEND and
+IF-RECV commands.  Table content SHALL NOT, unless otherwise stated, be part of the User
+Addressable Logical Block Address space on the Storage Device and therefore is not affected by the
+partitioning or formatting of the Storage Device by the host operating system.
+Begin Informative Content
+All persistent data for SPs are stored in tables – the only data for an SP that persists past the end of a
+session is the data that is stored in tables. Tables survive operations on user-areas, such as
+reformatting.
+A table is defined as a grid with columns and addressable rows. At each column and row intersection
+there is a cell. All the cells in a column have the same type. The column types for a host-created table
+are specified at table creation.
+For some SSCs, the number of rows in a table whose size is not specified is completely determined
+when it is created (additional rows are not able to be allocated), but other SSCs define tables whose
+size is not specified with a dynamically allocable number of rows. If an SSC permits additional rows to
+be added to a table, then the number of rows specified at table creation is the initial number of rows
+allocated for that table.
+End Informative Content
+A table name or table column name MAY be up to 32 bytes in length. By convention, the names
+assigned in this document consist of ASCII characters, the first of which is a letter and others are
+letters, digits or underscores.  Adjacent underscores do not occur. All names are case sensitive.
+Within an SP, tables MAY be created and deleted. For each table, rows MAY be created and deleted
+(except within a Byte table – see 3.2.5.1), but columns are created only when the table is created.
+Tables MAY contain zero or more rows.  A specific Security Subsystem Class MAY disallow the
+creation of any of these.
+Each SP has a set of metadata tables (such as the Table table, Column table, etc.) that describes all
+the tables of the SP including the metadata tables themselves.
+Access control provides a means to limit the methods that MAY be successfully invoked on tables, or
+particular rows or cells of tables.
+Some table columns represent control points for functionality provided by an SP, either based on the
+templates incorporated into the SP, or on the underlying TPer implementation.  If the functionality
+represented by a particular column or set of columns as defined in this Specification is not provided by
+an SP, then access to the table columns that represent that functionality MAY be restricted.

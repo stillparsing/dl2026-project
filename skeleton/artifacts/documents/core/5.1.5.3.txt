@@ -1,0 +1,4 @@
+5.1.5.3 SP_BUSY
+This status is returned as the status code of the SyncSession method if an attempt is made to open a
+Read-Write session to an SP when any other session to that SP is already open, or when an attempt is
+made to open a Read-Only session to an SP with which a Read-Write session is already open.

@@ -1,0 +1,18 @@
+5.3.4.1.11 EC-MQV Session Startup
+It is possible to use the session startup method exchanges to start a session using EC-MQV.  In order
+to do so, it is necessary to follow the following protocol):
+1. The host ECMQV ephemeral public key is conveyed in HostChallenge.
+2. The host ECMQV static public key is conveyed in HostExchangeCert
+3. The SP ECMQV ephemeral public key is conveyed in SPChallenge
+4. The SP ECMQV static public key is conveyed in SPExchangeCert
+5. The Full ECMQV, C(2,2,ECC MQV) scheme of NIST SP 800-56A, Section 6.1.1.4 is used.
+6. The key derivation function (KDF) is Concatenation KDF as defined in Section 5.8.1 of NIST SP
+800-56A.  The AlgorithmID is the ASCII encoding of the string “TCG Storage ECMQV”.  The
+PartyUInfo is the uinteger Host value and the PartyVInfo is the uinteger SP value.
+Supplementary fields are not used (that is, they are empty).  The hash function used in the KDF
+is SHA-256 if the elliptic curve is defined over a 163-bit, 192-bit, 224-bit, 256-bit, 233-bit or 283-
+bit field, and is SHA-384 if the elliptic curve is defined over a 384-bit field.
+7. The C(2,2) “Bilateral Key Confirmation” as defined in Section 8.4.1 of NIST SP 800-56A is used
+(see below).
+8. The value MacTagU is conveyed in HostResponse
+9. The value MacTagV is conveyed in SPResponse

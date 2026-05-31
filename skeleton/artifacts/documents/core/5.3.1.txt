@@ -1,0 +1,3 @@
+5.3.1 Overview
+The Base Template defines a common set of tables and methods, a subset of which SHALL be
+incorporated into all SPs.

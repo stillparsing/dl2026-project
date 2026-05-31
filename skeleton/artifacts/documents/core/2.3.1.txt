@@ -1,0 +1,39 @@
+2.3.1 Host <–> TPer Communication Infrastructure
+Begin Informative Content
+The Host communicates with SPs using interface commands generically known as "Trusted
+Commands."  Trusted Commands are interface-specific protocols (i.e. T10 SECURITY PROTOCOL
+IN/OUT Protocol 0x01-0x06, or T13 TRUSTED SEND/RECEIVE Protocol 0x01-0x06).  This
+specification defines the payload content of those commands.
+The SP communication protocol that defines the contents of Trusted Commands uses a layered
+communication system consisting of the following elements:
+a. Methods.
+b. Transactions.
+c. Sessions.
+Figure 2  Communications Infrastructure
+
+
+The only way to communicate with an SP is via a session.  Only the host is able to open a session.
+Methods are invoked within sessions.
+Normally, when the methods and associated responses are completed, the host closes the session.
+Other interface-specific commands (i.e. ATA/SCSI) are able to be interleaved among IF-SEND/IF-
+RECV commands at any time.
+Secure Messaging enables the host and TPer to pass encrypted or integrity protected messages
+(methods and their associated responses) during sessions. Message encryption is recommended but
+not required.  When secure messaging is in use, it is done regardless of and in addition to any
+encryption done on the communications channel.
+In the simplest communications case the host is just the platform host to which the TPer is directly
+attached or attached over a network. The host application could also be some other platform host that
+communicates with the immediate platform host, which then relays the session stream to the TPer over
+a network.   In another case, the TPer could be wirelessly connected to a host application, or part of a
+SAN and connected to multiple hosts.  The TPer could be directly attached to the platform host, and
+connected to multiple Host Applications either also directly attached to that platform, attached remotely,
+or both.
+End Informative Content
+If the device is capable, one or more Read-Only sessions MAY be established simultaneously to a
+single SP.  Typically, changes made to an SP during a Read-Only session SHALL NOT persist past the
+end of that session.  Non-transient changes that persist past the end of a session are noted, where
+applicable.  A case of a non-transient change permitted in a Read-Only session is automatic forensic
+logging, if enabled.
+Read-Write Sessions MAY or MAY NOT alter persistent state information (table content).  A Read-Write
+session (one which has the capability of making non-transient changes to an SP) SHALL be unable to
+run simultaneously with any other sessions to the same SP.

@@ -1,0 +1,39 @@
+5.3.4.1.14 Explicit Authentication with the Authenticate Method
+In addition to authentication of authorities that participate in a successful startup of a session,
+authentication of an authority MAY also be achieved through successful invocation of the
+Authenticate method.
+The Authenticate method is an SP method, and as such its Invoking ID parameter SHALL be
+"ThisSP".
+If the invoked authority requires password authentication (the value of the Operation column of the
+invoked authority is “Password”), one call to Authenticate is made and the Proof parameter is the
+password. The response is either True or False – True if authentication was successful and False if
+authentication was unsuccessful.
+If the authority requires challenge and response (the value of the Operation column of the authority is
+“Sign”, “SymK”, or “HMAC”), the host invokes the Authenticate method twice. In the first invocation
+the method parameter list SHALL consist of the Authority parameter, which references the valid
+Authority object UID of the authority the host is attempting to authenticate. In the second invocation, the
+Authority parameter SHALL be the same Authority object UID as referenced in the initial Authenticate
+method invocation and the Proof parameter is the response to the SP’s challenge.  The Success
+response is returned to the second invocation– this SHALL be either True if authentication was
+successful or False if authentication was unsuccessful.
+For authorities that require symmetric key challenge/response (have an Operation column value of
+"SymK"), the Mode column value of that authority’s associated symmetric key credential SHALL be
+"ECB".  If such an authority is invoked as the Authority parameter of the Authenticate method, the
+result of the intial method invocation SHALL be a 32-byte nonce that is the challenge from the SP.
+After receipt of the 32-byte challenge, the host SHALL encrypt that nonce using the appropriate
+symmetric key, in ECB mode.  The host SHALL then transmit the encrypted challenge to the TPer as
+the Challenge parameter of the second Authenticate method invocation.  The TPer SHALL then
+validate the response.
+If an attempt is made to invoke the Authenticate method on an authority that requires secure
+messaging, and the required secure messaging parameters as defined in the Secure column of the
+Authority table are not currently fulfilled, then the Authenticate method invocation SHALL fail.
+When the Authenticate method invocation protocol requires the host to invoke the Authenticate
+method twice, the second Authenticate method MAY be sent anytime during the session.  If the TPer
+receives any Authenticate method after the first Authenticate method has been invoked, the TPer
+SHALL attempt to resolve that authentication attempt, which SHALL fail if the second Authenticate
+does not contain the appropriate response parameters.
+The implementation MAY limit the number of authorities that are able to be authenticated at any one
+time within a single session (as recorded in the MaxAuthentications value of the Properties method).
+If the authentication attempt would cause the MaxAuthentications property value to be exceeded for the
+session, a properly invoked Authenticate method SHALL return a status of SUCCESS and a result of
+False.

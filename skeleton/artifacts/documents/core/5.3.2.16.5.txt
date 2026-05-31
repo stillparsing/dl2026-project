@@ -1,0 +1,2 @@
+5.3.2.16.5 Mode
+This column value defines the encryption mode with which this credential SHALL be used.

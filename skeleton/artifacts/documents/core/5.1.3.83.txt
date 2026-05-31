@@ -1,0 +1,10 @@
+5.1.3.83 uinteger_1
+This is a uinteger type with a size restriction of 1 byte.
+Table 147 uinteger_1
+```markdown
+| UID                       | Name        | Format           |
+|---------------------------|-------------|------------------|
+| 00 00 00 05 00 00 02 11   | uinteger_1  | Simple_Type,     |
+|                           |             | uinteger,        |
+|                           |             | 1                |
+```

@@ -1,0 +1,6 @@
+5.1.3.25 Column_object _ref
+The Column_object _ref type describes a uidref to an object in the Column table.
+Table 76 Column_object _ref
+| UID                               | Name               | Format                                                  |
+|----------------------------------|--------------------|---------------------------------------------------------|
+| 00 00 00 05 00 00 0C 07          | Column_object_ref  | Restricted_Reference_Type{6}, uidref {ColumnTable_UID}  |

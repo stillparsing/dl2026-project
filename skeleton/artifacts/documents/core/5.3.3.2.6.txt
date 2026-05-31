@@ -1,0 +1,4 @@
+5.3.3.2.6 MaxSize
+The optional MaxSize parameter defines the host-requested maximum number of rows that MAY be
+created for the table.  If this parameter is included when creating a byte table, the method invocation
+SHALL fail with INVALID_PARAMETER.

@@ -1,0 +1,2 @@
+5.2.1.1 Issued SPs
+For Opal SSC-compliant TPers that support issuance, refer to [2] for the life cycle states and life cycle management.

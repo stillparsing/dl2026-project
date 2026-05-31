@@ -1,0 +1,10 @@
+3.2.3.3.1.5 Acknowledgement
+The meaning of this field is determined by the value of the AckType field.
+a. If the value of the AckType field is 0x0001, then this number SHALL be the SeqNumber of the
+last packet successfully received by the receiver.
+b. If the value of the AckType field is 0x0002, then this SHALL be the SeqNumber of the packet at
+which the receiver wishes the sender to begin retransmission.  Generally, the receiver puts a
+value of the last known good packet received plus one.
+i. For AckType field value of 0x0002, the communicator SHALL NOT NAK a SeqNumber
+less than or equal to the last ACKed SeqNumber.
+c. If the AckType field is 0x0000, then the value of this field SHALL be zeroes.

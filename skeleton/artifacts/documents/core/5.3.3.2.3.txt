@@ -1,0 +1,4 @@
+5.3.3.2.3 GetSetACL
+GetSetACL is the list of ACE object uids placed in the AddACEACL, RemoveACEACL, GetACLACL, and
+DeleteMethodACL columns of the AccessControl table rows that represent the methods available on
+the new table (see 5.3.4.2.3).

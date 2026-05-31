@@ -1,0 +1,4 @@
+5.2.3.2.3 SPChallenge
+The SPChallenge parameter value is sent if the
+StartSession invocation includes a
+HostSigningAuthority that directly invokes a signing credential.  Otherwise, this parameter is omitted.

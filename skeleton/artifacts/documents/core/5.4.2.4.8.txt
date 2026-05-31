@@ -1,0 +1,4 @@
+5.4.2.4.8 Frozen
+This column provides TPer Owner control over whether sessions MAY be opened on this SP.  A value
+of True in this column indicates that attempts to open sessions to this SP SHALL fail. The default value
+of this column at issuance is False.

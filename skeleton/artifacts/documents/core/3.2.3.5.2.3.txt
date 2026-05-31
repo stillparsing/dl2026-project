@@ -1,0 +1,5 @@
+3.2.3.5.2.3 Message Authentication Code (MAC)
+This field contains a message authentication code that protects the integrity of the packet.  The MAC
+SHALL encompass the entire Packet header, including the Reserved field, IV, and, for encrypted data,
+the ciphertext (the value of the SecureData field, which is made up of the Data Length, Data, and Pad
+fields), or, for unencrypted data, the unencrypted SecureData field.

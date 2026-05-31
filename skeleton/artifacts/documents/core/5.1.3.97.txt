@@ -1,0 +1,6 @@
+5.1.3.97 uinteger_8
+This is a uinteger type with a size restriction of 8 bytes.
+Table 161 uinteger_8
+| UID                             | Name       | Format                      |
+|---------------------------------|------------|-----------------------------|
+| 00 00 00 05 00 00 02 25         | uinteger_8 | Simple_Type, uinteger, 8    |

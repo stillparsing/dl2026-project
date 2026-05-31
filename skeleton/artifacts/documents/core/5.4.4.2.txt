@@ -1,0 +1,13 @@
+5.4.4.2 Deleting SPs via the Admin SP
+The TPer owner, or a host with equivalent permissions, is able to delete an SP by opening a session to
+the Admin SP and invoking the Delete method on the SP object in the Admin SP’s SP table.
+This method SHALL only operate within a Read-Write session to the Admin SP.  The SP SHALL NOT
+be deleted until the session is successfully closed.  Upon successful deletion of the SP, the following
+changes are made:
+1. The row in the Admin SP’s SP table that represents this SP is deleted.
+2. The value of the Instances column of the Admin SP’s Template table is reduced by 1 for each
+of the templates that had been issued into the SP being deleted.
+3. The SP itself is deleted.  The means of deletion is implementation-specific.  Once the SP has
+been deleted, the Host SHALL no longer have the capability to open sessions to the SP.
+4. Any TPer functionality affected by the existence of the SP based on the templates incorporated
+into it is modified as defined in the appropriate Template reference section of this specification.

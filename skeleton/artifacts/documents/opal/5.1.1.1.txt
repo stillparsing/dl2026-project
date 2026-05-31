@@ -1,0 +1,5 @@
+5.1.1.1 Activate Support
+Support for Activate within transactions is (N), and the behavior of Activate within transactions is out of the scope
+of this specification.
+If the Locking SP was created in manufacturing, and its Original Factory State is Manufactured-Inactive (see section
+5.2.2), support for Activate on the Locking SP’s object in the SP table is Mandatory.

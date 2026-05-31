@@ -1,0 +1,14 @@
+5.2.3.3 StartTrustedSession Method
+The StartTrustedSession/SyncTrustedSession method exchange, if needed, SHALL occur after the
+StartSession/SyncSession method exchange. If invoked at any other time, the attempted method
+invocation SHALL return an error result.
+SMUID.StartTrustedSession [
+HostSessionID : uinteger,
+SPSessionID : uinteger,
+HostResponse = bytes,
+HostEncryptSessionKey = bytes,
+HostIntegritySessionKey = bytes,
+SignedHash = bytes ]
+=>
+SMUID.SyncTrustedSession [See SyncTrustedSession definition in 5.2.3.4]
+

@@ -1,0 +1,6 @@
+5.6.4.5 Decryption Method Group – DecryptFinalize (Object Method)
+Invocation of this method closes the decryption “stream” associated with this object.
+CredentialObjectUID.DecryptFinalize [ ]
+=>
+[ Result : bytes ]
+

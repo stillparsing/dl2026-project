@@ -1,0 +1,56 @@
+4.3.5.5 K_AES_128 or K_AES_256 (M)
+At least one of the following tables (Table 47 and Table 48) SHALL be supported.
+Table 47 contains Optional rows designated with (O).
+*K1 means that a field is indirectly writable using the GenKey method.
+Table 47 - Locking SP - K_AES_128 Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 08 05 00 00 00 01",
+        "Name": "K_AES_128_GlobalRange_Key",
+        "CommonName": "",
+        "Key": "VU *K1",
+        "Mode": "VU"
+    },
+    {
+        "UID": "00 00 08 05 00 03 00 01",
+        "Name": "K_AES_128_Range1_Key",
+        "CommonName": "",
+        "Key": "VU *K1",
+        "Mode": "VU"
+    },
+    {
+        "UID": "00 00 08 05 00 03 NN NN (O)",
+        "Name": "K_AES_128_RangeNNNN_Key",
+        "CommonName": "",
+        "Key": "VU *K1",
+        "Mode": "VU"
+    }
+]
+```
+Table 48 - Locking SP - K_AES_256 Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 08 06 00 00 00 01",
+        "Name": "K_AES_256_GlobalRange_Key",
+        "CommonName": "",
+        "Key": "VU *K1",
+        "Mode": "VU"
+    },
+    {
+        "UID": "00 00 08 06 00 03 00 01",
+        "Name": "K_AES_256_Range1_Key",
+        "CommonName": "",
+        "Key": "VU *K1",
+        "Mode": "VU"
+    },
+    {
+        "UID": "00 00 08 06 00 03 NN NN (O)",
+        "Name": "K_AES_256_RangeNNNN_Key",
+        "CommonName": "",
+        "Key": "VU *K1",
+        "Mode": "VU"
+    }
+]
+```

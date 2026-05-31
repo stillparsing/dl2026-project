@@ -1,0 +1,5 @@
+5.7.2.5.4 MBRDoneOnReset
+This column value identifies the reset types that set the Done column to False.
+The MBRDoneOnReset column identifies the types of resets that cause Done to be automatically set to
+False. If the set is empty, the device SHALL NOT change the value of the Done column on any reset.
+At issuance, the default value SHALL be Power Cycle.

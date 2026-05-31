@@ -1,0 +1,2 @@
+5.3.3.12.2 Proof
+This is the proof the host is submitting as part of the authentication process.

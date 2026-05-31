@@ -1,0 +1,8 @@
+5.8.2.1.3 Next
+The value of this column is the UID of the next log entry (Log table row) added in this table subsequent
+to this log entry. This value in this column MAY be to a UID of a row that has not yet been used (i.e. has
+a LogKind value of 0). The value of this column is assigned upon creation of the table, and SHALL be
+updated only in the event that the number of rows present in the table is modified.  If this row
+represents the last log entry added to the table, then this value SHALL be the UID of the first row that is
+reused.
+This column SHALL NOT be modifiable by the host.

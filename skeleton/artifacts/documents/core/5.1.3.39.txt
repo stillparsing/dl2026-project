@@ -1,0 +1,7 @@
+5.1.3.39 integer_1
+This is an integer type with a size limit of 1 byte.
+Table 93 integer_1
+| UID                      | Name      | Format               |
+|--------------------------|-----------|----------------------|
+| 00 00 00 05 00 00 02 10  | integer_1 | Simple_Type, integer, 1 |
+

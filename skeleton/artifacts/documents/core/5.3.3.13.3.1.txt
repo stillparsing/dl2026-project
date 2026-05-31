@@ -1,0 +1,2 @@
+5.3.3.13.3.1 Result
+This method returns a list of uidrefs to ACE objects.

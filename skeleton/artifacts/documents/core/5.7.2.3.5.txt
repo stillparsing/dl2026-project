@@ -1,0 +1,3 @@
+5.7.2.3.5 Mode
+This column defines the encryption mode with which this object SHALL be used. Valid modes are
+defined in 5.1.3.73.  MediaEncryption mode permits a vendor-specific encryption mode.

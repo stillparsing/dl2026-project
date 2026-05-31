@@ -1,0 +1,16 @@
+5.1.4.2.13 package_purpose
+This abstract type is similar to an enumeration column type, and is used to identify a selected purpose
+for the package in which it is being included.  This type has valid values in the range of integers from 1-
+32.  These integers have the following values:
+a. 1 = Issuance
+b. 2 = Key Wrapping
+c. 3 = Backup
+d. 4-32 = reserved
+Format:
+uinteger
+In the messaging stream, these values SHALL be represented as follows:
+a. 0x00 is reserved
+b. 0x01 represents Issuance
+c. 0x02 represents Key Wrapping
+d. 0x03 represents Backup
+e. 0x04 – 0x20 are reserved

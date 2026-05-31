@@ -1,0 +1,2 @@
+2.5 Authentication
+An Opal SSC compliant Storage Device SHALL support password authorities and authentication.

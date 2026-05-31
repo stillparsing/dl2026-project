@@ -1,0 +1,4 @@
+5.1.5.5 SP_DISABLED
+This status MAY be returned if a method is invoked from within a session to an SP that is in the Issued-
+Disabled state (see 4.2), and the method is not permitted because of the limitations placed on SP
+operation by the state behavior.

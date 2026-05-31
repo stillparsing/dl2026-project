@@ -1,0 +1,90 @@
+5.3.4.2.1 Creating Tables
+New tables are created via successful invocation of the CreateTable method.  The Name-CommonName
+combination of the table created SHALL be unique in the Table table.
+When a new table is created using the CreateTable method, the columns for the table are specified in
+the Columns parameter.  The type of this parameter is a typeOr (for more information on types, see the
+format specification in section 5.1.1).
+a. The first option of this typeOr represents a list of column names and the uid of the type
+(from the Type table) to be associated with that column.  This is to be used if the table does
+not have unique column.
+b. The second option of this typeOr represents a struct made up of two lists.  The first list is
+made up of a list of column names and the uid of the type (from the Type table) to be
+associated with that column.  The first list represents the set of columns in the table the
+combination of which is required to be unique (these are the unique columns).  The second
+list represents the set of columns in the table that are not part of the unique columns of that
+table, and is a list of the column names and the uid of the type to be associated with that
+column.
+For a byte table, all rows SHALL exist at table creation. For object tables, no rows SHALL exist, but
+MAY be inserted using the CreateRow method.
+The mechanism by which allocation of rows to a table is accomplished is implementation specific.  A
+manufacturer MAY choose to allocate rows statically (create all rows at table creation) or dynamically
+(at each CreateRow method invocation).
+The total number of rows that are able to be created for a table based on existing conditions SHALL be
+obtainable using the GetFreeRows method.
+The CreateTable method uses the MinSize parameter to define the initial number of rows that SHALL
+be allocated for the new table.  The created table SHALL always be able to have CreateRow invoked on
+it that many times.  If the MinSize is too large (requests more rows than MAY be allocated for that
+table), the CreateTable method invocation SHALL result in an error.
+MinSize is recorded in the MinSize column of the Table table.  The MinSize column in the Table table
+MAY be changed using a Set method invocation.  Access control requirements SHALL be fulfilled as
+normal.  The TPer SHALL return an error if an attempt is made to set a lower value than is recorded in
+the MinSize column.  The TPer MAY reject the request and return an error.
+The actual number of rows that have been created for a table are reflected in the value of the Table
+table’s Rows column.
+The optional MaxSize parameter defines the maximum number of rows that MAY be created for the
+table.  Note that this is a host-supplied number, and that the TPer is not required to guarantee that the
+table can grow to MaxSize rows.  However, the TPer SHALL guarantee that the table never has more
+than MaxSize rows.
+The MaxSize parameter value is recorded in the MaxSize column of the Table table.  Access control
+requirements SHALL be fulfilled as normal to permit this value to be changed, but the TPer MAY
+prevent the value from being changed – in such a case the TPer SHALL return an
+INVALID_PARAMETER.  Attempts to set MaxSize to a value lower than MinSize or the current size of
+the table SHALL result in failure with the INVALID_PARAMETER status code.
+The optional HintSize parameter represents a number of rows larger than MinSize that is requested for
+the created table.  It is a host-specified number of rows that the host suggests should be supplied by
+the TPer for that table, if sufficient amount of row space is available.  This allows the TPer to optimize
+the allocation of rows for the table.  The TPer is not required to allocate the number of rows requested
+in HintSize.
+When a new table is created, in addition to space being allocated for that table, other side effects occur
+as well:
+a. A row in the Table table SHALL be created.  This row is a table descriptor object that
+stores metadata about the newly created table, including the name of the table, the number
+of rows allocated for the table, and the number of free rows in the table.  The table
+descriptor object also stores the type of the table (bytes or object), as well as a reference to
+the Column table row of the table’s first column.  Tables and their Table table entries are
+differentiated from each other by different UID composition.  A table is referred to by a UID
+derived from that of the associated Table table entry (see section 3.2.5.3).
+b. Rows in the Column table SHALL be created for each of the columns in the new table.
+Each row in the Column table stores metadata about a column in the newly created table,
+including the column’s name and data type, whether the column value is part of the unique
+columns for the table (requires uniqueness across the table), and whether the column is
+subject to transactional rollback, as well as the uidref to the row in the Column table that
+stores metadata about the next column in the created table.
+c. Rows in the AccessControl table SHALL be created for each of the methods available for
+the newly created table, its associated Table table row, and the newly created Column
+table rows (see 5.3.4.2.3).  The access control associations that are created are as follows:
+a. TableUID.Next
+b. TableUID.Get
+c. TableUID.Set
+d. TableObjectUID.Get
+e. ColumnObjectUID*.Get
+f.
+ACEObjectUID.Get/Set (if a new ACE is created)
+d. Rows in the ACE table MAY be created to limit access control on certain portions of the
+table or its associated Table table row.
+If the new table is unable to be created due to insufficient additional space in the Table table, the
+method SHALL fail (INSUFFICIENT_SPACE).  If the associated rows in all associated tables are
+unable
+to
+be
+created,
+then
+the
+invocation
+of
+the
+CreateTable
+method
+SHALL
+fail
+(INSUFFICIENT_ROWS).

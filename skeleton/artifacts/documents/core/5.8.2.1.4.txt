@@ -1,0 +1,4 @@
+5.8.2.1.4 Session
+The value of this column is the session number assigned by the TPer.   All log entries for a single
+session SHALL share the same unique session number.
+This column SHALL NOT be modifiable by the host.

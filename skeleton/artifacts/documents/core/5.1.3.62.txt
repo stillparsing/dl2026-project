@@ -1,0 +1,25 @@
+5.1.3.62 padding_type
+This enumeration is used to identify the type of padding used with RSA encryption.  RSAES-PKCS1-
+v1_5 or RSAES-OAEP (see [18]) SHALL be used for RSA encryption.  RSASSA-PKCS1-v1_5 or
+RSASSA-PSS (see [18]) SHALL be used for RSA signing.
+Table 120 padding_type
+```markdown
+| UID                         | Name         | Format              |
+|-----------------------------|--------------|---------------------|
+| 00 00 00 05 00 00 04 06     | padding_type | Enumeration_Type, 0, 15 |
+```
+  
+
+The enumeration values are associated as defined in Table 121.
+Table 121 padding_type Enumeration Values
+```markdown
+| Enumeration Value | Associated Value    |
+|-------------------|--------------------|
+| 0                 | None               |
+| 1                 | None               |
+| 2                 | RSAES-PKCS1-v1_5   |
+| 3                 | RSAES-OAEP         |
+| 4                 | RSASSA-PKCS1-v1_5  |
+| 5-15              | Reserved           |
+```
+

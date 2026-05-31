@@ -1,0 +1,4 @@
+5.6.4.7.1 Input
+The value of the Input parameter MAY be either a bytes value, wherein bytes to be encrypted are
+passed as a parameter of the method; or a cellblock that addresses a subset of a table on the SP that
+holds the data to be decrypted.

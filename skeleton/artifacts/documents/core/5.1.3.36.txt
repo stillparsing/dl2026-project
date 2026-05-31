@@ -1,0 +1,9 @@
+5.1.3.36 Hour
+Name-value pair that has a Name of "3" and takes hour_enum as the value.
+Table 90 Hour
+```markdown
+| UID                     | Name | Format                            |
+|-------------------------|------|----------------------------------|
+| 00 00 00 05 00 00 14 04 | Hour | Name_Value_Uinteger_Type, 3, hour_enum |
+```
+  

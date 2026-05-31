@@ -1,0 +1,3 @@
+5.7.2.1.3 Version
+This is a manufacturer-defined version number for this feature.
+This column SHALL NOT be modifiable by the host.

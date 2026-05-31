@@ -1,0 +1,8 @@
+5.1.3.32 Fraction
+Name-value pair that has a Name of "6" and takes fraction enum as the value.
+Table 84 Fraction
+```markdown
+| UID                   | Name     | Format                             |
+|-----------------------|----------|----------------------------------|
+| 00 00 00 05 00 00 14 07 | Fraction | Name_Value_Uinteger_Type, 6, fraction_enum |
+```

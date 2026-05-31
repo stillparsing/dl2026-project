@@ -1,0 +1,7 @@
+5.3.3.9 Basic Table Method Group - GetFreeSpace (SP Method)
+The GetFreeSpace method is an SP method that enables the host to retrieve the number of rows that
+MAY be additionally created in each table.
+ThisSP.GetFreeSpace [ ]
+=>
+[ FreeSpace : uinteger, TableRows : table_sizes ]
+

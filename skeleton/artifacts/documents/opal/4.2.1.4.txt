@@ -1,0 +1,58 @@
+4.2.1.4 MethodID (M)
+The MethodID table is defined in [2], and Table 21 defines the Preconfiguration Data for the MethodID table.
+*MT1: refer to section 5.1.2 for details on the requirements for supporting Revert.
+*MT2: refer to section 5.1.1 for details on the requirements for supporting Activate.
+Table 21 - Admin SP - MethodID Table Preconfiguration
+
+```json
+[
+    {
+        "UID": "00 00 00 06 00 00 00 08",
+        "Name": "Next",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 0D",
+        "Name": "GetACL",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 16",
+        "Name": "Get",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 17",
+        "Name": "Set",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 1C",
+        "Name": "Authenticate",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 02 02 *MT1",
+        "Name": "Revert",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 02 03 *MT2",
+        "Name": "Activate",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 06 01",
+        "Name": "Random",
+        "CommonName": "",
+        "TemplateID": ""
+    }
+]
+```

@@ -1,0 +1,3 @@
+3.3.6.4.4 BufferMgmt Supported
+BufferMgmtSupported SHALL be set to one if the TPer supports buffer management flow control
+(see3.3.8.2) for communications, otherwise BufferMgmtSupported SHALL be cleared to zero.

@@ -1,0 +1,12 @@
+5.6.1 Overview
+Begin Informative Content
+The Crypto Template provides a set of cryptographic methods that operate on public and symmetric
+key store tables, collectively called Credential tables, provided by the Base and other Templates.  The
+Crypto Template also provides a set of tables that supports these methods.
+The set of cryptographic methods that the Crypto Template provides support functionality that includes
+Encryption, Decryption, Signing, Verifying, Hashing, HMAC, and XOR.  Other Templates MAY provide
+Credential tables to an SP.  Credential tables in an SP that does not incorporate the Crypto Template
+MAY be key stores or contain credentials for use in media encryption, secure messaging, and
+authentication.  Incorporating the Crypto Template into an SP enables the host to perform encryption,
+decryption, signing, and verification on the TPer, using keys and data stored on the TPer.
+End Informative Content

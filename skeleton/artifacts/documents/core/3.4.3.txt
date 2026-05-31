@@ -1,0 +1,19 @@
+3.4.3 SP Issuance, Personalization, and Operational State
+Begin Informative Content
+Issuance is the cryptographically controlled creation of SPs from templates.  Issuance occurs within a
+session to a TPer's Admin SP, and is achieved by demonstrating knowledge of the secrets required to
+authorize the creation of new SPs and then, for each new SP, creating a unique credential for the
+Admin authority on that SP.
+End Informative Content
+Issuance of a new SP SHALL be complete when the top-level transaction that contains the method
+invocation is successfully committed or, if the method was invoked outside of a transaction, once the
+TPer has processed the method and prepared a response.  SPs SHALL be created using the templates
+specified during issuance.  Once an SP is issued, it is not possible to add functionality to the SP from
+additional templates.
+Begin Informative Content
+Personalization follows Issuance. The AdminExch authority on the new SP accomplishes
+personalization by opening a session to the issued SP, creating new tables (in addition to the tables
+that were provided by the templates), provisioning those tables, creating and configuring new
+authorities, and setting the access controls on the SP’s methods.  Personalization is an ongoing
+process that occurs during the entire life of an SP.
+End Informative Content

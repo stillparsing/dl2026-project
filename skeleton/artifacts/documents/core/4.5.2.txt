@@ -1,0 +1,22 @@
+4.5.2 Issued-Disabled
+If the Log template has been issued into the SP, logging in the SP’s default log table MAY reflect at
+least the successful or unsuccessful use of the disabling and enabling functions, any failed session
+attempts, and failed attempts to invoke the DeleteSP method, dependant on personalization.
+Template-specific information related to disabling of an SP that includes that template is found in the
+template’s reference section in this document.
+In the Issued-Disabled state, only a host application that is able to authenticate to the necessary access
+controls SHALL have the ability to re-enable the SP.  Only method invocations related directly to re-
+enabling the SP are successful (access control requirements SHALL still be fulfilled).
+Only the following method invocations to the disabled SP SHALL function (fulfilling appropriate access
+control requirements SHALL be required):
+a. Authenticate
+b. Set on the Enabled column of the SPInfo table.  Access control requirements SHALL be
+met as normal.
+c.
+DeleteSP – Access control requirements SHALL be met as normal.
+In addition, the disabled state SHALL NOT affect control session methods, and session startup
+methods SHALL operate as normal.
+The TPer owner or an authorized authority SHALL still have the ability to invoke the Delete method
+within a session to the Admin SP in order to delete the disabled SP.
+All method invocations, other than those specifically identified in this section, invoked within a session
+to an SP in the Issued-Disabled state, SHALL fail with the SP_DISABLED status code.

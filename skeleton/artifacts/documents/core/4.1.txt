@@ -1,0 +1,13 @@
+4.1 Life Cycle of SPs Overview
+Begin Informative Content
+Each SP in a TPer has its own life cycle state. This section defines the various life cycle states and the
+transitions that an SP makes between them.
+Life cycle applies to each individual SP.  The life cycle state of the TPer as a whole emerges from life
+cycle states of individual SPs.
+End Informative Content
+Life cycle states are recorded in the LifeCycleState column of the Admin SP’s SP table.  This column
+identifies the SP's current state.  The value of this column SHALL be changed by the TPer whenever an
+SP's life cycle state changes.  The value of the Admin SP object's LifeCycleState column SHALL
+only be Issued.
+Access control on reading the SPs available in a TPer, and the life cycle states of those SPs, SHALL be
+readable by the Anybody authority on the Admin SP.

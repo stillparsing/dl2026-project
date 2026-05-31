@@ -1,0 +1,18 @@
+5.8.2.2 LogList (Object Table)
+The LogList table is an object table that contains exactly one row for each Log table, and contains
+information about that log.
+The LogList row with UID=0x00 0x00 0x0A 0x02 0x00 0x00 0x00 0x01 is automatically created on
+SP issuance with the name Log.  A corresponding Log table is also created at Issuance.  The uid of
+the created Log table is referenced in the LogList’s Log column.
+At creation, the initial LogList table row SHALL have default values of HighSecurity=false and a
+Serial column value that is a uidref to the UID column value of the first row in the Log table to be
+used.
+Table 234 LogList Table Description
+| Column Number | Column Name  | IsUnique | Column Type       |
+|---------------|--------------|----------|-------------------|
+| 0x00          | UID          |          | uid               |
+| 0x01          | Name         | Yes      | name              |
+| 0x02          | CommonName   | Yes      | name              |
+| 0x03          | Log          |          | Table_object_ref  |
+| 0x04          | Serial       |          | log_row_ref       |
+| 0x05          | HighSecurity |          | boolean           |

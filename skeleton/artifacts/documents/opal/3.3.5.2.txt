@@ -1,0 +1,31 @@
+3.3.5.2 TCG Reset Events
+Table 16 replaces the definition of TCG reset_types that are defined in [2]:
+Table 16 - reset_types
+```json
+[
+    {
+        "Enumeration value": 0,
+        "Associated Value": "Power Cycle"
+    },
+    {
+        "Enumeration value": 1,
+        "Associated Value": "Hardware"
+    },
+    {
+        "Enumeration value": 2,
+        "Associated Value": "HotPlug"
+    },
+    {
+        "Enumeration value": 3,
+        "Associated Value": "Programmatic"
+    },
+    {
+        "Enumeration value": "4-15",
+        "Associated Value": "Reserved"
+    },
+    {
+        "Enumeration value": "16-31",
+        "Associated Value": "Vendor Unique"
+    }
+]
+```

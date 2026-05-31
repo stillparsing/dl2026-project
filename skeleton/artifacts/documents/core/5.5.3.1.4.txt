@@ -1,0 +1,4 @@
+5.5.3.1.4 HighSetTime
+The value of this column is the time set to the value of the ExactTime parameter of the SetClockHigh
+method when that method is successfully invoked.  This value is valid only if HaveHigh is set to True;
+otherwise it should be zeroes.

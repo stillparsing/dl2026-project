@@ -1,0 +1,4 @@
+5.3.2.7.3 MethodID
+This is the unique identifier of the method portion of this access control situation, and is the same as the
+method's UID column value in the MethodID table.
+This column SHALL NOT be modifiable by the host.

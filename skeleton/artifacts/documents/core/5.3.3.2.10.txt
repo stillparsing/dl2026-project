@@ -1,0 +1,6 @@
+5.3.3.2.10 Fails
+a. If a table with the specified Name/CommonName column values already exists.
+b. If there isn’t space in the SP for the new table.
+c. If metadata/support tables (i.e. Table, Column, AccessControl, and ACE) are not all able to
+create all required rows to support this table.
+

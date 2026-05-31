@@ -1,0 +1,8 @@
+3.3.1 Communicating With the TPer Through the Interface Protocol
+Begin Informative Content
+The communication between the Host and the TPer takes place through the use of IF-SEND and IF-
+RECV as illustrated in Figure 3 .  Most of the useful communication between a Host and a TPer is
+encapsulated in the payload of these commands.
+End Informative Content
+Figure 3  TPer-Host Communication
+

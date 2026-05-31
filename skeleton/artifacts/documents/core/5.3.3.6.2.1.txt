@@ -1,0 +1,4 @@
+5.3.3.6.2.1 Bytes
+This is the value returned if the method is invoked on a byte table.  If multiple row values are returned
+from a byte table, values SHALL be returned from the lowest numbered row to the highest numbered
+row.

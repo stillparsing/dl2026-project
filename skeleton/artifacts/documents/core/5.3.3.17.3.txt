@@ -1,0 +1,3 @@
+5.3.3.17.3 SigningKey
+This is a uidref to the credential used to sign the hash of the package contents.  If no signing key is
+supplied, no hash is included in the package.

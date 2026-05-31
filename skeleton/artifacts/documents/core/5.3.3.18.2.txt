@@ -1,0 +1,4 @@
+5.3.3.18.2 WrappingKey
+This is a uidref to the credential to be used to decrypt the encrypted key material in the parameterized
+package.  This parameter MAY be omitted, if the key material in the parameterized package is being
+sent in plaintext.

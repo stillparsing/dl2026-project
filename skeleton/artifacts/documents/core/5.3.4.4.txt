@@ -1,0 +1,6 @@
+5.3.4.4 Deleting the SP
+The TPer owner is able to delete an SP by opening a session to the Admin SP and invoking the Delete
+method on the SP object in the Admin SP’s SP table, as defined in 5.4.4.2. However, the SP owner is
+probably unable to delete the SP in this way, and instead uses the DeleteSP method.
+The SP SHALL NOT be deleted until the session is successfully closed.  When the method takes effect,
+it produces the same results as defined in 5.4.4.2.

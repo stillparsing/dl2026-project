@@ -1,0 +1,9 @@
+3.3.8.1 Introduction
+Begin Informative Content
+Flow control ensures that when data is sent from a source to a destination that the destination has
+enough buffer space to receive it. There are two kinds of flow control: Interface and Stream data.
+Interface flow control is involved in moving IF-SEND or IF-RECV commands across an interface
+between a host and TPer (see [2]).
+Stream data flow control is used to keep a Host or TPer from overwhelming the other party with data
+during a session.
+End Informative Content

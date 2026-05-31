@@ -1,0 +1,6 @@
+5.3.4.1.2.5 AdminExch
+The AdminExch authority represents the initial credential value submitted during issuance.  This is the
+authority that enables the host to open a secure, implicitly authenticated session to the host’s SP and
+personalize that SP.  In the case of the Authority table in the Admin SP, the Base Template Authority
+AdminExch SHALL be disabled.  At issuance, prior to personalization, the AdminExch authority has a
+RespExch column value set to the AdminExch authority's UID.

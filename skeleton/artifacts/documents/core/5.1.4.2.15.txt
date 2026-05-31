@@ -1,0 +1,11 @@
+5.1.4.2.15 row_data
+This type represents a list of lists of Named values.  Each interior list represents a row, so there are
+multiple interior lists (a list of lists).  The Named values represent column numbers and the values to be
+associated with them as defined by this specification or the column ordering requirements of the table
+when it was created.  The value SHALL be of the type defined, as represented by the notation "<type of
+column>".
+The number of interior lists (i.e. the number of rows that MAY be represented by this type "at one time")
+MAY be limited by SSC or implementation.
+Format:
+
+[ [ ColumnNumber = <type of column> ... ] ... ]

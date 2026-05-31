@@ -1,0 +1,22 @@
+4.1.1.2 StartSession (M)
+An Opal SSC compliant Storage Device SHALL support the following parameters for the StartSession method:
+• HostSessionID
+• SPID
+• Write
+• HostChallenge
+• HostSigningAuthority
+
+For an Opal SSC compliant Storage Device, a value of “True” for the Write parameter SHALL be supported.
+For an Opal SSC compliant Storage Device, a value of “False” (i.e. read only session) for the Write parameter may or
+may not be supported.
+The SessionTimeout parameter of the StartSession method is optional. It may be used by the host to specify a
+timeout value for the session. Refer to [2] for details.
+If a TPer supports the optional SessionTimeout parameter and the parameter is included in the invocation of the
+StartSession method, then its value is permitted if it satisfies the following conditions:
+a) It is less than or equal to the TPer’s MaxSessionTimeout property, the property is zero, or the property is not
+defined.
+b) It is less than or equal to the value of the SPSessionTimeout column in the SP’s SPInfo table, the value is
+zero, or the column is empty; and
+c) It is greater than or equal to the TPer’s MinSessionTimeout property, or the property is not defined.
+If the specified SesstionTimeout parameter value does not satisfy conditions a), b), and c) above, the TPer SHALL
+fail the StartSession method as defined in [2].

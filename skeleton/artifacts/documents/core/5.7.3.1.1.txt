@@ -1,0 +1,50 @@
+5.7.3.1.1 State Descriptions
+This section describes the states that are used in Figure 11 , and the column values that each state
+represents.
+S0 LockEnabled=F
+This describes the state where the TPer's Locking feature is turned off.  Locking is not possible.  The
+Locked column and LockOnReset column values are disregarded.
+S1 LockEnabled=T/Locked=T/LockOnReset=non-null
+This describes the state where the TPer's Locking feature is turned on.  Locking is possible.  The
+Locked state is currently True, indicating that the range is locked.  LockOnReset is non-null, indicating
+that, upon any of the listed reset events, the range SHALL lock.
+S2 LockEnabled=T/Locked=T/LockOnReset=null
+This describes the state where the TPer's Locking feature is turned on.  Locking is possible.  The
+Locked state is currently True, indicating that the range is locked.  LockOnReset is "False" (null set),
+indicating that reset events do not cause the range to lock.  The range SHALL maintain current locking
+state (the value of the Locked column remains the same, True) through all resets.
+S3 LockEnabled=T/Locked=F/ LockOnReset=non-null
+This describes the state where the TPer's Locking feature is turned on.  Locking is possible.  The
+Locked state is currently False, indicating that the range is not locked.  LockOnReset is "True" (non-null
+set), indicating that the listed reset events cause the range to lock.
+S4 LockEnabled=T/Locked=F/ LockOnReset=null
+This describes the state where the TPer's Locking feature is turned on.  Locking is possible.  The
+current Locked state is False, indicating that the range is not locked.  LockOnReset is "False" (null set),
+indicating that reset events do not cause the range to lock.  The range SHALL maintain current locking
+state (False in this case) through all reset events.
+T0 ResetStateMatch=null/LockEnabled=F
+This is the transition state where a reset is occurring and the Locking feature is disabled.
+T1 ResetStateMatch=T/LockEnabled=T/Locked=T/ LockOnReset=non-null
+This describes a transition state where a reset is occurring, and the range had the accompanying
+attributes - the locking feature is turned on, the range is locked, and the LockOnReset value applies to
+the currently occurring reset state.
+T2 ResetStateMatch=F/LockEnabled=T/Locked=T/ LockOnReset=non-null
+This describes a transition state where a reset is occurring, and the range had the accompanying
+attributes - the locking feature is turned on, the range is locked, and the LockOnReset value does not
+apply to the currently occurring reset state.  This state is functionally equivalent to T3.
+T3 ResetStateMatch=null /LockEnabled=T/Locked=T/ LockOnReset=null
+This describes a transition state where a reset is occurring, and the range had the accompanying
+attributes - the locking feature is turned on, the range is locked, and the LockOnReset value is null.
+This state is functionally equivalent to T2.
+T4 ResetStateMatch=T/LockEnabled=T/Locked=F/ LockOnReset=non-null
+This describes a transition state where a reset is occurring, and the range had the accompanying
+attributes - the locking feature is turned on, the range is not locked, and the LockOnReset value applies
+to the currently occurring reset state.
+T5 ResetStateMatch=F/LockEnabled=T/Locked=F/ LockOnReset=non-null
+This describes a transition state where a reset is occurring, and the range had the accompanying
+attributes - the locking feature is turned on, the range is not locked, and the LockOnReset value value
+does not apply to the currently occurring reset state.  This state is functionally equivalent to T6.
+T6 ResetStateMatch=null /LockEnabled=T/Locked=F/ LockOnReset=null
+This describes a transition state where a reset is occurring and the range had the accompanying
+attributes - the locking feature is turned on, the range is not locked, and the LockOnReset value is null.
+This state is functionally equivalent to T5.

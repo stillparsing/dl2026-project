@@ -1,0 +1,5 @@
+5.7.2.1.6 MaxReEncryptions
+This value defines the maximum number of simultaneous re-encryption operations supported.
+Simultaneous re-encryptions refer to the number of different LBA ranges that MAY be concurrently re-
+encrypted. A value of 0 indicates Re-encryption is not supported.
+This column SHALL NOT be modifiable by the host.

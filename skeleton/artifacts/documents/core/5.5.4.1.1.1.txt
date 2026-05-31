@@ -1,0 +1,2 @@
+5.5.4.1.1.1 Kind
+This value returns the type of time currently active.

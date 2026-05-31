@@ -1,0 +1,5 @@
+3.3.6.2.3 Data Structure Minor Version
+This is the Minor Version number of the Data Structure format of the Level 0 Discovery header
+returned. The value of this field SHALL be 0x0001.
+This value SHALL be incremented when backwards compatible changes are made to Header or to the
+format of the feature descriptors.

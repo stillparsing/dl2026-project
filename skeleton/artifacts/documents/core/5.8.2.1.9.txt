@@ -1,0 +1,4 @@
+5.8.2.1.9 MonotonicTime
+This is the value of the monotonic counter when the log entry was created, as defined in section 5.5.
+Note that if the Clock Template was not issued into this SP then this value SHALL be 0.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,11 @@
+3.3.5 Capability Discovery
+Discovery is a process that provides a way for the Host to examine the SD's configurations and
+capabilities.
+There are three levels of discovery:
+a. Level 0:  This discovery level discloses basic SD status and configuration. This discovery
+request is sent as an IF-RECV command (see 3.3.6).
+b. Level 1:  This discovery level discloses basic TPer capabilities via the Properties method
+(see 5.2.2.1)
+c. Level 2:  This discovery level uses the Get method (see 5.3.3.6) to retrieve table cell
+values under access control as defined by the ACLs in each SP's AccessControl table
+(see 5.3.2.7), and the associated ACEs in each SP's ACE table (see 5.3.2.8).

@@ -1,0 +1,6 @@
+5.2.2.4.1.5 MaxIndTokenSize
+The host SHOULD NOT send an individual token whose size (including token header) is greater than
+the TPer’s MaxIndTokenSize property. If the TPer encounters a token that is too long, the TPer’s
+response is defined in section 5.2.2.4.3.
+The TPer SHALL NOT send an individual token whose size (including token header) is greater than the
+host’s MaxIndTokenSize property.

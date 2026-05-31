@@ -1,0 +1,6 @@
+5.1.3.22 Certificates_object_ref
+The Certificates_object_ref type describes a uidref to an object in the Certificates table.
+Table 72 Certificates_object _ref
+| UID                   | Name                  | Format                             |
+|-----------------------|-----------------------|----------------------------------|
+| 00 00 00 05 00 00 0C 06 | Certificates_object_ref | Restricted_Reference_Type{6}, uidref {CertificatesTableUID} |

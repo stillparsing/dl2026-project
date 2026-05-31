@@ -1,0 +1,8 @@
+3.2.3.3.1.4 AckType
+This field identifies the usage of the Acknowledgement field.
+a. This SHALL be 0x0001 if the Acknowledgement field contains a packet acknowledgement
+(ACK).
+b. This SHALL be 0x0002 if the Acknowledgement field contains a packet negative
+acknowledgement (NAK).
+c. This SHALL be 0x0000 if no packets are being acknowledged or negative acknowledged, and
+the value of the Acknowledgement field SHALL be zeroes.

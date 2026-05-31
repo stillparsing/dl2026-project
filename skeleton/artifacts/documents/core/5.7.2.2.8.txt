@@ -1,0 +1,8 @@
+5.7.2.2.8 ReadLocked
+The value of this column identifies the current read lock state for the associated LBA Range if the
+range's ReadLockEnabled column is True.  This column is ignored if the range's ReadLockEnabled
+column is False.    If this value is True, then the TPer SHALL NOT allow requests to read user data.  If
+this value is False, then the TPer SHALL allow requests to read user data (see 5.7.3.2).
+The Set method MAY be invoked by the host to change the value of this column and alter the read-lock
+state.  Setting the column value to True read locks the range.  Setting the column value to False read
+unlocks the range.

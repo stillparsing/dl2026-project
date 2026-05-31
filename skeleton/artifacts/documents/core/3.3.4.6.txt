@@ -1,0 +1,2 @@
+3.3.4.6 Session Layer
+In this layer all communications SHALL occur within Regular Sessions.

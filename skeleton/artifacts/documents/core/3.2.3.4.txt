@@ -1,0 +1,13 @@
+3.2.3.4 Subpacket Formats
+Begin Informative Content
+Subpackets are used to package data for transmission between the host and the TPer, as well as to
+exchange credits between communicators.  The different types of Subpackets are enumerated in Table
+19
+End Informative Content
+Table 19 Subpacket Types
+```markdown
+| Subpacket Type    | Kind Field Value |
+|-------------------|------------------|
+| Data              | 0x0000           |
+| Credit Control    | 0x8001           |
+```

@@ -1,0 +1,13 @@
+5.3.2.9 Access Control Metadata Group - ACE (Object Table)
+The ACE table SHALL have one row for each access control element that MAY be referenced in the
+AccessControl table's ACL column.
+Table 177 ACE Table Description
+```markdown
+| Column Number | Column Name  | IsUnique | Column Type     |
+|---------------|--------------|----------|-----------------|
+| 0x00          | UID          |          | uid             |
+| 0x01          | Name         | Yes      | name            |
+| 0x02          | CommonName   | Yes      | name            |
+| 0x03          | BooleanExpr  |          | AC_element      |
+| 0x04          | Columns      |          | ACE_columns     |
+```

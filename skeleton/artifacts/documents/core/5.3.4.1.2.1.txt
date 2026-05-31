@@ -1,0 +1,16 @@
+5.3.4.1.2.1 Anybody
+The Anybody authority MAY used as the Host Signing Authority during session startup, and when used
+in this way allows session startup without providing a proof or secret.    If a value is included in the
+StartSession method's HostChallenge parameter where the Anybody authority is called out as the
+HostSigningAuthority, the HostChallenge parameter SHALL be ignored by the TPer.  Assuming all
+StartSession method syntax is correct, the method SHALL complete successfully.
+The Anybody authority is always considered "authenticated" within a session, even if the Anybody
+authority was not specifically called out during session startup.  Invocations of the Authenticate
+method that use the Anybody authority SHALL always succeed, assuming all other Authenticate
+method syntax is correct.  Values in the Challenge parameter of that Authenticate method SHALL be
+ignored.
+The Anybody authority counts against the maximum number of authenticated authorities permitted per
+session (as reported in the Properties method response MaxAuthentications field, if such a limit
+exists).  Thus, if the maximum number of authorities within a session is 9, the Anybody authority counts
+as one of these and the host MAY authenticate up to 8 additional authorities (during session startup or
+through the use of the Authenticate method).

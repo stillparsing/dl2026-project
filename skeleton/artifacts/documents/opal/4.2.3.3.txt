@@ -1,0 +1,28 @@
+4.2.3.3 SP (M)
+The SP table is defined in [2], and Table 29 defines the Preconfiguration Data for the SP table.
+*SP1 means that this row only exists in the Admin SP's OFS when the Locking SP is created by the manufacturer.
+Table 29 - Admin SP - SP Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 02 05 00 00 00 01",
+        "Name": "Admin",
+        "ORG": "",
+        "EffectiveAuth": "",
+        "DateOfIssue": "",
+        "Bytes": "",
+        "LifeCycle": "Manufactured",
+        "Frozen": "FALSE"
+    },
+    {
+        "UID": "00 00 02 05 00 00 00 02 *SP1",
+        "Name": "Locking",
+        "ORG": "",
+        "EffectiveAuth": "",
+        "DateOfIssue": "",
+        "Bytes": "",
+        "LifeCycle": "Manufactured-Inactive",
+        "Frozen": "FALSE"
+    }
+]
+```

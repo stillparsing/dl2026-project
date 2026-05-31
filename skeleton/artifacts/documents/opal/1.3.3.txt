@@ -1,0 +1,16 @@
+1.3.3 Statement Types
+Please note a very important distinction between different sections of text throughout this document. There are two
+distinctive kinds of text: informative comment and normative statements.
+Because most of the text in this specification will be of the kind normative statements, the authors have informally
+defined it as the default and, as such, have specifically called out text of the kind informative comment. They have
+done this by flagging the beginning and end of each informative comment and highlighting its text in gray.
+This means that unless text is specifically marked as of the kind informative comment, it can be considered a kind of
+normative statements.
+EXAMPLE: Start of Informative Comment
+This is the first paragraph of 1–n paragraphs containing text of the kind informative comment ...
+This is the second paragraph of text of the kind informative comment ...
+This is the nth paragraph of text of the kind informative comment ...
+To understand the TCG specification the user must read the specification. (This use of MUST does not require any
+action).
+End of Informative Comment
+

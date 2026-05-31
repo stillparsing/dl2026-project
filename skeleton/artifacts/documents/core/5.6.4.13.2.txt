@@ -1,0 +1,6 @@
+5.6.4.13.2 Fails
+a. If the object does not exist
+b. If the object does not reference a valid symmetric credential object that contains a valid key
+c. If BufferOut is not a valid cellblock
+d. If BufferOut is specified and Set access control on that cellblock has not been fulfilled
+e. If HMACFinalize has been invoked when no HMAC “stream” is open

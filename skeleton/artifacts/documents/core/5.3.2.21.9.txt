@@ -1,0 +1,6 @@
+5.3.2.21.9 alpha
+Private key
+5.3.2.21.10 u
+Public key x-coordinate: (u, v) = α (x,y)
+5.3.2.21.11 v
+Public key y-coordinate: (u, v) = α (x,y)

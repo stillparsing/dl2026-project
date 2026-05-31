@@ -1,0 +1,8 @@
+5.1.3.4 ACE_object_ref
+This type describes a uidref to an object contained in the ACE table.
+Table 49 ACE_object_ref
+```markdown
+| UID                      | Name          | Format                                                           |
+|--------------------------|---------------|------------------------------------------------------------------|
+| 00 00 00 05 00 00 0C 04  | ACE_object_ref| Restricted_Reference_Type{6}, uidref{ACETableUID}                |
+```

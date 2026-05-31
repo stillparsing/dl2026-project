@@ -1,0 +1,8 @@
+5.1.5.13 TRANSACTION_FAILURE
+This status is returned when a method fails due to an error in the transactional context in which it was
+invoked.  An example of this is if a TPer is unable to process within the transaction the amount of data
+supplied as a parameter of the method, which under other circumstances the TPer would be able to
+process.  The TPer in this case would return this status code to indicate that the method failed due to
+the transactional context, not due to a problem with the method invocation itself.
+Multiple consecutive method invocations that result in this status code indicate a failure in the
+transactional context that MAY result in the entire transaction being uncommittable.

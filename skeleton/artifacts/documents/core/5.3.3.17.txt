@@ -1,0 +1,18 @@
+5.3.3.17 Key Related Method Group - GetPackage Method (Object Method)
+The purpose of this method is to retrieve key material from a credential table in a secure manner.  In
+addition to fulfilling the access control restrictions for invoking GetPackage, this method should only
+succeed if access control is fulfilled for WrappingKey.Encrypt and SigningKey.Sign.
+CredentialObjectUID.GetPackage [
+
+Purpose : package_purpose,
+
+WrappingKey = uidref { CredentialObjectUID },
+
+SigningKey = uidref { CredentialObjectUID },
+
+Date = date,
+
+Log = bytes
+=>
+[ Result : package ]
+

@@ -1,0 +1,76 @@
+3.2.1.2 Method Signature Pseudo-code
+Begin Informative Content
+Method signatures are pseudo-code representations of TCG methods, which are used to describe
+method parameters, types and snippets of code without having to use the byte encodings directly.
+End Informative Content
+In this document, MethodName is the UID of the method being invoked and:
+a. Session Manager method calls are written as follows, where “SMUID” is 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0xFF:  SMUID.MethodName[ <Parameters> ]
+b. SP method calls are written as follows, where "ThisSP" is 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x01:  ThisSP.MethodName[ <Parameters> ]
+c. Table method calls are written as follows, where TableUID is the UID of the table (see 3.2.5.3)
+upon which the method is being invoked:  TableUID.MethodName[ <Parameters> ]
+d. Object methods are written as follows, where ObjectUID is the UID of the object (see 3.2.5.3)
+upon which the method is being invoked:  ObjectUID.MethodName[ <Parameters> ]
+For example:
+a. Invoking the Properties method:  SMUID.Properties[ <Parameters> ]
+b. Invoking an SP method:  ThisSP.Random[ <Parameters> ]
+c. Adding an entry to a log table:  SomeLogTableUID.AddLog[ <Parameters> ]
+d. Encrypting host data:  C_AES_128ObjectUID.Encrypt[ <Parameters> ]
+A method signature example is displayed in this document as:
+<InvokingID>.<MethodName>[
+
+Required Parameter(s),
+Optional Parameter(s)
+]
+=>
+[ Result ]
+The InvokingID (the table or object UID to which the method applies) and MethodName (the method's
+UID column value as it is defined in an SP's MethodID table) appear first in the signature.  The
+parameters follow, enclosed in "list" delimiters ("[" and "]").  The "=>" is a separator between the method
+parameters and the method results.  The method results are displayed within the "list" delimiters ("["
+and "]").
+Methods are made up of two kinds of parameters:  required and optional.
+a. In the pseudo-code signature, required parameters are given names for ease of reference.  The
+right-hand portion of the parameter is the type, interface (see 3.2.2) or abstract (see 5.1.4), to
+be supplied for that parameter.
+
+Required parameters are formatted as follows:
+a. Parameter-Name : Parameter-type
+b. In the pseudo-code method signature, optional parameters are given in the form of Named
+values (see 3.2.1.3), and are submitted to the method invocation as Named values.  The right-
+hand portion of the parameter is the type, interface (see 3.2.2) or abstract (see 5.1.4), that is
+supplied for that parameter.  The name supplied to the parameter is expositional, provided for
+ease of reference.
+
+Optional parameters are formatted as follows:
+b. Parameter-Name = Parameter-type
+The result portion of a method's signature is formatted similarly to the above required and optional
+parameters, using the same conventions for results required to be returned for successful method
+invocations ("required results") and results returned only in certain situations ("optional results").
+The pseudo-code method signatures utilize the following key symbols:
+a. Equals sign ("=") – Any appearance of "=" in a method's parameter list or result list (including
+in abstract type definitions) indicates the required use of an interface Named value, where the
+type of the required value is to the right of the "=".  The "=" is not represented in the streamed
+method data, but indicates that the name and the value are encompassed by the Named value
+indicator tokens (see 3.2.2.3.2.1).
+b. Colon (":") – When represented in abstract types or method signatures, a colon indicates that
+the string to the left of the colon is only a pseudo-code identifier associated with the type to the
+right of the colon.  The type to the right of the colon is the type of the value to be transmitted on
+the interface.
+c. Separating brackets ("[", "]") – Square brackets in method signatures are used to mark
+places in the stream where List tokens (see 3.2.2.2) are used to encapsulate values.  Brackets
+are required to be present in the streamed method invocation, and are represented in the
+stream by list encoding tokens.
+d. "list" – The word "list" is used to indicate that the bracketed grouping immediately following is a
+list (see 3.2.2.3.2.2).  Ellipses ("…") in pseudo-code method signatures are used to indicate that
+multiples of the immediately preceding type appears within the list (e.g. list [ type ... ]).  Note
+that in some contexts, a list MAY be required to be empty or to contain only a single element.
+Neither the word "list" nor the ellipses affect the streamed method data.
+e. Commas (",") – Commas in the pseudo-code method signatures are used to separate items in
+a list, options in a typeOr value, or to separate parameters, and do not affect the streamed
+method data.
+f.
+Curly braces ("{", "}") – Curly braces are used to provide additional information regarding the
+type that precedes them (e.g. specifying a specific type of UID reference for a uidref type) or to
+encapsulate the options for a typeOr value, and do not affect the streamed method data.

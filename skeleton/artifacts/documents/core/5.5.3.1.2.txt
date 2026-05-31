@@ -1,0 +1,5 @@
+5.5.3.1.2 HaveHigh
+If the value of this column is True, then the values in the High Trust time columns (HighByWhom,
+HighSetTime, HighInitialTimer, and HighLag) are meaningful.  If the value of the TrustMode column
+is Low or Timer then the value of this column SHALL be False.
+This column SHALL NOT be modifiable by the host.

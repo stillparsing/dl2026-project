@@ -1,0 +1,4 @@
+5.4.2.4.7 LifeCycleState
+This column value represents the life cycle state of this SP.  The LifeCycleState column SHALL NOT
+be written directly - the TPer changes it as appropriate.
+This column SHALL NOT be modifiable by the host.

@@ -1,0 +1,18 @@
+5.4.3.1 IssueSP (SP Method)
+This method is used to issue SPs on those TPers where the SPs are not fixed by the manufacturer.
+ORGs that are permitted to only issue certain Templates into new SPs are controlled by attributes in the
+ORG’s certificate.
+ThisSP.IssueSP [
+
+SPName : name,
+
+Size : uinteger,
+
+Templates : list [ TemplateObjectUID ... ],
+
+AdminExch : key_size,
+
+Enabled : boolean ]
+=>
+[ UID : uid, Size : uinteger ]
+

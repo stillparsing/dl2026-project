@@ -1,0 +1,18 @@
+5.1.3.2 KeepGlobalRangeKey parameter (Locking Template-specific)
+The Optional KeepGlobalRangeKey parameter is a Locking Template-specific parameter. This parameter provides
+a mechanism for the Locking SP to be “turned off” without eradicating the media encryption key for the Global Locking
+Range.  This allows the Locking SP to be disabled without causing removal of the user data associated with the Global
+Locking Range.
+When this parameter is present and set to True, the TPer SHALL NOT erase data associated with the Global Locking
+Range after the Locking SP transitions to the “Manufactured-Inactive” state even if the valid value is set to the
+ActiveDataRemovalMechanism parameter in DataRemovalMechanism table.
+If the Global Range is either Read Unlocked or Write Unlocked at the time of invocation of RevertSP, then the
+TPer SHALL comply with the request to keep the user data associated with the Global locking range and the Global
+Range’s media encryption key.
+
+If the Global Range is Read Locked and Write Locked then invocation of the RevertSP method with the
+KeepGlobalRangeKey parameter set to True SHALL fail with status FAIL, and the SP SHALL NOT change life cycle
+states.
+If the Locking SP was created in manufacturing, support for the KeepGlobalRangeKey parameter is Mandatory for
+the Locking SP.
+The parameter number for KeepGlobalRangeKey SHALL be 0x060000.

@@ -1,0 +1,40 @@
+4.2.3.1 TPerInfo (M)
+The TPerInfo table has the column defined in Table 26, in addition to those defined in [2], and Table 27 defines the
+Preconfiguration Data for the TPerInfo table:
+Table 26 - Admin SP – TPerInfo Columns
+```json
+[
+    {
+        "Column Number": "0x08",
+        "Column Name": "ProgrammaticResetEnable",
+        "IsUnique": "",
+        "Column Type": "boolean"
+    }
+]
+```
+
+• ProgrammaticResetEnable
+This column indicates whether support for programmatic resets is enabled or not. If
+ProgrammaticResetEnable is TRUE, then the TPER_RESET command is enabled. If
+ProgrammaticResetEnable is FALSE, then the TPER_RESET command is not enabled.
+This column is readable by Anybody and modifiable by the SID authority.
+*TP1 means that the value in the GUDID column SHALL comply with the format defined in [2].
+*TP2 means that this version or any version that supports the defined features in this SSC.
+*TP3 means that the SSC column is a list of names and SHALL have “Opal” as one of the list elements.
+
+Table 27 - Admin SP - TPerInfo Table Preconfiguration
+```json
+[
+    {
+        "UID": "00 00 02 01 00 03 00 01",
+        "Bytes": "",
+        "GUDID": "VU *TP1",
+        "Generation": "",
+        "Firmware Version": "",
+        "ProtocolVersion": "1 *TP2",
+        "SpaceForIssuance": "",
+        "SSC": "[\"Opal\"] *TP3",
+        "ProgrammaticResetEnable": "FALSE"
+    }
+]
+```

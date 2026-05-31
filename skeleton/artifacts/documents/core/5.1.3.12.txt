@@ -1,0 +1,8 @@
+5.1.3.12 byte_row_ref
+Type used for referencing a row in a byte table.
+Table 62 byte_row_ref
+```markdown
+| UID                         | Name          | Format                    |
+|-----------------------------|---------------|---------------------------|
+| 00 00 00 05 00 00 0F 01     | byte_row_ref  | General_Reference_Type {7}|
+``` 

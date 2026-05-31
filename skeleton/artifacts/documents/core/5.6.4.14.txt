@@ -1,0 +1,12 @@
+5.6.4.14 HMAC Method Group – HMACInit (Object Method)
+This method is used to initiate an HMAC “stream” using the hash object that invoked the method.  Only
+one HMAC “stream” SHALL be able to be open at any one time for any individual hash object.
+Invocation of this method is required before the HMAC method MAY be successfully invoked.  In
+preparation for beginning the HMAC “stream”, upon successful invocation of the HMACInit method, the
+invoking hash object’s Accumulator column is set to zero.
+HashObjectUID.HMACInit [
+BufferOut = cell_block ]
+=>
+[   ]
+
+

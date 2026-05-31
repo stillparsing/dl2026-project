@@ -1,0 +1,6 @@
+5.4.2.3.11 Instances
+This is the number of SPs on the TPer that are currently instantiated from this Template. Only deleting
+an SP decrements this number.
+If the value of the Instances column is equal to the value of the MaxInstances column for a given
+Template, then attempts to issue additional SPs incorporating that Template SHALL result in an error.
+This column SHALL NOT be modifiable by the host.

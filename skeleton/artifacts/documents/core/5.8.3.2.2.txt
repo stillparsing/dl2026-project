@@ -1,0 +1,2 @@
+5.8.3.2.2 HighSecurity
+This is the initial value to be used in the HighSecurity column of the newly created LogList object.

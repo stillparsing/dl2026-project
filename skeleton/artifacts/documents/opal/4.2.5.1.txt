@@ -1,0 +1,44 @@
+4.2.5.1 Data_removal_mechanism
+The data_removal_mechanism type is defined in Table 30 for Opal:
+Table 30 - data_removal_mechanism Type Table Addition
+```json
+[
+    {
+        "UID": "00 00 00 05 00 00 04 20",
+        "Name": "data_removal_mechanism",
+        "Format": "Enumeration_Type, 0, 7"
+    }
+]
+```
+
+Table 31 defines the enumeration values. The mechanisms associated with each Enumeration Value are defined in
+Table 10.
+Table 31 - data_removal_mechanism Enumeration Values
+```json
+[
+    {
+        "Enumeration Value": 0,
+        "Associated Value": "Overwrite Data Erase"
+    },
+    {
+        "Enumeration Value": 1,
+        "Associated Value": "Block Erase"
+    },
+    {
+        "Enumeration Value": 2,
+        "Associated Value": "Cryptographic Erase"
+    },
+    {
+        "Enumeration Value": "3–4",
+        "Associated Value": "Reserved"
+    },
+    {
+        "Enumeration Value": 5,
+        "Associated Value": "Vendor Specific Erase"
+    },
+    {
+        "Enumeration Value": "6-7",
+        "Associated Value": "Reserved"
+    }
+]
+```

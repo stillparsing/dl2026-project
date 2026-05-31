@@ -1,0 +1,9 @@
+3.4.3.1 Issuing an SP
+Begin Informative Content
+Issuing an SP is similar to building a train (see Figure 9 below). Every train (SP) must have an engine
+(Base Template). Additional cars (other Templates) providing additional capabilities are able to be
+added at the time of issuance. In the simplest case, an SP is issued from just the Base Template (see
+part ‘a’). In more complex cases several templates are used.
+End Informative Content
+Figure 9  Issuance
+4 Life Cycle of SPs

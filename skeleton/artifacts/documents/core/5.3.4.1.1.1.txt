@@ -1,0 +1,11 @@
+5.3.4.1.1.1 GenKey on  C_PIN Objects
+If the value of the CharSet column is a NULL UID reference, then the default character set used when
+creating a new PIN column value with the GenKey method SHALL be made up of the set of valid ASCII
+printable characters (see [7]).  The default value of the CharSet column is zeroes.
+If the CharSet column value is not zeroes, it SHALL be a uid to a byte table in which SHALL be defined
+a character set to be used when creating a new PIN column value with the GenKey method to generate
+a new PIN column value.
+A CharSet column value of 0x00 0x00 0x00 0x0B 0x00 0x00 0x00 0x01 SHALL indicate that
+character set is not restricted, and all byte values are legal.
+The TPer SHALL NOT enforce the character set when the host sets the PIN column via the Set
+method.

@@ -1,0 +1,57 @@
+4.3.1.5 MethodID (M)
+The MethodID table is defined in [2], and Table 37 defines the Preconfiguration Data for the MethodID table.
+*MT1 means refer to section 5.1.2.3 for details on the requirements for supporting RevertSP.
+Table 37 - Locking SP - MethodID Table Preconfiguration 
+```json
+[
+    {
+        "UID": "00 00 00 06 00 00 00 08",
+        "Name": "Next",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 0D",
+        "Name": "GetACL",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 10",
+        "Name": "GenKey",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 11 *MT1",
+        "Name": "RevertSP",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 16",
+        "Name": "Get",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 17",
+        "Name": "Set",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 00 1C",
+        "Name": "Authenticate",
+        "CommonName": "",
+        "TemplateID": ""
+    },
+    {
+        "UID": "00 00 00 06 00 00 06 01",
+        "Name": "Random",
+        "CommonName": "",
+        "TemplateID": ""
+    }
+]
+```
+

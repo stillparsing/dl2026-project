@@ -1,0 +1,36 @@
+5.1.4.2.12 package
+This abstract type is a grouping of Named value pairs that are used to describe the contents of a
+package retrieved from a TPer using the GetPackage method, or sent to the TPer with the SetPackage
+method.  The components are encapsulated with interface type List value delimiters ("[", "]").
+The name of each component is a uinteger representing the positioning of that component within the
+grouping, as defined in this specification.  The associated number also appears in the appropriate
+component description.
+The components are defined as follows:
+a. Key - this component is a Named value pair with a Name of "0x00" and a value of bytes.  It
+represents the key material from the invoking credential.  If a WrappingKey was supplied to
+the GetPackage method, then this key material is encrypted using the WrappingKey
+credential.  The WrappingKey credential MAY be a symmetric key or the public key of a
+public/private key pair.  When retrieving the key material from credentials that store key
+information in multiple columns, any of those columns that are empty or uninitialized
+SHALL return as 0x00 for uinteger type columns and 0x00 for bytes type columns.
+b. Purpose – this component is a Named value pair with a Name of "0x01" and a value of
+package_purpose.  This is the value of the Purpose parameter of the GetPackage method
+invocation.
+c. Date – this component is a Named value pair with a Name of "0x02" and a value of date.
+This is the value of the Date parameter of the GetPackage method invocation.  This
+component is omitted if the Date parameter was not supplied to the GetPackage method
+invocation.
+d. Log – this component is a Named value pair with a Name of "0x03" and a value of bytes.
+This is the value of the Log parameter of the GetPackage method invocation.  This
+component is omitted if the Log parameter was not supplied to the GetPackage method
+invocation.
+e. MAC – this component is a Named value pair with a Name of "0x04" and a value of bytes.
+This is the hash of the package contents (except this component) and is signed by the
+SigningKey credential identified in the GetPackage method invocation.  The hash protocol
+used to create the hash is identified in the Hash column of the SigningKey credential.  The
+value of this component is the signature of a private key if a public key credential is
+specified, or an HMAC if a symmetric key credential is specified.
+Format:
+
+[ Key = bytes, Purpose = package_purpose, Date = date, Log = bytes, MAC =
+bytes ]

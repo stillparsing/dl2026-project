@@ -1,0 +1,14 @@
+5.1.3.64 protect_types
+This set is used to identify the protection mechanisms in operation when a column is identified as
+hidden.
+Table 123 protect_types
+```markdown
+| UID                         | Name          | Format      |
+|-----------------------------|---------------|-------------|
+| 00 00 00 05 00 00 1A 05     | protect_types | Set_Type,   |
+|                             |               | 0,          |
+|                             |               | 255         |
+```
+
+The empty set indicates that keys are not hidden.  The values of the set are all applied to the protected
+value.  The set values are assigned in [3].

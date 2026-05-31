@@ -1,0 +1,2 @@
+5.3.3.2.5 MinSize
+The MinSize parameter is used to define the initial number of rows allocated for the new table.

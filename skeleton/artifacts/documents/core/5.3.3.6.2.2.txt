@@ -1,0 +1,6 @@
+5.3.3.6.2.2 RowValues
+This value is returned if the method is invoked on an object table.  This is a list of Named value pairs
+representing the columns returned for the object identified in the method invocation.  Each Named
+value pair consists of a name that represents the column, identified by column number.  The value of
+each Named value pair is the value of the indicated column.
+Column name-value pairs SHALL be returned in the order in which they are listed in the Column table.

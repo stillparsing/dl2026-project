@@ -1,0 +1,9 @@
+5.3.4.1.1 Credential Tables
+Credential tables represent an extensible basis for providing the public and private parts of
+authentication mechanisms and key stores.  Each credential table represents a different mechanism or
+key store type and each row a different authentication or key using the mechanism or key store
+represented by the table.  The credential tables supported SHALL be listed in the CryptoSuite table in
+the Admin SP.
+In the credential table definitions, marked columns (those shaded gray) MAY be hidden.  The
+mechanism(s), if any, used to hide the values stored in those columns are discoverable via the
+SecretProtect table (see 5.3.2.8).

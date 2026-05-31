@@ -1,0 +1,6 @@
+5.7.2.2.5 RangeLength
+This column value defines the quantity of contiguous LBAs for this LBA range (starting with the value
+defined in the RangeStart column).  In non-Global Range rows, this column MAY be modifiable based
+on access control settings.  Changes to this column are subject to the same constraints and checks
+defined for this column when rows of the Locking table are created (see 5.7.3.3).
+For the Locking object that represents the Global Range, this column value SHALL be zeroes.

@@ -1,0 +1,5 @@
+5.6.4.17.2 DeletePattern
+This parameter identifies whether the table identified in the PatternInput parameter is zeroed.  If the
+DeletePattern parameter is True, the cell values in the referenced table SHALL be set to 00s after the
+pattern is applied to the XOR operation.  If the parameter value is False, no change is made to the
+value stored in the cells of the PatternInput byte table.

@@ -1,0 +1,7 @@
+5.2.3.1.9 SessionTimeout
+The SessionTimeout parameter is used to allow the host to provide a requested timeout value for the
+session.
+The value, in milliseconds, SHOULD be less than the TPer’s MaxSessionTimeout property, greater
+than the TPer’s MinSessionTimeout property (see 5.2.2.1), and less than the value of the
+SPSessionTimeout column in the SP’s SPInfo table.  If the parameter value is outside of these limits,
+the method invocation SHALL fail.

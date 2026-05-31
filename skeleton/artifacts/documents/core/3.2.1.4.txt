@@ -1,0 +1,19 @@
+3.2.1.4 Type Checking
+Begin Informative Content:
+It is reasonable to consider the parameter list of each method call as a struct with both required and
+optional member types.  Since this is the case, whenever a particular method is received, the TPer is
+able to check the types of the received parameters to ensure they match the expected types for that
+method's signature.
+For methods that have dynamic parameter requirements (such as the Get and Set methods), it is
+necessary to consider the composition of the table upon which the method is operating.  Using the Set
+method as an example, the method parameters include identifiers for columns and the values to be
+assigned to each of those columns.  Because the definition of a table is known and fixed, the TPer is
+able to treat each table as a struct (for the purposes of type checking), with components equivalent to
+the columns of that table.
+With the knowledge of the columns that make up the table/object upon which the method is operating,
+as well as the type of each of those columns, the TPer is able to initially determine if the value sent is of
+the correct type for each column.  The TPer is able to accomplish this without having to perform strong
+type checking on whether or not the value is valid for actual assignation to that column (i.e. the TPer is
+able to initially verify that a particular parameter is a uinteger without having to determine if its size is
+within bounds for the column).
+End Informative Content

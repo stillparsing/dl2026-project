@@ -1,0 +1,25 @@
+5.7.3.7.1 Re-encryption State Descriptions
+Figure 12  LBA Range Re-encryption State Diagram
+
+S1: IDLE: Re-encryption is idle in this state. No re-encryption is executing for this LBA range.
+Transition S1:S2 START_req has been detected.
+
+S2: PENDING: This LBA Range’s re-encryption process is waiting to start or continue re-encryption
+Transition S2:S3 TPer_Ready condition is met.
+Transition S2:S5 PAUSE_req has been detected OR TPer detected error condition
+
+S3: ACTIVE:   This LBA Range’s re-encryption process is executing
+Transition S3:S4  TPer_Job_Done condition is met AND AdvKeyMode = 0.
+Transition S3:S2 TPer_Reset_detect condition is met AND TPer_Reset_Stop is not met.
+Transition S3:S5  A TPer_Error_Detect condition is met OR TPer_Reset_Stop condition is met OR
+PAUSE_req has been detected
+Transition S3:S1 Tper_Job_Done condition is met AND ADVKeyMode = 1 AND re-encryption has
+completed
+
+S4: COMPLETED: This LBA Range’s re-encryption process has completed without errors.
+Transition S4:S1  ADVKey_req has been detected.
+
+S5: PAUSED: This LBA Range’s re-encryption has temporarily halted. The re-encryption process has
+been quiesced and awaiting host intervention.
+Transition S5:S2  CONT_req has been detected
+Transition S5:S1 ADVKey_req OR RETIDLE_req has been detected

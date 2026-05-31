@@ -1,0 +1,3 @@
+5.4.2.3.6 Time
+This is the nominal operation time, in milliseconds, associated with this crypto type.
+This column SHALL NOT be modifiable by the host.

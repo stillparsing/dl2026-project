@@ -1,0 +1,27 @@
+5.3.4.1.10 Session Startup Authorities
+If the HostSigningAuthority is specified in the StartSession invocation, and that authority has an
+Operation column value of Signing, SymK, or HMAC, then the SP SHALL respond to the
+StartSession invocation with a SyncSession invocation that contains the SPChallenge parameter,
+which holds a 32-byte nonce.  The host SHALL sign the SPChallenge nonce using the
+HostSigningAuthority’s credential as appropriate, and then submit the signed challenge back to the SP
+in a StartTrustedSession method invocation.
+For HostSigningAuthorities with an Operation column value of "SymK", the host SHALL encrypt the
+challenge using the appropriate symmetric key.  This encryption SHALL be in ECB mode.
+If the HostSigningAuthority is specified, and that authority has an Operation column value of
+Password, then the credential referenced by the authority SHALL be a C_PIN object for session startup
+to resolve properly.  The host SHALL send the value of the PIN via the HostChallenge parameter in the
+StartSession method invocation.
+If the SPSigningAuthority is referenced, and that authority has an Operation column value of Signing,
+SymK, or HMAC, then the host SHALL include in its StartSession method invocation the
+HostChallenge parameter, which holds a 32-byte nonce.  The SP SHALL sign the HostChallenge nonce
+using the SPSigningAuthority’s credential as appropriate, and submit the signed challenge back to the
+host in its SyncTrustedSession method.
+For SPSigningAuthorities with an Operation column value of "SymK", the device SHALL encrypt the
+challenge supplied by the host using the appropriate symmetric key.  This encryption SHALL be in ECB
+mode.
+If the SPSigningAuthority is referenced, and that authority has an Operation column value of
+Password, then the credential referenced by that authority SHALL be a C_PIN object for session
+startup to resolve properly.  The SP SHALL send the value of the PIN via the SPChallenge parameter
+of the SyncSession method.
+When session startup successfully completes, all authorities invoked during the session startup process
+SHALL be considered authenticated.

@@ -1,0 +1,4 @@
+1.1 Document Purpose
+Storage Workgroup specifications provide a comprehensive architecture for putting Storage Devices under policy
+control as determined by the trusted platform host, the capabilities of the Storage Device to conform to the policies of
+the trusted platform, and the lifecycle state of the Storage Device as a Trusted Peripheral.

@@ -1,0 +1,18 @@
+5.3.2.18.3 CommonName
+This is a name that MAY be shared by multiple C_EC_192 objects.
+For C_EC_192 objects that exist at issuance, this column SHALL NOT be modifiable by the host.
+5.3.2.18.4
+p
+Modulus
+5.3.2.18.5
+r
+Order of the curve
+5.3.2.18.6
+b
+Curve coefficient (y2=x3–3x+b mod p)
+5.3.2.18.7
+x
+Base point x-coordinate
+5.3.2.18.8
+y
+Base point y-coordinate

@@ -1,0 +1,10 @@
+3.3.4.3 TPer Layer
+Begin Informative Content
+This is the entry point into the TPer.  This layer has very limited functionality.   Commands at this layer
+are designed to be used without ComIDs.   In particular, the command used to request a ComID,
+GET_COMID, is dealt with in this layer.
+The only commands dealt with in this layer are IF-RECV commands with some specific reserved
+ComIDs and protocol ID settings.  All other commands are passed up to the Communication Layer.
+End Informative Content
+The commands specified in the TPer layer and in the communication layer SHALL utlilize Protocol ID =
+0x02.

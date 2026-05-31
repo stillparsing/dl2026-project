@@ -1,0 +1,46 @@
+1.3.4 Cell Shading and Font Legend for Preconfiguration Tables
+The legend in Table 1 defines the Preconfiguration tables cell color coding, with the RGB values for the shading of
+each cell indicated in parentheses. This color coding is informative only. A Preconfiguration table cell content is
+normative. If a Preconfiguration table cell is empty or blank (regardless of shading), then the contents of that cell are
+not specified in this specification. The contents may be specified in another specification.
+
+Table 1 - Preconfiguration Tables Legend 
+```json
+[
+    {
+        "Table Cell Legend": "Arial-Narrow (230, 230, 230)",
+        "R-W": "Read-only",
+        "Value": "Opal SSC specified",
+        "Access Control": "Fixed",
+        "Comment": "Cell content is Read-Only. Access control is fixed. Value is specified by the Opal SSC"
+    },
+    {
+        "Table Cell Legend": "Arial Narrow bold-under (230, 230, 230)",
+        "R-W": "Read-only",
+        "Value": "VU",
+        "Access Control": "Fixed",
+        "Comment": "Cell content is Read-Only. Access Control is fixed. Values are Vendor Unique (VU). A minimum or maximum value may be specified."
+    },
+    {
+        "Table Cell Legend": "Arial-Narrow (0, 0, 0)",
+        "R-W": "Not Defined (N)",
+        "Value": "Not Defined",
+        "Access Control": "Not Defined",
+        "Comment": "Cell content is (N). Access control is not defined. Any text in table cell is informative only. A Get MAY omit this column from the method response."
+    },
+    {
+        "Table Cell Legend": "Arial Narrow bold-under (179, 179, 179)",
+        "R-W": "Write",
+        "Value": "Preconfigured, user personalizable",
+        "Access Control": "Preconfigured, user personalizable",
+        "Comment": "Cell content is writable. Access control is personalizable Get Access Control is not described by this color coding"
+    },
+    {
+        "Table Cell Legend": "Arial-Narrow (179, 179, 179)",
+        "R-W": "Write",
+        "Value": "Preconfigured, user personalizable",
+        "Access Control": "Fixed",
+        "Comment": "Cell content is writable. Access control is fixed. Get Access Control is not described by this color coding"
+    }
+]
+```

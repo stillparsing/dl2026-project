@@ -1,0 +1,2 @@
+5.8.3.2.7.1 LogListUID
+This is the UID column value that is assigned to the newly created LogList object in the LogList table.

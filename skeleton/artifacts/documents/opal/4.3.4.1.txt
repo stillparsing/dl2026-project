@@ -1,0 +1,2 @@
+4.3.4.1 Random
+Refer to section 4.2.9.1 for additional constraints imposed on the Random method.

@@ -1,0 +1,10 @@
+5.6.4.1 Random Number Related Method Group - Random (SP Method)
+This section describes the method used to generate random numbers.  This method returns a
+sequence of random bytes of a specified size.  The quality of random numbers generated is under the
+purview of the conformance profile.
+ThisSP.Random[
+Count : uinteger,
+BufferOut = cell_block ]
+=>
+[ Result : bytes ]
+

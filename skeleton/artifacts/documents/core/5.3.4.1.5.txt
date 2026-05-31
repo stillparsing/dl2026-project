@@ -1,0 +1,30 @@
+5.3.4.1.5 Session Startup
+Session startup involves the exchange of either two or four methods between the host and the SP with
+which the host is attempting to start the session.
+The properties of the session – i.e., whether secure messaging is required, the secure messaging type,
+and the type of message authentication – are controlled by values in the columns of authority objects
+referenced as parameters to the methods, and are determined independently for each communicator.
+When the StartSession method is invoked, the authorities to be used for that session are referenced
+as parameters.  The following identifies the order of authority precedence in the StartSession
+invocation.  For the invoked host authorities, the following list defines the “Host Control Authority” that
+identifies the Host-to-SP session property requirements, including the secure messaging properties for
+communications from the host to the SP:
+a. HostSigningAuthority
+b. If no HostSigningAuthority is invoked, then the HostExchangeAuthority is the “Host Control
+Authority”.
+c. If neither the HostSigningAuthority nor the HostExchangeAuthority invoked, then there is no
+“Host Control Authority”.
+For SP response authorities referenced from the “Host Control Authority”, the following list defines the
+“SP Control Authority” that identifies the SP-to-Host session property requirements, including the
+secure messaging properties for communications from the SP to the host:
+a. SPSigningAuthority
+b. If no SPSigningAuthority is referenced, then the SPExchangeAuthority is the “SP Control
+Authority”.
+c. If neither the SPSigningAuthority nor the SPExchangeAuthority invoked, then there is no
+“SP Control Authority”.
+If the StartSession method fails, the return result is formatted as a SyncSession method invocation
+from the TPer, using only the HostSessionID and SPSessionID parameters, with a non-Success status
+code.
+If the StartTrustedSession method fails, the return result is formatted as a SyncTrustedSession
+method invocation from the TPer, using only the HostSessionID and SPSessionID parameters, with a
+non-Success status code.

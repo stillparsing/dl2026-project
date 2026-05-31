@@ -1,0 +1,7 @@
+5.1.2.1 Revert Support
+Support for Revert within transactions is (N), and the behavior of Revert within transactions is out of the scope of
+this specification.
+Support for Revert on the Admin SP’s object in the SP table is Mandatory. (Note that the OFS of the Admin SP is
+Manufactured, see section 5.2.2).
+If the Locking SP was created in manufacturing, support for Revert on the Locking SP’s object in the SP table is
+Mandatory.

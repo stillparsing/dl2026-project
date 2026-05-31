@@ -1,0 +1,13 @@
+3.2.2.3.1 Simple Tokens – Atoms Overview
+Atoms are used to encode data of various sizes and types.  Atoms MAY be tiny atoms, which are one
+byte in length; short atoms which have a 1-byte header and contain up to 15 bytes of data; medium
+atoms which have a 2-byte header and contain up to 2047 bytes of data; or long atoms which have a 4-
+byte header and which contain up to 16,777,215 bytes of data.
+Tiny atoms only represent integers, whereas short, medium, and long atoms are used to represent
+integers or bytes (with the “B” bit set).
+A continued value is used to represent a long byte sequence when the total length is not known in
+advance. A continued value is represented by a sequence of two or more atoms.
+Each atom in a continued value MAY be a short atom, medium atom, or long atom. The BS bits are set
+to 11b for all atoms except the last atom, for which the BS bits are set to 10b. All representations of
+continued values are considered equivalent encodings of the same value.
+Integer and uinteger values SHOULD be encoded using the shortest possible atom.

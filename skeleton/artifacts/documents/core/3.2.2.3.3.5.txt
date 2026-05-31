@@ -1,0 +1,30 @@
+3.2.2.3.3.5 End Transaction (ET)
+The host application utilizes this token to commit or abort the associated open transaction level.
+When the host ends the transaction, the End Transaction token is sent by the host to the SP along with
+the uinteger status required by the host for that transaction control token.
+When the SP delivers its response to the host application's message, the SP's message SHALL mirror
+that of the host by including End Transaction tokens in the equivalent places in the message stream
+along with the actual status of the End Transaction request.
+The host SHOULD send a status code of 0x00 or 0x01 with an End Transaction token.  A status code of
+0x00 signals to the device that the host is committing that transaction level.  A status code of 0x01
+signals to the device that the host is aborting that transaction level and the TPer SHALL abort that
+transaction level.
+
+If the host sends a status code of 0x00, the device SHALL attempt to commit that transaction level, and
+SHALL return either 0x00 in the case of a successfully committed transaction or 0x01 in the case of an
+unsuccessfully committed transaction.
+
+If the host sends a status code with an End Transaction token that the device does not support, the
+device SHALL abort the transaction and return a status code of 0x01.
+Host delivery of the End Transaction token with a status code other than 0x00 signals that the host is
+aborting the transaction.  The TPer SHALL abort that transaction level.
+SP delivery of the End Transaction token with a status code other than 0x00 signals that the SP
+aborted the transaction.
+Table 16 End Transaction Status Codes
+```markdown
+| End Transaction Status Code (uinteger) | Meaning |
+|---------------------------------------|---------|
+| 0x00                                  | Commit  |
+| 0x01                                  | Abort   |
+| >0x01                                 | Reserved|
+```

@@ -1,0 +1,3 @@
+5.1.5.12 TPER_MALFUNCTION
+This status is returned when some operational failure has occurred within the TPer that has caused the
+method invocation to fail.

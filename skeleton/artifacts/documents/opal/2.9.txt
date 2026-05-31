@@ -1,0 +1,2 @@
+2.9 SSC Discovery
+Refer to [2] for details (see section 3.1.1).

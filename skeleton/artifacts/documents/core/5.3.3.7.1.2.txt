@@ -1,0 +1,4 @@
+5.3.3.7.1.2 Row
+For Table.Set on byte tables, "Where = { Row }" identifies the byte address (i.e. RowNumber) where
+the Set method is to begin operating.
+If the Where parameter is omitted, the Set method's operation begins at the first row of the byte table.

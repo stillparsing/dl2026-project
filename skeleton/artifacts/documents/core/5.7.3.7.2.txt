@@ -1,0 +1,12 @@
+5.7.3.7.2 ActiveKey Column Modifications
+The following rules define how and when the ActiveKey column value is modified:
+a. Host Application directly writes ActiveKey column value
+b. When the ReEncryptState column value is COMPLETED or PAUSED and the Host sets the
+ReEncryptRequest column value to ADVKey_req, the TPer moves the NextKey column
+value to the ActiveKey column (setting the NextKey column to a NULL UID).
+c. When the ReEncryptState column value is ACTIVE AND AdvKeyMode = 1 AND
+TPer_Job_Done condition is detected, the TPer moves the NextKey column value to the
+ActiveKey column (setting the NextKey column to a null uid reference).
+When ReEncryptState value is PAUSED AND the Host sets ReEncryptRequest to ADVKey_req, the
+TPer moves the NextKey column value to the ActiveKey column (setting the NextKey column to a
+NULL UID).

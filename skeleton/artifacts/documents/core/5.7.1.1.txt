@@ -1,0 +1,26 @@
+5.7.1.1 Terminology
+Table 224 Locking Template Terminology
+```markdown
+| Term                   | Definition                                                                                                      |
+|------------------------|-----------------------------------------------------------------------------------------------------------------|
+| Global range           | The entire User-Addressable LBA Range                                                                          |
+| Key Changing           | The changing of a Credential reference                                                                          |
+| KeysAvailable          | Condition: Host has provided enough information to enable access to Locking LBA range keys. See the KeysAvailableCfg column in the LockingInfo Table for more information. |
+| LBA Range              | A sub-section of the User-Addressable LBA Range                                                                |
+| MBR Shadowing          | This allows loading of preboot code that MAY be necessary to unlock an LBA range that starts at LBA 0 for reading and writing |
+| Media Encryption       | Inline encryption of data to media                                                                               |
+| Re-encryption          | Encryption of the original cleartext media data, which MAY have been previously encrypted, to the media with a different key. |
+| TPer_Error_Detect      | Condition: A TPer re-encryption error has been detected.                                                        |
+| TPer_Job_Done          | Condition: TPer has completed re-encryption without errors                                                      |
+| TPer_Key_Error         | Not all keys are valid                                                                                           |
+| TPer_Ready             | Condition: ALL the following resources & conditions required to begin or continue re-encryption are true:       |
+|                        | - All TPer resources are available, such as buffer space, re-encryption H/W & S/W resources.                     |
+|                        | - Re-encryption keys are valid                                                                                   |
+|                        | - TPer_Error_Detect condition is False                                                                           |
+|                        | - TPer_Reset_Stop condition is False                                                                             |
+|                        | - PAUSE_req is False                                                                                              |
+|                        | - KeysAvailable is True                                                                                           |
+| TPer_Reset_Detect      | Condition: A reset condition has been detected.                                                                  |
+| TPer_Reset_Stop        | Condition: A reset condition is detected that does not permit the Re-encryption process to continue.             |
+| User-Addressable LBA Range | The user-accessible storage space on a Storage Device, where user data is stored                              |
+```

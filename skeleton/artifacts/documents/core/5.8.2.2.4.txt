@@ -1,0 +1,4 @@
+5.8.2.2.4 Log
+This is the unique identifier of the associated Log table.  This is the same as the unique identifier
+recorded in the Table table entry for that log table.
+This column SHALL NOT be modifiable by the host.

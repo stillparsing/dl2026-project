@@ -1,0 +1,2 @@
+5.8.3.1.1 LogEntryName
+This is the value that is used for the Name column in the added Log object.

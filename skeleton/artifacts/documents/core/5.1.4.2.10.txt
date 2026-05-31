@@ -1,0 +1,15 @@
+5.1.4.2.10 lag
+This type represents a grouping of two Named value pairs, used to describe seconds and milliseconds,
+and is similar to the column type of the same name.  The components are encapsulated with the
+interface type List value delimiters ("[", "]").  Each of the components is encapsulated with the Named
+value delimiters.  The components are optional.
+The name of each component is a uinteger representing the positioning of that component within the
+grouping, as defined by this specification. The associated number also appears in the appropriate
+component description.
+The components are as follows:
+a. Seconds – this component is a Named value pair with a Name of "0x00" and a value of
+uinteger.  This value has an implicit size requirement of 2.
+b. Milliseconds – this component is a Named value pair with a Name of "0x01" and a value of
+uinteger.  This value has an implicit size requirement of 2.
+Format:
+[ Seconds = uinteger, Milliseconds = uinteger ]

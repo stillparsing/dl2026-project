@@ -1,0 +1,9 @@
+5.3.3.6 Basic Table Method Group - Get (Table and Object Method)
+This method is used to fetch the values of selected table cells (see 5.3.4.2.2).
+TableUID.Get [
+ObjectUID.Get [
+
+Cellblock : cell_block ]
+=>
+[ Result : typeOr { Bytes : bytes, RowValues : list [ ColumnNumber = Value ... ] } ]
+

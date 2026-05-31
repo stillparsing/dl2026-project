@@ -1,0 +1,7 @@
+5.5.1 Overview
+Begin Informative Content
+The Clock Template enables an SP to manage information about time.
+End Informative Content
+
+A TPer MAY support any number of SPs that incorporate the Clock Template, up to the limit imposed
+by the SSC or implementation and reported in the Admin SP's Template table.

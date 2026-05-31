@@ -1,0 +1,9 @@
+3.2.3.4.1.2.2 Pad
+The pad field ensures that the boundaries between subpackets (and therefore packets) are aligned to
+4-byte boundaries.  The number of pad bytes SHALL be (-Subpacket.Length modulo 4).  This field
+SHALL be zeroes.
+Begin Informative Content
+The receiver of a Subpacket is able to unambiguously determine how many bytes of real data there are
+by examining the Length field in the Subpacket header.
+Note that the standard C library does not handle the modulo operation with negative numbers properly.
+End Informative Content

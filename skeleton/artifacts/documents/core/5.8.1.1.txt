@@ -1,0 +1,5 @@
+5.8.1.1 Terminology
+Table 232 Log Template Terminology
+| Term        | Definition                                                                                                                                                                   |
+|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Default log | This is the initial log table created for an SP that incorporates the Log Template. By default, all authority operations, access control associations, transaction events, and session startup events log to this table. |

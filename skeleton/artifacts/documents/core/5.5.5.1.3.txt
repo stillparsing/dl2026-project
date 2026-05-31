@@ -1,0 +1,27 @@
+5.5.5.1.3 Setting Low Trust TIme
+Low Trust Time is set using the SetClockLow/SetLagLow method pair.
+The invocation of these methods operate as follows:
+1. The host invokes the SetClockLow method on the ClockTime table.  The ExactTime input is
+received and processed.  At this time the value that is eventually used to set LowInitialTimer
+should be computed by the SP by reading the IncrementalClock value.
+2. The SP returns a Result of “True”, indicating that the ExactTime value was received and
+processed.
+3. The host invokes the SetLagLow method on the ClockTime table.  This method SHALL be the
+next method invoked by the host after invocation of the SetClockLow method invocation.  If it is
+not, the SetClockLow method’s ExactTime values to be stored in the ClockTime table SHALL
+NOT be saved to the table.  When the SetLagLow method is received under this condition, the
+LagTime input is received and processed.  If this invocation is accepted, then
+1. The value of the HaveLow column is set to True.
+2. The value of the LowByWhom column is set to the authority for this session.
+3. The value of the LowSetTime column is set to ExactTime.
+4. The value of the LowInitialTimer column is set to the previously read
+IncrementalClock value.
+5. The value of the LowLag column is set to LagTime
+4. If the value of TrustMode is LowAndHigh and HaveHigh is True, then this call SHALL be
+accepted only when the existing HighSetTime and HighLag values bracket the new
+LowSetTime and LowLag values.  For additional information, see 5.5.5.1.1.
+Once all of the above steps have been processed, the SP SHALL return the method result.  If step 3
+was completed successfully and the condition noted in step 4 was met, the updates are made to the
+ClockTime table and the Result is returned as True.  If any of the updates in step 3 were not
+successfully completed or the condition noted in Step 4 was not met, Result is returned as False.
+

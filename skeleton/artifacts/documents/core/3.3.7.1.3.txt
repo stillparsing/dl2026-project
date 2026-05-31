@@ -1,0 +1,26 @@
+3.3.7.1.3 Session Manager Protocol Layer
+Begin Informative Content
+The Session Manager Layer (see 3.3.4) is a special protocol layer session on any TPer with SPs. It is
+the communications channel used by host applications to start and manage sessions with SPs, to
+inform the TPer of the host's communications capabilities, and to inquire about TPer communication
+characteristics. The Session Manager protocol layer does not provide a session “to” any SP – it
+provides a communications control session. The method calls available on the Session Manager Layer
+are identified in section 5.2.
+
+End Informative Content
+Although method invocations on the Session Manager layer SHALL NOT change permanent state on
+the TPer, some method invocations MAY have side effects that occur outside of the normal method
+invocation process, such as logging or PIN retry counts. In cases where these changes occur – for
+example, logging a StartSession method call success or failure – the change SHALL occur on the SP
+to which the method call was attempted.
+Method calls on the Session Manager Layer are formatted/encoded the same as on any other session.
+Due to the asynchronous nature of session startup and TPer communications, all of Session Manager
+layer methods’ responses are formatted as method calls, so that the host is able to identify responses
+to methods it has invoked.
+The Session Manager Layer control session for a given ComID SHALL always be open.  The TPer
+SHALL ignore End of Session and Transaction Control tokens sent to the control session, and SHALL
+not echo those tokens back to the host.
+Methods invoked on the control session with an InvokingID that is not the SMUID SHALL be
+ignored/discarded by the TPer.  Methods invoked on the control session with a MethodID that is not a
+control session method, or a control session method that the TPer does not support, SHALL be
+ignored/discarded by the TPer.

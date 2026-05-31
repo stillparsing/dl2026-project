@@ -1,0 +1,11 @@
+5.7.2.4 Media Encryption Key Table Group - K_AES_256 (Object Table)
+This table is used to store media encryption keys, cipher mode of operation, and associated metadata
+used with the Advanced Encryption Standard (see [12]).
+Table 228 K_AES_256 Table Description
+| Column Number | Column Name | IsUnique | Column Type           |
+|---------------|-------------|----------|-----------------------|
+| 0x00          | UID         |          | uid                   |
+| 0x01          | Name        | Yes      | name                  |
+| 0x02          | CommonName  | Yes      | name                  |
+| 0x03          | Key         |          | key_256               |
+| 0x04          | Mode        |          | symmetric_mode_media  |

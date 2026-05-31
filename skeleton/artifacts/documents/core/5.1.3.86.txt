@@ -1,0 +1,10 @@
+5.1.3.86 uinteger_20
+This is a uinteger type with a size restriction of 20 bytes.
+Table 150 uinteger_20
+```markdown
+| UID                           | Name        | Format          |
+|-------------------------------|-------------|-----------------|
+| 00 00 00 05 00 00 02 16       | uinteger_20 | Simple_Type,    |
+|                               |             | uinteger,       |
+|                               |             | 20              |
+```

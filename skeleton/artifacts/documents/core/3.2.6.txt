@@ -1,0 +1,15 @@
+3.2.6 Templates
+Begin Informative Content
+This document covers the following Templates:
+a. Base Template: Provides the tables and methods common for all SPs.
+b. Admin Template: Provides administrative control over other SPs and the TPer settings as
+a whole, and control over Issuance of new SPs.
+c. Clock Template: Contains tables and methods specialized for forensic and cryptographic
+clocks.
+d. Crypto Template: Contains functional extensions to the Base SP cryptographic and
+procedural capabilities.
+e. Locking Template:  Provides tables and methods for storage encryption/decryption and
+read/write lock state control.
+f.
+Log Template: Contains tables and methods specialized to forensic logging.
+End Informative Content

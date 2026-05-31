@@ -1,0 +1,30 @@
+2.1 Opal SSC Use Cases and Threats
+Start of Informative Comment
+The Opal SSC is an implementation profile for Storage Devices built to:
+•
+Protect the confidentiality of stored user data against unauthorized access once it leaves the owner’s control
+(following a power cycle and subsequent deauthentication)
+•
+Enable interoperability between multiple Storage Device vendors
+An Opal SSC compliant Storage Device:
+•
+Facilitates feature discoverability
+•
+Provides some user definable features (e.g. access control, locking ranges, user passwords, etc.)
+•
+Supports Opal SSC unique behaviors (e.g. communication, table management)
+This specification addresses a limited set of use cases. They are:
+•
+Deploy Storage Device & Take Ownership: the Storage Device is integrated into its target system and ownership
+transferred by setting or changing the Storage Device’s owner credential.
+•
+Activate or Enroll Storage Device: LBA ranges are configured and data encryption and access control credentials
+(re)generated and/or set on the Storage Device. Access control is configured for LBA range unlocking.
+•
+Lock & Unlock Storage Device: unlocking of one or more LBA ranges by the host and locking of those ranges
+under host control via either an explicit lock or implicit lock triggered by a reset event. MBR shadowing provides
+a mechanism to boot into a secure pre-boot authentication environment to handle device unlocking.
+•
+Repurpose & End-of-Life: erasure of data within one or more LBA ranges and reset of locking credential(s) for
+Storage Device repurposing or decommissioning.
+End of Informative Comment

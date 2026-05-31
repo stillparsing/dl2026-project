@@ -1,0 +1,6 @@
+5.8.3.3 ClearLog (Table Method)
+All entries in the indicated Log table are removed.
+LogTableUID.ClearLog [ ]
+=>
+[ ]
+

@@ -1,0 +1,22 @@
+3.3.9.5 Closing a Session
+If transmission acknowledgement is supported, when the host transmits a data subpacket that contains
+the End of Session token, the host SHOULD NOT immediately assume the session has successfully
+closed.
+The host SHOULD wait for the TPer to both transmit the TPer's own data subpacket that contains the
+End of Session token and to ACK the host’s packet that contained the End of Session token. The host
+SHOULD then ACK the TPer's data subpacket that contains the End of Session token.
+The host SHOULD follow the normal rules of the ACK mechanism.  If the transmission timeout period
+expires and the host has not received the TPer's ACK of its packet containing the End of Session token,
+the host SHOULD retransmit that packet and continue doing so until it receives an ACK or it reaches its
+timeout retransmission limit.
+If the TPer has not received, by the end of the transmission timeout period, the host's ACK of the TPer's
+packet containing the End of Session token, the TPer SHALL retransmit that packet, and continue
+retransmitting it until it receives an ACK from the host or until it reaches its implementation-defined
+timeout retransmission limit.
+Once the TPer has received the packet containing the host's ACK of the packet the TPer transmitted
+containing the data subpacket with the End of Session token, the TPer SHALL consider the session to
+be closed.
+
+Figure 6  Closing a Session
+
+

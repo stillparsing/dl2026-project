@@ -1,0 +1,13 @@
+3.3.4.7.3 No Response Available
+If no response is currently available to the GET_COMID_RESPONSE command, "No Response
+Available" is returned.  "No Response Available" is defined in Table 31.
+Table 31 No Response Available
+```markdown
+| BYTES    | FIELD                   | VALUE             |
+|----------|-------------------------|-------------------|
+| 0 to 3   | Extended ComID          | Allocated ComID   |
+| 4 to 7   | Request Code            | 00 00 00 00       |
+| 8 to 9   | Reserved                | 00 00             |
+| 10 to 11 | Available Data Length in bytes | 00 00       |
+| 12 to TRNSFLEN - 1 | Reserved        | 00                |
+```

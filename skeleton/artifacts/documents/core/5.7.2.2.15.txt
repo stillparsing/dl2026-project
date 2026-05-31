@@ -1,0 +1,3 @@
+5.7.2.2.15 AdvKeyMode
+This value defines when the value of the NextKey column moves to the ActiveKey column and whether
+ReEncryptState transitions to COMPLETED or IDLE when the re-encryption process completes.

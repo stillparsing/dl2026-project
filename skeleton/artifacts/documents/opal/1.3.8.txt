@@ -1,0 +1,4 @@
+1.3.8 Number Range Conventions
+p..q, where p is less than q, represents a range of numbers (e.g., words 100..103 represents words 100, 101, 102,
+and 103).
+

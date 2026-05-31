@@ -1,0 +1,25 @@
+5.3.2.25.18 Values for C_EC_283
+Table 204 represents the set of elliptic curve domain parameters that is the fixed set known as K-283 in
+[11] and sect283k1 in [19].  The entries k1, k2, k3, r, a, b, x and y represented in that table are example
+values for a curve that MAY be used with the C_EC_283 table.  These values are set as the default
+values for the associated columns when a new row is created in the C_EC_283 table and when values
+for those columns are not specified at table creation. These default values are not represented by a
+Type table entry; the TPer SHALL be required to keep track of these values and set them as defaults
+for new objects, as necessary.
+Table 204 FIPS K-283 Values for C_EC_283
+```markdown
+| Column | Value                                                                                   |
+|--------|-----------------------------------------------------------------------------------------|
+| k1     | 0C (= 12 in decimal)                                                                    |
+| k2     | 07                                                                                      |
+| k3     | 05                                                                                      |
+| r      | 01FFFFFF FFFFFFFF FFFFFFFF FFFFFFFF FFFFE9AE                                           |
+|        | 2ED07577 265DFF7F 94451E06 1E163C61                                                   |
+| a      | 00                                                                                      |
+| b      | 00000000 00000000 00000000 00000000 00000000                                          |
+|        | 00000000 00000000 00000000 00000001                                                   |
+| x      | 0503213F 78CA4488 3F1A3B81 62F188E5 53CD265F                                          |
+|        | 23C1567A 16876913 B0C2AC24 58492836                                                   |
+| y      | 01CCDA38 0F1C9E31 8D90F95D 07E5426F E87E45C0                                          |
+|        | E8184698 E4596236 4E341161 77DD2259                                                   |
+```

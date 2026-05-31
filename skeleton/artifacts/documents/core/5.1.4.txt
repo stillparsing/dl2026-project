@@ -1,0 +1,12 @@
+5.1.4 Abstract Types
+Begin Informative Content
+Abstract types are representations of grouped interface types, or interface types that have limits on their
+legal values, that are used specifically for encoding method parameters.  These representations are
+used primarily for documentation purposes, as part of the pseudo-code method signatures, to simplify
+the description of those methods.
+Abstract types do not affect the operation or regular encoding of a method, nor are they used as column
+types or represented in the Type table (though they resemble some of these types in structure, name,
+or both).  The primary goals of the abstract type constructs are to simplify the pseudo-code description
+of the methods themselves, and to provide insight into grouping using the List and Named value tokens
+introduced previously.
+End Informative Content

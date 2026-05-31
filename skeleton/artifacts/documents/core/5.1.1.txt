@@ -1,0 +1,179 @@
+5.1.1 Column Types Overview
+The following are the primitive data types used for column types as defined by the specification. How
+these primitive values are stored in a table cell is implementation dependent.
+a. integer. Signed integer.  To differentiate among the type sizes, a size identifier is specified
+with the type, i.e., a one-byte integer is denoted as integer_1, etc.
+b. uinteger. Unsigned integer. To differentiate among the type sizes, a size identifier is
+specified with the type, i.e. a one-byte integer is denoted as uinteger_1, etc.
+c. bytes. A fixed size sequence of bytes that is used to represent any type of data such as
+strings, blobs, bit vectors, time/dates, etc.  To differentiate among the type sizes, a size
+identifier is specified with the type, i.e. a one-byte bytes type is denoted as bytes_1, etc.
+d. bytes{max=n}. A variable size sequence of bytes.  To differentiate among the type sizes, a
+size identifier is specified with the type, i.e. a one-byte max bytes type is denoted as
+max_bytes_1, etc. Invocation of the Get method on a table cell with this type of value
+SHALL return the exact sequence of bytes, with the same token length, as was originally
+set.
+The value of a Type object's Format column SHALL indicate the structure and required values of that
+type.  The parsing of the value of this column is defined in a general manner using the following rules in
+ABNF (see [9]).  Additional specific information is provided after the notation.  In the Format column, the
+Format code and the table_kind value SHALL be encoded as a uinteger_2.  All other values are
+encoded as indicated.
+Type = Base_Type / Simple_Type / Enumeration_Type / Alternative_Type / List_Type /
+Restricted_Reference_Type / General_Reference_Type / Named_Value_Type / Struct_Type
+/ Set_Type
+
+table_kind = 1/2
+
+Base_Type = 0
+Simple_Type = 1 bytes_8 uinteger_2
+Enumeration_Type = 2 1*(uinteger_2 uinteger_2)
+Alternative_Type = 3 2*bytes_8
+List_Type = 4 uinteger_2 bytes_8
+Restricted_Reference_Type = 5/6 1*bytes_8
+General_Reference_Type = 7/8/9
+General_Reference_Table_Type = 10 table_kind
+Named_Value_Name_Type = 11 1*32bytes bytes_8
+Name_Value_Integer_Type = 12 integer_2 bytes_8
+Name_Value_Uinteger_Type = 13 uinteger_2 bytes_8
+Struct_Type = 14 1*bytes_8
+Set_Type = 15 1*(uinteger_2 uinteger_2)
+
+a. Base_Type.  The Base_Type format describes the most basic types.  Other types are
+created using the Base Types as building blocks.  The Base Types SHALL NOT be used
+directly.  Base Types SHALL always have a Size column value of 0 in the Type table.
+a. 0 – this is the Format code indicating that this is a Base_Type.
+b. Simple_Type.  The Simple_Type format defines an instance of one of the Base_Type
+types.  The Simple_Type always includes a uinteger in the format column, which defines
+the size for that instance of that Simple_Type.
+a. 1 – this is the Format code indicating that this is a Simple_Type.
+b. bytes_8 – this SHALL be a uidref to a Type object that is a Base_Type.
+c. uinteger_2 – this is the size of this instantiation of the Base_Type.
+c. Enumeration_Type. This is a n unsigned integer in a specific range.
+a. 2 – this is the Format code indicating this is an Enumeration_Type.
+b. 1*(uinteger_2 uinteger_2) – this is a number of pairs of values of uinteger_2 that
+represent the supported ranges of values in the enumeration.
+If a non-contiguous range of values is supported, the Format column SHALL contain a
+number of uinteger_2 pairs to identify all of the supported values.
+a. An invocation of the CreateRow method SHALL contain only a single pair of uinteger_2
+values.
+b. Pseudo-code example: enum {0..2} represents a range of 0 to 2 inclusive.
+d. Alternative_Type. This is a value that SHALL be an element of one of the specified types.
+The Alternative_Type format defines a union with the uinteger specifying the number of
+member types and followed by that many uidref{TypeObjectUID} references to the member
+types.
+a. 3 – this is the Format code indicating that this is an Alternative_Type
+b. 2*bytes_8 – this is a number of 2 or more uidrefs to different Type objects, other than
+Base_Types, that identify the options available for this type.
+Pseudo-code example:  typeOr{boolean,uinteger_4,bytes_7}
+e. List_Type. This is a sequence of values of the same type. The maximum number of
+elements is specified.    The elements of the list are not required to be provided in any
+specified order.  The elements of the list SHALL be returned to the host (with the Get
+method, for example) in the order in which they were received by the TPer.
+a. 4 – this is the format code indicating that this is a List_Type.
+b. uinteger_2 – this is the maximum number of elements that make up the list.
+c. bytes_8 – this SHALL be a uidref to a Type object, other than a Base_Type, that
+indicates the type of the elements of the list.
+Pseudo-code example:  list[10]{boolean} is a list of boolean values, with a maximum of 10
+elements.
+f.
+Restricted_Reference_Type. A reference to a row SHALL be contained in a specific table
+or group of tables.  The reference is to a physical row number (5) or a UID (6) within the
+table. The value of a ref is the uinteger row number for a byte table. The value of a uidref is
+a UID from the UID column of an object table. A uidref value of 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00, called the NULL UID, serves as a “null pointer”.
+a. 5/6 – these are the format codes indicating that this is a Restricted_Reference_Type
+i. 5 – this format code indicates that this type SHALL be the row number
+contained in one of the indicated byte tables.
+ii. 6 – this format code indicates that this type SHALL be the UID of an object
+contained in one of the indicated object tables.
+b. 1*bytes_8 – this is 1 or more UIDs that SHALL be to different Table UIDs that identify
+the tables within which the row number or uidref SHALL exist.
+In this example, TableName is the name of the referenced table:
+a. Pseudo-code example:  uidref{ <TableName>ObjectUID }
+b. Pseudo-code example:  ref{ <TableName>ObjectUID }
+g. General_Reference_Type. This is a reference to a row of some byte table, to the UID of
+some object, or to the UID of some table.  The General_Reference_Type format defines a
+physical row number of a byte table (7), a uid of some object (8), or a uid of some table (9).
+The UID reserved to represent “this SP” is encompassed by a General_Reference_Type
+of 8. The value of a ref is the uinteger row number for a byte table. The value of a uidref is
+a UID from the UID column of an object table. A uidref value of 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00, called the NULL UID, serves as a “null pointer”.
+a. 7/8/9 – these are the format codes indicating that this is a General_Reference_Type.
+i. 7 – this format code indicates that this type SHALL be the physical row number
+of a byte table.
+ii. 8 – this format code indicates that this type SHALL be the UID of some object.
+iii. 9 – this format code indicates that this type SHALL be the UID of some table.
+Pseudo-code example:  uidref{*}
+Pseudo-code example:  ref{*}
+h. General_Reference_Table_Type.  This is a reference to a a specific kind of table, either
+byte or object.
+a. 10 – this format code indicates that this is a General_Reference_Table_Type.
+b. table_kind (1/2) – this identifies whether the type value is the UID of an object table or
+the UID of a byte table.
+i. 1 – this table_kind value indicates that the type value SHALL be the UID of an
+object table.
+ii. 2 – this table_kind value indicates that type the SHALL be the UID of a byte
+table.
+i.
+Named_Value_Name_Type.  This is a Named value pair where the Name in the pair is a
+max_bytes_32, and the value is a uidref to the required type of the value.
+a. 11 – this format code indicates that this is a Named_Value_Name_Type.
+b. max_bytes_32 – this is a string with a maximum length of 32 characters that SHALL be
+the name submitted with the value.
+c. bytes_8 – this SHALL be a uidref to a Type object, other than a Base_Type, that
+indicates the type of the value to be submitted.
+j.
+Named_Value_Integer_Type.  This is a Named value pair where the Name in the pair is
+an integer_2, and the value is a uidref to the required type of the value.
+a. 12 – this format code indicates that this is a Named_Value_Name_Type.
+b. integer_2 – this is a signed integer that SHALL be the name submitted with the value.
+c. bytes_8 – this SHALL be a uidref to a Type object, other than a Base_Type, that
+indicates the type of the value to be submitted.
+k. Named_Value_Uinteger_Type.  This is a Named value pair where the Name in the pair is
+a uinteger_2, and the value is a uidref to the required type of the value.
+a. 13 – this format code indicates that this is a Named_Value_Name_Type.
+b. uinteger_2 – this is an unsigned integer that SHALL be the name submitted with the
+value.
+c. bytes_8 – this SHALL be a uidref to a Type object, other than a Base_Type, that
+indicates the type of the value to be submitted.
+l.
+Struct_Type.  This is a combination of different Named value types.  The Struct_Type
+format indicator is followed by the number of elements and then uidrefs to the rows in the
+Type table that represent each of those elements.  Name-value pairs in structs represent
+optional components.  These MAY be excluded when passing that struct as a method
+parameter.  When used as a column type, the size SHALL account for inclusion of all of a
+struct's components.
+a. 14 – this format code indicates that this is a Struct_Type
+b. 1*bytes_8 – this is a number of uidrefs to different Type objects, other than
+Base_Types, that identify the components of this type.
+Named value types in a struct SHALL all be different uidrefs and SHALL all be defined to
+utilize different names.
+If an element of a Struct is supplied when the Struct is referenced (for instance, in a method
+parameter), then that element SHALL appear in the order identified for that Struct in the
+Type table.
+For a Struct made up of Named value parameters A, B, C, and D, if the Struct is
+referenced, as in a method parameter, if element A is supplied then it SHALL be supplied
+first within the Struct.  Other correct element orderings include:
+a. ExampleStruct [ A, C, D ]
+b. ExampleStruct [ B, D ]
+c. ExampleStruct [ A, D ]
+Invalid element orderings include:
+a. ExampleStruct [ D, C ]
+b. ExampleStruct [ B, C, A ]
+c. ExampleStruct [ B, A, D, C ]
+m. Set_Type. A set of unsigned integers in a specific range.  The Set_Type format defines the
+range of the valid elements of the set, where the first integer is the start value of the valid
+elements of the set and the second integer is the end value.  The type itself is not limited to
+only a single selection from among the choices defined, as in the Enumeration_Type.  The
+Set_Type provides the host the ability to select more than one of the options.  Each SHALL
+appear only once in the Set.  The Set MAY hold any amount of selections, from zero to the
+number of selections.
+a. 15 – this format code indicates that this is a Set_Type
+b. 1*(uinteger_2 uinteger_2) – this is a number of pairs of values of uinteger_2 that
+represent the supported ranges of values in the set.
+i. If a non-contiguous range of values is supported, the Format column SHALL
+contain a number of uinteger_2 pairs to identify all of the supported values.
+ii. An invocation of the CreateRow method SHALL contain only a single pair of
+uinteger_2 values.
+Pseudo-code example:  Set{0..2} – Valid values for this set are made up of the following =
+{}, {0}, {1}, {2}, {0,1}, {0,2}, {1,2}, {0,1,2}.

@@ -1,0 +1,5 @@
+5.4.4.5 Default Logging Settings
+The default logging settings associated with the Admin Template methods are:
+a. The default logging for Admin SP method, IssueSP, is LogAlways.
+b. All other methods that apply to the Admin SP SHALL be as described in the Base Template
+reference section (See Section 5.3.4.4).

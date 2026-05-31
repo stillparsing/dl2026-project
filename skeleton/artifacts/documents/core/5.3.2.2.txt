@@ -1,0 +1,14 @@
+5.3.2.2 General Metadata Group - SPTemplates (Object Table)
+Begin Informative Content
+The SPTemplates table is an object table that identifies the component templates used to form the
+SP.
+End Informative Content
+There SHALL be one row in this table for each template used to create the SP, including a row for the
+Base Template (for all SPs), and one for the Admin Template in the Admin SP’s SPTemplates table.
+Table 170 SPTemplates Table Description
+| Column Number | Column Name | IsUnique | Column Type          |
+|---------------|-------------|----------|----------------------|
+| 0x00          | UID         |          | uid                  |
+| 0x01          | TemplateID  |          | Template_object_ref  |
+| 0x02          | Name        |          | name                 |
+| 0x03          | Version     |          | bytes_4              |

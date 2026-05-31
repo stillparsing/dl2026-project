@@ -1,0 +1,85 @@
+5.3.4.1.2 Authorities
+Authorities are made up of two types – Class and Individual.
+Class authorities MAY be members of another class authority, but this SHALL NOT be permitted to
+expand beyond a single level.  The TPer SHALL enforce that class authorities are not permitted to be
+members of a class authority that is already a member of another class authority.  Class authorities
+SHALL NOT reference credentials or secure messaging requirements.  Class authorities SHALL NOT
+be directly authenticated – authentication attempts that reference class authorities SHALL always fail.
+Individual authorities MAY be members of class authorities.  When an individual authority is
+authenticated, either from session startup or explicitly via the Authenticate method, the class authority
+that the individual authority references is considered to be authenticated also.  If that class authority
+also references a class, then the class authority referenced by the initial class authority is also
+considered to be authenticated.
+The default authorities that MAY be supplied  by the Base Template are enumerated in Table 209.
+Table 209 Default Base Template Authorities
+| Name        | UID                         | Common Name | IsClass | Class      | Operation |
+|-------------|-----------------------------|-------------|---------|------------|-----------|
+| Anybody     | 00 00 00 09 00 00 00 01     | Anybody     | False   |            | Sign      |
+| Admins      | 00 00 00 09 00 00 00 02     | Admin       | True    |            |           |
+| Makers      | 00 00 00 09 00 00 00 03     | Maker       | True    |            |           |
+| MakerSymK   | 00 00 00 09 00 00 00 04     | Maker       | False   | Makers     | SymK      |
+| MakerPuK    | 00 00 00 09 00 00 00 05     | Maker       | False   | Makers     | Sign      |
+| SID         | 00 00 00 09 00 00 00 06     | TPerOwner   | False   |            | Password  |
+| TPerSign   | 00 00 00 09 00 00 00 07     | TPerSign    | False   |            | TPerSign  |
+| TPerExch   | 00 00 00 09 00 00 00 08     | TPerExch    | False   |            | TPerExchange |
+| AdminExch  | 00 00 00 09 00 00 00 09     | Admin       | False   | Admins     | Exchange  |
+Name
+UID
+Common Name
+IsClass
+Class
+Operation
+Anybody
+00 00 00 09 00 00 00 01
+Anybody
+False
+
+Sign
+Admins
+00 00 00 09 00 00 00 02
+Admin
+True
+
+
+Makers
+00 00 00 09 00 00 00 03
+Maker
+True
+
+
+MakerSymK
+00 00 00 09 00 00 00 04
+Maker
+False
+Makers
+SymK
+MakerPuK
+00 00 00 09 00 00 00 05
+Maker
+False
+Makers
+Sign
+SID
+00 00 00 09 00 00 00 06
+TPerOwner
+False
+
+Password
+TPerSign
+00 00 00 09 00 00 00 07
+TPerSign
+False
+
+TPerSign
+TPerExch
+00 00 00 09 00 00 00 08
+TPerExch
+False
+
+TPerExchange
+AdminExch
+00 00 00 09 00 00 00 09
+Admin
+False
+Admins
+Exchange

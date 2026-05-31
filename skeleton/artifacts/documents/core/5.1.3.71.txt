@@ -1,0 +1,6 @@
+5.1.3.71 SSC
+This is a list of names used to represent the SSCs that a TPer supports.
+Table 132 SSC
+| UID                   | Name | Format          |
+|-----------------------|------|-----------------|
+| 00 00 00 05 00 00 08 03 | SSC  | List_Type, *, name |

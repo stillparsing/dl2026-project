@@ -1,0 +1,8 @@
+5.7.3.8 Default Logging Settings
+The default logging settings associated with the Locking Template methods are:
+a. The default logging setting for the Delete object method, the DeleteRow table method, and
+the Set method on objects in the Locking table SHALL be LogAlways.
+b. The default logging setting for the Set method on the Locking_Info table, the MBR_Control
+table, and the MBR table SHALL be LogAlways.
+c. All other methods that apply to the Locking Template-related tables SHALL be as described
+in the Base Template reference section on Default Logging Settings (See 5.3.4.4).
