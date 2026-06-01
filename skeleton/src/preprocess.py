@@ -281,7 +281,7 @@ def apply_successful_state_update(state: dict[str, Any], step: dict[str, Any]) -
                 auth_state["enabled_column_set"] = True
             return f"authority {authority} modified columns={columns}"
         if obj == "C_PIN":
-            target_authority = infer_pin_owner(step)
+            target_authority = infer_pin_owner(step, state)
             auth_state = ensure_authority(state, target_authority)
             auth_state["pin_changed"] = True
             return f"{target_authority} PIN changed"
@@ -323,11 +323,18 @@ def ensure_authority(state: dict[str, Any], authority: str) -> dict[str, Any]:
     return authorities[authority]
 
 
-def infer_pin_owner(step: dict[str, Any]) -> str:
+def infer_pin_owner(step: dict[str, Any], state: dict[str, Any] | None = None) -> str:
     uid = str(step.get("object_uid", ""))
     for authority in AUTHORITY_NAMES.values():
         if authority in uid:
             return authority
+    state = state or {}
+    active_session = state.get("active_session", {}) or {}
+    authorities = state.get("authorities", {}) or {}
+    if active_session.get("sp") == "LockingSP" and "Admin1" in str(active_session.get("authority")):
+        for authority, auth_state in authorities.items():
+            if "User1" in str(authority) and auth_state.get("enabled_column_set"):
+                return str(authority)
     return "C_PIN_owner"
 
 
@@ -385,6 +392,71 @@ def build_target_cues(target: dict[str, Any], state: dict[str, Any]) -> list[str
         if state.get("crypto", {}).get("genkey_after_data_write"):
             cues.append("A GenKey occurred after data write; Random Data is the expected safe read pattern, old/plain data is suspicious.")
     return cues
+
+
+def prejudge_obvious_case(steps: list[dict[str, Any]]) -> str | None:
+    """Return a deterministic verdict for high-confidence visible patterns.
+
+    The LLM remains the fallback for ambiguous ACL/spec cases. These rules cover
+    straightforward protocol responses where the compressed state ledger already
+    contains enough information to avoid asking a small model to infer basics.
+    """
+    summary = build_case_summary(steps)
+    target = summary.get("final_target", {}) or {}
+    state = summary.get("state_before_target", {}) or {}
+    flags = state.get("derived_flags", {}) or {}
+    active_session = state.get("active_session", {}) or {}
+
+    op = target.get("op")
+    status = normalize_status(target.get("output_status"))
+
+    if op == "Properties":
+        has_property_returns = bool(target.get("returns"))
+        if is_success_status(status) and has_property_returns:
+            return "pass"
+        if status in {"INVALID_PARAMETER", "FAIL", "INVALID_COMMAND"} and not has_property_returns:
+            return "fail"
+
+    if op == "Read" and flags.get("genkey_after_data_write"):
+        result = str(target.get("result", "")).strip().lower()
+        if result == "random data":
+            return "pass"
+        if result in {"8e", "original plaintext", "known old data", "0000000000000000"}:
+            return "fail"
+
+    if op == "StartSession":
+        shape = target.get("host_challenge_shape", {}) or {}
+        session_ids = target.get("session_ids", {}) or {}
+        target_sp = target.get("sp")
+        target_authority = str(target.get("authority") or "")
+        authorities = state.get("authorities", {}) or {}
+        if is_success_status(status):
+            if target_sp == "LockingSP" and not flags.get("locking_sp_activated"):
+                return "fail"
+            user1_pin_changed = any(
+                "User1" in str(authority) and auth_state.get("pin_changed")
+                for authority, auth_state in authorities.items()
+            )
+            if "User1" in target_authority and not user1_pin_changed:
+                return "fail"
+            if shape.get("present") and not shape.get("looks_hex"):
+                return "fail"
+            if shape.get("present") and shape.get("hex_chars") not in (None, 64):
+                return "fail"
+            if session_ids:
+                return "pass"
+        if status == "NOT_AUTHORIZED" and session_ids in ({}, None):
+            return "fail"
+
+    if op in {"Get", "Set", "GenKey"}:
+        if is_success_status(status):
+            if not active_session.get("exists"):
+                return "fail"
+            return "pass"
+        if status in {"INVALID_PARAMETER", "NOT_AUTHORIZED", "FAIL", "INVALID_COMMAND"}:
+            return "fail"
+
+    return None
 
 
 def classify_target(target: dict[str, Any], compressed_steps: list[dict[str, Any]]) -> str:

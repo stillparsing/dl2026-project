@@ -14,7 +14,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from src.document_retriever import retrieve_relevant_specs
-from src.preprocess import render_case_summary
+from src.preprocess import prejudge_obvious_case, render_case_summary
 
 
 class Solver:
@@ -27,6 +27,8 @@ class Solver:
         self.debug_generation = os.environ.get("DEBUG_GENERATION", "").lower() in {"1", "true", "yes"}
         self.debug_prompt = os.environ.get("DEBUG_PROMPT", "").lower() in {"1", "true", "yes"}
         self.debug_prompt_limit = int(os.environ.get("DEBUG_PROMPT_LIMIT", "20000"))
+        self.debug_rules = os.environ.get("DEBUG_RULES", "").lower() in {"1", "true", "yes"}
+        self.use_rule_prefilter = os.environ.get("USE_RULE_PREFILTER", "1").lower() not in {"0", "false", "no"}
         self.prompt_template = self.load_prompt_template()
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -64,6 +66,13 @@ class Solver:
     def predict_one(self, steps):
         if not steps:
             return "fail"
+
+        if self.use_rule_prefilter:
+            verdict = prejudge_obvious_case(steps)
+            if verdict:
+                if self.debug_rules or self.debug_generation:
+                    print(f"rule_prefilter={verdict}")
+                return verdict
 
         prompt = self.make_prompt(steps)
         if self.debug_prompt:
