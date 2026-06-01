@@ -103,7 +103,9 @@ class Solver:
                 "content": (
                     "You are a strict SSD TCG protocol compliance judge. "
                     "Judge only whether the final target response is allowed by the protocol state "
-                    "created by the previous steps. SUCCESS can be fail, and an error can be pass. "
+                    "created by the previous steps. Do not default to fail: output pass when the "
+                    "observed final response is a normal allowed response for the reconstructed state. "
+                    "Output fail only when the final response contradicts the testcase facts or protocol rules. "
                     "Use the provided reference snippets as protocol guidance. "
                     "Do not explain your reasoning. Do not use markdown. "
                     "Answer with exactly one lowercase word: pass or fail."
