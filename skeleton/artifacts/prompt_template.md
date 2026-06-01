@@ -24,15 +24,18 @@ Decision rule:
 - Answer pass if the final observed response is the normal allowed response for state_before_target and the relevant specs.
 - Answer fail if the final observed response contradicts state_before_target, target_judgment_focus, or the relevant specs.
 - A SUCCESS response can still be fail, but only when there is a concrete contradiction.
-- An error response can be pass, but only when the protocol/state should reject the final request.
+- An error response can be pass when the protocol/state should reject the final request.
+- An error response is fail when the final request is valid in state_before_target and should normally succeed.
 - If the testcase and state ledger show a straightforward valid response, answer pass.
 
 Calibration:
 - Properties on Session Manager with SUCCESS and non-empty Properties/HostProperties return values is pass.
-- Properties with INVALID_PARAMETER and empty return values is fail.
+- Properties with INVALID_PARAMETER and empty return values is pass for a malformed/unsupported request, but fail for a normal valid Properties request.
 - Get returning requested columns in an active authorized session is pass unless the ledger/spec shows a concrete conflict.
+- Get/Set/GenKey with NOT_AUTHORIZED or INVALID_PARAMETER can be pass when there is no active session, wrong SP, wrong authority, or malformed arguments.
 - StartSession with valid authority, valid-looking HostChallenge, SUCCESS, and returned HostSessionID/SPSessionID is pass unless the ledger/spec shows a concrete conflict.
 - StartSession SUCCESS with malformed HostChallenge is fail.
+- StartSession rejection can be pass when LockingSP is inactive, the PIN/auth state is wrong, session IDs are missing, or HostChallenge is malformed.
 - A final method SUCCESS after active_session was cleared is fail.
 - After GenKey following a data write, Read returning Random Data is pass; Read returning old/plain deterministic data is fail.
 

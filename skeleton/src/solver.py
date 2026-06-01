@@ -10,9 +10,6 @@ PACKAGE_DIR = Path(__file__).resolve().parents[1] / ".packages"
 if PACKAGE_DIR.exists():
     sys.path.insert(0, str(PACKAGE_DIR))
 
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
 from src.document_retriever import retrieve_relevant_specs
 from src.preprocess import prejudge_obvious_case, render_case_summary
 
@@ -30,21 +27,12 @@ class Solver:
         self.debug_rules = os.environ.get("DEBUG_RULES", "").lower() in {"1", "true", "yes"}
         self.use_rule_prefilter = os.environ.get("USE_RULE_PREFILTER", "1").lower() not in {"0", "false", "no"}
         self.prompt_template = self.load_prompt_template()
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = None
+        self.tokenizer = None
+        self.model = None
+        self.torch = None
 
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            self.model_name,
-            trust_remote_code=True,
-        )
-        self.model = AutoModelForCausalLM.from_pretrained(
-            self.model_name,
-            torch_dtype=torch.bfloat16 if self.device.type == "cuda" else torch.float32,
-            trust_remote_code=True,
-        ).to(self.device)
-        self.model.eval()
-
-        print(f"solver_model={self.model_name}")
-        print(f"solver_device={self.device}")
+        print(f"solver_model={self.model_name} (lazy)")
         print(f"spec_top_k={self.spec_top_k}")
         print(f"spec_max_chars={self.spec_max_chars}")
 
@@ -74,6 +62,7 @@ class Solver:
                     print(f"rule_prefilter={verdict}")
                 return verdict
 
+        self.ensure_model_loaded()
         prompt = self.make_prompt(steps)
         if self.debug_prompt:
             print("---- prompt begin ----")
@@ -89,7 +78,7 @@ class Solver:
             max_length=self.max_input_tokens,
         ).to(self.device)
 
-        with torch.inference_mode():
+        with self.torch.inference_mode():
             output_ids = self.model.generate(
                 **inputs,
                 do_sample=False,
@@ -103,7 +92,33 @@ class Solver:
             print(f"raw_generation={text!r}")
         return self.parse_answer(text)
 
+    def ensure_model_loaded(self):
+        if self.model is not None:
+            return
+
+        import torch
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+
+        self.torch = torch
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            self.model_name,
+            trust_remote_code=True,
+        )
+        self.model = AutoModelForCausalLM.from_pretrained(
+            self.model_name,
+            torch_dtype=torch.bfloat16 if self.device.type == "cuda" else torch.float32,
+            trust_remote_code=True,
+        ).to(self.device)
+        self.model.eval()
+
+        print(f"solver_model_loaded={self.model_name}")
+        print(f"solver_device={self.device}")
+
     def make_prompt(self, steps):
+        if self.tokenizer is None:
+            raise RuntimeError("model/tokenizer must be loaded before building chat prompt")
+
         case_summary = render_case_summary(steps)
         spec_context = retrieve_relevant_specs(
             steps,

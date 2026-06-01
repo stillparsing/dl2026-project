@@ -374,7 +374,10 @@ def build_target_cues(target: dict[str, Any], state: dict[str, Any]) -> list[str
         if is_success_status(status) and has_returns:
             cues.append("Properties SUCCESS with returned Properties/HostProperties is a normal pass pattern.")
         elif status:
-            cues.append(f"Properties returned {status}; compare with whether request was valid and returns are empty/non-empty.")
+            cues.append(
+                f"Properties returned {status}; pass if the final request is malformed/unsupported, "
+                "fail if it is a normal valid Properties negotiation."
+            )
     elif op == "StartSession":
         challenge_shape = target.get("host_challenge_shape", {})
         if is_success_status(status) and target.get("session_ids"):
@@ -383,11 +386,24 @@ def build_target_cues(target: dict[str, Any], state: dict[str, Any]) -> list[str
             cues.append("HostChallenge does not look hex; SUCCESS may be suspicious.")
         if challenge_shape.get("hex_chars") is not None and challenge_shape.get("hex_chars") < 32:
             cues.append("HostChallenge is very short; SUCCESS may be suspicious.")
+        if status and not is_success_status(status):
+            cues.append(
+                f"StartSession returned {status}; pass if the requested SP/authentication should be rejected "
+                "in state_before_target, fail if the session should normally succeed."
+            )
     elif op in {"Get", "Set", "Activate", "GenKey"}:
         if not active_session.get("exists"):
-            cues.append(f"{op} target has no active session before target; SUCCESS may be suspicious.")
+            if is_success_status(status):
+                cues.append(f"{op} target has no active session before target; SUCCESS is suspicious.")
+            else:
+                cues.append(f"{op} target has no active session before target; an error response may be a correct rejection.")
         elif is_success_status(status):
             cues.append(f"{op} target has active session {active_session.get('sp')} authority={active_session.get('authority')}; SUCCESS may be normal if ACL allows it.")
+        elif status:
+            cues.append(
+                f"{op} returned {status} despite active session {active_session.get('sp')} "
+                f"authority={active_session.get('authority')}; decide whether ACL/arguments require rejection."
+            )
     elif op == "Read":
         if state.get("crypto", {}).get("genkey_after_data_write"):
             cues.append("A GenKey occurred after data write; Random Data is the expected safe read pattern, old/plain data is suspicious.")
@@ -414,8 +430,6 @@ def prejudge_obvious_case(steps: list[dict[str, Any]]) -> str | None:
         has_property_returns = bool(target.get("returns"))
         if is_success_status(status) and has_property_returns:
             return "pass"
-        if status in {"INVALID_PARAMETER", "FAIL", "INVALID_COMMAND"} and not has_property_returns:
-            return "fail"
 
     if op == "Read" and flags.get("genkey_after_data_write"):
         result = str(target.get("result", "")).strip().lower()
@@ -445,16 +459,12 @@ def prejudge_obvious_case(steps: list[dict[str, Any]]) -> str | None:
                 return "fail"
             if session_ids:
                 return "pass"
-        if status == "NOT_AUTHORIZED" and session_ids in ({}, None):
-            return "fail"
 
     if op in {"Get", "Set", "GenKey"}:
         if is_success_status(status):
             if not active_session.get("exists"):
                 return "fail"
             return "pass"
-        if status in {"INVALID_PARAMETER", "NOT_AUTHORIZED", "FAIL", "INVALID_COMMAND"}:
-            return "fail"
 
     return None
 

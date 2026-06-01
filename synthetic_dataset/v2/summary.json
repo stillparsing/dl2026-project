@@ -1,0 +1,24 @@
+{
+  "total": 11,
+  "labels": {
+    "pass": 6,
+    "fail": 5
+  },
+  "categories": {
+    "correct_rejection": 6,
+    "success_trap": 3,
+    "data_path_success_trap": 2
+  },
+  "tags": {
+    "accepted_error": 6,
+    "session_auth": 4,
+    "state_tracking": 3,
+    "session_lifecycle": 4,
+    "acl": 3,
+    "crypto": 3,
+    "input_validation": 2,
+    "properties": 1,
+    "last_status_trap": 4,
+    "data_path": 2
+  }
+}
