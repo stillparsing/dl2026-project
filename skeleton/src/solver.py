@@ -25,6 +25,8 @@ class Solver:
         self.spec_top_k = int(os.environ.get("SPEC_TOP_K", "7"))
         self.spec_max_chars = int(os.environ.get("SPEC_MAX_CHARS", "5200"))
         self.debug_generation = os.environ.get("DEBUG_GENERATION", "").lower() in {"1", "true", "yes"}
+        self.debug_prompt = os.environ.get("DEBUG_PROMPT", "").lower() in {"1", "true", "yes"}
+        self.debug_prompt_limit = int(os.environ.get("DEBUG_PROMPT_LIMIT", "20000"))
         self.prompt_template = self.load_prompt_template()
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -64,6 +66,13 @@ class Solver:
             return "fail"
 
         prompt = self.make_prompt(steps)
+        if self.debug_prompt:
+            print("---- prompt begin ----")
+            print(prompt[: self.debug_prompt_limit])
+            if len(prompt) > self.debug_prompt_limit:
+                print(f"... prompt truncated {len(prompt) - self.debug_prompt_limit} characters ...")
+            print("---- prompt end ----")
+
         inputs = self.tokenizer(
             prompt,
             return_tensors="pt",
