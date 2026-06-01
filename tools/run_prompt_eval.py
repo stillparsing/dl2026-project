@@ -142,6 +142,10 @@ def summarize_results(label_path: Path, prediction_path: Path, score_path: Path)
     for case_id, answer, pred in misses[:20]:
         print(f"  {case_id}: expected={answer} predicted={pred}")
 
+    metadata_path = label_path.parent / "metadata.jsonl"
+    if metadata_path.exists():
+        summarize_metadata_misses(metadata_path, labels, predictions)
+
 
 def print_limited(name: str, text: str, limit: int) -> None:
     if not text:
@@ -152,6 +156,63 @@ def print_limited(name: str, text: str, limit: int) -> None:
     else:
         print(text[:limit].rstrip())
         print(f"... truncated {len(text) - limit} characters ...")
+
+
+def summarize_metadata_misses(metadata_path: Path, labels: dict[str, str], predictions: dict[str, str]) -> None:
+    metadata = {}
+    with metadata_path.open(encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                item = json.loads(line)
+                metadata[item["filename"]] = item
+
+    category_totals = {}
+    category_misses = {}
+    tag_totals = {}
+    tag_misses = {}
+    examples = []
+
+    for case_id, answer in labels.items():
+        item = metadata.get(case_id)
+        if not item:
+            continue
+        pred = predictions.get(case_id, "missing")
+        category = item.get("category", "unknown")
+        category_totals[category] = category_totals.get(category, 0) + 1
+        for tag in item.get("tags", []):
+            tag_totals[tag] = tag_totals.get(tag, 0) + 1
+        if pred != answer:
+            category_misses[category] = category_misses.get(category, 0) + 1
+            for tag in item.get("tags", []):
+                tag_misses[tag] = tag_misses.get(tag, 0) + 1
+            examples.append((case_id, answer, pred, item))
+
+    print("---- metadata groups ----")
+    print_grouped_misses("category", category_totals, category_misses)
+    print_grouped_misses("tag", tag_totals, tag_misses, limit=12)
+    if examples:
+        print("metadata examples:")
+        for case_id, answer, pred, item in examples[:8]:
+            print(
+                f"  {case_id}: expected={answer} predicted={pred} "
+                f"category={item.get('category')} variant={item.get('variant')}"
+            )
+            print(f"    rationale={item.get('rationale')}")
+
+
+def print_grouped_misses(name: str, totals: dict[str, int], misses: dict[str, int], limit: int = 20) -> None:
+    rows = []
+    for key, total in totals.items():
+        miss = misses.get(key, 0)
+        if miss:
+            accuracy = 100.0 * (total - miss) / total if total else 0.0
+            rows.append((miss, total, accuracy, key))
+    print(f"{name} misses:")
+    if not rows:
+        print("  none")
+        return
+    for miss, total, accuracy, key in sorted(rows, key=lambda item: (-item[0], item[3]))[:limit]:
+        print(f"  {key}: miss={miss}/{total} acc={accuracy:.2f}")
 
 
 def case_sort_key(case_id: str) -> tuple[int, str]:

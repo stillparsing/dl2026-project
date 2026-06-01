@@ -1,0 +1,33 @@
+[
+  {
+    "index": 1,
+    "input": {
+      "method": {
+        "name": "Properties",
+        "uid": "00 00 00 00 00 00 FF 01",
+        "args": [
+          {
+            "HostProperties": {
+              "MaxComPacketSize": "0800",
+              "MaxPacketSize": "07ec",
+              "MaxIndTokenSize": "07c8",
+              "MaxPackets": 1,
+              "MaxSubpackets": 1,
+              "MaxMethods": 1
+            }
+          }
+        ]
+      },
+      "invoking_id": {
+        "uid": "00 00 00 00 00 00 00 FF",
+        "name": "Session Manager UID",
+        "type": null
+      },
+      "status_codes": "SUCCESS"
+    },
+    "output": {
+      "return_values": [],
+      "status_codes": "NOT_AUTHORIZED"
+    }
+  }
+]

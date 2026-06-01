@@ -1,0 +1,40 @@
+[
+  {
+    "index": 1,
+    "input": {
+      "method": {
+        "name": "Get",
+        "uid": "00 00 00 06 00 00 00 16",
+        "args": {
+          "required": {
+            "Cellblock": [
+              {
+                "startColumn": 3
+              },
+              {
+                "endColumn": 3
+              }
+            ]
+          },
+          "optional": {}
+        }
+      },
+      "invoking_id": {
+        "uid": "00 00 00 0B 00 00 84 02",
+        "name": "C_PIN",
+        "type": null
+      },
+      "status_codes": "SUCCESS"
+    },
+    "output": {
+      "return_values": [
+        [
+          {
+            "3": "MJDL5TDSXBZ7NW3TE2PCESSNTLGYSBOW"
+          }
+        ]
+      ],
+      "status_codes": "SUCCESS"
+    }
+  }
+]

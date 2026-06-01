@@ -1,0 +1,48 @@
+{
+  "total": 314,
+  "labels": {
+    "pass": 125,
+    "fail": 189
+  },
+  "categories": {
+    "public_clone": 20,
+    "prefix_properties_noise": 80,
+    "pre_target_properties_noise": 40,
+    "paired_target_output_swap": 16,
+    "long_context_pair_swap": 32,
+    "target_status_mutation": 65,
+    "success_status_control": 9,
+    "target_data_result_mutation": 7,
+    "session_id_variation": 12,
+    "bad_host_challenge_success_trap": 4,
+    "missing_required_context": 6,
+    "closed_session_before_target": 3,
+    "pre_target_opposite_distractor": 20
+  },
+  "tags": {
+    "baseline": 20,
+    "target_properties_session_manager_uid": 30,
+    "target_get_c_pin": 31,
+    "target_startsession_session_manager_uid": 116,
+    "target_set_authority": 32,
+    "target_get_locking": 32,
+    "target_get_mbrcontrol": 32,
+    "target_data_read": 29,
+    "target_activate_sp": 12,
+    "context_noise": 80,
+    "long_context": 72,
+    "final_target_focus": 60,
+    "target_response": 120,
+    "contrast_pair": 48,
+    "status_code": 74,
+    "control": 9,
+    "data_path": 7,
+    "session_auth": 16,
+    "anti_memorization": 12,
+    "last_status_trap": 13,
+    "input_validation": 4,
+    "state_tracking": 9,
+    "session_lifecycle": 3,
+    "distractor": 20
+  }
+}
