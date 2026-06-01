@@ -63,10 +63,14 @@ def build_case_summary(steps: list[dict[str, Any]], max_context_steps: int = 80)
         context = context[:20] + [{"omitted_context_steps": len(context) - 40}] + context[-20:]
 
     target = compressed[-1] if compressed else {}
+    state_analysis = build_state_analysis(compressed)
     return {
         "task": "Judge only the final target response. Earlier steps are context for protocol state.",
         "target_family": classify_target(target, compressed),
         "final_target": target,
+        "target_judgment_focus": build_target_judgment_focus(target, state_analysis),
+        "state_before_target": state_analysis["state_before_target"],
+        "state_update_trace": state_analysis["state_update_trace"],
         "state_hints": build_state_hints(compressed),
         "context_timeline": context,
     }
@@ -131,6 +135,256 @@ def build_state_hints(compressed_steps: list[dict[str, Any]]) -> list[str]:
         hints.append("Final context has no active session unless the target StartSession succeeds.")
 
     return _dedupe_keep_order(hints)
+
+
+def build_state_analysis(compressed_steps: list[dict[str, Any]]) -> dict[str, Any]:
+    """Infer a compact deterministic state ledger from prior successful steps.
+
+    This is intentionally conservative. It does not try to fully implement TCG
+    Opal; it extracts the state variables that repeatedly appear in the public
+    trajectories so the LLM does not have to rediscover them from raw JSON.
+    """
+    state: dict[str, Any] = {
+        "active_session": {"exists": False},
+        "session_history": [],
+        "sp_lifecycle": {
+            "AdminSP": "available",
+            "LockingSP": "unknown_or_inactive_until_activated",
+        },
+        "authorities": {},
+        "table_observations": [],
+        "locking": {
+            "ranges_observed": [],
+            "ranges_modified": [],
+            "mbr_control": {},
+        },
+        "crypto": {
+            "genkey_events": [],
+            "genkey_after_data_write": False,
+        },
+        "data_path": {
+            "writes": [],
+            "reads": [],
+        },
+        "communication": {
+            "properties_negotiated": False,
+        },
+        "state_rules_applied": [
+            "Process prior steps in order.",
+            "Only successful prior method responses update protocol state.",
+            "Failed prior method responses are observations but do not apply state changes.",
+            "EndSession success clears active_session.",
+            "The final target step is not applied to this state; it is judged against this state.",
+        ],
+    }
+    trace: list[dict[str, Any]] = []
+
+    for step in compressed_steps[:-1]:
+        if not isinstance(step, dict):
+            trace.append({"step": None, "event": "omitted_context_steps", "update": step})
+            continue
+
+        op = step.get("op")
+        success = step_succeeded(step)
+        if not success:
+            trace.append(
+                {
+                    "step": step.get("i"),
+                    "event": f"{op} failed_or_rejected",
+                    "update": "no state change",
+                    "observed": observed_status(step),
+                }
+            )
+            continue
+
+        update = apply_successful_state_update(state, step)
+        if update:
+            trace.append({"step": step.get("i"), "event": op, "update": update})
+
+    state["derived_flags"] = derive_state_flags(state)
+    return {
+        "state_before_target": _drop_empty_recursive(state),
+        "state_update_trace": trace[-60:],
+    }
+
+
+def step_succeeded(step: dict[str, Any]) -> bool:
+    if step.get("kind") == "data":
+        if step.get("op") == "Write":
+            return normalize_status(step.get("result")) in DATA_SUCCESS
+        if step.get("op") == "Read":
+            return step.get("result") not in (None, "", "FAIL")
+        return False
+    return is_success_status(step.get("output_status"))
+
+
+def observed_status(step: dict[str, Any]) -> Any:
+    if step.get("kind") == "data":
+        return step.get("result")
+    return step.get("output_status")
+
+
+def apply_successful_state_update(state: dict[str, Any], step: dict[str, Any]) -> str | None:
+    op = step.get("op")
+    obj = step.get("object")
+
+    if op == "Properties":
+        state["communication"]["properties_negotiated"] = True
+        return "communication.properties_negotiated=true"
+
+    if op == "StartSession":
+        authority = step.get("authority") or "Anybody/unauthenticated"
+        session = {
+            "exists": True,
+            "sp": step.get("sp"),
+            "write": bool(step.get("write")),
+            "authority": authority,
+            "authenticated": bool(step.get("authority")),
+            "host_challenge_shape": step.get("host_challenge_shape"),
+            "session_ids_present": bool(step.get("session_ids")),
+        }
+        state["active_session"] = session
+        state["session_history"].append({k: v for k, v in session.items() if k != "exists"})
+        ensure_authority(state, authority)["sessions_started"] = ensure_authority(state, authority).get("sessions_started", 0) + 1
+        return f"active_session={session.get('sp')} authority={authority} write={session.get('write')}"
+
+    if op == "EndSession":
+        state["active_session"] = {"exists": False}
+        return "active_session cleared"
+
+    if op == "Activate":
+        if obj == "SP":
+            state["sp_lifecycle"]["LockingSP"] = "activated"
+            return "sp_lifecycle.LockingSP=activated"
+        return f"{obj} activated"
+
+    if op == "Get":
+        observation = {
+            "object": obj,
+            "columns": step.get("columns"),
+            "active_session": state.get("active_session"),
+        }
+        state["table_observations"].append(observation)
+        if obj == "Locking":
+            state["locking"]["ranges_observed"].append({"columns": step.get("columns"), "returns": step.get("returns")})
+        elif obj == "MBRControl":
+            state["locking"]["mbr_control"]["observed"] = step.get("returns")
+        return f"observed {obj} columns={step.get('columns')}"
+
+    if op == "Set":
+        columns = step.get("columns")
+        if obj == "Authority":
+            authority = step.get("object_uid") or "unknown_authority"
+            auth_state = ensure_authority(state, str(authority))
+            auth_state["modified"] = True
+            if "5" in [str(col) for col in columns or []]:
+                auth_state["enabled_column_set"] = True
+            return f"authority {authority} modified columns={columns}"
+        if obj == "C_PIN":
+            target_authority = infer_pin_owner(step)
+            auth_state = ensure_authority(state, target_authority)
+            auth_state["pin_changed"] = True
+            return f"{target_authority} PIN changed"
+        if obj == "Locking":
+            state["locking"]["ranges_modified"].append({"columns": columns, "values": step.get("args", {}).get("optional")})
+            return f"locking range modified columns={columns}"
+        if obj == "MBRControl":
+            state["locking"]["mbr_control"]["modified"] = {"columns": columns, "values": step.get("args", {}).get("optional")}
+            return f"MBRControl modified columns={columns}"
+        return f"Set applied to {obj} columns={columns}"
+
+    if op == "GenKey":
+        event = {
+            "object": step.get("object"),
+            "after_data_write": bool(state["data_path"]["writes"]),
+        }
+        state["crypto"]["genkey_events"].append(event)
+        if event["after_data_write"]:
+            state["crypto"]["genkey_after_data_write"] = True
+        return f"GenKey on {step.get('object')}; after_data_write={event['after_data_write']}"
+
+    if op == "Write":
+        write_event = {"args": step.get("args"), "result": step.get("result")}
+        state["data_path"]["writes"].append(write_event)
+        return f"data write succeeded at {step.get('args')}"
+
+    if op == "Read":
+        read_event = {"args": step.get("args"), "result": step.get("result")}
+        state["data_path"]["reads"].append(read_event)
+        return f"data read observed result={step.get('result')}"
+
+    return step.get("effect")
+
+
+def ensure_authority(state: dict[str, Any], authority: str) -> dict[str, Any]:
+    authorities = state.setdefault("authorities", {})
+    if authority not in authorities:
+        authorities[authority] = {}
+    return authorities[authority]
+
+
+def infer_pin_owner(step: dict[str, Any]) -> str:
+    uid = str(step.get("object_uid", ""))
+    for authority in AUTHORITY_NAMES.values():
+        if authority in uid:
+            return authority
+    return "C_PIN_owner"
+
+
+def derive_state_flags(state: dict[str, Any]) -> dict[str, Any]:
+    active_session = state.get("active_session", {})
+    return {
+        "has_active_session": bool(active_session.get("exists")),
+        "active_authority": active_session.get("authority"),
+        "active_sp": active_session.get("sp"),
+        "locking_sp_activated": state.get("sp_lifecycle", {}).get("LockingSP") == "activated",
+        "has_data_write": bool(state.get("data_path", {}).get("writes")),
+        "genkey_after_data_write": bool(state.get("crypto", {}).get("genkey_after_data_write")),
+    }
+
+
+def build_target_judgment_focus(target: dict[str, Any], state_analysis: dict[str, Any]) -> dict[str, Any]:
+    state = state_analysis["state_before_target"]
+    focus: dict[str, Any] = {
+        "judge_this_only": target,
+        "state_to_use": state.get("derived_flags", {}),
+        "pass_fail_test": "Answer pass only if the observed final response is consistent with state_before_target and relevant specs.",
+    }
+    cues = build_target_cues(target, state)
+    if cues:
+        focus["preprocessor_cues"] = cues
+    return focus
+
+
+def build_target_cues(target: dict[str, Any], state: dict[str, Any]) -> list[str]:
+    cues: list[str] = []
+    op = target.get("op")
+    status = normalize_status(target.get("output_status"))
+    has_returns = bool(target.get("returns") or target.get("session_ids"))
+    active_session = state.get("active_session", {})
+
+    if op == "Properties":
+        if is_success_status(status) and has_returns:
+            cues.append("Properties SUCCESS with returned Properties/HostProperties is a normal pass pattern.")
+        elif status:
+            cues.append(f"Properties returned {status}; compare with whether request was valid and returns are empty/non-empty.")
+    elif op == "StartSession":
+        challenge_shape = target.get("host_challenge_shape", {})
+        if is_success_status(status) and target.get("session_ids"):
+            cues.append("StartSession SUCCESS with HostSessionID/SPSessionID present is a pass pattern unless authentication input is malformed.")
+        if challenge_shape.get("present") and not challenge_shape.get("looks_hex"):
+            cues.append("HostChallenge does not look hex; SUCCESS may be suspicious.")
+        if challenge_shape.get("hex_chars") is not None and challenge_shape.get("hex_chars") < 32:
+            cues.append("HostChallenge is very short; SUCCESS may be suspicious.")
+    elif op in {"Get", "Set", "Activate", "GenKey"}:
+        if not active_session.get("exists"):
+            cues.append(f"{op} target has no active session before target; SUCCESS may be suspicious.")
+        elif is_success_status(status):
+            cues.append(f"{op} target has active session {active_session.get('sp')} authority={active_session.get('authority')}; SUCCESS may be normal if ACL allows it.")
+    elif op == "Read":
+        if state.get("crypto", {}).get("genkey_after_data_write"):
+            cues.append("A GenKey occurred after data write; Random Data is the expected safe read pattern, old/plain data is suspicious.")
+    return cues
 
 
 def classify_target(target: dict[str, Any], compressed_steps: list[dict[str, Any]]) -> str:
@@ -229,15 +483,18 @@ def _add_method_specific_fields(
     if op == "StartSession":
         spid = str(required.get("SPID", ""))
         authority_uid = ""
+        host_challenge = None
         if isinstance(optional, dict):
             authority_uid = str(optional.get("HostSigningAuthority", ""))
+            host_challenge = optional.get("HostChallenge")
         compact["sp"] = SPID_NAMES.get(spid, spid or None)
         compact["write"] = required.get("Write")
         compact["authority"] = symbolic_uid(authority_uid) if authority_uid else None
         compact["host_challenge"] = aliases.simplify(
-            optional.get("HostChallenge") if isinstance(optional, dict) else None,
+            host_challenge,
             "HostChallenge",
         )
+        compact["host_challenge_shape"] = describe_value_shape(host_challenge)
 
         session_values = output_part.get("return_values", {})
         if isinstance(session_values, dict):
@@ -327,6 +584,18 @@ def symbolic_uid(uid: Any) -> Any:
     return compact
 
 
+def describe_value_shape(value: Any) -> dict[str, Any]:
+    if value in (None, ""):
+        return {"present": False}
+    text = str(value).replace(" ", "")
+    return {
+        "present": True,
+        "chars": len(text),
+        "hex_chars": len(text) if re.fullmatch(r"[0-9A-Fa-f]+", text) else None,
+        "looks_hex": bool(re.fullmatch(r"[0-9A-Fa-f]+", text)),
+    }
+
+
 def _looks_like_secret_or_blob(value: str) -> bool:
     compact = value.replace(" ", "")
     if len(compact) < 25:
@@ -346,6 +615,22 @@ def _dedupe_keep_order(items: list[str]) -> list[str]:
 
 def _drop_empty(data: dict[str, Any]) -> dict[str, Any]:
     return {k: v for k, v in data.items() if v not in (None, {}, [])}
+
+
+def _drop_empty_recursive(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {
+            key: cleaned
+            for key, item in value.items()
+            if (cleaned := _drop_empty_recursive(item)) not in (None, {}, [])
+        }
+    if isinstance(value, list):
+        return [
+            cleaned
+            for item in value
+            if (cleaned := _drop_empty_recursive(item)) not in (None, {}, [])
+        ]
+    return value
 
 
 def main(argv: list[str] | None = None) -> int:

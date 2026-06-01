@@ -26,6 +26,26 @@ KEYWORD_EXPANSIONS = {
     "Write": "write data locking range writelock writelocked writelockenabled lba",
 }
 
+MUST_INCLUDE_DOCS = {
+    "Properties": ["core/5.2.2.1", "core/5.2.2.2", "opal/4.1.1.1"],
+    "StartSession": ["core/5.2.3.1", "core/5.3.4.1.5", "core/5.3.4.1.10", "opal/4.1.1.2"],
+    "Activate": ["opal/5.1.1", "opal/5.1.1.2", "core/4.3"],
+    "GenKey": ["core/5.3.3.16", "core/5.7.2.4", "opal/4.3.5.5"],
+    "Read": ["core/5.7.3.2", "opal/4.3.7"],
+    "Write": ["core/5.7.3.2", "opal/4.3.7"],
+}
+
+OBJECT_DOCS = {
+    "C_PIN": ["core/5.3.2.12", "opal/4.2.1.8", "opal/4.3.1.9"],
+    "Authority": ["core/5.3.2.10", "core/5.3.4.1.2", "opal/4.2.1.7", "opal/4.3.1.8"],
+    "Locking": ["core/5.7.2.2", "core/5.7.3.1", "opal/4.3.5.2"],
+    "LockingInfo": ["core/5.7.2.1", "opal/4.3.5.1"],
+    "MBRControl": ["core/5.7.2.5", "core/5.7.3.6", "opal/4.3.5.3"],
+    "SP": ["core/3.4.3", "core/4.3", "opal/5.1.1"],
+    "K_AES_256": ["core/5.7.2.4", "opal/4.3.5.5"],
+    "K_AES_128": ["core/5.7.2.3", "opal/4.3.5.5"],
+}
+
 
 @dataclass(frozen=True)
 class Document:
@@ -52,25 +72,31 @@ class DocumentRetriever:
         if not query_tokens:
             return "No useful retrieval query could be built."
 
+        by_id = {doc.doc_id: doc for doc in self.documents}
+        must_docs = [by_id[doc_id] for doc_id in must_include_doc_ids(summary) if doc_id in by_id]
+        selected_ids = {doc.doc_id for doc in must_docs}
+
         scores = []
         for doc in self.documents:
+            if doc.doc_id in selected_ids:
+                continue
             score = self._score(doc, query_tokens)
             if score > 0:
                 scores.append((score, doc))
 
         scores.sort(key=lambda item: item[0], reverse=True)
-        selected = scores[:top_k]
+        selected = must_docs + [doc for _, doc in scores[:top_k]]
         if not selected:
             return "No directly matching reference snippets were found."
 
         snippets = []
         budget = max_chars
-        per_doc_limit = max(500, max_chars // max(1, len(selected)))
-        for score, doc in selected:
+        per_doc_limit = max(450, max_chars // max(1, len(selected)))
+        for doc in selected:
             if budget <= 0:
                 break
-            excerpt = _best_excerpt(doc.text, query_tokens, min(per_doc_limit, budget))
-            block = f"[{doc.doc_id}] {doc.title}\n{excerpt.strip()}"
+            prefix = "MUST_INCLUDE" if doc.doc_id in selected_ids else "RETRIEVED"
+            block = format_doc_snippet(doc, query_tokens, min(per_doc_limit, budget), prefix)
             snippets.append(block)
             budget -= len(block)
 
@@ -144,10 +170,35 @@ def retrieve_relevant_specs(steps: list[dict[str, Any]], top_k: int = 7, max_cha
     return _RETRIEVER.retrieve(summary, top_k=top_k, max_chars=max_chars)
 
 
+def must_include_doc_ids(summary: dict[str, Any]) -> list[str]:
+    target = summary.get("final_target", {}) or {}
+    op = target.get("op")
+    obj = target.get("object")
+    doc_ids: list[str] = []
+    doc_ids.extend(MUST_INCLUDE_DOCS.get(str(op), []))
+    if op in {"Get", "Set"}:
+        doc_ids.extend(["core/5.3.3.6" if op == "Get" else "core/5.3.3.7", "core/5.3.4.2"])
+    if obj:
+        doc_ids.extend(OBJECT_DOCS.get(str(obj), []))
+    if target.get("key_object"):
+        doc_ids.extend(OBJECT_DOCS.get(str(target.get("key_object")), []))
+
+    state = summary.get("state_before_target", {}) or {}
+    flags = state.get("derived_flags", {}) or {}
+    if flags.get("genkey_after_data_write"):
+        doc_ids.extend(["core/5.3.3.16", "core/5.7.3.2", "opal/4.3.7"])
+    if flags.get("locking_sp_activated"):
+        doc_ids.extend(["opal/5.1.1", "opal/4.3"])
+    return _dedupe_keep_order(doc_ids)
+
+
 def build_retrieval_query(summary: dict[str, Any]) -> str:
     target = summary.get("final_target", {}) or {}
     context = summary.get("context_timeline", []) or []
     state_hints = summary.get("state_hints", []) or []
+    state_before_target = summary.get("state_before_target", {}) or {}
+    state_update_trace = summary.get("state_update_trace", []) or []
+    target_focus = summary.get("target_judgment_focus", {}) or {}
 
     parts: list[str] = [
         str(summary.get("target_family", "")),
@@ -164,6 +215,9 @@ def build_retrieval_query(summary: dict[str, Any]) -> str:
 
     parts.extend(_extract_column_terms(target))
     parts.extend(str(hint) for hint in state_hints)
+    parts.append(json.dumps(state_before_target, ensure_ascii=False, sort_keys=True))
+    parts.append(json.dumps(state_update_trace[-20:], ensure_ascii=False, sort_keys=True))
+    parts.append(json.dumps(target_focus, ensure_ascii=False, sort_keys=True))
 
     recent_ops = []
     successful_ops = []
@@ -196,6 +250,11 @@ def build_retrieval_query(summary: dict[str, Any]) -> str:
         parts.append(KEYWORD_EXPANSIONS["StartSession"])
 
     return "\n".join(part for part in parts if part and part != "None")
+
+
+def format_doc_snippet(doc: Document, query_tokens: list[str], limit: int, prefix: str) -> str:
+    excerpt = _best_excerpt(doc.text, query_tokens, limit)
+    return f"[{prefix} {doc.doc_id}] {doc.title}\n{excerpt.strip()}"
 
 
 def _extract_column_terms(step: dict[str, Any]) -> list[str]:
@@ -290,3 +349,13 @@ def _first_line(text: str) -> str:
         if line:
             return line
     return ""
+
+
+def _dedupe_keep_order(items: list[str]) -> list[str]:
+    seen = set()
+    result = []
+    for item in items:
+        if item not in seen:
+            result.append(item)
+            seen.add(item)
+    return result

@@ -110,12 +110,12 @@ class Solver:
             {
                 "role": "system",
                 "content": (
-                    "You are a strict SSD TCG protocol compliance judge. "
-                    "Judge only whether the final target response is allowed by the protocol state "
-                    "created by the previous steps. Do not default to fail: output pass when the "
-                    "observed final response is a normal allowed response for the reconstructed state. "
+                    "You are an SSD TCG protocol judge using a deterministic state ledger. "
+                    "Judge only whether the final target response is allowed by state_before_target. "
+                    "Do not be a pessimistic auditor: output pass when the observed final response "
+                    "is a normal allowed response for the ledger state. "
                     "Output fail only when the final response contradicts the testcase facts or protocol rules. "
-                    "Use the provided reference snippets as protocol guidance. "
+                    "Use target_judgment_focus and the provided reference snippets as protocol guidance. "
                     "Do not explain your reasoning. Do not use markdown. "
                     "Answer with exactly one lowercase word: pass or fail."
                 ),
