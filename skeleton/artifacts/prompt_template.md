@@ -9,7 +9,9 @@ Rules:
 - A target error can be pass if the protocol should reject it with an error.
 - Do not reward the observed response because it looks successful. Check whether it is allowed.
 - Use the compressed testcase as the source of facts. Use the reference snippets only as protocol guidance.
-- Answer with exactly one lowercase word: pass or fail.
+- If the observed final response matches the expected protocol behavior, answer pass.
+- If the observed final response contradicts the expected protocol behavior, answer fail.
+- Answer with exactly one lowercase word: pass or fail. Do not write any explanation.
 
 Decision process:
 1. Identify the final target operation, object, arguments, and observed status/result.
@@ -23,4 +25,4 @@ $spec_context
 Compressed testcase:
 $case_summary
 
-Verdict:
+Output exactly one token now: pass or fail.

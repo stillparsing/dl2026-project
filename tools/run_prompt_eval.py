@@ -19,6 +19,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--label-path", default=str(DEFAULT_LABEL_PATH))
     parser.add_argument("--model-name", default=os.environ.get("MODEL_NAME", "Qwen/Qwen3.5-0.8B"))
     parser.add_argument("--max-input-tokens", default=os.environ.get("MAX_INPUT_TOKENS", "4096"))
+    parser.add_argument("--max-new-tokens", default=os.environ.get("MAX_NEW_TOKENS", "32"))
     parser.add_argument("--spec-top-k", default=os.environ.get("SPEC_TOP_K", "7"))
     parser.add_argument("--spec-max-chars", default=os.environ.get("SPEC_MAX_CHARS", "5200"))
     parser.add_argument("--prompt-template", default=str(SKELETON_DIR / "artifacts" / "prompt_template.md"))
@@ -41,6 +42,7 @@ def run_evaluate(args: argparse.Namespace) -> int:
             "LABEL_PATH": str(Path(args.label_path).resolve()),
             "MODEL_NAME": args.model_name,
             "MAX_INPUT_TOKENS": str(args.max_input_tokens),
+            "MAX_NEW_TOKENS": str(args.max_new_tokens),
             "SPEC_TOP_K": str(args.spec_top_k),
             "SPEC_MAX_CHARS": str(args.spec_max_chars),
             "PROMPT_TEMPLATE": str(Path(args.prompt_template).resolve()),

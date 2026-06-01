@@ -21,8 +21,10 @@ class Solver:
     def __init__(self):
         self.model_name = os.environ.get("MODEL_NAME", "Qwen/Qwen3.5-0.8B")
         self.max_input_tokens = int(os.environ.get("MAX_INPUT_TOKENS", "4096"))
+        self.max_new_tokens = int(os.environ.get("MAX_NEW_TOKENS", "32"))
         self.spec_top_k = int(os.environ.get("SPEC_TOP_K", "7"))
         self.spec_max_chars = int(os.environ.get("SPEC_MAX_CHARS", "5200"))
+        self.debug_generation = os.environ.get("DEBUG_GENERATION", "").lower() in {"1", "true", "yes"}
         self.prompt_template = self.load_prompt_template()
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -73,12 +75,14 @@ class Solver:
             output_ids = self.model.generate(
                 **inputs,
                 do_sample=False,
-                max_new_tokens=8,
+                max_new_tokens=self.max_new_tokens,
                 pad_token_id=self.tokenizer.eos_token_id,
             )
 
         new_ids = output_ids[0, inputs["input_ids"].shape[-1]:]
         text = self.tokenizer.decode(new_ids, skip_special_tokens=True).strip().lower()
+        if self.debug_generation:
+            print(f"raw_generation={text!r}")
         return self.parse_answer(text)
 
     def make_prompt(self, steps):
@@ -101,6 +105,7 @@ class Solver:
                     "Judge only whether the final target response is allowed by the protocol state "
                     "created by the previous steps. SUCCESS can be fail, and an error can be pass. "
                     "Use the provided reference snippets as protocol guidance. "
+                    "Do not explain your reasoning. Do not use markdown. "
                     "Answer with exactly one lowercase word: pass or fail."
                 ),
             },
@@ -111,11 +116,19 @@ class Solver:
         ]
 
         if getattr(self.tokenizer, "chat_template", None):
-            return self.tokenizer.apply_chat_template(
-                messages,
-                tokenize=False,
-                add_generation_prompt=True,
-            )
+            try:
+                return self.tokenizer.apply_chat_template(
+                    messages,
+                    tokenize=False,
+                    add_generation_prompt=True,
+                    enable_thinking=False,
+                )
+            except TypeError:
+                return self.tokenizer.apply_chat_template(
+                    messages,
+                    tokenize=False,
+                    add_generation_prompt=True,
+                )
 
         system = messages[0]["content"]
         user = messages[1]["content"]
@@ -133,9 +146,8 @@ class Solver:
             )
 
     def parse_answer(self, text):
-        print(text)
-        if re.search(r"\bpass\b", text):
-            return "pass"
-        if re.search(r"\bfail\b", text):
-            return "fail"
+        text = re.sub(r"<think>.*?</think>", " ", text, flags=re.DOTALL)
+        matches = re.findall(r"\b(pass|fail)\b", text)
+        if matches:
+            return matches[-1]
         return "fail"
