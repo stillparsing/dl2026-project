@@ -489,7 +489,10 @@ def prejudge_obvious_case(steps: list[dict[str, Any]]) -> str | None:
 
     if op == "Properties":
         has_property_returns = bool(target.get("returns"))
+        request_shape = target.get("properties_request_shape", {}) or {}
         if is_success_status(status) and has_property_returns:
+            return "pass"
+        if status == "INVALID_PARAMETER" and request_shape.get("malformed") and not has_property_returns:
             return "pass"
 
     if op == "Read" and flags.get("genkey_after_data_write"):
@@ -522,6 +525,8 @@ def prejudge_obvious_case(steps: list[dict[str, Any]]) -> str | None:
                 return "pass"
         elif status in {"NOT_AUTHORIZED", "INVALID_PARAMETER"} and not session_ids:
             if target_sp == "LockingSP" and not flags.get("locking_sp_activated"):
+                return "pass"
+            if shape.get("contains_non_alnum"):
                 return "pass"
 
     if op in {"Get", "Set", "GenKey"}:
