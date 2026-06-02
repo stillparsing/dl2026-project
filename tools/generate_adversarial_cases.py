@@ -154,12 +154,12 @@ def add_correct_rejection_cases(writer: CaseWriter, cases: dict[int, list[dict[s
         ["accepted_error", "input_validation", "session_auth"],
     )
     writer.add(
-        mutate_final_method_status(remove_final_session_ids(cases[1]), "INVALID_PARAMETER"),
+        mutate_final_method_status(make_malformed_properties_request(cases[1]), "INVALID_PARAMETER"),
         "pass",
         "correct_rejection",
         "tc1.json",
         "malformed_properties_rejected",
-        "A malformed or unsupported Properties request may be rejected with no return values.",
+        "A malformed Properties request with missing HostProperties should be rejected with no return values.",
         ["accepted_error", "properties"],
     )
 
@@ -242,10 +242,13 @@ def mutate_final_host_challenge(steps: list[dict[str, Any]], value: str) -> list
     return result
 
 
-def remove_final_session_ids(steps: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def make_malformed_properties_request(steps: list[dict[str, Any]]) -> list[dict[str, Any]]:
     result = copy.deepcopy(steps)
-    output = result[-1].setdefault("output", {})
-    output["return_values"] = []
+    args = result[-1]["input"]["method"].setdefault("args", [])
+    if isinstance(args, list) and args:
+        args[0] = {"UnsupportedHostProperties": args[0].get("HostProperties", {})}
+    else:
+        result[-1]["input"]["method"]["args"] = [{"UnsupportedHostProperties": {}}]
     return result
 
 

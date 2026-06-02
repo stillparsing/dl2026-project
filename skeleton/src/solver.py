@@ -142,6 +142,8 @@ class Solver:
                     "A device rejection is not automatically fail: if the final request should be rejected "
                     "in state_before_target, an error response is the correct response and must be pass. "
                     "Conversely, if the final request should be rejected, a SUCCESS response is fail. "
+                    "When target_judgment_focus has expected_response_hint, use that field as the first "
+                    "guide for whether the final request should be accepted or rejected. "
                     "Use target_judgment_focus and the provided reference snippets as protocol guidance. "
                     "Do not explain your reasoning. Do not use markdown. "
                     "Answer with exactly one lowercase word: pass or fail."

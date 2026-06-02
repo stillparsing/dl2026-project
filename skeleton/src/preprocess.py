@@ -357,10 +357,66 @@ def build_target_judgment_focus(target: dict[str, Any], state_analysis: dict[str
         "state_to_use": state.get("derived_flags", {}),
         "pass_fail_test": "Answer pass only if the observed final response is consistent with state_before_target and relevant specs.",
     }
+    expected_response_hint = build_expected_response_hint(target, state)
+    if expected_response_hint:
+        focus["expected_response_hint"] = expected_response_hint
     cues = build_target_cues(target, state)
     if cues:
         focus["preprocessor_cues"] = cues
     return focus
+
+
+def build_expected_response_hint(target: dict[str, Any], state: dict[str, Any]) -> dict[str, Any] | None:
+    """Return a compact target-local hint for clear expected accept/reject cases."""
+    op = target.get("op")
+    status = normalize_status(target.get("output_status"))
+    active_session = state.get("active_session", {}) or {}
+    flags = state.get("derived_flags", {}) or {}
+
+    if op in {"Get", "Set", "GenKey"} and not active_session.get("exists"):
+        return {
+            "expected_behavior": "reject",
+            "confidence": "high",
+            "reason": f"{op} requires an active session, but state_before_target has no active_session.",
+            "matching_observed_response": "pass if final response is NOT_AUTHORIZED with no useful return values; fail if final response is SUCCESS.",
+        }
+
+    if op == "StartSession":
+        target_sp = target.get("sp")
+        shape = target.get("host_challenge_shape", {}) or {}
+        if target_sp == "LockingSP" and not flags.get("locking_sp_activated"):
+            return {
+                "expected_behavior": "reject",
+                "confidence": "high",
+                "reason": "Final StartSession requests LockingSP before LockingSP activation.",
+                "matching_observed_response": "pass if final response is NOT_AUTHORIZED or INVALID_PARAMETER with no session IDs; fail if final response is SUCCESS.",
+            }
+        if shape.get("present") and shape.get("contains_non_alnum"):
+            return {
+                "expected_behavior": "reject",
+                "confidence": "medium",
+                "reason": "Final HostChallenge contains non-alphanumeric separator characters, unlike normal challenge tokens.",
+                "matching_observed_response": "pass if final response rejects the session with no session IDs; fail if final response is SUCCESS.",
+            }
+
+    if op == "Properties":
+        request_shape = target.get("properties_request_shape", {}) or {}
+        if request_shape.get("malformed"):
+            return {
+                "expected_behavior": "reject",
+                "confidence": "high",
+                "reason": f"Malformed Properties request: {request_shape.get('reason')}.",
+                "matching_observed_response": "pass if final response is INVALID_PARAMETER with no properties returned; fail if final response is SUCCESS.",
+            }
+        if status and not is_success_status(status):
+            return {
+                "expected_behavior": "accept",
+                "confidence": "medium",
+                "reason": "Properties request shape looks normal in the compressed testcase.",
+                "matching_observed_response": "fail if a normal valid Properties negotiation is rejected.",
+            }
+
+    return None
 
 
 def build_target_cues(target: dict[str, Any], state: dict[str, Any]) -> list[str]:
@@ -374,6 +430,9 @@ def build_target_cues(target: dict[str, Any], state: dict[str, Any]) -> list[str
         if is_success_status(status) and has_returns:
             cues.append("Properties SUCCESS with returned Properties/HostProperties is a normal pass pattern.")
         elif status:
+            request_shape = target.get("properties_request_shape", {}) or {}
+            if request_shape.get("malformed"):
+                cues.append(f"Properties request is malformed: {request_shape.get('reason')}; rejection is expected.")
             cues.append(
                 f"Properties returned {status}; pass if the final request is malformed/unsupported, "
                 "fail if it is a normal valid Properties negotiation."
@@ -384,6 +443,8 @@ def build_target_cues(target: dict[str, Any], state: dict[str, Any]) -> list[str
             cues.append("StartSession SUCCESS with HostSessionID/SPSessionID present is a pass pattern unless authentication input is malformed.")
         if challenge_shape.get("present") and not challenge_shape.get("looks_hex"):
             cues.append("HostChallenge does not look hex; SUCCESS may be suspicious.")
+        if challenge_shape.get("contains_non_alnum"):
+            cues.append("HostChallenge contains non-alphanumeric separator characters; rejection may be expected.")
         if challenge_shape.get("hex_chars") is not None and challenge_shape.get("hex_chars") < 32:
             cues.append("HostChallenge is very short; SUCCESS may be suspicious.")
         if status and not is_success_status(status):
@@ -563,10 +624,14 @@ def _add_method_specific_fields(
     output_part: dict[str, Any],
     aliases: ValueAliases,
 ) -> None:
+    op = compact.get("op")
+    if op == "Properties":
+        compact["properties_request_shape"] = describe_properties_request_shape(required)
+        return
+
     if not isinstance(required, dict):
         return
 
-    op = compact.get("op")
     if op == "StartSession":
         spid = str(required.get("SPID", ""))
         authority_uid = ""
@@ -680,7 +745,34 @@ def describe_value_shape(value: Any) -> dict[str, Any]:
         "chars": len(text),
         "hex_chars": len(text) if re.fullmatch(r"[0-9A-Fa-f]+", text) else None,
         "looks_hex": bool(re.fullmatch(r"[0-9A-Fa-f]+", text)),
+        "contains_non_alnum": bool(re.search(r"[^0-9A-Za-z]", text)),
     }
+
+
+def describe_properties_request_shape(required: Any) -> dict[str, Any]:
+    if not isinstance(required, list) or not required:
+        return {"malformed": True, "reason": "required args are not a non-empty HostProperties list"}
+
+    host_properties = None
+    for item in required:
+        if isinstance(item, dict) and isinstance(item.get("HostProperties"), dict):
+            host_properties = item["HostProperties"]
+            break
+
+    if host_properties is None:
+        return {"malformed": True, "reason": "missing HostProperties"}
+
+    expected_keys = {"MaxComPacketSize", "MaxPacketSize", "MaxIndTokenSize"}
+    missing = sorted(key for key in expected_keys if key not in host_properties)
+    if missing:
+        return {"malformed": True, "reason": f"missing HostProperties keys: {', '.join(missing)}"}
+
+    for key in expected_keys:
+        value = host_properties.get(key)
+        if not isinstance(value, str) or not re.fullmatch(r"[0-9A-Fa-f]+", value):
+            return {"malformed": True, "reason": f"{key} is not a hex string"}
+
+    return {"malformed": False, "reason": "HostProperties shape looks normal"}
 
 
 def _looks_like_secret_or_blob(value: str) -> bool:

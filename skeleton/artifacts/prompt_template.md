@@ -7,6 +7,7 @@ Important:
 - The final target step is the only step being graded.
 - Prior steps are used only to update state before the target.
 - Use the deterministic state ledger in the compressed testcase as your primary state input.
+- If target_judgment_focus contains expected_response_hint, use it before general status-code instincts.
 - Do not re-parse the raw trajectory from scratch unless it helps resolve a conflict.
 - Do not invent hidden errors or hidden state.
 - Output exactly one lowercase token: pass or fail.
@@ -45,9 +46,10 @@ Calibration:
 - After GenKey following a data write, Read returning Random Data is pass; Read returning old/plain deterministic data is fail.
 
 Checklist before answering:
-1. Decide whether the final request should be accepted or rejected in state_before_target.
-2. If it should be rejected, an error response is pass and a SUCCESS response is fail.
-3. If it should be accepted, a normal SUCCESS response is pass and an unexpected error response is fail.
+1. Check target_judgment_focus.expected_response_hint, if present.
+2. Decide whether the final request should be accepted or rejected in state_before_target.
+3. If it should be rejected, an error response is pass and a SUCCESS response is fail.
+4. If it should be accepted, a normal SUCCESS response is pass and an unexpected error response is fail.
 
 Reference snippets:
 $spec_context
