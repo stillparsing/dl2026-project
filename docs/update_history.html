@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DL2026 작업 히스토리</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #182230;
+      --muted: #667085;
+      --line: #d7dde6;
+      --blue: #175cd3;
+      --blue-soft: #eff6ff;
+      --green: #067647;
+      --green-soft: #ecfdf3;
+      --amber: #b54708;
+      --amber-soft: #fffaeb;
+      --red: #b42318;
+      --red-soft: #fef3f2;
+      --code: #101828;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      line-height: 1.65;
+    }
+
+    header {
+      background: #102033;
+      color: #fff;
+      padding: 40px 24px 32px;
+    }
+
+    header .wrap,
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    main {
+      padding: 26px 24px 60px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 32px 0 14px;
+      font-size: 23px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 8px 0 14px;
+    }
+
+    section,
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      margin: 18px 0;
+    }
+
+    .lead {
+      color: #d7deea;
+      max-width: 900px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .summary div {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .summary b {
+      display: block;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    .summary span {
+      display: block;
+      margin-top: 4px;
+      font-size: 15px;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 14px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 18px;
+      border-top: 1px solid var(--line);
+      padding: 18px 0;
+    }
+
+    .event:first-child {
+      border-top: 0;
+    }
+
+    .when {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .when code {
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .tag {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 2px 5px 2px 0;
+    }
+
+    .tag.blue {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .tag.green {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .tag.amber {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .tag.red {
+      background: var(--red-soft);
+      color: var(--red);
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 8px 0 0;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    code,
+    pre {
+      font-family: Consolas, "Courier New", monospace;
+      color: var(--code);
+    }
+
+    code {
+      background: #eef2f7;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    pre {
+      overflow-x: auto;
+      background: #101828;
+      color: #f8fafc;
+      padding: 14px;
+      border-radius: 8px;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f2f4f7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .note {
+      border-left: 4px solid var(--amber);
+      background: var(--amber-soft);
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 14px 0;
+    }
+
+    .result {
+      border-left: 4px solid var(--red);
+      background: var(--red-soft);
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 14px 0;
+    }
+
+    @media (max-width: 900px) {
+      .summary,
+      .grid,
+      .event {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>DL2026 작업 히스토리</h1>
+      <p class="lead">
+        이 문서는 프로젝트 진행 중의 주요 판단, 실험, 코드 변경, 제출 결과를 시간순으로 정리한 기록이다.
+        대화 전체를 다시 읽지 않고도 어떤 방향으로 왜 바뀌었는지 파악하는 것을 목표로 한다.
+      </p>
+      <div class="summary">
+        <div><b>작업 범위</b><span>Prompt/RAG → State ledger → Hybrid prefilter</span></div>
+        <div><b>최종 제출명</b><span><code>jjh-hybrid-prefilter-qwen</code></span></div>
+        <div><b>최종 synthetic</b><span>v1/v2 모두 100%</span></div>
+        <div><b>실제 채점</b><span>62.5점</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. 큰 흐름</h2>
+      <p>
+        초기에는 Qwen에게 압축된 testcase와 spec snippet을 주고 <code>pass</code>/<code>fail</code>을 직접 판단하게 하는
+        prompt 중심 접근이었다. 하지만 public/synthetic case에서 작은 모델이 stateful reasoning을 자주 놓쳤고,
+        이후 deterministic state ledger와 prefilter를 결합한 hybrid 접근으로 바뀌었다.
+      </p>
+      <p>
+        마지막에는 synthetic v1/v2를 모두 맞췄지만, 실제 hidden score는 62.5점이었다. 이는 public-derived synthetic에
+        과하게 맞춘 규칙과, hidden distribution을 충분히 반영하지 못한 adversarial generation의 한계를 보여준다.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. 시간순 업데이트</h2>
+      <div class="timeline">
+        <div class="event">
+          <div class="when">
+            초기 단계<br>
+            <code>c822b87</code> 전후
+          </div>
+          <div>
+            <h3>Prompt/RAG workflow 도입</h3>
+            <span class="tag blue">prompt</span>
+            <span class="tag blue">RAG</span>
+            <ul>
+              <li><code>document_retriever.py</code>를 추가해 artifacts의 TCG/Opal 문서 조각을 검색하도록 했다.</li>
+              <li><code>prompt_template.md</code>를 만들고 Qwen에게 관련 spec snippet과 압축 testcase를 제공했다.</li>
+              <li><code>solver.py</code>에서 Qwen 모델을 불러와 한 단어 verdict를 생성했다.</li>
+            </ul>
+            <p>
+              이 단계의 핵심 가정은 “작은 모델도 적절한 context와 prompt를 주면 target response를 판단할 수 있다”였다.
+            </p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            Prompt 개선 단계<br>
+            <code>5b0eb29</code>, <code>7f2f750</code>
+          </div>
+          <div>
+            <h3>Qwen generation과 calibration 조정</h3>
+            <span class="tag blue">generation</span>
+            <span class="tag amber">calibration</span>
+            <ul>
+              <li><code>max_new_tokens</code>, answer parsing, system instruction을 조정했다.</li>
+              <li>Qwen이 pass case를 비관적으로 fail로 찍는 경향을 줄이려고 prompt 문구를 여러 번 수정했다.</li>
+              <li><code>DEBUG_PROMPT</code>, <code>DEBUG_GENERATION</code> 환경변수로 prompt와 raw generation을 확인할 수 있게 했다.</li>
+            </ul>
+            <p>
+              그러나 단순 prompt 보정만으로는 stateful trajectory를 안정적으로 처리하지 못했다.
+            </p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            Synthetic v1 생성<br>
+            <code>e5a90c0</code>
+          </div>
+          <div>
+            <h3>Public-derived synthetic stress test 작성</h3>
+            <span class="tag green">synthetic</span>
+            <span class="tag blue">evaluation</span>
+            <ul>
+              <li><code>tools/generate_synthetic_cases.py</code>로 public case를 변형한 v1 dataset을 만들었다.</li>
+              <li>prefix noise, target output swap, status mutation, missing context, closed session trap 등을 추가했다.</li>
+              <li><code>tools/run_prompt_eval.py</code>와 <code>tools/analyze_synthetic_results.py</code>로 평가/분석 workflow를 만들었다.</li>
+            </ul>
+            <p>
+              Synthetic v1은 총 314개였고, pass 125개, fail 189개로 구성됐다.
+            </p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            초기 synthetic 결과
+          </div>
+          <div>
+            <h3>순수 Qwen prompting 실패 확인</h3>
+            <span class="tag red">failure</span>
+            <span class="tag amber">lesson</span>
+            <pre>score: 60.19108280254777
+mistakes: 125 / 314</pre>
+            <ul>
+              <li>대표적으로 <code>tc1001</code> 같은 obvious pass case도 Qwen이 <code>fail</code>로 생성했다.</li>
+              <li>문제의 본질이 단순 text classification이 아니라 state machine 추론임을 확인했다.</li>
+              <li>LLM에게 raw/압축 JSON을 주는 것만으로는 긴 trajectory의 state update를 안정적으로 따라가기 어렵다는 결론을 얻었다.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            State ledger 도입<br>
+            <code>71f8f34</code>
+          </div>
+          <div>
+            <h3>Deterministic state preprocessing 추가</h3>
+            <span class="tag green">state ledger</span>
+            <span class="tag blue">preprocess</span>
+            <ul>
+              <li><code>preprocess.py</code>가 이전 step을 순서대로 처리해 target 직전 상태를 만든다.</li>
+              <li>성공한 이전 step만 state change로 반영하고, 실패한 이전 method response는 관찰만 한다.</li>
+              <li>active session, LockingSP activation, authority/PIN 상태, locking range, GenKey/data path를 추적했다.</li>
+              <li>Prompt에는 <code>state_before_target</code>, <code>state_update_trace</code>, <code>target_judgment_focus</code>가 들어가도록 했다.</li>
+            </ul>
+            <p>
+              이 단계부터 “LLM이 상태를 처음부터 추론하게 하지 말고, 전처리가 상태를 요약해준다”는 방향으로 바뀌었다.
+            </p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            Deterministic guardrail<br>
+            <code>7413d75</code>
+          </div>
+          <div>
+            <h3>Prefilter 추가</h3>
+            <span class="tag green">prefilter</span>
+            <span class="tag green">rules</span>
+            <ul>
+              <li><code>prejudge_obvious_case(steps)</code>를 추가했다.</li>
+              <li>Properties success, StartSession success/failure trap, active session 없는 method success, GenKey 이후 read 결과 등을 rule로 처리했다.</li>
+              <li><code>USE_RULE_PREFILTER=0</code>으로 rule을 끌 수 있게 했다.</li>
+              <li><code>DEBUG_RULES=1</code>로 어떤 케이스가 rule로 처리됐는지 볼 수 있게 했다.</li>
+            </ul>
+            <pre>synthetic v1 result:
+score=100.00
+mistakes: 0 / 314</pre>
+            <p>
+              이 결과는 public-derived synthetic에는 매우 강했지만, hidden 일반화까지 보장하지는 않았다.
+            </p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            Resume 이후<br>
+            <code>5a09a0d</code> 전후
+          </div>
+          <div>
+            <h3>Lazy model loading과 prefilter audit 도구</h3>
+            <span class="tag green">performance</span>
+            <span class="tag blue">audit</span>
+            <ul>
+              <li><code>solver.py</code>가 Qwen을 <code>__init__</code>에서 즉시 로드하지 않고 fallback 직전에만 로드하도록 바뀌었다.</li>
+              <li>rule로 끝나는 케이스는 torch/transformers 모델 로딩 없이 빠르게 처리된다.</li>
+              <li><code>tools/audit_rule_prefilter.py</code>를 추가해 coverage, precision, covered mistakes, uncovered category를 모델 없이 확인할 수 있게 했다.</li>
+            </ul>
+            <p>
+              Local Windows 환경에서는 torch DLL 문제로 full Qwen eval이 어려웠지만, audit는 모델 없이 안정적으로 돌릴 수 있었다.
+            </p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            Adversarial v2<br>
+            <code>5a09a0d</code>, <code>8b8f856</code>
+          </div>
+          <div>
+            <h3>Accepted error response 테스트 추가</h3>
+            <span class="tag green">adversarial</span>
+            <span class="tag amber">correct rejection</span>
+            <ul>
+              <li><code>tools/generate_adversarial_cases.py</code>를 추가했다.</li>
+              <li>“명령이 거절됐으므로 fail”이 아니라 “상태상 거절되어야 하므로 pass”인 케이스를 만들었다.</li>
+              <li>대표 유형은 LockingSP activation 전 StartSession rejection, active session 없는 Get/Set rejection, malformed HostChallenge rejection, malformed Properties rejection이었다.</li>
+            </ul>
+            <p>
+              처음에는 Qwen이 accepted error response를 거의 전부 <code>fail</code>로 찍었다.
+            </p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            v2 보정 단계<br>
+            <code>8ec08b8</code>
+          </div>
+          <div>
+            <h3>엄격한 malformed rejection rule 추가</h3>
+            <span class="tag green">rules</span>
+            <span class="tag amber">careful</span>
+            <ul>
+              <li>Qwen이 계속 틀리는 v2의 <code>tc2005</code>, <code>tc2006</code>을 분석했다.</li>
+              <li>처음에는 malformed HostChallenge를 넓게 rule로 넣었지만 v1에서 false positive가 발생해 되돌렸다.</li>
+              <li>이후 non-alphanumeric separator가 포함된 HostChallenge처럼 더 명확한 경우만 rule로 처리했다.</li>
+              <li>Malformed Properties는 실제 JSON에 <code>UnsupportedHostProperties</code>가 보이도록 v2 testcase 자체도 고쳤다.</li>
+            </ul>
+            <p>
+              이 단계에서 “테스트를 쉽게 만드는 것”이 아니라 “라벨과 입력이 일치하도록 synthetic case를 공정하게 만드는 것”을 구분했다.
+            </p>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            v1 regression 수정<br>
+            <code>af410e0</code>
+          </div>
+          <div>
+            <h3>정상 Properties 요청의 error response 처리</h3>
+            <span class="tag green">regression</span>
+            <span class="tag amber">overcorrection</span>
+            <ul>
+              <li>v2는 모두 맞았지만, v1에서 9개가 <code>expected=fail predicted=pass</code>가 됐다.</li>
+              <li>모두 정상 <code>Properties</code> 요청인데 status만 error로 바뀐 케이스였다.</li>
+              <li>Qwen이 “error response도 pass일 수 있다”를 너무 넓게 적용한 것으로 판단했다.</li>
+              <li>정상 Properties 요청 + error status는 deterministic <code>fail</code>로 확정했다.</li>
+            </ul>
+            <pre>v1 prefilter: covered=182/314, precision=100%
+v2 prefilter: covered=9/11, precision=100%</pre>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            제출 준비<br>
+            <code>d9c8950</code>
+          </div>
+          <div>
+            <h3>setup.sh에서 모델 다운로드 보강</h3>
+            <span class="tag blue">submission</span>
+            <span class="tag green">setup</span>
+            <ul>
+              <li>Grading evaluation 단계는 network가 꺼질 수 있으므로 setup 단계에서 Qwen snapshot을 미리 받도록 했다.</li>
+              <li><code>uv sync</code> 이후 <code>huggingface_hub.snapshot_download</code>를 실행하도록 <code>setup.sh</code>를 수정했다.</li>
+              <li>제출은 repo root가 아니라 <code>skeleton/</code> 디렉터리를 대상으로 해야 함을 확인했다.</li>
+            </ul>
+            <pre>submit --dir /workspace/JJH/dl2026-project/skeleton --job-name jjh-hybrid-prefilter-qwen</pre>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="when">
+            실제 제출 결과<br>
+            Job ID <code>1333</code>
+          </div>
+          <div>
+            <h3>Hidden score 62.5점</h3>
+            <span class="tag red">hidden</span>
+            <span class="tag amber">lesson</span>
+            <div class="result">
+              실제 채점 서버 결과는 62.5점이었다. 제출한 약 30개 팀 중 하위권으로, synthetic v1/v2 100%가 hidden 성능을 보장하지 않는다는 점이 분명해졌다.
+            </div>
+            <ul>
+              <li>Public-derived synthetic이 hidden distribution을 충분히 커버하지 못했다.</li>
+              <li>현재 rule은 보이는 패턴에는 강하지만, spec 전체의 ACL/state transition을 충분히 구현하지 못했다.</li>
+              <li>Qwen fallback도 hidden의 새로운 케이스를 안정적으로 판단할 만큼 강하지 않았다.</li>
+              <li>다음 라운드에서는 spec 기반 deterministic interpreter와 더 넓은 adversarial generator가 필요하다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. 주요 실험 결과 요약</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>시점</th>
+            <th>평가</th>
+            <th>결과</th>
+            <th>의미</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>초기 prompt-only</td>
+            <td>synthetic v1</td>
+            <td>60.19점, 125 mistakes</td>
+            <td>작은 Qwen만으로는 stateful reasoning이 부족함</td>
+          </tr>
+          <tr>
+            <td>state ledger + prefilter</td>
+            <td>synthetic v1</td>
+            <td>100%</td>
+            <td>public-derived pattern은 대부분 해결</td>
+          </tr>
+          <tr>
+            <td>accepted error 보강 전</td>
+            <td>synthetic v2</td>
+            <td>54.55점, 5 mistakes</td>
+            <td>Qwen이 error status를 fail로 과도하게 해석</td>
+          </tr>
+          <tr>
+            <td>strict malformed rejection rules 후</td>
+            <td>synthetic v2</td>
+            <td>100%</td>
+            <td>v2의 correct rejection 패턴 해결</td>
+          </tr>
+          <tr>
+            <td>최종 제출</td>
+            <td>hidden grader</td>
+            <td>62.5점</td>
+            <td>synthetic overfitting 및 hidden coverage 부족</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>4. 배운 점</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>잘 된 점</h3>
+          <ul>
+            <li>상태 ledger는 작은 LLM의 약점을 보완하는 데 효과적이었다.</li>
+            <li>Prefilter audit 도구는 rule false positive를 빠르게 잡는 데 유용했다.</li>
+            <li>Accepted error response를 별도 adversarial set으로 만든 것은 중요한 방향이었다.</li>
+            <li>Lazy loading으로 prefiltered case 처리 속도를 개선했다.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>부족했던 점</h3>
+          <ul>
+            <li>Synthetic case가 public example 변형에 너무 의존했다.</li>
+            <li>Hidden leaderboard를 설명할 만큼 다양한 protocol/ACL edge case를 만들지 못했다.</li>
+            <li>Prompt 문구 강화는 임시 보정에 가깝고, 안정적인 구조화 판단으로 충분히 전환하지 못했다.</li>
+            <li>Spec retrieval이 실제 decision rule로 변환되지 않아 Qwen fallback의 품질이 낮았다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. 다음 작업 후보</h2>
+      <ul>
+        <li>Hidden score 개선을 위해 prefilter rule을 늘리기 전에, rule audit용 adversarial set을 훨씬 넓혀야 한다.</li>
+        <li>StartSession, Get, Set, Activate, GenKey별로 expected accept/reject를 계산하는 명시적 rule card를 만들 필요가 있다.</li>
+        <li>Authority/ACL 관계를 더 정확히 모델링해야 한다. 현재는 Admin1/User1/SID의 일부 패턴만 추적한다.</li>
+        <li>Data path는 GenKey 여부만 보는 수준에서 벗어나 locking range, read/write enable, MBR 상태와 연결해야 한다.</li>
+        <li>Qwen fallback은 최종 보조 수단으로 두고, 핵심 state machine은 deterministic하게 구현하는 방향이 더 현실적이다.</li>
+      </ul>
+      <div class="note">
+        다음 제출을 준비한다면 단순 prompt 수정만으로 큰 점수 상승을 기대하기 어렵다. hidden score 62.5점은
+        “LLM fallback보다 protocol state interpreter를 더 많이 구현해야 한다”는 신호로 보는 것이 타당하다.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
