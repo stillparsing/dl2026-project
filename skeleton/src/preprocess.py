@@ -494,6 +494,8 @@ def prejudge_obvious_case(steps: list[dict[str, Any]]) -> str | None:
             return "pass"
         if status == "INVALID_PARAMETER" and request_shape.get("malformed") and not has_property_returns:
             return "pass"
+        if status in {"INVALID_PARAMETER", "NOT_AUTHORIZED", "FAIL", "INVALID_COMMAND"} and not request_shape.get("malformed"):
+            return "fail"
 
     if op == "Read" and flags.get("genkey_after_data_write"):
         result = str(target.get("result", "")).strip().lower()
