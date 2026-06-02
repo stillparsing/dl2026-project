@@ -26,6 +26,7 @@ Decision rule:
 - A SUCCESS response can still be fail, but only when there is a concrete contradiction.
 - An error response can be pass when the protocol/state should reject the final request.
 - An error response is fail when the final request is valid in state_before_target and should normally succeed.
+- Never use "the final status is an error" as the only reason for fail.
 - If the testcase and state ledger show a straightforward valid response, answer pass.
 
 Calibration:
@@ -33,11 +34,20 @@ Calibration:
 - Properties with INVALID_PARAMETER and empty return values is pass for a malformed/unsupported request, but fail for a normal valid Properties request.
 - Get returning requested columns in an active authorized session is pass unless the ledger/spec shows a concrete conflict.
 - Get/Set/GenKey with NOT_AUTHORIZED or INVALID_PARAMETER can be pass when there is no active session, wrong SP, wrong authority, or malformed arguments.
+- If state_before_target has no active_session and final Get/Set/GenKey returns NOT_AUTHORIZED with no return values, that is usually a correct rejection: pass.
 - StartSession with valid authority, valid-looking HostChallenge, SUCCESS, and returned HostSessionID/SPSessionID is pass unless the ledger/spec shows a concrete conflict.
 - StartSession SUCCESS with malformed HostChallenge is fail.
 - StartSession rejection can be pass when LockingSP is inactive, the PIN/auth state is wrong, session IDs are missing, or HostChallenge is malformed.
+- If final StartSession requests LockingSP while state_before_target says locking_sp_activated=false and the response is NOT_AUTHORIZED/INVALID_PARAMETER with no session IDs, do not call it fail just because it is an error; it is a correct rejection: pass.
+- If final StartSession has a malformed HostChallenge and the device rejects it with INVALID_PARAMETER/NOT_AUTHORIZED and no session IDs, the rejection is correct: pass.
+- Do not confuse "device rejected the command" with "testcase failed". The testcase passes when the rejection is the expected protocol behavior.
 - A final method SUCCESS after active_session was cleared is fail.
 - After GenKey following a data write, Read returning Random Data is pass; Read returning old/plain deterministic data is fail.
+
+Checklist before answering:
+1. Decide whether the final request should be accepted or rejected in state_before_target.
+2. If it should be rejected, an error response is pass and a SUCCESS response is fail.
+3. If it should be accepted, a normal SUCCESS response is pass and an unexpected error response is fail.
 
 Reference snippets:
 $spec_context

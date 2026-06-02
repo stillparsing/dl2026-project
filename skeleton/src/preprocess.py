@@ -459,11 +459,16 @@ def prejudge_obvious_case(steps: list[dict[str, Any]]) -> str | None:
                 return "fail"
             if session_ids:
                 return "pass"
+        elif status in {"NOT_AUTHORIZED", "INVALID_PARAMETER"} and not session_ids:
+            if target_sp == "LockingSP" and not flags.get("locking_sp_activated"):
+                return "pass"
 
     if op in {"Get", "Set", "GenKey"}:
         if is_success_status(status):
             if not active_session.get("exists"):
                 return "fail"
+            return "pass"
+        if status == "NOT_AUTHORIZED" and not active_session.get("exists"):
             return "pass"
 
     return None
